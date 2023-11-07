@@ -8,6 +8,6 @@ private:
 	const double a, b, c;
 public:
 	Triangle(double a, double b, double c);
-	virtual double perimeter() override;
-	virtual string toString() override;
+	virtual double perimeter() const override;
+	virtual string toString() const override;
 };
