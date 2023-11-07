@@ -26,3 +26,19 @@ TEST(Triangle, CorrectTriangleComparison)
 	// Assert
 	EXPECT_EQ(t1, t2);
 }
+
+TEST(Triangle, CorrectStringificationOfTriangle)
+{
+	// Arrange
+	const Triangle t1(2.75, 3.25, 5);
+	const Triangle t2(3.25, 5, 2.75);
+	const string expected = "triangle 2.75 3.25 5";
+
+	// Act
+	const string actualT1 = t1.toString();
+	const string actualT2 = t2.toString();
+
+	// Assert
+	EXPECT_EQ(expected, actualT1);
+	EXPECT_EQ(expected, actualT2);
+}

@@ -28,7 +28,14 @@ double Triangle::perimeter() const
 
 string Triangle::toString() const
 {
-	return "triangle " + to_string(a) + " " + to_string(b) + " " + to_string(c);
+	string aStr = to_string(a);
+	string bStr = to_string(b);
+	string cStr = to_string(c);
+	bStr.erase(aStr.find_last_not_of('0') + 1, std::string::npos);
+	bStr.erase(bStr.find_last_not_of('0') + 1, std::string::npos);
+	cStr.erase(cStr.find_last_not_of('0') + 1, std::string::npos);
+
+	return "triangle " + aStr + " " + bStr + " " + cStr;
 }
 
 bool Triangle::operator==(const Triangle& other) const

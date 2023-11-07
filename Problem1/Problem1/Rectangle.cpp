@@ -17,7 +17,12 @@ double Rectangle::perimeter() const
 
 string Rectangle::toString() const
 {
-	return "rectangle " + to_string(a) + " " + to_string(b);
+	string aStr = to_string(a);
+	string bStr = to_string(b);
+	bStr.erase(aStr.find_last_not_of('0') + 1, std::string::npos);
+	bStr.erase(bStr.find_last_not_of('0') + 1, std::string::npos);
+
+	return "rectangle " + aStr + " " + bStr;
 }
 
 bool Rectangle::operator==(const Rectangle& other) const
