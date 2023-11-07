@@ -13,15 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Interfaces">
+      <UniqueIdentifier>{7cba5193-e9b6-439a-a9f5-d19d0861eb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Concretes">
+      <UniqueIdentifier>{3751f707-5312-4460-8999-eccb3f051a71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rectangle.h">
+      <Filter>Resource Files\Concretes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Resource Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Resource Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

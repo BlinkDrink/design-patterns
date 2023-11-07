@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
+using std:: string;
 
 class Figure
 {
 public:
-	virtual double perimeter() = 0;
-	virtual std::string toString() = 0;
+	virtual double perimeter() const = 0 ;
+	virtual string toString() const = 0;
 };
