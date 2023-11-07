@@ -4,9 +4,10 @@
 class Circle : public Figure
 {
 private:
-	const double radius;
+	double radius;
 public:
 	Circle(double radius);
-	virtual double perimeter() const override;
-	virtual string toString() const override;
+	virtual double perimeter() const override final;
+	virtual string toString() const override final;
+	bool operator==(const Circle& other) const;
 };

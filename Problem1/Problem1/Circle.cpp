@@ -16,3 +16,8 @@ string Circle::toString() const
 {
 	return "circle " + to_string(radius);
 }
+
+bool Circle::operator==(const Circle& other) const
+{
+	return this->radius == other.radius;
+}
