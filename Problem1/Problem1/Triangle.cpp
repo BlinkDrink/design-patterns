@@ -13,12 +13,12 @@ Triangle::Triangle(double a, double b, double c)
 	this->b = b;
 	this->c = c;
 
-	if (a > b)
-		swap(a, b);
-	if (a > c)
-		swap(a, c);
-	if (b > c)
-		swap(b, c);
+	if (this->a > this->b)
+		swap(this->a, this->b);
+	if (this->a > this->c)
+		swap(this->a, this->c);
+	if (this->b > this->c)
+		swap(this->b, this->c);
 }
 
 double Triangle::perimeter() const
