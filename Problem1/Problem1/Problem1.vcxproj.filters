@@ -13,11 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Interfaces">
+    <Filter Include="Header Files\Interfaces">
       <UniqueIdentifier>{7cba5193-e9b6-439a-a9f5-d19d0861eb0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Concretes">
+    <Filter Include="Header Files\Concretes">
       <UniqueIdentifier>{3751f707-5312-4460-8999-eccb3f051a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Concretes">
+      <UniqueIdentifier>{e2655a0a-6c44-405a-9086-8922790e7603}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,18 +28,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Rectangle.h">
-      <Filter>Resource Files\Concretes</Filter>
+      <Filter>Header Files\Concretes</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Concretes</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Source Files\Concretes</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Source Files\Concretes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h">
-      <Filter>Resource Files\Interfaces</Filter>
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="Triangle.h">
-      <Filter>Resource Files\Concretes</Filter>
+      <Filter>Header Files\Concretes</Filter>
     </ClInclude>
     <ClInclude Include="Circle.h">
-      <Filter>Resource Files\Concretes</Filter>
+      <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
