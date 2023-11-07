@@ -7,8 +7,8 @@
 TEST(Triangle, CorrectPerimeterCalculation)
 {
 	// Arrange
-	const Triangle t(2.75, 3.25, 10);
-	const double expected = 16;
+	const Triangle t(2.75, 3.25, 5);
+	const double expected = 11;
 
 	// Act
 	const double p = t.perimeter();
@@ -20,8 +20,8 @@ TEST(Triangle, CorrectPerimeterCalculation)
 TEST(Triangle, CorrectTriangleComparison)
 {
 	// Arrange
-	const Triangle t1(2.75, 3.25, 10);
-	const Triangle t2(3.25, 10, 2.75);
+	const Triangle t1(2.75, 3.25, 5);
+	const Triangle t2(3.25, 5, 2.75);
 
 	// Assert
 	EXPECT_EQ(t1, t2);
