@@ -2,9 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TriangleTest.cpp" />
+    <ClCompile Include="RectangleTest.cpp" />
+    <ClCompile Include="CircleTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 #include "../Problem1/Triangle.h"
 #include "../Problem1/Triangle.cpp"
+#include "../Problem1/Utils.cpp"
 
 
 TEST(Triangle, CorrectPerimeterCalculation)

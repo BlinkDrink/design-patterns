@@ -1,4 +1,5 @@
 #include "Triangle.h"
+#include "Utils.h"
 #include <stdexcept>
 using std::invalid_argument;
 using std::to_string;
@@ -31,9 +32,10 @@ string Triangle::toString() const
 	string aStr = to_string(a);
 	string bStr = to_string(b);
 	string cStr = to_string(c);
-	bStr.erase(aStr.find_last_not_of('0') + 1, std::string::npos);
-	bStr.erase(bStr.find_last_not_of('0') + 1, std::string::npos);
-	cStr.erase(cStr.find_last_not_of('0') + 1, std::string::npos);
+
+	removeTrailingZeroes(aStr);
+	removeTrailingZeroes(bStr);
+	removeTrailingZeroes(cStr);
 
 	return "triangle " + aStr + " " + bStr + " " + cStr;
 }

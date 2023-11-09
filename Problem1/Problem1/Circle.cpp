@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 #include<cmath>
 #include "Circle.h"
+#include "Utils.h"
 using std::to_string;
 
 Circle::Circle(double radius) : radius(radius)
@@ -14,10 +15,12 @@ double Circle::perimeter() const
 
 string Circle::toString() const
 {
-	return "circle " + to_string(radius);
+	string r = to_string(radius);
+	removeTrailingZeroes(r);
+	return "circle " + r;
 }
 
 bool Circle::operator==(const Circle& other) const
 {
-	return this->radius == other.radius;
+	return abs(this->radius - other.radius) < DBL_EPSILON;
 }

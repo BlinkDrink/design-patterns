@@ -39,6 +39,9 @@
     <ClCompile Include="Rectangle.cpp">
       <Filter>Source Files\Concretes</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="Circle.h">
       <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

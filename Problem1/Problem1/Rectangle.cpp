@@ -1,4 +1,5 @@
 #include "Rectangle.h"
+#include "Utils.h"
 using std::to_string;
 using std::swap;
 
@@ -19,8 +20,8 @@ string Rectangle::toString() const
 {
 	string aStr = to_string(a);
 	string bStr = to_string(b);
-	bStr.erase(aStr.find_last_not_of('0') + 1, std::string::npos);
-	bStr.erase(bStr.find_last_not_of('0') + 1, std::string::npos);
+	removeTrailingZeroes(aStr);
+	removeTrailingZeroes(bStr);
 
 	return "rectangle " + aStr + " " + bStr;
 }
