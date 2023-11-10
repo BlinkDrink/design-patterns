@@ -30,4 +30,10 @@ public:
 	 * \return true if the circles' radiuses match, false otherwise
 	 */
 	bool operator==(const Circle& other) const;
+
+	/**
+	 * \brief Used to clone object at run-time regardless of its type
+	 * \return Dynamically allocated copy of the current object
+	 */
+	Circle* clone() const override;
 };

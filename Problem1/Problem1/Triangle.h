@@ -35,4 +35,10 @@ public:
 	 * \return true if they match on all three data members, false otherwise
 	 */
 	bool operator==(const Triangle& other) const;
+
+	/**
+	 * \brief Used to clone object at run-time regardless of its type
+	 * \return Dynamically allocated copy of the current object
+	 */
+	Triangle* clone() const override;
 };

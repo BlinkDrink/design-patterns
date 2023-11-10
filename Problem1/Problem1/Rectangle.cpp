@@ -20,6 +20,7 @@ string Rectangle::toString() const
 {
 	string aStr = to_string(a);
 	string bStr = to_string(b);
+
 	removeTrailingZeroes(aStr);
 	removeTrailingZeroes(bStr);
 
@@ -29,5 +30,10 @@ string Rectangle::toString() const
 bool Rectangle::operator==(const Rectangle& other) const
 {
 	return abs(a - other.a)< DBL_EPSILON && abs(b- other.b) < DBL_EPSILON;
+}
+
+Rectangle* Rectangle::clone() const
+{
+	return new Rectangle(*this);
 }
 

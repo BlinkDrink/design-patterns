@@ -11,7 +11,7 @@ TEST(Circle, CorrectPerimeterCalculation)
 	const Circle t(3);
 	const double expected = 2* M_PI * 3;
 
-	// Act
+	// Act	
 	const double p = t.perimeter();
 
 	// Assert

@@ -31,4 +31,10 @@ public:
 	 * \return 
 	 */
 	bool operator==(const Rectangle& other) const;
+
+	/**
+	 * \brief Used to clone object at run-time regardless of its type
+	 * \return Dynamically allocated copy of the current object
+	 */
+	Rectangle* clone() const override;
 };

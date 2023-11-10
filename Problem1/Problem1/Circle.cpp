@@ -24,3 +24,8 @@ bool Circle::operator==(const Circle& other) const
 {
 	return abs(this->radius - other.radius) < DBL_EPSILON;
 }
+
+Circle* Circle::clone() const
+{
+	return new Circle(*this);
+}

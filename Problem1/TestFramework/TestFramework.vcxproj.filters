@@ -6,6 +6,7 @@
     <ClCompile Include="TriangleTest.cpp" />
     <ClCompile Include="RectangleTest.cpp" />
     <ClCompile Include="CircleTest.cpp" />
+    <ClCompile Include="UtilsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
