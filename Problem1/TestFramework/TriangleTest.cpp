@@ -43,3 +43,16 @@ TEST(Triangle, CorrectStringificationOfTriangle)
 	EXPECT_EQ(expected, actualT1);
 	EXPECT_EQ(expected, actualT2);
 }
+
+TEST(Triangle, CorrectCloneOfObject)
+{
+	// Arrange
+	const Triangle t1(2.75, 3.25,5);
+
+	// Act
+	const Triangle* t2 = t1.clone();
+
+	// Assert
+	EXPECT_EQ(t1, *t2);
+	delete t2;
+}

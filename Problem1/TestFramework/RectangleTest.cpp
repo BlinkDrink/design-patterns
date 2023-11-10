@@ -42,3 +42,16 @@ TEST(Rectangle, CorrectStringificationOfRectangle)
 	EXPECT_EQ(expected, actualT1);
 	EXPECT_EQ(expected, actualT2);
 }
+
+TEST(Rectangle, CorrectCloneOfObject)
+{
+	// Arrange
+	const Rectangle t1(2.75, 3.25);
+
+	// Act
+	const Rectangle* t2 = t1.clone();
+
+	// Assert
+	EXPECT_EQ(t1, *t2);
+	delete t2;
+}

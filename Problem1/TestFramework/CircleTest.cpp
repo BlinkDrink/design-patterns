@@ -45,3 +45,16 @@ TEST(Circle, CorrectStringificationOfCircle)
 	EXPECT_EQ(expected1, actualT1);
 	EXPECT_EQ(expected2, actualT2);
 }
+
+TEST(Circle, CorrectCloneOfObject)
+{
+	// Arrange
+	const Circle t1(2.75);
+
+	// Act
+	const Circle* t2 = t1.clone();
+
+	// Assert
+	EXPECT_EQ(t1, *t2);
+	delete t2;
+}
