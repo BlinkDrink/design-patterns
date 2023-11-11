@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "../Problem1/Utils.h"
 
-TEST(removeTrailingZeroes, CorrectRemovalOfTrailingZeroes)
+TEST(Utils, CorrectRemovalOfTrailingZeroes)
 {
 	// Arrange
 	constexpr double p = 2.75;
@@ -15,7 +15,7 @@ TEST(removeTrailingZeroes, CorrectRemovalOfTrailingZeroes)
 	EXPECT_EQ(s, expected);
 }
 
-TEST(generateNumber, CorrectGeneretaionInGivenBounds)
+TEST(Utils, CorrectGeneretaionInGivenBounds)
 {
 	// Arrange
 	constexpr double lower_bound = 5, upper_bound = 100;

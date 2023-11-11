@@ -135,6 +135,7 @@
     <ClCompile Include="Rectangle.h" />
     <ClCompile Include="StreamFigureFactory.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="UserInputFactory.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="InputFactory.h" />
     <ClInclude Include="StreamFigureFactory.h" />
     <ClInclude Include="Triangle.h" />
+    <ClInclude Include="UserInputFactory.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
