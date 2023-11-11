@@ -7,6 +7,7 @@
     <ClCompile Include="RectangleTest.cpp" />
     <ClCompile Include="CircleTest.cpp" />
     <ClCompile Include="UtilsTest.cpp" />
+    <ClCompile Include="StreamFigureFactoryTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

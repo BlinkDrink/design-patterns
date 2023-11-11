@@ -25,7 +25,7 @@ unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& 
 		cout << "Enter file name: ";
 		cin >> filename;
 		ifstream file(filename);
-		return make_unique<StreamFigureFactory>(file);
+		return make_unique<StreamFigureFactory>(file); // TODO: File gets closed when exiting scope
 	}
 
 	throw invalid_argument("Invalid input type");
