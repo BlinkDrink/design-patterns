@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RandomFigureFactory.cpp" />
     <ClCompile Include="RandomFigureFactory.h" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rectangle.h" />
+    <ClCompile Include="StreamFigureFactory.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
@@ -139,6 +141,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="FigureFactory.h" />
+    <ClInclude Include="FigureType.h" />
     <ClInclude Include="InputFactory.h" />
     <ClInclude Include="StreamFigureFactory.h" />
     <ClInclude Include="Triangle.h" />

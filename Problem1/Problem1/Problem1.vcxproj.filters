@@ -28,19 +28,16 @@
     <Filter Include="Header Files\Concretes\Factories">
       <UniqueIdentifier>{ef8640a5-7ee0-4e77-bb4c-fec07d45f524}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Concretes\Figures">
+      <UniqueIdentifier>{3110f548-a6a0-467a-bb07-67047283610b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Concretes\Factories">
+      <UniqueIdentifier>{17f6949c-1347-4326-b746-e2e37b5e7fca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Source Files\Concretes</Filter>
-    </ClCompile>
-    <ClCompile Include="Circle.cpp">
-      <Filter>Source Files\Concretes</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Source Files\Concretes</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
@@ -50,6 +47,21 @@
     </ClCompile>
     <ClCompile Include="RandomFigureFactory.h">
       <Filter>Header Files\Concretes\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Source Files\Concretes\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Source Files\Concretes\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Concretes\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomFigureFactory.cpp">
+      <Filter>Source Files\Concretes\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamFigureFactory.cpp">
+      <Filter>Source Files\Concretes\Factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="InputFactory.h">
       <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureType.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
