@@ -14,6 +14,7 @@ using std::invalid_argument;
 unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& input_type) const
 {
 	if (input_type == "Random") {
+		srand(time(nullptr));
 		return make_unique<RandomFigureFactory>();
 	}
 	else if (input_type == "STDIN") {

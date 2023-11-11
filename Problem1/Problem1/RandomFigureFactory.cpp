@@ -9,10 +9,8 @@
 
 using std::make_unique;
 
-unique_ptr<Figure> RandomFigureFactory::create_figure(const string& args) const
+unique_ptr<Figure> RandomFigureFactory::create_figure() const
 {
-	srand(time(nullptr)); // Seed for randomization
-
 	// TODO: Extract magic numbers
 	const FigureType figure_type = static_cast<FigureType>(rand() % 3);
 
@@ -21,28 +19,30 @@ unique_ptr<Figure> RandomFigureFactory::create_figure(const string& args) const
 	switch (figure_type)
 	{
 		case FigureType::TriangleType: {
-			double a = generateRandomDoubleNumber(range_min, range_max);
-			double b = generateRandomDoubleNumber(range_min, range_max);
+			double a = generate_random_double_number(range_min, range_max);
+			double b = generate_random_double_number(range_min, range_max);
 
 			// The third side must be in the range (|a - b|, a + b)
 			const double min_possible = abs(a - b);
 			const double max_possible = a + b;
 
-			double c = generateRandomDoubleNumber(min_possible, max_possible);
+			double c = generate_random_double_number(min_possible, max_possible);
 
 			return make_unique<Triangle>(a, b, c);
 		}
 		case FigureType::RectangleType: 
 		{
-			double a = generateRandomDoubleNumber(range_min, range_max);
-			double b = generateRandomDoubleNumber(range_min, range_max);
+			double a = generate_random_double_number(range_min, range_max);
+			double b = generate_random_double_number(range_min, range_max);
 
 			return make_unique<Rectangle>(a, b);
 		}
 		case FigureType::CircleType:
 		{
-			double radius = generateRandomDoubleNumber(range_min, range_max);
+			double radius = generate_random_double_number(range_min, range_max);
 			return make_unique<Circle>(radius);
 		}
 	}
+
+	throw std::invalid_argument("Invalid figure type");
 }

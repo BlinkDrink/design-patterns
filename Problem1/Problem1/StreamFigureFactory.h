@@ -8,7 +8,7 @@ using std::istream;
 class StreamFigureFactory : public FigureFactory
 {
 private:
-	istream& stream;
+	istream& stream_;
 
 public:
 	/**
@@ -22,5 +22,5 @@ public:
 	 * \param args - string representation of a figure
 	 * \return - dynamically allocated figure satisfying the given arguments
 	 */
-	unique_ptr<Figure> create_figure(const string& args) const override;
+	unique_ptr<Figure> create_figure() const override;
 };

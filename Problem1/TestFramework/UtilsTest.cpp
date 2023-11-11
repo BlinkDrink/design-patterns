@@ -9,7 +9,7 @@ TEST(Utils, CorrectRemovalOfTrailingZeroes)
 	const string expected = "2.75";
 
 	// Act
-	removeTrailingZeroes(s);
+	remove_trailing_zeroes(s);
 
 	// Assert
 	EXPECT_EQ(s, expected);
@@ -21,7 +21,7 @@ TEST(Utils, CorrectGeneretaionInGivenBounds)
 	constexpr double lower_bound = 5, upper_bound = 100;
 
 	// Act
-	double p = generateRandomDoubleNumber(lower_bound, upper_bound);
+	double p = generate_random_double_number(lower_bound, upper_bound);
 	bool check = p > lower_bound && p < upper_bound;
 	bool expected = true;
 

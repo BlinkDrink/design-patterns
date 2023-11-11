@@ -33,9 +33,9 @@ string Triangle::toString() const
 	string bStr = to_string(b);
 	string cStr = to_string(c);
 
-	removeTrailingZeroes(aStr);
-	removeTrailingZeroes(bStr);
-	removeTrailingZeroes(cStr);
+	remove_trailing_zeroes(aStr);
+	remove_trailing_zeroes(bStr);
+	remove_trailing_zeroes(cStr);
 
 	return "triangle " + aStr + " " + bStr + " " + cStr;
 }

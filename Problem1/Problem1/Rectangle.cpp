@@ -21,8 +21,8 @@ string Rectangle::toString() const
 	string aStr = to_string(a);
 	string bStr = to_string(b);
 
-	removeTrailingZeroes(aStr);
-	removeTrailingZeroes(bStr);
+	remove_trailing_zeroes(aStr);
+	remove_trailing_zeroes(bStr);
 
 	return "rectangle " + aStr + " " + bStr;
 }

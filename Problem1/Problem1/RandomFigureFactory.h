@@ -4,5 +4,5 @@
 class RandomFigureFactory : public FigureFactory
 {
 public:
-	unique_ptr<Figure> create_figure(const string& args) const override;
+	unique_ptr<Figure> create_figure() const override;
 };
