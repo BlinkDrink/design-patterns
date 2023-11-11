@@ -15,7 +15,7 @@ double Circle::perimeter() const
 
 string Circle::toString() const
 {
-	string r = to_string(radius);
+	string r = std::to_string(radius);
 	removeTrailingZeroes(r);
 	return "circle " + r;
 }

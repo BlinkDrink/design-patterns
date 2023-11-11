@@ -22,13 +22,16 @@
     <Filter Include="Source Files\Concretes">
       <UniqueIdentifier>{e2655a0a-6c44-405a-9086-8922790e7603}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes\Figures">
+      <UniqueIdentifier>{a6265f77-6d10-4233-8b00-ff1d6408db9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Concretes\Factories">
+      <UniqueIdentifier>{ef8640a5-7ee0-4e77-bb4c-fec07d45f524}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.h">
-      <Filter>Header Files\Concretes</Filter>
     </ClCompile>
     <ClCompile Include="Triangle.cpp">
       <Filter>Source Files\Concretes</Filter>
@@ -42,19 +45,34 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rectangle.h">
+      <Filter>Header Files\Concretes\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomFigureFactory.h">
+      <Filter>Header Files\Concretes\Factories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="Circle.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureFactory.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Header Files\Concretes\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files\Concretes\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamFigureFactory.h">
+      <Filter>Header Files\Concretes\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="InputFactory.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

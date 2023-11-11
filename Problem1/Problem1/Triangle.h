@@ -8,7 +8,7 @@ private:
 	double a, b, c;
 public:
 	/**
-	 * \brief Initializes the triangle figure with 3 values each representing a side of the triangle.
+	 * \brief Initializing Constructor of the triangle figure with 3 values each representing a side of the triangle.
 	 * Also sorts the values in such a way that the lowest value is stored in this->a, the second lowest is
 	 * stored in this->b and the last value is stored in this->c
 	 * \param a First side
