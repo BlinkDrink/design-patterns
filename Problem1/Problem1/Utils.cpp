@@ -8,10 +8,9 @@ void remove_trailing_zeroes(string& s)
 		s.pop_back();
 }
 
-// TODO: default_random_engine is seeded with the same starting point on each generation, thus generating the same numbers
 double generate_random_double_number(double lower_bound, double upper_bound)
 {
-	std::uniform_real_distribution<double> urd(lower_bound, upper_bound);
-	std::default_random_engine re;
+	static std::uniform_real_distribution<double> urd(lower_bound, upper_bound);
+	static std::default_random_engine re;
 	return urd(re);
 }
