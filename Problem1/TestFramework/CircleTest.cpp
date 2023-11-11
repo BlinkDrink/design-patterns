@@ -4,7 +4,6 @@
 #include "../Problem1/Circle.h"
 #include "../Problem1/Circle.cpp"
 
-
 TEST(Circle, CorrectPerimeterCalculation)
 {
 	// Arrange

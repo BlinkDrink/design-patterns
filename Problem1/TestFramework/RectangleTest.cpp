@@ -3,6 +3,19 @@
 #include "../problem1/Rectangle.h"
 #include "../problem1/Rectangle.cpp"
 
+TEST(Rectangle, Constructor_Sorts_Field_Members)
+{
+	// Arrange
+	Rectangle t(4, 3);
+	string expected = "rectangle 3 4";
+
+	// Act
+	string stringified = t.toString();
+
+	// Assert
+	EXPECT_EQ(stringified, expected);
+}
+
 TEST(Rectangle, CorrectPerimeterCalculation)
 {
 	// arrange

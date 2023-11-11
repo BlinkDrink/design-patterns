@@ -4,8 +4,32 @@
 #include "../Problem1/Triangle.cpp"
 #include "../Problem1/Utils.cpp"
 
+TEST(Triangle, Constructor_NoThrow_Correct_Arguments)
+{
+	// Assert
+	EXPECT_NO_THROW(Triangle t(2.75, 3.25, 5));
+}
 
-TEST(Triangle, CorrectPerimeterCalculation)
+TEST(Triangle, Constructor_Throw_Incorrect_Arguments)
+{
+	// Assert
+	EXPECT_THROW(Triangle t(2.75, 3.25, 10), invalid_argument);
+}
+
+TEST(Triangle, Constructor_Sorts_Field_Members)
+{
+	// Arrange
+	Triangle t(4,3,5);
+	string expected = "triangle 3 4 5";
+
+	// Act
+	string stringified = t.toString();
+
+	// Assert
+	EXPECT_EQ(stringified, expected);
+}
+
+TEST(Triangle, Correct_Perimeter_Calculation)
 {
 	// Arrange
 	const Triangle t(2.75, 3.25, 5);
@@ -18,7 +42,7 @@ TEST(Triangle, CorrectPerimeterCalculation)
 	EXPECT_EQ(expected, p);
 }
 
-TEST(Triangle, CorrectTriangleComparison)
+TEST(Triangle, Correct_Triangle_Comparison)
 {
 	// Arrange
 	const Triangle t1(2.75, 3.25, 5);
@@ -28,7 +52,7 @@ TEST(Triangle, CorrectTriangleComparison)
 	EXPECT_EQ(t1, t2);
 }
 
-TEST(Triangle, CorrectStringificationOfTriangle)
+TEST(Triangle, Correct_Stringification_Of_Triangle)
 {
 	// Arrange
 	const Triangle t1(2.75, 3.25, 5);
@@ -44,7 +68,7 @@ TEST(Triangle, CorrectStringificationOfTriangle)
 	EXPECT_EQ(expected, actualT2);
 }
 
-TEST(Triangle, CorrectCloneOfObject)
+TEST(Triangle, Correct_Clone_Of_Triangle)
 {
 	// Arrange
 	const Triangle t1(2.75, 3.25,5);
