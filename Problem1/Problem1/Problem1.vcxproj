@@ -131,8 +131,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RandomFigureFactory.cpp" />
     <ClCompile Include="RandomFigureFactory.h" />
-    <ClCompile Include="RandomNumberGenerator.cpp" />
-    <ClCompile Include="RandomNumberGenerator.h" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rectangle.h" />
     <ClCompile Include="StreamFigureFactory.cpp" />

@@ -11,8 +11,8 @@ int main(int argc, const char* argv[])
     std::cin >> input_type;
 
     // Create an InputFactory based on user input
-    const UserInputFactory inputFactory;
-    const std::unique_ptr<FigureFactory> figureFactory = inputFactory.create_figure_factory(input_type);
+    UserInputFactory inputFactory;
+    std::unique_ptr<FigureFactory> figureFactory = inputFactory.create_figure_factory(input_type);
 
     // Read the number of figures to generate
     int numFigures;
@@ -20,7 +20,7 @@ int main(int argc, const char* argv[])
     std::cin >> numFigures;
 
     // Create a vector to store the figures
-    std::vector<std::unique_ptr<Figure>> figures(numFigures);
+    std::vector<std::unique_ptr<Figure>> figures;
 
     // Generate or read figures
     for (int i = 0; i < numFigures; ++i) {

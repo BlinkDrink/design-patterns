@@ -1,4 +1,5 @@
 #include "RandomFigureFactory.h"
+#include <ctime>
 
 #include "Triangle.h"
 #include "FigureType.h"

@@ -72,12 +72,6 @@
     <ClCompile Include="UserInputFactory.cpp">
       <Filter>Source Files\Concretes\InputFactory</Filter>
     </ClCompile>
-    <ClCompile Include="RandomNumberGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumberGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h">

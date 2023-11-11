@@ -1,8 +1,5 @@
 #include "Utils.h"
 #include <random>
-#include "RandomNumberGenerator.h"
-
-using std::default_random_engine;
 
 void remove_trailing_zeroes(string& s)
 {
@@ -14,5 +11,7 @@ void remove_trailing_zeroes(string& s)
 // TODO: default_random_engine is seeded with the same starting point on each generation, thus generating the same numbers
 double generate_random_double_number(double lower_bound, double upper_bound)
 {
-	return RandomNumberGenerator::getRandomDouble(lower_bound, upper_bound);
+	std::uniform_real_distribution<double> urd(lower_bound, upper_bound);
+	std::default_random_engine re;
+	return urd(re);
 }
