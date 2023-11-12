@@ -9,7 +9,6 @@ class StreamFigureFactory : public FigureFactory
 {
 private:
 	istream& stream_;
-
 public:
 	/**
 	 * \brief Initializing constructor used to set the stream from which the figures will be read 

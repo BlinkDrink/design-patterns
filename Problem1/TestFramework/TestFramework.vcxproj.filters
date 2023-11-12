@@ -3,16 +3,32 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TriangleTest.cpp" />
-    <ClCompile Include="RectangleTest.cpp" />
-    <ClCompile Include="CircleTest.cpp" />
     <ClCompile Include="UtilsTest.cpp" />
-    <ClCompile Include="StreamFigureFactoryTest.cpp" />
+    <ClCompile Include="RectangleTest.cpp">
+      <Filter>FigureTests</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleTest.cpp">
+      <Filter>FigureTests</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleTest.cpp">
+      <Filter>FigureTests</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamFigureFactoryTest.cpp">
+      <Filter>FigureFactoryTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FigureTests">
+      <UniqueIdentifier>{f01a58d0-e412-49a8-9459-c493165dc64e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FigureFactoryTests">
+      <UniqueIdentifier>{97d66393-34ca-4d54-86cc-8c2c252ef590}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
+#include <stdexcept>
 #include "Triangle.h"
 #include "Utils.h"
-#include <stdexcept>
 using std::invalid_argument;
 using std::to_string;
 using std::swap;

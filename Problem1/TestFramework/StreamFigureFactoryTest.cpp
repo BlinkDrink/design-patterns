@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "../problem1/Rectangle.h"
 #include "../problem1/StreamFigureFactory.h"
-
 #include "../problem1/StreamFigureFactory.cpp"
 
 TEST(StreamFigureFactory, Correct_Rectangle_Reading_From_Stream)

@@ -4,7 +4,7 @@
 #include "../Problem1/Circle.h"
 #include "../Problem1/Circle.cpp"
 
-TEST(Circle, CorrectPerimeterCalculation)
+TEST(Circle, Correct_Perimeter_Calculation)
 {
 	// Arrange
 	const Circle t(3);
@@ -17,7 +17,7 @@ TEST(Circle, CorrectPerimeterCalculation)
 	EXPECT_EQ(expected, p);
 }
 
-TEST(Circle, CorrectCircleComparison)
+TEST(Circle, Correct_Circle_Comparison)
 {
 	// Arrange
 	const Circle t1(2.75);
@@ -27,7 +27,7 @@ TEST(Circle, CorrectCircleComparison)
 	EXPECT_EQ(t1, t2);
 }
 
-TEST(Circle, CorrectStringificationOfCircle)
+TEST(Circle, Correct_Stringification_Of_Circle)
 {
 	// Arrange
 	const Circle t1(2.75);
@@ -45,7 +45,7 @@ TEST(Circle, CorrectStringificationOfCircle)
 	EXPECT_EQ(expected2, actualT2);
 }
 
-TEST(Circle, CorrectCloneOfObject)
+TEST(Circle, Correct_Clone_Of_Object)
 {
 	// Arrange
 	const Circle t1(2.75);

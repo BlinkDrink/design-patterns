@@ -1,8 +1,7 @@
-#define _USE_MATH_DEFINES
-#include<cmath>
+#include <cmath>
 #include "Circle.h"
+#include <corecrt_math_defines.h>
 #include "Utils.h"
-using std::to_string;
 
 Circle::Circle(double radius) : radius(radius)
 {

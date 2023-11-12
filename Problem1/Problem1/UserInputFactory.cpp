@@ -11,20 +11,22 @@ using std::cin;
 using std::ifstream;
 using std::invalid_argument;
 
-unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& input_type) const
+unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& input_type) const // File/STDIN/Random
 {
-	if (input_type == "Random") {
+	if (input_type == "Random") 
+	{
 		srand(time(nullptr));
 		return make_unique<RandomFigureFactory>();
 	}
-	else if (input_type == "STDIN") {
+	else if (input_type == "STDIN") 
+	{
 		return make_unique<StreamFigureFactory>(cin);
 	}
 	else if (input_type == "File") {
 		string filename;
 		cout << "Enter file name: ";
 		cin >> filename;
-		ifstream file(filename);
+		ifstream file(filename); // file.close()
 		return make_unique<StreamFigureFactory>(file); // TODO: File gets closed when exiting scope
 	}
 
