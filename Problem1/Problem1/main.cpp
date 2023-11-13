@@ -20,6 +20,21 @@ void printFigures(const vector<unique_ptr<Figure>>& figures)
 	}
 }
 
+void saveFiguresToFile(const string& filename, const vector<unique_ptr<Figure>>& figures)
+{
+	ofstream file(filename);
+
+	if (!file.is_open())
+		throw exception("Failed opening file for writing");
+
+	for (const unique_ptr<Figure>& fig : figures)
+	{
+		file << fig->toString() << endl;
+	}
+
+	file.close();
+}
+
 void menu()
 {
 	cout << "1. List figures to STDOUT" << endl;
@@ -95,14 +110,7 @@ int main(int argc, const char* argv[])
 			string filename;
 			cout << "Enter file name:";
 			cin >> filename;
-			ofstream file(filename);
-			if (!file.is_open())
-				throw exception("Failed opening file for writing");
-
-			for (const unique_ptr<Figure>& fig : figures)
-			{
-				file << fig->toString() << endl;
-			}
+			saveFiguresToFile(filename, figures);
 			break;
 		}
 		case 5:
