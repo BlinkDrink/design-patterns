@@ -1,6 +1,5 @@
 #pragma once
 #include "InputFactory.h"
-using std::istream;
 
 class UserInputFactory : public InputFactory
 {

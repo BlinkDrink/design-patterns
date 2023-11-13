@@ -1,7 +1,8 @@
 #include <iostream>
-#include<fstream>
+#include <fstream>
 
 #include "UserInputFactory.h"
+#include "DoubleGenerator.h"
 #include "RandomFigureFactory.h"
 #include "StreamFigureFactory.h"
 
@@ -16,7 +17,7 @@ unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& 
 	if (input_type == "Random") 
 	{
 		srand(time(nullptr));
-		return make_unique<RandomFigureFactory>();
+		return make_unique<RandomFigureFactory>(new DoubleGenerator);
 	}
 	else if (input_type == "STDIN") 
 	{

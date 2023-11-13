@@ -12,9 +12,10 @@ TEST(Circle, Correct_Perimeter_Calculation)
 
 	// Act	
 	const double p = t.perimeter();
+	const bool check = abs(p - expected) < DBL_EPSILON;
 
 	// Assert
-	EXPECT_EQ(expected, p);
+	EXPECT_EQ(check, true);
 }
 
 TEST(Circle, Constructor_Throw_Negative_Arguments)

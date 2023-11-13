@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "../problem1/Rectangle.h"
 #include "../problem1/StreamFigureFactory.h"
 #include "../problem1/StreamFigureFactory.cpp"
 

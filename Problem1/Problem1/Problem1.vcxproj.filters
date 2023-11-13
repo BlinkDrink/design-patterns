@@ -40,6 +40,12 @@
     <Filter Include="Source Files\Concretes\InputFactory">
       <UniqueIdentifier>{0df1f693-0d86-4f59-9a97-2c9295e85696}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes\RandomGenerator">
+      <UniqueIdentifier>{9dac745d-056b-41a1-bd96-29f7ec061a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Concretes\RandomGenerator">
+      <UniqueIdentifier>{7a5cf504-b29e-4f1e-b04d-65a9f605d3fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,6 +78,9 @@
     <ClCompile Include="UserInputFactory.cpp">
       <Filter>Source Files\Concretes\InputFactory</Filter>
     </ClCompile>
+    <ClCompile Include="DoubleGenerator.cpp">
+      <Filter>Source Files\Concretes\RandomGenerator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h">
@@ -100,6 +109,12 @@
     </ClInclude>
     <ClInclude Include="UserInputFactory.h">
       <Filter>Header Files\Concretes\InputFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGenerator.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleGenerator.h">
+      <Filter>Header Files\Concretes\RandomGenerator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

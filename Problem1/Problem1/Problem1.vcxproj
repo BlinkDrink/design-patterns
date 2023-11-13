@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="DoubleGenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RandomFigureFactory.cpp" />
     <ClCompile Include="RandomFigureFactory.h" />
@@ -140,10 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="DoubleGenerator.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="FigureFactory.h" />
     <ClInclude Include="FigureType.h" />
     <ClInclude Include="InputFactory.h" />
+    <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="StreamFigureFactory.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="UserInputFactory.h" />
