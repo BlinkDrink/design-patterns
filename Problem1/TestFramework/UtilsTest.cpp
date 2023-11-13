@@ -14,17 +14,3 @@ TEST(Utils, CorrectRemovalOfTrailingZeroes)
 	// Assert
 	EXPECT_EQ(s, expected);
 }
-
-TEST(Utils, CorrectGeneretaionInGivenBounds)
-{
-	// Arrange
-	constexpr double lower_bound = 5, upper_bound = 100;
-
-	// Act
-	double p = generate_random_double_number(lower_bound, upper_bound);
-	bool check = p > lower_bound && p < upper_bound;
-	bool expected = true;
-
-	// Assert
-	EXPECT_EQ(check, expected);
-}

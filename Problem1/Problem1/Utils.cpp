@@ -7,10 +7,3 @@ void remove_trailing_zeroes(string& s)
 	if (s.back() == '.')
 		s.pop_back();
 }
-
-double generate_random_double_number(double lower_bound, double upper_bound)
-{
-	static std::uniform_real_distribution<double> urd(lower_bound, upper_bound);
-	static std::default_random_engine re;
-	return urd(re);
-}

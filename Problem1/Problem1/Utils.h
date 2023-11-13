@@ -7,9 +7,3 @@ using std::string;
  * \param s - the string representation of a number to be formatted
  */
 void remove_trailing_zeroes(string& s);
-
-/**
- * \brief Generates a random double in the given range
- * \return 
- */
-double generate_random_double_number(double lower_bound, double upper_bound);
