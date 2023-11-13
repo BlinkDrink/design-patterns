@@ -101,7 +101,6 @@
   <ItemGroup>
     <ClCompile Include="CircleTest.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RandomFigureFactoryTest.cpp" />
     <ClCompile Include="RectangleTest.cpp" />
     <ClCompile Include="StreamFigureFactoryTest.cpp" />
     <ClCompile Include="TriangleTest.cpp" />

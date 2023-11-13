@@ -1,6 +1,9 @@
 #pragma once
+#include <memory>
+
 #include "Figure.h"
 using std::string;
+using std::unique_ptr;
 
 class Triangle : public Figure
 {
@@ -40,5 +43,5 @@ public:
 	 * \brief Used to clone object at run-time regardless of its type
 	 * \return Dynamically allocated copy of the current object
 	 */
-	Triangle* clone() const override;
+	unique_ptr<Figure> clone() const override;
 };

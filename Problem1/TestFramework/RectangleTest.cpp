@@ -67,11 +67,12 @@ TEST(Rectangle, CorrectCloneOfObject)
 {
 	// Arrange
 	const Rectangle t1(2.75, 3.25);
+	const string expected = t1.toString();
 
 	// Act
-	const Rectangle* t2 = t1.clone();
+	const unique_ptr<Figure> t2 = t1.clone();
+	const string actual = t2->toString();
 
 	// Assert
-	EXPECT_EQ(t1, *t2);
-	delete t2;
+	EXPECT_EQ(expected, actual);
 }

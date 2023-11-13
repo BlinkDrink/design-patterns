@@ -8,7 +8,7 @@ TEST(Circle, Correct_Perimeter_Calculation)
 {
 	// Arrange
 	const Circle t(3);
-	const double expected = 2* M_PI * 3;
+	const double expected = 2 * M_PI * 3;
 
 	// Act	
 	const double p = t.perimeter();
@@ -56,11 +56,12 @@ TEST(Circle, Correct_Clone_Of_Object)
 {
 	// Arrange
 	const Circle t1(2.75);
+	string expected = t1.toString();
 
 	// Act
-	const Circle* t2 = t1.clone();
+	const unique_ptr<Figure> t2 = t1.clone();
+	string actual = t2->toString();
 
 	// Assert
-	EXPECT_EQ(t1, *t2);
-	delete t2;
+	EXPECT_EQ(expected, actual);
 }

@@ -27,7 +27,7 @@ TEST(Triangle, Constructor_Throw_Negative_Arguments)
 TEST(Triangle, Constructor_Sorts_Field_Members)
 {
 	// Arrange
-	Triangle t(4,3,5);
+	Triangle t(4, 3, 5);
 	string expected = "triangle 3 4 5";
 
 	// Act
@@ -79,12 +79,13 @@ TEST(Triangle, Correct_Stringification_Of_Triangle)
 TEST(Triangle, Correct_Clone_Of_Triangle)
 {
 	// Arrange
-	const Triangle t1(2.75, 3.25,5);
+	const Triangle t1(2.75, 3.25, 5);
+	const string expected = t1.toString();
 
 	// Act
-	const Triangle* t2 = t1.clone();
+	const unique_ptr<Figure> t2 = t1.clone();
+	const string actual = t2->toString();
 
 	// Assert
-	EXPECT_EQ(t1, *t2);
-	delete t2;
+	EXPECT_EQ(expected, actual);
 }

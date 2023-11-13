@@ -1,5 +1,6 @@
 #pragma once
 #include "FigureFactory.h"
+
 using std::istream;
 
 /**
@@ -11,7 +12,7 @@ private:
 	istream& stream_;
 public:
 	/**
-	 * \brief Initializing constructor used to set the stream from which the figures will be read 
+	 * \brief Initializing constructor used to set the stream from which the figures will be read
 	 * \param s - the stream from which the figures will be read
 	 */
 	StreamFigureFactory(istream& s);

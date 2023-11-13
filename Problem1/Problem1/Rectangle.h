@@ -1,5 +1,8 @@
 #pragma once
+#include <memory>
+
 #include "Figure.h"
+using std::unique_ptr;
 
 class Rectangle : public Figure
 {
@@ -28,7 +31,7 @@ public:
 	/**
 	 * \brief Operator used to compare two rectangles
 	 * \param other - rectangle that the comparison is done against
-	 * \return 
+	 * \return
 	 */
 	bool operator==(const Rectangle& other) const;
 
@@ -36,5 +39,5 @@ public:
 	 * \brief Used to clone object at run-time regardless of its type
 	 * \return Dynamically allocated copy of the current object
 	 */
-	Rectangle* clone() const override;
+	unique_ptr<Figure> clone() const override;
 };

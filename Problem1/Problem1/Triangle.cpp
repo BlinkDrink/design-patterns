@@ -45,10 +45,10 @@ string Triangle::toString() const
 
 bool Triangle::operator==(const Triangle& other) const
 {
-	return abs(a - other.a) < DBL_EPSILON && abs(b - other.b) < DBL_EPSILON && abs(c - other.c) < DBL_EPSILON; 
+	return abs(a - other.a) < DBL_EPSILON && abs(b - other.b) < DBL_EPSILON && abs(c - other.c) < DBL_EPSILON;
 }
 
-Triangle* Triangle::clone() const
+unique_ptr<Figure> Triangle::clone() const
 {
-	return new Triangle(*this);
+	return std::make_unique<Triangle>(*this);
 }

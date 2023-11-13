@@ -1,5 +1,9 @@
 #pragma once
+#include <memory>
 #include "Figure.h"
+
+using std::unique_ptr;
+
 
 class Circle : public Figure
 {
@@ -35,5 +39,5 @@ public:
 	 * \brief Used to clone object at run-time regardless of its type
 	 * \return Dynamically allocated copy of the current object
 	 */
-	Circle* clone() const override;
+	unique_ptr<Figure> clone() const override;
 };

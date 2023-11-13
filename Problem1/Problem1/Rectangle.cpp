@@ -2,6 +2,7 @@
 #include "Utils.h"
 using std::to_string;
 using std::swap;
+using std::make_unique;
 
 Rectangle::Rectangle(double a, double b)
 {
@@ -32,11 +33,11 @@ string Rectangle::toString() const
 
 bool Rectangle::operator==(const Rectangle& other) const
 {
-	return abs(a - other.a)< DBL_EPSILON && abs(b- other.b) < DBL_EPSILON;
+	return abs(a - other.a) < DBL_EPSILON && abs(b - other.b) < DBL_EPSILON;
 }
 
-Rectangle* Rectangle::clone() const
+unique_ptr<Figure> Rectangle::clone() const
 {
-	return new Rectangle(*this);
+	return make_unique<Rectangle>(*this);
 }
 

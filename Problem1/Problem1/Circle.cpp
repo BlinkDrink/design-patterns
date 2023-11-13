@@ -27,7 +27,7 @@ bool Circle::operator==(const Circle& other) const
 	return abs(this->radius - other.radius) < DBL_EPSILON;
 }
 
-Circle* Circle::clone() const
+unique_ptr<Figure> Circle::clone() const
 {
-	return new Circle(*this);
+	return std::make_unique<Circle>(*this);
 }
