@@ -3,6 +3,13 @@
 #include "../problem1/Rectangle.h"
 #include "../problem1/Rectangle.cpp"
 
+TEST(Rectangle, Constructor_Throw_Negative_Arguments)
+{
+	// Assert
+	EXPECT_THROW(Rectangle t(-4.25, 7.75), std::invalid_argument);
+	EXPECT_THROW(Rectangle t(2.75, -5.11), std::invalid_argument);
+}
+
 TEST(Rectangle, Constructor_Sorts_Field_Members)
 {
 	// Arrange

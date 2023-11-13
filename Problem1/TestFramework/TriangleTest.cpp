@@ -4,16 +4,24 @@
 #include "../Problem1/Triangle.cpp"
 #include "../Problem1/Utils.cpp"
 
-TEST(Triangle, Constructor_NoThrow_Correct_Arguments)
+TEST(Triangle, Constructor_NoThrow_Correct_Triangle_Rule_Arguments)
 {
 	// Assert
 	EXPECT_NO_THROW(Triangle t(2.75, 3.25, 5));
 }
 
-TEST(Triangle, Constructor_Throw_Incorrect_Arguments)
+TEST(Triangle, Constructor_Throw_False_Triangle_Rule_Arguments)
 {
 	// Assert
 	EXPECT_THROW(Triangle t(2.75, 3.25, 10), invalid_argument);
+}
+
+TEST(Triangle, Constructor_Throw_Negative_Arguments)
+{
+	// Assert
+	EXPECT_THROW(Triangle t(-2.75, 3.25, 5), invalid_argument);
+	EXPECT_THROW(Triangle t(2.75, -3.25, 5), invalid_argument);
+	EXPECT_THROW(Triangle t(2.75, 3.25, -5), invalid_argument);
 }
 
 TEST(Triangle, Constructor_Sorts_Field_Members)

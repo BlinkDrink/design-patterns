@@ -16,6 +16,9 @@
     <ClCompile Include="StreamFigureFactoryTest.cpp">
       <Filter>FigureFactoryTests</Filter>
     </ClCompile>
+    <ClCompile Include="RandomFigureFactoryTest.cpp">
+      <Filter>FigureFactoryTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

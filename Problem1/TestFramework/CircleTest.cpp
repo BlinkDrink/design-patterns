@@ -17,6 +17,12 @@ TEST(Circle, Correct_Perimeter_Calculation)
 	EXPECT_EQ(expected, p);
 }
 
+TEST(Circle, Constructor_Throw_Negative_Arguments)
+{
+	// Assert
+	EXPECT_THROW(Circle t(-2.75), std::invalid_argument);
+}
+
 TEST(Circle, Correct_Circle_Comparison)
 {
 	// Arrange

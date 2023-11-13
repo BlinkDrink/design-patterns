@@ -5,6 +5,9 @@ using std::swap;
 
 Rectangle::Rectangle(double a, double b)
 {
+	if (a < 0 || b < 0)
+		throw std::invalid_argument("Sides of rectangle cannot be negative numbers");
+
 	this->a = a;
 	this->b = b;
 	if (b < a)

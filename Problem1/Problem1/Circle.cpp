@@ -3,8 +3,11 @@
 #include <corecrt_math_defines.h>
 #include "Utils.h"
 
-Circle::Circle(double radius) : radius(radius)
+Circle::Circle(double radius)
 {
+	if (radius < 0)
+		throw std::invalid_argument("Radius cannot be a negative number");
+	this->radius = radius;
 }
 
 double Circle::perimeter() const
