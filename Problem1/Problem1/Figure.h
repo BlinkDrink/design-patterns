@@ -9,6 +9,9 @@ namespace Problem1
 	{
 		class Figure
 		{
+		protected:
+			string m_string_format;
+			double m_perimeter;
 		public:
 			virtual double perimeter() const = 0;
 			virtual string toString() const = 0;

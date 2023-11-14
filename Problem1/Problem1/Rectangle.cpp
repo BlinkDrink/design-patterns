@@ -18,22 +18,25 @@ namespace Problem1
 			this->b = b;
 			if (b < a)
 				swap(this->a, this->b);
-		}
 
-		double Rectangle::perimeter() const
-		{
-			return 2 * (a + b);
-		}
-
-		string Rectangle::toString() const
-		{
 			string aStr = to_string(a);
 			string bStr = to_string(b);
 
 			remove_trailing_zeroes(aStr);
 			remove_trailing_zeroes(bStr);
 
-			return "rectangle " + aStr + " " + bStr;
+			m_perimeter = 2 * (this->a + this->b);
+			m_string_format = "rectangle " + aStr + " " + bStr;
+		}
+
+		double Rectangle::perimeter() const
+		{
+			return m_perimeter;
+		}
+
+		string Rectangle::toString() const
+		{
+			return m_string_format;
 		}
 
 		bool Rectangle::operator==(const Figure& other) const

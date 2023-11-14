@@ -14,18 +14,22 @@ namespace Problem1
 			if (radius < 0)
 				throw std::invalid_argument("Radius cannot be a negative number");
 			this->radius = radius;
+
+			string r = std::to_string(radius);
+			remove_trailing_zeroes(r);
+
+			m_perimeter = 2 * M_PI * this->radius;
+			m_string_format = "circle " + r;
 		}
 
 		double Circle::perimeter() const
 		{
-			return 2 * M_PI * radius;
+			return m_perimeter;
 		}
 
 		string Circle::toString() const
 		{
-			string r = std::to_string(radius);
-			remove_trailing_zeroes(r);
-			return "circle " + r;
+			return m_string_format;
 		}
 
 		bool Circle::operator==(const Figure& other) const

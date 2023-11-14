@@ -6,6 +6,7 @@
 using std::invalid_argument;
 using std::to_string;
 using std::swap;
+using std::make_unique;
 
 namespace Problem1
 {
@@ -29,15 +30,7 @@ namespace Problem1
 				swap(this->a, this->c);
 			if (this->b > this->c)
 				swap(this->b, this->c);
-		}
 
-		double Triangle::perimeter() const
-		{
-			return a + b + c;
-		}
-
-		string Triangle::toString() const
-		{
 			string aStr = to_string(a);
 			string bStr = to_string(b);
 			string cStr = to_string(c);
@@ -46,7 +39,18 @@ namespace Problem1
 			remove_trailing_zeroes(bStr);
 			remove_trailing_zeroes(cStr);
 
-			return "triangle " + aStr + " " + bStr + " " + cStr;
+			m_perimeter = this->a + this->b + this->c;
+			m_string_format = "triangle " + aStr + " " + bStr + " " + cStr;
+		}
+
+		double Triangle::perimeter() const
+		{
+			return m_perimeter;
+		}
+
+		string Triangle::toString() const
+		{
+			return m_string_format;
 		}
 
 		bool Triangle::operator==(const Figure& other) const
@@ -60,8 +64,7 @@ namespace Problem1
 
 		unique_ptr<Figure> Triangle::clone() const
 		{
-			return std::make_unique<Triangle>(*this);
+			return make_unique<Triangle>(*this);
 		}
-
 	}
 }
