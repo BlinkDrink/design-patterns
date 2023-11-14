@@ -4,88 +4,100 @@
 #include "../Problem1/Triangle.cpp"
 #include "../Problem1/Utils.cpp"
 
-TEST(Triangle, Constructor_NoThrow_Correct_Triangle_Rule_Arguments)
+using Problem1::Figures::Triangle;
+using Problem1::Figures::Figure;
+
+namespace TestFramework
 {
-	// Assert
-	EXPECT_NO_THROW(Triangle t(2.75, 3.25, 5));
+	namespace TriangleTests
+	{
+		TEST(Triangle, Constructor_NoThrow_Correct_Triangle_Rule_Arguments)
+		{
+			// Assert
+			EXPECT_NO_THROW(Triangle t(2.75, 3.25, 5));
+		}
+
+		TEST(Triangle, Constructor_Throw_False_Triangle_Rule_Arguments)
+		{
+			// Assert
+			EXPECT_THROW(Triangle t(2.75, 3.25, 10), std::invalid_argument);
+		}
+
+		TEST(Triangle, Constructor_Throw_Negative_Arguments)
+		{
+			// Assert
+			EXPECT_THROW(Triangle t(-2.75, 3.25, 5), std::invalid_argument);
+			EXPECT_THROW(Triangle t(2.75, -3.25, 5), std::invalid_argument);
+			EXPECT_THROW(Triangle t(2.75, 3.25, -5), std::invalid_argument);
+		}
+
+		TEST(Triangle, Constructor_Sorts_Field_Members)
+		{
+			// Arrange
+			Triangle t(4, 3, 5);
+			string expected = "triangle 3 4 5";
+
+			// Act
+			string stringified = t.toString();
+
+			// Assert
+			EXPECT_EQ(stringified, expected);
+		}
+
+		TEST(Triangle, Correct_Perimeter_Calculation)
+		{
+			// Arrange
+			const Triangle t(2.75, 3.25, 5);
+			const double expected = 11;
+
+			// Act
+			const double p = t.perimeter();
+
+			// Assert
+			EXPECT_EQ(expected, p);
+		}
+
+		TEST(Triangle, Correct_Triangle_Comparison)
+		{
+			// Arrange
+			const Triangle t1(2.75, 3.25, 5);
+			const Triangle t2(3.25, 5, 2.75);
+
+			// Assert
+			EXPECT_EQ(t1, t2);
+		}
+
+		TEST(Triangle, Correct_Stringification_Of_Triangle)
+		{
+			// Arrange
+			const Triangle t1(2.75, 3.25, 5);
+			const Triangle t2(3.25, 5, 2.75);
+			const string expected = "triangle 2.75 3.25 5";
+
+			// Act
+			const string actualT1 = t1.toString();
+			const string actualT2 = t2.toString();
+
+			// Assert
+			EXPECT_EQ(expected, actualT1);
+			EXPECT_EQ(expected, actualT2);
+		}
+
+		TEST(Triangle, Correct_Clone_Of_Triangle)
+		{
+			// Arrange
+			const Triangle t1(2.75, 3.25, 5);
+			const string expected = t1.toString();
+
+			// Act
+			const unique_ptr<Figure> t2 = t1.clone();
+			const string actual = t2->toString();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
+
+	}
 }
 
-TEST(Triangle, Constructor_Throw_False_Triangle_Rule_Arguments)
-{
-	// Assert
-	EXPECT_THROW(Triangle t(2.75, 3.25, 10), invalid_argument);
-}
 
-TEST(Triangle, Constructor_Throw_Negative_Arguments)
-{
-	// Assert
-	EXPECT_THROW(Triangle t(-2.75, 3.25, 5), invalid_argument);
-	EXPECT_THROW(Triangle t(2.75, -3.25, 5), invalid_argument);
-	EXPECT_THROW(Triangle t(2.75, 3.25, -5), invalid_argument);
-}
-
-TEST(Triangle, Constructor_Sorts_Field_Members)
-{
-	// Arrange
-	Triangle t(4, 3, 5);
-	string expected = "triangle 3 4 5";
-
-	// Act
-	string stringified = t.toString();
-
-	// Assert
-	EXPECT_EQ(stringified, expected);
-}
-
-TEST(Triangle, Correct_Perimeter_Calculation)
-{
-	// Arrange
-	const Triangle t(2.75, 3.25, 5);
-	const double expected = 11;
-
-	// Act
-	const double p = t.perimeter();
-
-	// Assert
-	EXPECT_EQ(expected, p);
-}
-
-TEST(Triangle, Correct_Triangle_Comparison)
-{
-	// Arrange
-	const Triangle t1(2.75, 3.25, 5);
-	const Triangle t2(3.25, 5, 2.75);
-
-	// Assert
-	EXPECT_EQ(t1, t2);
-}
-
-TEST(Triangle, Correct_Stringification_Of_Triangle)
-{
-	// Arrange
-	const Triangle t1(2.75, 3.25, 5);
-	const Triangle t2(3.25, 5, 2.75);
-	const string expected = "triangle 2.75 3.25 5";
-
-	// Act
-	const string actualT1 = t1.toString();
-	const string actualT2 = t2.toString();
-
-	// Assert
-	EXPECT_EQ(expected, actualT1);
-	EXPECT_EQ(expected, actualT2);
-}
-
-TEST(Triangle, Correct_Clone_Of_Triangle)
-{
-	// Arrange
-	const Triangle t1(2.75, 3.25, 5);
-	const string expected = t1.toString();
-
-	// Act
-	const unique_ptr<Figure> t2 = t1.clone();
-	const string actual = t2->toString();
-
-	// Assert
-	EXPECT_EQ(expected, actual);
-}

@@ -3,31 +3,38 @@
 #include <corecrt_math_defines.h>
 #include "Utils.h"
 
-Circle::Circle(double radius)
+namespace Problem1
 {
-	if (radius < 0)
-		throw std::invalid_argument("Radius cannot be a negative number");
-	this->radius = radius;
-}
+	namespace Figures
+	{
 
-double Circle::perimeter() const
-{
-	return 2 * M_PI * radius;
-}
+		Circle::Circle(double radius)
+		{
+			if (radius < 0)
+				throw std::invalid_argument("Radius cannot be a negative number");
+			this->radius = radius;
+		}
 
-string Circle::toString() const
-{
-	string r = std::to_string(radius);
-	remove_trailing_zeroes(r);
-	return "circle " + r;
-}
+		double Circle::perimeter() const
+		{
+			return 2 * M_PI * radius;
+		}
 
-bool Circle::operator==(const Circle& other) const
-{
-	return abs(this->radius - other.radius) < DBL_EPSILON;
-}
+		string Circle::toString() const
+		{
+			string r = std::to_string(radius);
+			remove_trailing_zeroes(r);
+			return "circle " + r;
+		}
 
-unique_ptr<Figure> Circle::clone() const
-{
-	return std::make_unique<Circle>(*this);
+		bool Circle::operator==(const Circle& other) const
+		{
+			return abs(this->radius - other.radius) < DBL_EPSILON;
+		}
+
+		unique_ptr<Figure> Circle::clone() const
+		{
+			return std::make_unique<Circle>(*this);
+		}
+	}
 }

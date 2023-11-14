@@ -4,40 +4,46 @@
 
 using std::unique_ptr;
 
-
-class Circle : public Figure
+namespace Problem1
 {
-private:
-	double radius;
-public:
-	/**
-	 * \brief Initializes the Circle figure with the given radius
-	 * \param radius - the radius of the circle
-	 */
-	Circle(double radius);
+	namespace Figures
+	{
 
-	/**
-	 * \brief Calculates the perimeter of the circle
-	 * \return Value of the calculated perimeter
-	 */
-	virtual double perimeter() const override final;
+		class Circle : public Figure
+		{
+		private:
+			double radius;
+		public:
+			/**
+			 * \brief Initializes the Circle figure with the given radius
+			 * \param radius - the radius of the circle
+			 */
+			Circle(double radius);
 
-	/**
-	 * \brief Stringifies the circle figure
-	 * \return string in format "circle radius" where radius is the data member representing the radius number
-	 */
-	virtual string toString() const override final;
+			/**
+			 * \brief Calculates the perimeter of the circle
+			 * \return Value of the calculated perimeter
+			 */
+			virtual double perimeter() const override final;
 
-	/**
-	 * \brief Operator used to compare circles
-	 * \param other - the figure that the comparison is done against
-	 * \return true if the circles' radiuses match, false otherwise
-	 */
-	bool operator==(const Circle& other) const;
+			/**
+			 * \brief Stringifies the circle figure
+			 * \return string in format "circle radius" where radius is the data member representing the radius number
+			 */
+			virtual string toString() const override final;
 
-	/**
-	 * \brief Used to clone object at run-time regardless of its type
-	 * \return Dynamically allocated copy of the current object
-	 */
-	unique_ptr<Figure> clone() const override;
-};
+			/**
+			 * \brief Operator used to compare circles
+			 * \param other - the figure that the comparison is done against
+			 * \return true if the circles' radiuses match, false otherwise
+			 */
+			bool operator==(const Circle& other) const;
+
+			/**
+			 * \brief Used to clone object at run-time regardless of its type
+			 * \return Dynamically allocated copy of the current object
+			 */
+			virtual unique_ptr<Figure> clone() const override;
+		};
+	}
+}

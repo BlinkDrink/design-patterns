@@ -12,6 +12,10 @@ using std::unique_ptr;
 using std::ofstream;
 using std::exception;
 
+using Problem1::Factories::UserInputFactory; \
+using Problem1::Factories::FigureFactory;
+
+
 void printFigures(const vector<unique_ptr<Figure>>& figures)
 {
 	int counter = 0;

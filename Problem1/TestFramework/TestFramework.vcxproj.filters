@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="UtilsTest.cpp" />
     <ClCompile Include="RectangleTest.cpp">
       <Filter>FigureTests</Filter>
     </ClCompile>
@@ -15,6 +14,9 @@
     </ClCompile>
     <ClCompile Include="StreamFigureFactoryTest.cpp">
       <Filter>FigureFactoryTests</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilsTest.cpp">
+      <Filter>UtilsTests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -29,6 +31,9 @@
     </Filter>
     <Filter Include="FigureFactoryTests">
       <UniqueIdentifier>{97d66393-34ca-4d54-86cc-8c2c252ef590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UtilsTests">
+      <UniqueIdentifier>{4f5295fd-4bf1-4b2f-9689-027e555eacd2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

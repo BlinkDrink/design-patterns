@@ -1,16 +1,22 @@
 #include "pch.h"
 #include "../Problem1/Utils.h"
 
-TEST(Utils, CorrectRemovalOfTrailingZeroes)
+namespace TestFramework
 {
-	// Arrange
-	constexpr double p = 2.75;
-	string s = std::to_string(p);
-	const string expected = "2.75";
+	namespace UtilsTests
+	{
+		TEST(Utils, CorrectRemovalOfTrailingZeroes)
+		{
+			// Arrange
+			constexpr double p = 2.75;
+			string s = std::to_string(p);
+			const string expected = "2.75";
 
-	// Act
-	remove_trailing_zeroes(s);
+			// Act
+			remove_trailing_zeroes(s);
 
-	// Assert
-	EXPECT_EQ(s, expected);
+			// Assert
+			EXPECT_EQ(s, expected);
+		}
+	}
 }
