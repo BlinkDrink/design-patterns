@@ -59,14 +59,13 @@ int main(int argc, const char* argv[])
 	cin >> numFigures;
 
 	vector<unique_ptr<Figure>> figures;
+	figures.reserve(numFigures);
 
 	for (int i = 0; i < numFigures; ++i) {
-		// Create a figure using the chosen factory
 		figures.push_back(figureFactory->create_figure());
 	}
 
 	menu();
-
 
 	while (true)
 	{
@@ -115,10 +114,6 @@ int main(int argc, const char* argv[])
 		}
 		case 5:
 			return 0;
-		default:
-			continue;
 		}
 	}
-
-	return 0;
 }

@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "Figure.h"
+
 using std::string;
 using std::unique_ptr;
 
