@@ -33,6 +33,20 @@ namespace Problem1
 			 */
 			void printFigures(const vector<unique_ptr<Figure>>& figures) const;
 
+			/**
+			 * \brief Prompts the user for input - the id of a figure
+			 * then duplicates it and adds it to the collection of figures
+			 * \param figures - collection of figures
+			 */
+			void duplicateAndAddFigure(vector<unique_ptr<Figure>>& figures) const;
+
+			/**
+			 * \brief Prompts the user for input - the id of a figure
+			 * then removes it from the collection of figures
+			 * \param figures
+			 */
+			void removeFigure(vector<unique_ptr<Figure>> figures) const;
+
 		public:
 			static Engine& getInstance();
 

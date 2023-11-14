@@ -53,6 +53,30 @@ namespace Problem1
 			}
 		}
 
+		void Engine::duplicateAndAddFigure(vector<unique_ptr<Figure>>& figures) const
+		{
+			size_t id;
+			cout << "Enter the index of the figure you wish to duplicate:";
+			cin >> id;
+
+			if (id >= figures.size())
+				cout << "Index out of bounds";
+
+			figures.push_back(figures[id]->clone());
+		}
+
+		void Engine::removeFigure(vector<unique_ptr<Figure>> figures) const
+		{
+			size_t id;
+			cout << "Enter the index of the figure you wish to delete:";
+			cin >> id;
+
+			if (id >= figures.size())
+				cout << "Index out of bounds";
+
+			figures.erase(figures.begin() + id);
+		}
+
 		Engine& Engine::getInstance()
 		{
 			static Engine inst;
@@ -96,26 +120,12 @@ namespace Problem1
 				}
 				case 2:
 				{
-					int id;
-					cout << "Enter the index of the figure you wish to delete:";
-					cin >> id;
-
-					if (id >= figures.size())
-						cout << "Index out of bounds";
-
-					figures.erase(figures.begin() + id);
+					removeFigure(figures);
 					break;
 				}
 				case 3:
 				{
-					int id;
-					cout << "Enter the index of the figure you wish to duplicate:";
-					cin >> id;
-
-					if (id >= figures.size())
-						cout << "Index out of bounds";
-
-					figures.push_back(figures[id]->clone());
+					duplicateAndAddFigure(figures);
 					break;
 				}
 				case 4:
@@ -126,8 +136,7 @@ namespace Problem1
 					saveFiguresToFile(filename, figures);
 					break;
 				}
-				case 5:
-					return;
+				default: return;
 				}
 			}
 		}
