@@ -49,9 +49,13 @@ namespace Problem1
 			return "triangle " + aStr + " " + bStr + " " + cStr;
 		}
 
-		bool Triangle::operator==(const Triangle& other) const
+		bool Triangle::operator==(const Figure& other) const
 		{
-			return abs(a - other.a) < DBL_EPSILON && abs(b - other.b) < DBL_EPSILON && abs(c - other.c) < DBL_EPSILON;
+			const Triangle* cast = dynamic_cast<const Triangle*>(&other);
+			if (!cast)
+				return false;
+
+			return abs(a - cast->a) < DBL_EPSILON && abs(b - cast->b) < DBL_EPSILON && abs(c - cast->c) < DBL_EPSILON;
 		}
 
 		unique_ptr<Figure> Triangle::clone() const

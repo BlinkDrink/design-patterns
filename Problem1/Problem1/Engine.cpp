@@ -65,7 +65,7 @@ namespace Problem1
 			figures.push_back(figures[id]->clone());
 		}
 
-		void Engine::removeFigure(vector<unique_ptr<Figure>> figures) const
+		void Engine::removeFigure(vector<unique_ptr<Figure>>& figures) const
 		{
 			size_t id;
 			cout << "Enter the index of the figure you wish to delete:";
@@ -105,6 +105,7 @@ namespace Problem1
 
 			menu();
 
+			// TODO: Add enum type for commands
 			while (true)
 			{
 				int cmd;
@@ -136,7 +137,8 @@ namespace Problem1
 					saveFiguresToFile(filename, figures);
 					break;
 				}
-				default: return;
+				default:
+					return;
 				}
 			}
 		}

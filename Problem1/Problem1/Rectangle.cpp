@@ -36,9 +36,13 @@ namespace Problem1
 			return "rectangle " + aStr + " " + bStr;
 		}
 
-		bool Rectangle::operator==(const Rectangle& other) const
+		bool Rectangle::operator==(const Figure& other) const
 		{
-			return abs(a - other.a) < DBL_EPSILON && abs(b - other.b) < DBL_EPSILON;
+			const Rectangle* cast = dynamic_cast<const Rectangle*>(&other);
+			if (!cast)
+				return false;
+
+			return abs(a - cast->a) < DBL_EPSILON && abs(b - cast->b) < DBL_EPSILON;
 		}
 
 		unique_ptr<Figure> Rectangle::clone() const

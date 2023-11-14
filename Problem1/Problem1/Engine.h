@@ -45,7 +45,7 @@ namespace Problem1
 			 * then removes it from the collection of figures
 			 * \param figures
 			 */
-			void removeFigure(vector<unique_ptr<Figure>> figures) const;
+			void removeFigure(vector<unique_ptr<Figure>>& figures) const;
 
 		public:
 			static Engine& getInstance();

@@ -33,11 +33,11 @@ namespace Problem1
 			virtual string toString() const override final;
 
 			/**
-			 * \brief Operator used to compare circles
+			 * \brief Operator used to compare circle with a given figure
 			 * \param other - the figure that the comparison is done against
-			 * \return true if the circles' radiuses match, false otherwise
+			 * \return true if both figures are circle and have equal radiuses, false otherwise
 			 */
-			bool operator==(const Circle& other) const;
+			virtual bool operator==(const Figure& other) const override;
 
 			/**
 			 * \brief Used to clone object at run-time regardless of its type

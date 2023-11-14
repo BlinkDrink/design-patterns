@@ -13,6 +13,7 @@ namespace Problem1
 			virtual double perimeter() const = 0;
 			virtual string toString() const = 0;
 			virtual unique_ptr<Figure> clone() const = 0;
+			virtual bool operator==(const Figure& other) const = 0;
 			virtual ~Figure() = default;
 		};
 	}

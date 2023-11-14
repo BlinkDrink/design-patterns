@@ -36,7 +36,7 @@ namespace Problem1
 			 * \param other - rectangle that the comparison is done against
 			 * \return
 			 */
-			bool operator==(const Rectangle& other) const;
+			virtual bool operator==(const Figure& other) const override final;
 
 			/**
 			 * \brief Used to clone object at run-time regardless of its type

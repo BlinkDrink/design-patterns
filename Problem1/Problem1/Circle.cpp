@@ -7,6 +7,7 @@ namespace Problem1
 {
 	namespace Figures
 	{
+		using std::make_unique;
 
 		Circle::Circle(double radius)
 		{
@@ -27,14 +28,18 @@ namespace Problem1
 			return "circle " + r;
 		}
 
-		bool Circle::operator==(const Circle& other) const
+		bool Circle::operator==(const Figure& other) const
 		{
-			return abs(this->radius - other.radius) < DBL_EPSILON;
+			const Circle* cast = dynamic_cast<const Circle*>(&other);
+			if (!cast)
+				return false;
+
+			return abs(this->radius - cast->radius) < DBL_EPSILON;
 		}
 
 		unique_ptr<Figure> Circle::clone() const
 		{
-			return std::make_unique<Circle>(*this);
+			return make_unique<Circle>(*this);
 		}
 	}
 }

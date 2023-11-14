@@ -29,26 +29,26 @@ namespace Problem1
 			 * \brief Calculates the perimeter of the triangle
 			 * \return the calculated value for the perimeter
 			 */
-			double perimeter() const override;
+			double perimeter() const override final;
 
 			/**
 			 * \brief Stringifies the triangle figure
 			 * \return string in format "triangle a b c" where a,b and c are the data members
 			 */
-			string toString() const override;
+			string toString() const override final;
 
 			/**
 			 * \brief Operator used to compare triangles
 			 * \param other - the figure that the comparison is done against
 			 * \return true if they match on all three data members, false otherwise
 			 */
-			bool operator==(const Triangle& other) const;
+			bool operator==(const Figure& other) const override final;
 
 			/**
 			 * \brief Used to clone object at run-time regardless of its type
 			 * \return Dynamically allocated copy of the current object
 			 */
-			unique_ptr<Figure> clone() const override;
+			unique_ptr<Figure> clone() const override final;
 		};
 	}
 }
