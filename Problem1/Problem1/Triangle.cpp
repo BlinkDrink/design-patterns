@@ -12,6 +12,8 @@ namespace Problem1
 {
 	namespace Figures
 	{
+		using Utils::remove_trailing_zeroes;
+
 		Triangle::Triangle(double a, double b, double c)
 		{
 			if (a < 0 || b < 0 || c < 0)

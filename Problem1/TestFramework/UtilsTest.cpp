@@ -5,6 +5,8 @@ namespace TestFramework
 {
 	namespace UtilsTests
 	{
+		using Problem1::Utils::remove_trailing_zeroes;
+
 		TEST(Utils, CorrectRemovalOfTrailingZeroes)
 		{
 			// Arrange

@@ -8,6 +8,7 @@ namespace Problem1
 	namespace Figures
 	{
 		using std::make_unique;
+		using Utils::remove_trailing_zeroes;
 
 		Circle::Circle(double radius)
 		{

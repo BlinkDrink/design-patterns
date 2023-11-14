@@ -9,6 +9,8 @@ namespace Problem1
 {
 	namespace Figures
 	{
+		using Utils::remove_trailing_zeroes;
+
 		Rectangle::Rectangle(double a, double b)
 		{
 			if (a < 0 || b < 0)
