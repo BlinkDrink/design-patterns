@@ -19,8 +19,8 @@ namespace Problem1
 			if (b < a)
 				swap(this->a, this->b);
 
-			string aStr = to_string(a);
-			string bStr = to_string(b);
+			string aStr = to_string(this->a);
+			string bStr = to_string(this->b);
 
 			remove_trailing_zeroes(aStr);
 			remove_trailing_zeroes(bStr);

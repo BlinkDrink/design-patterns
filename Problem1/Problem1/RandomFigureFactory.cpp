@@ -57,6 +57,5 @@ namespace Problem1
 
 			throw std::invalid_argument("Invalid figure type");
 		}
-
 	}
 }

@@ -1,10 +1,12 @@
 #include "pch.h"
 
+#include "Circle.h"
 #include "../problem1/Rectangle.h"
 #include "../problem1/Rectangle.cpp"
 
 using Problem1::Figures::Rectangle;
 using Problem1::Figures::Figure;
+using Problem1::Figures::Circle;
 
 namespace TestFramework
 {
@@ -44,8 +46,7 @@ namespace TestFramework
 			EXPECT_EQ(expected, p);
 		}
 
-
-		TEST(Rectangle, CorrectRectangleComparison)
+		TEST(Rectangle, Correct_Rectangle_Comparison)
 		{
 			// Arrange
 			const Rectangle t1(2.75, 3.25);
@@ -53,6 +54,20 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(t1, t2);
+		}
+
+		TEST(Rectangle, Correct_Rectangle_Comparison_With_Other_Figures)
+		{
+			// Arrange
+			const Rectangle t1(2.75, 3.25);
+			const Circle t2(3.25);
+			const bool expected = false;
+
+			// Act
+			bool check = t1 == t2;
+
+			// Assert
+			EXPECT_EQ(check, expected);
 		}
 
 		TEST(Rectangle, CorrectStringificationOfRectangle)

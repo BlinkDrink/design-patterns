@@ -1,11 +1,13 @@
 #include "pch.h"
 #include <corecrt_math_defines.h>
 
+#include "Rectangle.h"
 #include "../Problem1/Circle.h"
 #include "../Problem1/Circle.cpp"
 
 using Problem1::Figures::Circle;
 using Problem1::Figures::Figure;
+using Problem1::Figures::Rectangle;
 
 namespace TestFramework
 {
@@ -39,6 +41,20 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(t1, t2);
+		}
+
+		TEST(Circle, Correct_Circle_Comparison_With_Other_Figure)
+		{
+			// Arrange
+			const Circle t1(2.75);
+			const Rectangle t2(2.75, 3.66);
+			bool expected = false;
+
+			// Act
+			bool check = t1 == t2;
+
+			// Assert
+			EXPECT_EQ(check, expected);
 		}
 
 		TEST(Circle, Correct_Stringification_Of_Circle)

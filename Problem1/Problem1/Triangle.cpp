@@ -31,9 +31,9 @@ namespace Problem1
 			if (this->b > this->c)
 				swap(this->b, this->c);
 
-			string aStr = to_string(a);
-			string bStr = to_string(b);
-			string cStr = to_string(c);
+			string aStr = to_string(this->a);
+			string bStr = to_string(this->b);
+			string cStr = to_string(this->c);
 
 			remove_trailing_zeroes(aStr);
 			remove_trailing_zeroes(bStr);
