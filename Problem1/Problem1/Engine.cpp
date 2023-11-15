@@ -123,8 +123,13 @@ namespace Problem1
 				catch (const exception& ex)
 				{
 					cout << "Creation of figure number " << i << " has failed. " << ex.what() << endl;
-					i--;
 				}
+			}
+
+			if (figures.empty())
+			{
+				cout << "After the input method the program couldn't create any figures. Exiting..." << endl;
+				return;
 			}
 
 			menu();
