@@ -18,26 +18,27 @@ namespace Problem1
 	namespace Factories
 	{
 
-		RandomFigureFactory::RandomFigureFactory(double lower_bound = DBL_EPSILON, double upper_bound = 100, long long seed = time(nullptr)) : m_re(seed), m_generator(lower_bound, upper_bound)
+		RandomFigureFactory::RandomFigureFactory(double lower_bound = DBL_EPSILON, double upper_bound = 100, long long seed = time(nullptr)) : m_re(seed), m_dgenerator(lower_bound, upper_bound), m_igenerator(floor(lower_bound), ceil(upper_bound))
 		{
-			srand(seed);
+			if (lower_bound <= 0 || upper_bound <= 0)
+				throw std::invalid_argument("Lower or upper bound cannot be non-positive");
 		}
 
 		unique_ptr<Figure> RandomFigureFactory::create_figure()
 		{
-			const FigureType figure_type = static_cast<FigureType>(rand() % 3);
+			const FigureType figure_type = static_cast<FigureType>(m_igenerator(m_re) % 3);
 
 			switch (figure_type)
 			{
 			case FigureType::TriangleType: {
-				double a = m_generator(m_re);
-				double b = m_generator(m_re);
+				double a = m_dgenerator(m_re);
+				double b = m_dgenerator(m_re);
 
 				// The third side must be in the range (|a - b|, a + b)
 				const double min_possible = abs(a - b);
 				const double max_possible = a + b;
 
-				double c = m_generator(m_re);
+				double c = m_dgenerator(m_re);
 
 				c = max(c, min_possible);
 				c = min(c, max_possible);
@@ -46,14 +47,14 @@ namespace Problem1
 			}
 			case FigureType::RectangleType:
 			{
-				double a = m_generator(m_re);
-				double b = m_generator(m_re);
+				double a = m_dgenerator(m_re);
+				double b = m_dgenerator(m_re);
 
 				return make_unique<Rectangle>(a, b);
 			}
 			case FigureType::CircleType:
 			{
-				double radius = m_generator(m_re);
+				double radius = m_dgenerator(m_re);
 				return make_unique<Circle>(radius);
 			}
 			}

@@ -27,10 +27,11 @@ namespace TestFramework
 			EXPECT_EQ(check, true);
 		}
 
-		TEST(Circle, Constructor_Throw_Negative_Arguments)
+		TEST(Circle, Constructor_Throw_Non_Positive_Arguments)
 		{
 			// Assert
 			EXPECT_THROW(Circle t(-2.75), std::invalid_argument);
+			EXPECT_THROW(Circle t(0), std::invalid_argument);
 		}
 
 		TEST(Circle, Correct_Circle_Comparison)

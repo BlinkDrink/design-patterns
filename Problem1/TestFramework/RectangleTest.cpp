@@ -13,11 +13,13 @@ namespace TestFramework
 	namespace RectangleTests
 	{
 
-		TEST(Rectangle, Constructor_Throw_Negative_Arguments)
+		TEST(Rectangle, Constructor_Throw_Non_Positive_Arguments)
 		{
 			// Assert
 			EXPECT_THROW(Rectangle t(-4.25, 7.75), std::invalid_argument);
 			EXPECT_THROW(Rectangle t(2.75, -5.11), std::invalid_argument);
+			EXPECT_THROW(Rectangle t(2.75, 0), std::invalid_argument);
+			EXPECT_THROW(Rectangle t(0, 2.75), std::invalid_argument);
 		}
 
 		TEST(Rectangle, Constructor_Sorts_Field_Members)

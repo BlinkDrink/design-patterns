@@ -9,7 +9,6 @@
 using Problem1::Figures::Triangle;
 using Problem1::Figures::Figure;
 using Problem1::Figures::Circle;
-using Problem1::Figures::Rectangle;
 
 namespace TestFramework
 {
@@ -27,22 +26,25 @@ namespace TestFramework
 			EXPECT_THROW(Triangle t(2.75, 3.25, 10), std::invalid_argument);
 		}
 
-		TEST(Triangle, Constructor_Throw_Negative_Arguments)
+		TEST(Triangle, Constructor_Throw_Non_Positive_Arguments)
 		{
 			// Assert
 			EXPECT_THROW(Triangle t(-2.75, 3.25, 5), std::invalid_argument);
 			EXPECT_THROW(Triangle t(2.75, -3.25, 5), std::invalid_argument);
 			EXPECT_THROW(Triangle t(2.75, 3.25, -5), std::invalid_argument);
+			EXPECT_THROW(Triangle t(2.75, 3.25, 0), std::invalid_argument);
+			EXPECT_THROW(Triangle t(2.75, 0, 2), std::invalid_argument);
+			EXPECT_THROW(Triangle t(0, 3.25, 5), std::invalid_argument);
 		}
 
 		TEST(Triangle, Constructor_Sorts_Field_Members)
 		{
 			// Arrange
 			Triangle t(4, 3, 5);
-			string expected = "triangle 3 4 5";
+			const string expected = "triangle 3 4 5";
 
 			// Act
-			string stringified = t.toString();
+			const string stringified = t.toString();
 
 			// Assert
 			EXPECT_EQ(stringified, expected);
@@ -52,7 +54,7 @@ namespace TestFramework
 		{
 			// Arrange
 			const Triangle t(2.75, 3.25, 5);
-			const double expected = 11;
+			constexpr double expected = 11;
 
 			// Act
 			const double p = t.perimeter();
@@ -77,7 +79,7 @@ namespace TestFramework
 			// Arrange
 			const Triangle t1(2.75, 3.25, 5);
 			const Circle t2(2.75);
-			const bool expected = false;
+			constexpr bool expected = false;
 
 			// Act
 			const bool check = t1 == t2;
