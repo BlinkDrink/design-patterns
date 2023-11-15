@@ -13,7 +13,7 @@ namespace Problem1
 		class Engine
 		{
 		private:
-			Engine();
+			Engine() = default;
 
 			/**
 			 * \brief Prints the user interface for working with this program

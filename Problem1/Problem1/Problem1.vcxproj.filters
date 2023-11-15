@@ -25,9 +25,6 @@
     <Filter Include="Header Files\Concretes\FigureFactory">
       <UniqueIdentifier>{ef8640a5-7ee0-4e77-bb4c-fec07d45f524}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Concretes\InputFactory">
-      <UniqueIdentifier>{bb223cad-7d5f-46c3-9d2c-ebd24ced2f67}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Concretes\Figure">
       <UniqueIdentifier>{a6265f77-6d10-4233-8b00-ff1d6408db9d}</UniqueIdentifier>
     </Filter>
@@ -40,11 +37,11 @@
     <Filter Include="Source Files\Concretes\InputFactory">
       <UniqueIdentifier>{0df1f693-0d86-4f59-9a97-2c9295e85696}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Concretes\RandomGenerator">
-      <UniqueIdentifier>{9dac745d-056b-41a1-bd96-29f7ec061a4b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Concretes\RandomGenerator">
       <UniqueIdentifier>{7a5cf504-b29e-4f1e-b04d-65a9f605d3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Concretes\UserInputFactory">
+      <UniqueIdentifier>{bb223cad-7d5f-46c3-9d2c-ebd24ced2f67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -104,20 +101,11 @@
     <ClInclude Include="StreamFigureFactory.h">
       <Filter>Header Files\Concretes\FigureFactory</Filter>
     </ClInclude>
-    <ClInclude Include="InputFactory.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="FigureType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserInputFactory.h">
-      <Filter>Header Files\Concretes\InputFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomGenerator.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="DoubleGenerator.h">
-      <Filter>Header Files\Concretes\RandomGenerator</Filter>
+      <Filter>Header Files\Concretes\UserInputFactory</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>

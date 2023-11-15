@@ -42,5 +42,11 @@ namespace Problem1
 
 			throw invalid_argument("Invalid input type");
 		}
+
+		UserInputFactory& UserInputFactory::getInstance()
+		{
+			static UserInputFactory instance;
+			return instance;
+		}
 	}
 }

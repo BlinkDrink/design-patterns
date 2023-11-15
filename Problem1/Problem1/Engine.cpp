@@ -16,10 +16,6 @@ namespace Problem1
 		using Factories::UserInputFactory;
 		using Factories::FigureFactory;
 
-		Engine::Engine()
-		{
-		}
-
 		void Engine::menu() const
 		{
 			cout << "1. List figures to STDOUT" << endl;
@@ -79,8 +75,8 @@ namespace Problem1
 
 		Engine& Engine::getInstance()
 		{
-			static Engine inst;
-			return inst;
+			static Engine instance;
+			return instance;
 		}
 
 		void Engine::exe()
@@ -89,8 +85,7 @@ namespace Problem1
 			string input_type;
 			cin >> input_type;
 
-			const UserInputFactory inputFactory;
-			const unique_ptr<FigureFactory> figureFactory = inputFactory.create_figure_factory(input_type);
+			const unique_ptr<FigureFactory> figureFactory = UserInputFactory::getInstance().create_figure_factory(input_type);
 
 			int numFigures;
 			cout << "Enter the number of figures: ";
