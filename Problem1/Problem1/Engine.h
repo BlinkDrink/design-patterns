@@ -7,6 +7,7 @@ namespace Problem1
 {
 	using Figures::Figure;
 	using std::vector;
+	using std::ostream;
 
 	namespace Engine
 	{
@@ -24,14 +25,9 @@ namespace Problem1
 			 * \brief Saves collection of figures to a file, each on a new row
 			 * \param filename - name of file where the figures will be written
 			 * \param figures - collection of figures
+			 * \param target - the stream to which the figures will be output
 			 */
-			void saveFiguresToFile(const string& filename, const std::vector<unique_ptr<Figure>>& figures) const;
-
-			/**
-			 * \brief Prints the figures to std::out using their respective toString method
-			 * \param figures - collection of figures
-			 */
-			void printFigures(const vector<unique_ptr<Figure>>& figures) const;
+			void outputFiguresTo(const std::vector<unique_ptr<Figure>>& figures, ostream& target) const;
 
 			/**
 			 * \brief Prompts the user for input - the id of a figure

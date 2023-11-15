@@ -17,6 +17,7 @@ namespace Problem1
 		using std::invalid_argument;
 		using Factories::UserInputFactory;
 		using Factories::FigureFactory;
+		using std::ostream;
 
 		void Engine::menu() const
 		{
@@ -28,26 +29,11 @@ namespace Problem1
 			cout << endl;
 		}
 
-		void Engine::saveFiguresToFile(const string& filename, const vector<unique_ptr<Figure>>& figures) const
+		void Engine::outputFiguresTo(const vector<unique_ptr<Figure>>& figures, ostream& target) const
 		{
-			ofstream file(filename);
-
-			if (!file.is_open())
-				throw exception("Failed opening file for writing");
-
 			for (const unique_ptr<Figure>& fig : figures)
 			{
-				file << fig->toString() << endl;
-			}
-
-			file.close();
-		}
-
-		void Engine::printFigures(const vector<unique_ptr<Figure>>& figures) const
-		{
-			int counter = 0;
-			for (const unique_ptr<Figure>& figure : figures) {
-				cout << counter++ << " " << figure->toString() << endl;
+				target << fig->toString() << endl;
 			}
 		}
 
@@ -146,7 +132,7 @@ namespace Problem1
 				{
 				case CommandType::ListFigures:
 				{
-					printFigures(figures);
+					outputFiguresTo(figures, cout);
 					break;
 				}
 				case CommandType::RemoveFigure:
@@ -181,7 +167,15 @@ namespace Problem1
 
 					try
 					{
-						saveFiguresToFile(filename, figures);
+						ofstream file(filename);
+
+						if (!file.is_open())
+						{
+							cout << "Failed opening file " << filename << " for writing";
+							break;
+						}
+
+						outputFiguresTo(figures, file);
 					}
 					catch (const exception& ex)
 					{
