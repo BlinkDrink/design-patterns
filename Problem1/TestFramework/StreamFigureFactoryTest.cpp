@@ -96,7 +96,7 @@ namespace TestFramework
 		TEST(StreamFigureFactory, Throw_On_Invalid_Triangle_Sides)
 		{
 			// Arrange
-			stringstream ss("triangle 5 $ 3");
+			stringstream ss("triangle 5 programming 3");
 			StreamFigureFactory sff(ss);
 
 			// Assert
@@ -106,7 +106,17 @@ namespace TestFramework
 		TEST(StreamFigureFactory, Throw_On_Invalid_Circle_Radius)
 		{
 			// Arrange
-			stringstream ss("circle 1");
+			stringstream ss("circle programming");
+			StreamFigureFactory sff(ss);
+
+			// Assert
+			EXPECT_THROW(sff.create_figure(), invalid_argument);
+		}
+
+		TEST(StreamFigureFactory, Throw_On_Invalid_Rectangle_Sides)
+		{
+			// Arrange
+			stringstream ss("rectangle 3.14 programming");
 			StreamFigureFactory sff(ss);
 
 			// Assert

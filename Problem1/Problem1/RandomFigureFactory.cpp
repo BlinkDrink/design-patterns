@@ -34,10 +34,11 @@ namespace Problem1
 				double b = m_generator(m_re);
 
 				// The third side must be in the range (|a - b|, a + b)
-				const double min_possible = abs(a - b); // 10
-				const double max_possible = a + b; // 50
+				const double min_possible = abs(a - b);
+				const double max_possible = a + b;
 
-				double c = m_generator(m_re) * (max_possible - min_possible) + min_possible;
+				double c = m_generator(m_re);
+
 				c = max(c, min_possible);
 				c = min(c, max_possible);
 
