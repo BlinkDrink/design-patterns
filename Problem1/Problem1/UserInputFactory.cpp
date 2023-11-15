@@ -37,6 +37,9 @@ namespace Problem1
 				cin >> filename;
 
 				ifstream file(filename);
+				if (!file.is_open())
+					throw invalid_argument("File couldn't be opened for reading");
+
 				return make_unique<StreamFigureFactory>(std::move(file));
 			}
 

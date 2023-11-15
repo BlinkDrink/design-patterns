@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="DoubleGenerator.cpp" />
+    <ClCompile Include="CommandType.h" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RandomFigureFactory.cpp" />

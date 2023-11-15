@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 
+#include "CommandType.h"
 #include "UserInputFactory.h"
 
 namespace Problem1
@@ -13,6 +14,7 @@ namespace Problem1
 		using std::endl;
 		using std::ofstream;
 		using std::exception;
+		using std::invalid_argument;
 		using Factories::UserInputFactory;
 		using Factories::FigureFactory;
 
@@ -26,7 +28,7 @@ namespace Problem1
 			cout << endl;
 		}
 
-		void Engine::saveFiguresToFile(const string& filename, const std::vector<unique_ptr<Figure>>& figures) const
+		void Engine::saveFiguresToFile(const string& filename, const vector<unique_ptr<Figure>>& figures) const
 		{
 			ofstream file(filename);
 
@@ -45,7 +47,7 @@ namespace Problem1
 		{
 			int counter = 0;
 			for (const unique_ptr<Figure>& figure : figures) {
-				std::cout << counter++ << " " << figure->toString() << std::endl;
+				cout << counter++ << " " << figure->toString() << endl;
 			}
 		}
 
@@ -56,7 +58,7 @@ namespace Problem1
 			cin >> id;
 
 			if (id >= figures.size())
-				cout << "Index out of bounds";
+				throw invalid_argument("Index out of bounds");
 
 			figures.push_back(figures[id]->clone());
 		}
@@ -68,7 +70,7 @@ namespace Problem1
 			cin >> id;
 
 			if (id >= figures.size())
-				cout << "Index out of bounds";
+				throw invalid_argument("Index out of bounds");
 
 			figures.erase(figures.begin() + id);
 		}
@@ -85,54 +87,104 @@ namespace Problem1
 			string input_type;
 			cin >> input_type;
 
-			const unique_ptr<FigureFactory> figureFactory = UserInputFactory::getInstance().create_figure_factory(input_type);
+			unique_ptr<FigureFactory> figureFactory;
+			try
+			{
+				figureFactory = UserInputFactory::getInstance().create_figure_factory(input_type);
+			}
+			catch (const exception& ex)
+			{
+				cout << "Creation of figure factory with input " << input_type << " has failed. " << ex.what() << endl;
+				return;
+			}
 
 			int numFigures;
 			cout << "Enter the number of figures: ";
 			cin >> numFigures;
 
 			vector<unique_ptr<Figure>> figures;
-			figures.reserve(numFigures);
 
-			for (int i = 0; i < numFigures; ++i) {
-				figures.push_back(figureFactory->create_figure());
+			try
+			{
+				figures.reserve(numFigures);
+			}
+			catch (const exception& ex)
+			{
+				cout << "Reserving memory for " << numFigures << " has failed. " << ex.what() << endl;
+			}
+
+			// Figure input
+			for (int i = 0; i < numFigures; ++i)
+			{
+				try
+				{
+					figures.push_back(figureFactory->create_figure());
+				}
+				catch (const exception& ex)
+				{
+					cout << "Creation of figure number " << i << " has failed. " << ex.what() << endl;
+					i--;
+				}
 			}
 
 			menu();
 
-			// TODO: Add enum type for commands
 			while (true)
 			{
-				int cmd;
-				cout << "Enter command (1/2/3/4/5):";
-				cin >> cmd;
+				size_t cmdId;
+				cout << "Enter command(1/2/3/4/5):";
+				cin >> cmdId;
+
+				CommandType cmd = static_cast<CommandType>(cmdId);
 
 				switch (cmd)
 				{
-				case 1:
+				case CommandType::ListFigures:
 				{
 					printFigures(figures);
 					break;
 				}
-				case 2:
+				case CommandType::RemoveFigure:
 				{
-					removeFigure(figures);
+					try
+					{
+						removeFigure(figures);
+					}
+					catch (const exception& ex)
+					{
+						cout << "Removing figure has failed. " << ex.what() << endl;
+					}
 					break;
 				}
-				case 3:
+				case CommandType::DuplicateFigure:
 				{
-					duplicateAndAddFigure(figures);
+					try
+					{
+						duplicateAndAddFigure(figures);
+					}
+					catch (const exception& ex)
+					{
+						cout << "Duplicating figure has failed. " << ex.what() << endl;
+					}
 					break;
 				}
-				case 4:
+				case CommandType::SaveFigures:
 				{
 					string filename;
 					cout << "Enter file name:";
 					cin >> filename;
-					saveFiguresToFile(filename, figures);
+
+					try
+					{
+						saveFiguresToFile(filename, figures);
+					}
+					catch (const exception& ex)
+					{
+						cout << "Saving figures to file " << filename << " has failed. " << ex.what() << endl;
+					}
 					break;
 				}
-				default:
+				case CommandType::Exit:
 					return;
 				}
 			}

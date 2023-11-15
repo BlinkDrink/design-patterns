@@ -2,7 +2,6 @@
 #include <random>
 
 #include "FigureFactory.h"
-#include "RandomGenerator.h"
 
 namespace Problem1
 {
