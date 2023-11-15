@@ -46,5 +46,10 @@ namespace Problem1
 		{
 			return make_unique<Circle>(*this);
 		}
+
+		FigureType Circle::figureType() const
+		{
+			return FigureType::CircleType;
+		}
 	}
 }

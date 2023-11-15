@@ -101,5 +101,18 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(expected, actual);
 		}
+
+		TEST(Rectangle, Correct_FigureType_Getter)
+		{
+			// Arrange
+			const Rectangle t(2.75, 3.25);
+			constexpr FigureType expected = FigureType::RectangleType;
+
+			// Act
+			const FigureType actual = t.figureType();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
 	}
 }

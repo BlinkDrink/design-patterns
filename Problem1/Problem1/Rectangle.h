@@ -43,6 +43,12 @@ namespace Problem1
 			 * \return Dynamically allocated copy of the current object
 			 */
 			unique_ptr<Figure> clone() const override;
+
+			/**
+			 * \brief Figure Type
+			 * \return - the FigureType matching Rectangle
+			 */
+			FigureType figureType() const override;
 		};
 	}
 }

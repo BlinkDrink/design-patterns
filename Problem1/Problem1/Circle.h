@@ -44,6 +44,12 @@ namespace Problem1
 			 * \return Dynamically allocated copy of the current object
 			 */
 			virtual unique_ptr<Figure> clone() const override;
+
+			/**
+			 * \brief Figure Type
+			 * \return - the FigureType matching Circle
+			 */
+			FigureType figureType() const override;
 		};
 	}
 }

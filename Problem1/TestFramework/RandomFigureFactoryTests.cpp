@@ -20,19 +20,20 @@ namespace TestFramework
 	using Problem1::Figures::Circle;
 	using Problem1::Figures::Triangle;
 	using std::make_unique;
+	using std::invalid_argument;
 
 	namespace RandomFigureFactoryTests
 	{
-		constexpr double lower_bound = DBL_EPSILON, upper_bound = 100;
+		constexpr double lower_bound = DBL_EPSILON, upper_bound = 100, incorrect_case = -5;
 		constexpr long long seed = 123;
+		constexpr size_t iterations = 10;
 
 		class RandomFigureFactoryTest : public ::testing::Test {
 		protected:
 			void SetUp() override {
-				factory = RandomFigureFactory(lower_bound, upper_bound, seed); // Using seed value 123
+				factory = RandomFigureFactory(lower_bound, upper_bound, seed);
 			}
 
-			// RandomFigureFactory instance for testing
 			RandomFigureFactory factory;
 		};
 
@@ -42,19 +43,19 @@ namespace TestFramework
 
 			// Act
 			EXPECT_GE(figure->perimeter(), lower_bound);
-			EXPECT_LE(figure->perimeter(), 2 * M_PI * upper_bound);
+			EXPECT_LE(figure->perimeter(), 2 * M_PI * upper_bound); // Questionable test
 		}
 
-		TEST_F(RandomFigureFactoryTest, Generate_Same_Sequence_With_Seed) {
+		TEST_F(RandomFigureFactoryTest, Generate_Same_Sequence_With_Same_Seed) {
 			// Arrange
 			RandomFigureFactory rff(lower_bound, upper_bound, seed);
 
 			// Act
-			const unique_ptr<Figure> expected = rff.create_figure();
+			RandomFigureFactory rff_same_seed(lower_bound, upper_bound, seed);
 
 			// Assert
-			for (int i = 0; i < 10; ++i) {
-				RandomFigureFactory rff_same_seed(lower_bound, upper_bound, seed);
+			for (int i = 0; i < iterations; ++i) {
+				const unique_ptr<Figure> expected = rff.create_figure();
 				const unique_ptr<Figure> actual = rff_same_seed.create_figure();
 
 				EXPECT_EQ(*expected, *actual);
@@ -64,15 +65,24 @@ namespace TestFramework
 		TEST_F(RandomFigureFactoryTest, Generate_Different_Sequence_With_Different_Seed) {
 			// Arrange
 			RandomFigureFactory rff(lower_bound, upper_bound, seed);
-
-			// Act
-			RandomFigureFactory rff_different_seed(lower_bound, upper_bound, seed + 1);
-			const unique_ptr<Figure> expected = rff.create_figure();
-			const unique_ptr<Figure> actual = rff_different_seed.create_figure();
-			const bool check = *expected == *actual;
+			RandomFigureFactory rff_same_seed(lower_bound, upper_bound, seed + 1);
 
 			// Assert
-			EXPECT_EQ(check, false);
+			for (int i = 0; i < iterations; ++i) {
+				const unique_ptr<Figure> expected = rff.create_figure();
+				const unique_ptr<Figure> actual = rff_same_seed.create_figure();
+				bool check = *expected == *actual;
+
+				EXPECT_EQ(check, false);
+			}
+		}
+
+		TEST(RandomFigureFactory, Constructor_Throws_Incorrect_Input_Arguments)
+		{
+			// Assertx
+			EXPECT_THROW(RandomFigureFactory(incorrect_case, upper_bound, seed), invalid_argument);
+			EXPECT_THROW(RandomFigureFactory(-lower_bound, incorrect_case, seed), invalid_argument);
+			EXPECT_THROW(RandomFigureFactory(upper_bound, lower_bound, seed), invalid_argument);
 		}
 	}
 }

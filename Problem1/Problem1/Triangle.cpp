@@ -68,5 +68,10 @@ namespace Problem1
 		{
 			return make_unique<Triangle>(*this);
 		}
+
+		FigureType Triangle::figureType() const
+		{
+			return FigureType::TriangleType;
+		}
 	}
 }

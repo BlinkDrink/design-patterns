@@ -14,14 +14,21 @@ namespace Problem1
 	using Figures::Triangle;
 	using std::max;
 	using std::min;
+	using std::invalid_argument;
+	using std::swap;
 
 	namespace Factories
 	{
-
-		RandomFigureFactory::RandomFigureFactory(double lower_bound = DBL_EPSILON, double upper_bound = 100, long long seed = time(nullptr)) : m_re(seed), m_dgenerator(lower_bound, upper_bound), m_igenerator(floor(lower_bound), ceil(upper_bound))
+		RandomFigureFactory::RandomFigureFactory(double lower_bound = DBL_EPSILON, double upper_bound = 100, long long seed = time(nullptr)) : m_re(seed)
 		{
 			if (lower_bound <= 0 || upper_bound <= 0)
-				throw std::invalid_argument("Lower or upper bound cannot be non-positive");
+				throw invalid_argument("Lower or upper bound cannot be non-positive");
+
+			if (lower_bound > upper_bound)
+				throw invalid_argument("Lower bound cannot be greater than the upper bound");
+
+			m_dgenerator = uniform_real_distribution<double>(lower_bound, upper_bound);
+			m_igenerator = uniform_int_distribution<int>(floor(lower_bound), ceil(upper_bound));
 		}
 
 		unique_ptr<Figure> RandomFigureFactory::create_figure()

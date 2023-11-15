@@ -54,6 +54,11 @@ namespace Problem1
 		{
 			return make_unique<Rectangle>(*this);
 		}
+
+		FigureType Rectangle::figureType() const
+		{
+			return FigureType::RectangleType;
+		}
 	}
 }
 

@@ -117,6 +117,19 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(expected, actual);
 		}
+
+		TEST(Triangle, Correct_FigureType_Getter)
+		{
+			// Arrange
+			const Triangle t(2.75, 3.25, 5);
+			constexpr FigureType expected = FigureType::TriangleType;
+
+			// Act
+			const FigureType actual = t.figureType();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
 	}
 }
 

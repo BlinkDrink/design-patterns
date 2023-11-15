@@ -49,6 +49,12 @@ namespace Problem1
 			 * \return Dynamically allocated copy of the current object
 			 */
 			unique_ptr<Figure> clone() const override final;
+
+			/**
+			 * \brief Figure Type
+			 * \return - the FigureType matching Triangle
+			 */
+			FigureType figureType() const override;
 		};
 	}
 }

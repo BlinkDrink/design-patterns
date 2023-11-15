@@ -89,5 +89,18 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(expected, actual);
 		}
+
+		TEST(Circle, Correct_FigureType_Getter)
+		{
+			// Arrange
+			const Circle t(2.75);
+			constexpr FigureType expected = FigureType::CircleType;
+
+			// Act
+			const FigureType actual = t.figureType();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
 	}
 }
