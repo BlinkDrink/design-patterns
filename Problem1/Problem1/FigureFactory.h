@@ -14,7 +14,7 @@ namespace Problem1
 		 */
 		class FigureFactory {
 		public:
-			virtual unique_ptr<Figure> create_figure() const = 0;
+			virtual unique_ptr<Figure> create_figure() = 0;
 			virtual ~FigureFactory() = default;
 		};
 	}

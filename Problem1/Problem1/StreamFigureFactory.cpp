@@ -22,7 +22,7 @@ namespace Problem1
 
 		StreamFigureFactory::StreamFigureFactory(ifstream&& s) : m_file(std::move(s)), m_stream(m_file) {}
 
-		unique_ptr<Figure> StreamFigureFactory::create_figure() const
+		unique_ptr<Figure> StreamFigureFactory::create_figure()
 		{
 			string type;
 			if (!(m_stream >> type))

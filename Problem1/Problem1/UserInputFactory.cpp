@@ -2,7 +2,6 @@
 #include <fstream>
 
 #include "UserInputFactory.h"
-#include "DoubleGenerator.h"
 #include "RandomFigureFactory.h"
 #include "StreamFigureFactory.h"
 
@@ -16,13 +15,17 @@ namespace Problem1
 {
 	namespace Factories
 	{
-
 		unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& input_type) const // File/STDIN/Random
 		{
 			if (input_type == "Random")
 			{
-				srand(time(nullptr));
-				return make_unique<RandomFigureFactory>(new DoubleGenerator);
+				double lower, upper;
+				cout << "Enter lower bound:";
+				cin >> lower;
+				cout << "Enter upper bound:";
+				cin >> upper;
+
+				return make_unique<RandomFigureFactory>(lower, upper, time(nullptr));
 			}
 			else if (input_type == "STDIN")
 			{
@@ -32,8 +35,9 @@ namespace Problem1
 				string filename;
 				cout << "Enter file name: ";
 				cin >> filename;
-				ifstream file(filename); // file.close()
-				return make_unique<StreamFigureFactory>(std::move(file)); // TODO: File gets closed when exiting scope
+
+				ifstream file(filename);
+				return make_unique<StreamFigureFactory>(std::move(file));
 			}
 
 			throw invalid_argument("Invalid input type");

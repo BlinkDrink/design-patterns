@@ -12,8 +12,8 @@ namespace Problem1
 
 		Circle::Circle(double radius)
 		{
-			if (radius < 0)
-				throw std::invalid_argument("Radius cannot be a negative number");
+			if (radius <= 0)
+				throw std::invalid_argument("Radius cannot be a non-positive number");
 			this->radius = radius;
 
 			string r = std::to_string(radius);

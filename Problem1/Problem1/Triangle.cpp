@@ -16,8 +16,8 @@ namespace Problem1
 
 		Triangle::Triangle(double a, double b, double c)
 		{
-			if (a < 0 || b < 0 || c < 0)
-				throw std::invalid_argument("Sides of triangle cannot be negative numbers");
+			if (a <= 0 || b <= 0 || c <= 0)
+				throw std::invalid_argument("Sides of triangle cannot be non-positive numbers");
 
 			if (a + b < c || b + c < a || a + c < b)
 				throw invalid_argument("Invalid triangle");

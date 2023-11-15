@@ -13,8 +13,8 @@ namespace Problem1
 
 		Rectangle::Rectangle(double a, double b)
 		{
-			if (a < 0 || b < 0)
-				throw std::invalid_argument("Sides of rectangle cannot be negative numbers");
+			if (a <= 0 || b <= 0)
+				throw std::invalid_argument("Sides of rectangle cannot be non-positive numbers");
 
 			this->a = a;
 			this->b = b;

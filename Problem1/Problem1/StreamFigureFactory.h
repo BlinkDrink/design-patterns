@@ -36,7 +36,7 @@ namespace Problem1
 			 * \param args - string representation of a figure
 			 * \return - dynamically allocated figure satisfying the given arguments
 			 */
-			unique_ptr<Figure> create_figure() const override;
+			unique_ptr<Figure> create_figure() override;
 		};
 	}
 }

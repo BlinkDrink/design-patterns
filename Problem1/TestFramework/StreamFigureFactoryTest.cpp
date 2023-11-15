@@ -3,6 +3,7 @@
 #include "../problem1/StreamFigureFactory.cpp"
 
 using Problem1::Factories::StreamFigureFactory;
+using std::stringstream;
 
 namespace TestFramework
 {
@@ -11,8 +12,8 @@ namespace TestFramework
 		TEST(StreamFigureFactory, Correct_Rectangle_Reading_From_Stream)
 		{
 			// Arrange
-			std::stringstream ss("rectangle 3 4");
-			const StreamFigureFactory sff(ss);
+			stringstream ss("rectangle 3 4");
+			StreamFigureFactory sff(ss);
 			const string expected = "rectangle 3 4";
 
 			// Act
@@ -25,8 +26,8 @@ namespace TestFramework
 		TEST(StreamFigureFactory, Correct_Circle_Reading_From_Stream)
 		{
 			// Arrange
-			std::stringstream ss("circle 6.53");
-			const StreamFigureFactory sff(ss);
+			stringstream ss("circle 6.53");
+			StreamFigureFactory sff(ss);
 			const string expected = "circle 6.53";
 
 			// Act
@@ -39,8 +40,8 @@ namespace TestFramework
 		TEST(StreamFigureFactory, Correct_Triangle_Reading_From_Stream)
 		{
 			// Arrange
-			std::stringstream ss("triangle 5 4 3");
-			const StreamFigureFactory sff(ss);
+			stringstream ss("triangle 5 4 3");
+			StreamFigureFactory sff(ss);
 			const string expected = "triangle 3 4 5";
 
 			// Act
@@ -53,8 +54,8 @@ namespace TestFramework
 		TEST(StreamFigureFactory, Read_Multiple_Figures_From_Stream)
 		{
 			// Arrange
-			std::stringstream ss("triangle 5 4 3 circle 2.88 rectangle 55 33");
-			const StreamFigureFactory sff(ss);
+			stringstream ss("triangle 5 4 3\ncircle 2.88\nrectangle 55 33");
+			StreamFigureFactory sff(ss);
 			const string expected1 = "triangle 3 4 5";
 			const string expected2 = "circle 2.88";
 			const string expected3 = "rectangle 33 55";
@@ -68,6 +69,48 @@ namespace TestFramework
 			EXPECT_EQ(expected1, f1->toString());
 			EXPECT_EQ(expected2, f2->toString());
 			EXPECT_EQ(expected3, f3->toString());
+		}
+
+		TEST(StreamFigureFactory, Throw_On_Invalid_Figure_Type_In_Beginning)
+		{
+			// Arrange
+			stringstream ss("programming 5 4 3\ncircle 2.88\nrectangle 55 33");
+			StreamFigureFactory sff(ss);
+
+			// Assert
+			EXPECT_THROW(sff.create_figure(), invalid_argument);
+		}
+
+		TEST(StreamFigureFactory, Throw_On_Invalid_Figure_Type_In_Middle)
+		{
+			// Arrange
+			stringstream ss("triangle 5 4 3\nprogramming 2.88\nrectangle 55 33");
+			StreamFigureFactory sff(ss);
+
+			const unique_ptr<Figure> f1 = sff.create_figure();
+
+			// Assert
+			EXPECT_THROW(sff.create_figure(), invalid_argument);
+		}
+
+		TEST(StreamFigureFactory, Throw_On_Invalid_Triangle_Sides)
+		{
+			// Arrange
+			stringstream ss("triangle 5 $ 3");
+			StreamFigureFactory sff(ss);
+
+			// Assert
+			EXPECT_THROW(sff.create_figure(), invalid_argument);
+		}
+
+		TEST(StreamFigureFactory, Throw_On_Invalid_Circle_Radius)
+		{
+			// Arrange
+			stringstream ss("circle 1");
+			StreamFigureFactory sff(ss);
+
+			// Assert
+			EXPECT_THROW(sff.create_figure(), invalid_argument);
 		}
 	}
 }

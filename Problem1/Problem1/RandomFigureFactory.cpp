@@ -12,45 +12,47 @@ namespace Problem1
 	using Figures::Rectangle;
 	using Figures::Circle;
 	using Figures::Triangle;
+	using std::max;
+	using std::min;
 
 	namespace Factories
 	{
 
-		RandomFigureFactory::RandomFigureFactory(RandomGenerator* rg) : _generator(rg)
+		RandomFigureFactory::RandomFigureFactory(double lower_bound = DBL_EPSILON, double upper_bound = 100, long long seed = time(nullptr)) : m_re(seed), m_generator(lower_bound, upper_bound)
 		{
+			srand(seed);
 		}
 
-		unique_ptr<Figure> RandomFigureFactory::create_figure() const
+		unique_ptr<Figure> RandomFigureFactory::create_figure()
 		{
-			// TODO: Extract magic numbers
 			const FigureType figure_type = static_cast<FigureType>(rand() % 3);
-
-			constexpr double range_min = DBL_EPSILON, range_max = 100;
 
 			switch (figure_type)
 			{
 			case FigureType::TriangleType: {
-				double a = _generator->Generate(range_min, range_max);
-				double b = _generator->Generate(range_min, range_max);
+				double a = m_generator(m_re);
+				double b = m_generator(m_re);
 
 				// The third side must be in the range (|a - b|, a + b)
-				const double min_possible = abs(a - b);
-				const double max_possible = a + b;
+				const double min_possible = abs(a - b); // 10
+				const double max_possible = a + b; // 50
 
-				double c = _generator->Generate(min_possible, max_possible);
+				double c = m_generator(m_re) * (max_possible - min_possible) + min_possible;
+				c = max(c, min_possible);
+				c = min(c, max_possible);
 
 				return make_unique<Triangle>(a, b, c);
 			}
 			case FigureType::RectangleType:
 			{
-				double a = _generator->Generate(range_min, range_max);
-				double b = _generator->Generate(range_min, range_max);
+				double a = m_generator(m_re);
+				double b = m_generator(m_re);
 
 				return make_unique<Rectangle>(a, b);
 			}
 			case FigureType::CircleType:
 			{
-				double radius = _generator->Generate(range_min, range_max);
+				double radius = m_generator(m_re);
 				return make_unique<Circle>(radius);
 			}
 			}
