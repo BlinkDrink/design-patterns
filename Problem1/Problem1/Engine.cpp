@@ -69,19 +69,19 @@ namespace Problem1
 
 		void Engine::exe()
 		{
-			cout << "Choose input method (Random/STDIN/File): ";
-			string input_type;
-			cin >> input_type;
-
-			unique_ptr<FigureFactory> figureFactory;
-			try
-			{
-				figureFactory = UserInputFactory::getInstance().create_figure_factory(input_type);
-			}
-			catch (const exception& ex)
-			{
-				cout << "Creation of figure factory with input " << input_type << " has failed. " << ex.what() << endl;
-				return;
+			unique_ptr<FigureFactory> figureFactory = nullptr;
+			while (figureFactory == nullptr) {
+				cout << "Choose input method (Random/STDIN/File): ";
+				string input_type;
+				cin >> input_type;
+				try
+				{
+					figureFactory = UserInputFactory::getInstance().create_figure_factory(input_type);
+				}
+				catch (const exception& ex)
+				{
+					cout << "Creation of figure factory with input " << input_type << " has failed. " << ex.what() << endl;
+				}
 			}
 
 			int numFigures;
