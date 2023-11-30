@@ -1,6 +1,6 @@
 # Figure Factory - Problem 1
 
-## Design patterns used:
+### Design patterns used:
 
 - Prototype
 - Abstract Factory
