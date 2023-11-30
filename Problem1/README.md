@@ -1,6 +1,14 @@
 # Figure Factory - Problem 1
 
+## Design patterns used:
+
+- Prototype
+- Abstract Factory
+- Factory
+- Singleton
+
 This project currently supports three figure types `Circle`, `Rectangle`, `Triangle`, all implementing the given interface `Figure`:
+
 ```C++
 class Figure
 {
@@ -16,6 +24,7 @@ public:
 	virtual ~Figure() = default;
 };
 ```
+
 - `toString` operation stringifies figures in format: `"figureName propertyA propertyB..."`
 
 Currently supported factories are `StreamFigureFactory` and `RandomFigureFactory` both implementing the interface `FigureFactory`:
@@ -28,8 +37,7 @@ public:
 };
 ```
 
-Adding new figures to the program is easy as all we have to do is create the class for the new figure and inherit from `Figure`. Figure Factories can be extended easily to cover logic for the newly added figure: 
-
+Adding new figures to the program is easy as all we have to do is create the class for the new figure and inherit from `Figure`. Figure Factories can be extended easily to cover logic for the newly added figure:
 
 ```C++
 unique_ptr<Figure> StreamFigureFactory::create_figure()
@@ -131,7 +139,9 @@ unique_ptr<FigureFactory> UserInputFactory::create_figure_factory(const string& 
 ### Further extension
 
 If at some point we decide that our application will not only support figures but `Curves` as well we can then achieve that by creating new Abstract Product (just like Figure) and call it `Curve`. Then we have to create an appropriate `CurveFactory` base class to give the interface for curve creation based on some context. Lastly in the `UserInputFactory` we can create new method
-```C++ 
+
+```C++
 unique_ptr<CurveFactory> create_curve_factory(const string& input_type) const;
 ```
+
 which will handle the factory creation.
