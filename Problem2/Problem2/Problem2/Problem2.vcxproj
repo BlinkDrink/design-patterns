@@ -128,9 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Problem2.cpp" />
+    <ClCompile Include="RichLabel.cpp" />
+    <ClCompile Include="SimpleLabel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h" />
+    <ClInclude Include="LabelPrinter.h" />
+    <ClInclude Include="RichLabel.h" />
+    <ClInclude Include="SimpleLabel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
