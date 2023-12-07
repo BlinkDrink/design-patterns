@@ -12,6 +12,9 @@
       <Filter>TextTransformation</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RightTrimTransformationTest.cpp">
+      <Filter>TextTransformation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

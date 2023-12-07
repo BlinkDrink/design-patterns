@@ -39,6 +39,9 @@
     <ClCompile Include="LeftTrimTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RightTrimTransformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
     <ClInclude Include="LeftTrimTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="RightTrimTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
