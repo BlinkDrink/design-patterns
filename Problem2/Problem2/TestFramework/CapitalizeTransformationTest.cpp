@@ -9,7 +9,7 @@ namespace TestFramework
 		const string expected = "Value";
 		const string input = "value";
 
-		TEST(CapitalizeTextTransformation, Correct_Capitalization_Of_Value) {
+		TEST(CapitalizeTransformation, Correct_Capitalization_Of_Value) {
 			// Arrange
 			CapitalizeTransformation s;
 

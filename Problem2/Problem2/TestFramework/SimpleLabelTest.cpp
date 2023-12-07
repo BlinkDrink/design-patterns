@@ -10,7 +10,7 @@ namespace TestFramework
 
 		TEST(SimpleLabelTest, Correct_Return_Of_Value) {
 			// Arrange
-			SimpleLabel s(expected);
+			const SimpleLabel s(expected);
 
 			// Assert
 			EXPECT_EQ(expected, s.getText());

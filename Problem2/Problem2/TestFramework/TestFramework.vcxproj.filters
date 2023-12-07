@@ -8,6 +8,9 @@
     <ClCompile Include="CapitalizeTransformationTest.cpp">
       <Filter>TextTransformation</Filter>
     </ClCompile>
+    <ClCompile Include="LeftTrimTransformationTest.cpp">
+      <Filter>TextTransformation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

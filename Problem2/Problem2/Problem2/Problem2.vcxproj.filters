@@ -36,6 +36,9 @@
     <ClCompile Include="LabelPrinter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LeftTrimTransformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CapitalizeTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftTrimTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>

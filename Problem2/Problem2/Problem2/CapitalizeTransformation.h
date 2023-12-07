@@ -11,6 +11,6 @@ public:
 	 * \param text - input whose first letter will be capitalized(if possible)
 	 * \return the newly formed string
 	 */
-	string transform(const string& text) const override;
+	string transform(string text) const override;
 };
 
