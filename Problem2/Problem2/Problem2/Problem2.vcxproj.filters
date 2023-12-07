@@ -21,13 +21,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Problem2.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SimpleLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RichLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CapitalizeTransformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LabelPrinter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,6 +48,12 @@
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
     <ClInclude Include="RichLabel.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTransformation .h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CapitalizeTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
