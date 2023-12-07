@@ -4,6 +4,8 @@
 
 namespace TestFramework
 {
+	using Problem2::TextTransformations::CapitalizeTransformation;
+
 	namespace TextTransformationTests
 	{
 		const string expected = "Value";

@@ -1,6 +1,14 @@
 #include "LabelPrinter.h"
 
-void LabelPrinter::print(const Label& label)
+namespace Problem2
 {
-	cout << label.getText();
+	using Labels::Label;
+
+	namespace LabelPrinters
+	{
+		void LabelPrinter::print(const Label& label)
+		{
+			cout << label.getText();
+		}
+	}
 }

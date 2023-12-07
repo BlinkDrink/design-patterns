@@ -2,15 +2,22 @@
 
 #include "TextTransformation .h"
 
-class CapitalizeTransformation : public TextTransformation
+namespace Problem2
 {
-public:
+	namespace TextTransformations
+	{
+		class CapitalizeTransformation : public TextTransformation
+		{
+		public:
 
-	/**
-	 * \brief Transforms a given string to it's capitalized first letter version
-	 * \param text - input whose first letter will be capitalized(if possible)
-	 * \return the newly formed string
-	 */
-	string transform(string text) const override;
-};
+			/**
+			 * \brief Transforms a given string to it's capitalized first letter version
+			 * \param text - input whose first letter will be capitalized(if possible)
+			 * \return the newly formed string
+			 */
+			string transform(string text) const override;
+		};
+	}
+}
+
 

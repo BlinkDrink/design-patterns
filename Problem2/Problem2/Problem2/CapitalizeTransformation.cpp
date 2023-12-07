@@ -1,11 +1,17 @@
 #include "CapitalizeTransformation.h"
 
-string CapitalizeTransformation::transform(string text) const
+namespace Problem2
 {
-	if (!text.empty() && isalpha(text[0]))
+	namespace TextTransformations
 	{
-		text[0] = toupper(text[0]);
-	}
+		string CapitalizeTransformation::transform(string text) const
+		{
+			if (!text.empty() && isalpha(text[0]))
+			{
+				text[0] = toupper(text[0]);
+			}
 
-	return text;
+			return text;
+		}
+	}
 }

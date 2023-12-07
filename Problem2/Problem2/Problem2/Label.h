@@ -3,9 +3,15 @@
 
 using std::string;
 
-class Label
+namespace Problem2
 {
-public:
-	virtual string getText() const = 0;
-	virtual ~Label() = default;
-};
+	namespace Labels
+	{
+		class Label
+		{
+		public:
+			virtual string getText() const = 0;
+			virtual ~Label() = default;
+		};
+	}
+}

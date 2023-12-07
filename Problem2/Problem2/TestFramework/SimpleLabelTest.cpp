@@ -4,6 +4,8 @@
 
 namespace TestFramework
 {
+	using Problem2::Labels::SimpleLabel;
+
 	namespace LabelTests
 	{
 		const string expected = "value";

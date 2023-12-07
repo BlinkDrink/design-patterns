@@ -3,9 +3,15 @@
 
 using std::string;
 
-class TextTransformation
+namespace Problem2
 {
-public:
-	virtual string transform(string text) const = 0;
-	virtual ~TextTransformation() = default;
-};
+	namespace TextTransformations
+	{
+		class TextTransformation
+		{
+		public:
+			virtual string transform(string text) const = 0;
+			virtual ~TextTransformation() = default;
+		};
+	}
+}

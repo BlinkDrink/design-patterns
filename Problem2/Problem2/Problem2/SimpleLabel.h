@@ -1,13 +1,20 @@
 #pragma once
 #include "Label.h"
-class SimpleLabel : public Label
+
+namespace Problem2
 {
-private:
-	string value;
+	namespace Labels
+	{
+		class SimpleLabel : public Label
+		{
+		private:
+			string value;
 
-public:
-	SimpleLabel(const string& value);
+		public:
+			SimpleLabel(const string& value);
 
-	string getText() const override;
-};
+			string getText() const override;
+		};
+	}
+}
 

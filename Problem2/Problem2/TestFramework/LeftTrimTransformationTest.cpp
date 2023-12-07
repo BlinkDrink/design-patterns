@@ -4,6 +4,8 @@
 
 namespace TestFramework
 {
+	using Problem2::TextTransformations::LeftTrimTransformation;
+
 	namespace TextTransformationTests
 	{
 		const string expected = "value";

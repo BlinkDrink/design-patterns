@@ -5,8 +5,16 @@
 
 using std::cout;
 
-class LabelPrinter
+namespace Problem2
 {
-public:
-	void print(const Label& label);
-};
+	using Labels::Label;
+
+	namespace LabelPrinters
+	{
+		class LabelPrinter
+		{
+		public:
+			void print(const Label& label);
+		};
+	}
+}
