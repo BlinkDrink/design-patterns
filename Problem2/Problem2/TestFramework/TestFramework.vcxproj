@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformationTest.cpp" />
     <ClCompile Include="LeftTrimTransformationTest.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="SimpleLabelTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
