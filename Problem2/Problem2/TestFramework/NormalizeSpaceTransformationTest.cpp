@@ -16,9 +16,6 @@ namespace TestFramework
 			// Arrange
 			NormalizeSpaceTransformation s;
 
-			// Act
-			const string actual = s.transform(input2);
-
 			// Assert
 			EXPECT_EQ(expected, s.transform(input1));
 			EXPECT_EQ(expected + " ", s.transform(input2));

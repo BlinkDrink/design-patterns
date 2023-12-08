@@ -12,7 +12,6 @@ namespace Problem2
 
 		public:
 			SimpleLabel(const string& value);
-
 			string getText() const override;
 		};
 	}

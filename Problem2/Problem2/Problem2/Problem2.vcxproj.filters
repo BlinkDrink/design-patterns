@@ -45,6 +45,9 @@
     <ClCompile Include="NormalizeSpaceTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DecorateTransformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -59,7 +62,7 @@
     <ClInclude Include="RichLabel.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
-    <ClInclude Include="TextTransformation .h">
+    <ClInclude Include="TextTransformation.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CapitalizeTransformation.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="NormalizeSpaceTransformation.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecorateTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

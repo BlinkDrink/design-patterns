@@ -13,7 +13,7 @@ namespace TestFramework
 
 		TEST(LeftTrimTransformation, Correct_Deletion_Of_Leading_Whitespace) {
 			// Arrange
-			LeftTrimTransformation s;
+			const LeftTrimTransformation s;
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));

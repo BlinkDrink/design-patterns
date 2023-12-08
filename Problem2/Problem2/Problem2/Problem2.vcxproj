@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformation.cpp" />
+    <ClCompile Include="DecorateTransformation.cpp" />
     <ClCompile Include="LabelPrinter.cpp" />
     <ClCompile Include="LeftTrimTransformation.cpp" />
     <ClCompile Include="main.cpp" />
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapitalizeTransformation.h" />
+    <ClInclude Include="DecorateTransformation.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="LabelPrinter.h" />
     <ClInclude Include="LeftTrimTransformation.h" />
@@ -146,7 +148,7 @@
     <ClInclude Include="RichLabel.h" />
     <ClInclude Include="RightTrimTransformation.h" />
     <ClInclude Include="SimpleLabel.h" />
-    <ClInclude Include="TextTransformation .h" />
+    <ClInclude Include="TextTransformation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

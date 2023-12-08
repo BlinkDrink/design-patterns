@@ -18,6 +18,9 @@
     <ClCompile Include="NormalizeSpaceTransformationTest.cpp">
       <Filter>TextTransformation</Filter>
     </ClCompile>
+    <ClCompile Include="DecorateTransformationTest.cpp">
+      <Filter>TextTransformation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
