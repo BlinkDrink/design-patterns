@@ -6,18 +6,27 @@ namespace Problem2
 	{
 		string NormalizeSpaceTransformation::transform(string text) const
 		{
-			size_t curr = 0;
+			size_t write_pos = 0;
+			bool space_window = false;
 
-			while (curr < text.size() - 1)
+			for (size_t i = 0; i < text.size(); ++i)
 			{
-				if (text[curr] == ' ' && text[curr + 1] == ' ')
+				if (text[i] == ' ')
 				{
-					text.erase(text.begin() + curr);
-					curr--;
+					if (!space_window)
+					{
+						text[write_pos++] = text[i];
+						space_window = true;
+					}
 				}
-				curr++;
+				else
+				{
+					text[write_pos++] = text[i];
+					space_window = false;
+				}
 			}
 
+			text.erase(write_pos);
 			return text;
 		}
 	}

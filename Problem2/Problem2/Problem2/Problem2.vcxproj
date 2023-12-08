@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformation.cpp" />
+    <ClCompile Include="CensorTransformation.cpp" />
     <ClCompile Include="DecorateTransformation.cpp" />
     <ClCompile Include="LabelPrinter.cpp" />
     <ClCompile Include="LeftTrimTransformation.cpp" />
@@ -140,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapitalizeTransformation.h" />
+    <ClInclude Include="CensorTransformation.h" />
     <ClInclude Include="DecorateTransformation.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="LabelPrinter.h" />

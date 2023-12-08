@@ -48,6 +48,9 @@
     <ClCompile Include="DecorateTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CensorTransformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -62,9 +65,6 @@
     <ClInclude Include="RichLabel.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
-    <ClInclude Include="TextTransformation.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="CapitalizeTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
@@ -78,6 +78,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DecorateTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="CensorTransformation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
