@@ -7,6 +7,10 @@ namespace Problem2
 {
 	namespace TextTransformations
 	{
+
+		/**
+		 * \brief Base class for the different algorithms we can apply to a label
+		 */
 		class TextTransformation
 		{
 		public:

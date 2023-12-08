@@ -139,12 +139,14 @@
     <ClCompile Include="RichLabel.cpp" />
     <ClCompile Include="RightTrimTransformation.cpp" />
     <ClCompile Include="SimpleLabel.cpp" />
+    <ClCompile Include="TextTransformationDecorator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapitalizeTransformation.h" />
     <ClInclude Include="CensorTransformation.h" />
     <ClInclude Include="DecorateTransformation.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="LabelDecoratorBase.h" />
     <ClInclude Include="LabelPrinter.h" />
     <ClInclude Include="LeftTrimTransformation.h" />
     <ClInclude Include="NormalizeSpaceTransformation.h" />
@@ -153,6 +155,7 @@
     <ClInclude Include="RightTrimTransformation.h" />
     <ClInclude Include="SimpleLabel.h" />
     <ClInclude Include="TextTransformation.h" />
+    <ClInclude Include="TextTransformationDecorator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -54,6 +54,9 @@
     <ClCompile Include="ReplaceTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextTransformationDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -86,10 +89,16 @@
     <ClInclude Include="CensorTransformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
     <ClInclude Include="ReplaceTransformation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTransformation.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelDecoratorBase.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTransformationDecorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
