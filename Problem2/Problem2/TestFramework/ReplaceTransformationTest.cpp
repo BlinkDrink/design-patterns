@@ -9,6 +9,7 @@ namespace TestFramework
 	namespace TextTransformationTests
 	{
 		const string expected = "_d_ddef";
+		const string expected2 = "__def";
 		const string input = "_abc_abcdef";
 		const string A = "abc";
 		const string B = "d";
@@ -19,6 +20,22 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
+		}
+
+		TEST(ReplaceTransformation, UnalteredString_When_A_Equals_B_Replacement) {
+			// Arrange
+			ReplaceTransformation s(A, A);
+
+			// Assert
+			EXPECT_EQ(input, s.transform(input));
+		}
+
+		TEST(ReplaceTransformation, Correct_Replacement_With_Empty_Space) {
+			// Arrange
+			ReplaceTransformation s(A, "");
+
+			// Assert
+			EXPECT_EQ(expected2, s.transform(input));
 		}
 	}
 }

@@ -18,5 +18,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
 		}
+
+		TEST(RightTrimTransformation, RightTrim_KeepsStringSame_WithNoTrailingSpaces) {
+			// Arrange
+			RightTrimTransformation s;
+
+			// Assert
+			EXPECT_EQ(expected, s.transform(expected));
+		}
 	}
 }

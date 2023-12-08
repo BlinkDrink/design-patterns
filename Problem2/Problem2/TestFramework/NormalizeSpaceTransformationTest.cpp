@@ -20,5 +20,13 @@ namespace TestFramework
 			EXPECT_EQ(expected, s.transform(input1));
 			EXPECT_EQ(expected + " ", s.transform(input2));
 		}
+
+		TEST(NormalizeSpaceTransformation, NormalizeSpace_KeepsStringSame_With_No_Consecutive_Spaces) {
+			// Arrange
+			NormalizeSpaceTransformation s;
+
+			// Assert
+			EXPECT_EQ(expected, s.transform(expected));
+		}
 	}
 }

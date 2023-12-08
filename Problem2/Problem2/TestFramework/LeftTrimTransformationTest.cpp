@@ -18,5 +18,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
 		}
+
+		TEST(LeftTrimTransformation, LeftTrim_KeepsStringSame_WithNoLeadingSpaces) {
+			// Arrange
+			const LeftTrimTransformation s;
+
+			// Assert
+			EXPECT_EQ(expected, s.transform(expected));
+		}
 	}
 }
