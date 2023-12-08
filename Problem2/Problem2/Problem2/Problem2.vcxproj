@@ -132,6 +132,7 @@
     <ClCompile Include="LabelPrinter.cpp" />
     <ClCompile Include="LeftTrimTransformation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NormalizeSpaceTransformation.cpp" />
     <ClCompile Include="RichLabel.cpp" />
     <ClCompile Include="RightTrimTransformation.cpp" />
     <ClCompile Include="SimpleLabel.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="LabelPrinter.h" />
     <ClInclude Include="LeftTrimTransformation.h" />
+    <ClInclude Include="NormalizeSpaceTransformation.h" />
     <ClInclude Include="RichLabel.h" />
     <ClInclude Include="RightTrimTransformation.h" />
     <ClInclude Include="SimpleLabel.h" />

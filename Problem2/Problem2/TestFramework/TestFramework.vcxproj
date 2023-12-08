@@ -102,6 +102,7 @@
     <ClCompile Include="CapitalizeTransformationTest.cpp" />
     <ClCompile Include="LeftTrimTransformationTest.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NormalizeSpaceTransformationTest.cpp" />
     <ClCompile Include="RightTrimTransformationTest.cpp" />
     <ClCompile Include="SimpleLabelTest.cpp" />
     <ClCompile Include="pch.cpp">
