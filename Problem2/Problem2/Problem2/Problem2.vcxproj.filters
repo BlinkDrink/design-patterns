@@ -51,6 +51,9 @@
     <ClCompile Include="CensorTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ReplaceTransformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="TextTransformation.h">
       <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="ReplaceTransformation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
