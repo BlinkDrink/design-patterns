@@ -57,6 +57,9 @@
     <ClCompile Include="TextTransformationDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RandomTransformationDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -80,17 +83,8 @@
     <ClInclude Include="RightTrimTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
-    <ClInclude Include="NormalizeSpaceTransformation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DecorateTransformation.h">
       <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="CensorTransformation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ReplaceTransformation.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextTransformation.h">
       <Filter>Header Files\Interfaces</Filter>
@@ -99,7 +93,19 @@
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="TextTransformationDecorator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomTransformationDecorator.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="CensorTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalizeSpaceTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="ReplaceTransformation.h">
+      <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -27,6 +27,9 @@
     <ClCompile Include="ReplaceTransformationTest.cpp">
       <Filter>TextTransformation</Filter>
     </ClCompile>
+    <ClCompile Include="TextTransformationDecoratorTest.cpp">
+      <Filter>Decorator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -37,6 +40,9 @@
     </Filter>
     <Filter Include="TextTransformation">
       <UniqueIdentifier>{e3c982ea-7e01-49d0-8626-6545bf588cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decorator">
+      <UniqueIdentifier>{ecf036d8-9f2a-48a0-8cc5-e765734e042d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -12,14 +12,17 @@ namespace Problem2
 		using Labels::Label;
 		using TextTransformations::TextTransformation;
 
+		/**
+		 * \brief Interface for all Decorator objects
+		 */
 		class LabelDecoratorBase : public Label
 		{
-		private:
+		protected:
 			unique_ptr<Label> _label;
-			unique_ptr<TextTransformation> _transformation;
 		public:
 			LabelDecoratorBase(unique_ptr<Label>& next) : _label(std::move(next)) {}
-			virtual string getText() const = 0;
+
+			virtual string getText() const override = 0;
 		};
 	}
 }

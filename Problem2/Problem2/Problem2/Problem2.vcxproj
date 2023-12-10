@@ -135,6 +135,7 @@
     <ClCompile Include="LeftTrimTransformation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NormalizeSpaceTransformation.cpp" />
+    <ClCompile Include="RandomTransformationDecorator.cpp" />
     <ClCompile Include="ReplaceTransformation.cpp" />
     <ClCompile Include="RichLabel.cpp" />
     <ClCompile Include="RightTrimTransformation.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="LabelPrinter.h" />
     <ClInclude Include="LeftTrimTransformation.h" />
     <ClInclude Include="NormalizeSpaceTransformation.h" />
+    <ClInclude Include="RandomTransformationDecorator.h" />
     <ClInclude Include="ReplaceTransformation.h" />
     <ClInclude Include="RichLabel.h" />
     <ClInclude Include="RightTrimTransformation.h" />
