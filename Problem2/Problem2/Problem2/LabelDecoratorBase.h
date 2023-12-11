@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <stdexcept>
 
 #include "Label.h"
 #include "TextTransformation.h"
@@ -10,6 +11,7 @@ namespace Problem2
 	{
 		using std::unique_ptr;
 		using Labels::Label;
+		using std::invalid_argument;
 		using TextTransformations::TextTransformation;
 
 		/**
@@ -20,7 +22,12 @@ namespace Problem2
 		protected:
 			unique_ptr<Label> m_label;
 		public:
-			LabelDecoratorBase(unique_ptr<Label>& next) : m_label(std::move(next)) {}
+			LabelDecoratorBase(unique_ptr<Label>& next)
+			{
+				if (next == nullptr)
+					throw invalid_argument("Reference to decorated object cannot be nullptr");
+				m_label = std::move(next);
+			}
 
 			virtual string getText() const override = 0;
 		};
