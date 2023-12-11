@@ -30,6 +30,9 @@
     <ClCompile Include="TextTransformationDecoratorTest.cpp">
       <Filter>Decorator</Filter>
     </ClCompile>
+    <ClCompile Include="RotatingTransformationDecoratorTest.cpp">
+      <Filter>Decorator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

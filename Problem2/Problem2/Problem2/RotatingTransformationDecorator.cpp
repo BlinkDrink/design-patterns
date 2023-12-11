@@ -6,8 +6,12 @@ namespace Problem2
 	{
 		RotatingTransformationDecorator::RotatingTransformationDecorator(unique_ptr<Label>& next,
 			vector<unique_ptr<TextTransformation>>& transformations)
-			: LabelDecoratorBase(next), m_rotator(0), m_transformations(std::move(transformations))
+			: LabelDecoratorBase(next), m_rotator(0)
 		{
+			for (unique_ptr<TextTransformation>& transformation : transformations)
+			{
+				m_transformations.push_back(std::move(transformation));
+			}
 		}
 
 		string RotatingTransformationDecorator::getText() const

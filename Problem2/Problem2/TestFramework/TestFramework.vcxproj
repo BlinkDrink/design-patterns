@@ -107,6 +107,7 @@
     <ClCompile Include="NormalizeSpaceTransformationTest.cpp" />
     <ClCompile Include="ReplaceTransformationTest.cpp" />
     <ClCompile Include="RightTrimTransformationTest.cpp" />
+    <ClCompile Include="RotatingTransformationDecoratorTest.cpp" />
     <ClCompile Include="SimpleLabelTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
