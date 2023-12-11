@@ -19,71 +19,74 @@
     <Filter Include="Header Files\Concretes">
       <UniqueIdentifier>{f4a24e84-ec92-44c8-8021-5df190b4181f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes\Decorators">
+      <UniqueIdentifier>{08ce1ee3-017f-47e7-8bbc-c97f2074bcfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Concretes\Labels">
+      <UniqueIdentifier>{8504c947-a025-4a66-a1e1-275952789265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Concretes\TextTransformations">
+      <UniqueIdentifier>{d46f8395-b7d5-4e4b-9a0b-4e2a02b2a42b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decorators">
+      <UniqueIdentifier>{d45151f6-49e2-4642-a055-faf7bf953273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Labels">
+      <UniqueIdentifier>{65f7cad6-5376-4dd2-a7bb-16a665664e79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Transformations">
+      <UniqueIdentifier>{1045cb25-a9ea-4589-b8e4-84f7d48f7eb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleLabel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RichLabel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CapitalizeTransformation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LabelPrinter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LeftTrimTransformation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RightTrimTransformation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalizeSpaceTransformation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DecorateTransformation.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CapitalizeTransformation.cpp">
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="CensorTransformation.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="DecorateTransformation.cpp">
+      <Filter>Source Files\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftTrimTransformation.cpp">
+      <Filter>Source Files\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalizeSpaceTransformation.cpp">
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="ReplaceTransformation.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
-    <ClCompile Include="TextTransformationDecorator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="RightTrimTransformation.cpp">
+      <Filter>Source Files\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingTransformationDecorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="RandomTransformationDecorator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="TextTransformationDecorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="RichLabel.cpp">
+      <Filter>Source Files\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleLabel.cpp">
+      <Filter>Source Files\Labels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleLabel.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
     <ClInclude Include="LabelPrinter.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="RichLabel.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="CapitalizeTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="LeftTrimTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="RightTrimTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="DecorateTransformation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
     <ClInclude Include="TextTransformation.h">
@@ -92,20 +95,41 @@
     <ClInclude Include="LabelDecoratorBase.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="TextTransformationDecorator.h">
-      <Filter>Header Files\Concretes</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomTransformationDecorator.h">
-      <Filter>Header Files\Concretes</Filter>
+    <ClInclude Include="CapitalizeTransformation.h">
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
     </ClInclude>
     <ClInclude Include="CensorTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
+    </ClInclude>
+    <ClInclude Include="DecorateTransformation.h">
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftTrimTransformation.h">
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
     </ClInclude>
     <ClInclude Include="NormalizeSpaceTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
     </ClInclude>
     <ClInclude Include="ReplaceTransformation.h">
-      <Filter>Header Files\Concretes</Filter>
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
+    </ClInclude>
+    <ClInclude Include="RightTrimTransformation.h">
+      <Filter>Header Files\Concretes\TextTransformations</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomTransformationDecorator.h">
+      <Filter>Header Files\Concretes\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingTransformationDecorator.h">
+      <Filter>Header Files\Concretes\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTransformationDecorator.h">
+      <Filter>Header Files\Concretes\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="RichLabel.h">
+      <Filter>Header Files\Concretes\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleLabel.h">
+      <Filter>Header Files\Concretes\Labels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

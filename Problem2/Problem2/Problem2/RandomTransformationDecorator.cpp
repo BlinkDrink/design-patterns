@@ -6,26 +6,23 @@ namespace Problem2
 {
 	namespace Decorators
 	{
-		using std::invalid_argument;
-
-		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed) : LabelDecoratorBase(next), _transformations(std::move(tts)), _re(seed)
+		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed) : LabelDecoratorBase(next), m_transformations(std::move(tts)), m_re(seed)
 		{
-			if (!_transformations.empty())
+			if (!m_transformations.empty())
 			{
-				_igenerator = uniform_int_distribution<int>(0, _transformations.size() - 1);
+				m_igenerator = uniform_int_distribution<int>(0, m_transformations.size() - 1);
 			}
 		}
 
 		string RandomTransformationDecorator::getText() const
 		{
-			if (!_transformations.empty())
+			if (!m_transformations.empty())
 			{
-				int index = _igenerator(_re);
-				return _transformations[index]->transform(_label->getText());
+				int index = m_igenerator(m_re);
+				return m_transformations[index]->transform(m_label->getText());
 			}
 
-			return _label->getText();
+			return m_label->getText();
 		}
-
 	}
 }

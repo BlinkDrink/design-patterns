@@ -4,13 +4,13 @@ namespace Problem2
 {
 	namespace Labels
 	{
-		SimpleLabel::SimpleLabel(const string& value) : _value(value)
+		SimpleLabel::SimpleLabel(const string& value) : m_value(value)
 		{
 		}
 
 		string SimpleLabel::getText() const
 		{
-			return _value;
+			return m_value;
 		}
 	}
 }

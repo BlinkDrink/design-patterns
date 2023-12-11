@@ -18,9 +18,9 @@ namespace Problem2
 		class LabelDecoratorBase : public Label
 		{
 		protected:
-			unique_ptr<Label> _label;
+			unique_ptr<Label> m_label;
 		public:
-			LabelDecoratorBase(unique_ptr<Label>& next) : _label(std::move(next)) {}
+			LabelDecoratorBase(unique_ptr<Label>& next) : m_label(std::move(next)) {}
 
 			virtual string getText() const override = 0;
 		};

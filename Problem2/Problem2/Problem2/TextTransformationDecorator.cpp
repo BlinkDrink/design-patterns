@@ -5,20 +5,20 @@ namespace Problem2
 	namespace Decorators
 	{
 		TextTransformationDecorator::TextTransformationDecorator(unique_ptr<Label>& label,
-			unique_ptr<TextTransformation>& tt) : LabelDecoratorBase(label), _transformation(std::move(tt))
+			unique_ptr<TextTransformation>& tt) : LabelDecoratorBase(label), m_transformation(std::move(tt))
 		{
 		}
 
 		string TextTransformationDecorator::getText() const
 		{
-			if (_label && _transformation)
+			if (m_label && m_transformation)
 			{
-				return _transformation->transform(_label->getText());
+				return m_transformation->transform(m_label->getText());
 			}
 
-			if (_label && !_transformation)
+			if (m_label && !m_transformation)
 			{
-				return _label->getText();
+				return m_label->getText();
 			}
 
 			return "";

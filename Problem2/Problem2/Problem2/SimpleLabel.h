@@ -8,7 +8,7 @@ namespace Problem2
 		class SimpleLabel : public Label
 		{
 		private:
-			string _value;
+			string m_value;
 
 		public:
 			SimpleLabel(const string& value);

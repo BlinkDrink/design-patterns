@@ -9,10 +9,10 @@ namespace Problem2
 		class RichLabel : public Label
 		{
 		private:
-			unsigned short _font_size;
-			string _value;
-			string _font_name;
-			string _text_color;
+			unsigned short m_font_size;
+			string m_value;
+			string m_font_name;
+			string m_text_color;
 
 		public:
 			RichLabel(const string& value, unsigned short font_size, const string& font_name, const string& text_color);

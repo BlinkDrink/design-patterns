@@ -11,7 +11,7 @@ namespace Problem2
 		class TextTransformationDecorator : public LabelDecoratorBase
 		{
 		private:
-			unique_ptr<TextTransformation> _transformation;
+			unique_ptr<TextTransformation> m_transformation;
 		public:
 			TextTransformationDecorator(unique_ptr<Label>& label, unique_ptr<TextTransformation>& tt);
 

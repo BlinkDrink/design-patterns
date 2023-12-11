@@ -139,6 +139,7 @@
     <ClCompile Include="ReplaceTransformation.cpp" />
     <ClCompile Include="RichLabel.cpp" />
     <ClCompile Include="RightTrimTransformation.cpp" />
+    <ClCompile Include="RotatingTransformationDecorator.cpp" />
     <ClCompile Include="SimpleLabel.cpp" />
     <ClCompile Include="TextTransformationDecorator.cpp" />
   </ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="ReplaceTransformation.h" />
     <ClInclude Include="RichLabel.h" />
     <ClInclude Include="RightTrimTransformation.h" />
+    <ClInclude Include="RotatingTransformationDecorator.h" />
     <ClInclude Include="SimpleLabel.h" />
     <ClInclude Include="TextTransformation.h" />
     <ClInclude Include="TextTransformationDecorator.h" />

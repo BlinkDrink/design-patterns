@@ -16,9 +16,9 @@ namespace Problem2
 		class RandomTransformationDecorator : public LabelDecoratorBase
 		{
 		private:
-			vector<unique_ptr<TextTransformation>> _transformations;
-			mutable default_random_engine _re;
-			mutable uniform_int_distribution<int> _igenerator;
+			vector<unique_ptr<TextTransformation>> m_transformations;
+			mutable default_random_engine m_re;
+			mutable uniform_int_distribution<int> m_igenerator;
 		public:
 			RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed = time(nullptr));
 
