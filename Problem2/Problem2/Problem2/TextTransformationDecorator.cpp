@@ -23,6 +23,15 @@ namespace Problem2
 
 			return "";
 		}
+
+		bool TextTransformationDecorator::operator==(const Label& other)
+		{
+			const TextTransformationDecorator* cast = dynamic_cast<const TextTransformationDecorator*>(&other);
+			if (!cast)
+				return false;
+
+			return m_transformation == cast->m_transformation;
+		}
 	}
 }
 

@@ -1,5 +1,7 @@
 #include "CapitalizeTransformation.h"
 
+#include <vcruntime_typeinfo.h>
+
 namespace Problem2
 {
 	namespace TextTransformations
@@ -12,6 +14,11 @@ namespace Problem2
 			}
 
 			return text;
+		}
+
+		bool CapitalizeTransformation::operator==(const TextTransformation& other)
+		{
+			return typeid(*this) == typeid(other);
 		}
 	}
 }

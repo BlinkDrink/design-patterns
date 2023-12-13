@@ -18,6 +18,13 @@ namespace Problem2
 			string transform(string text) const override;
 
 			CensorTransformation(string to_censor);
+
+			/**
+			 * \brief Comparator - uses dynamic_cast
+			 * \param other - the object the comparison is done against
+			 * \return - true if object types and data member to_censor match
+			 */
+			bool operator==(const TextTransformation& other) override;
 		};
 	}
 }

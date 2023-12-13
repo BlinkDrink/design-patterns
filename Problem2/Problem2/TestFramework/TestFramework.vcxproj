@@ -105,6 +105,7 @@
     <ClCompile Include="LeftTrimTransformationTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NormalizeSpaceTransformationTest.cpp" />
+    <ClCompile Include="RandomTransformationDecoratorTest.cpp" />
     <ClCompile Include="ReplaceTransformationTest.cpp" />
     <ClCompile Include="RightTrimTransformationTest.cpp" />
     <ClCompile Include="RotatingTransformationDecoratorTest.cpp" />

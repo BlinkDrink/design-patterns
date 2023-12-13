@@ -18,5 +18,14 @@ namespace Problem2
 		ReplaceTransformation::ReplaceTransformation(string from, string to) : from(std::move(from)), to(std::move(to))
 		{
 		}
+
+		bool ReplaceTransformation::operator==(const TextTransformation& other)
+		{
+			const ReplaceTransformation* cast = dynamic_cast<const ReplaceTransformation*>(&other);
+			if (!cast)
+				return false;
+
+			return from == cast->from && to == cast->to;
+		}
 	}
 }

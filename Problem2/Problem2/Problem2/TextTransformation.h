@@ -14,6 +14,7 @@ namespace Problem2
 		class TextTransformation
 		{
 		public:
+			virtual bool operator==(const TextTransformation& other) = 0;
 			virtual string transform(string text) const = 0;
 			virtual ~TextTransformation() = default;
 		};

@@ -1,4 +1,5 @@
 #include "LeftTrimTransformation.h"
+#include <vcruntime_typeinfo.h>
 
 namespace Problem2
 {
@@ -12,6 +13,11 @@ namespace Problem2
 			}
 
 			return text;
+		}
+
+		bool LeftTrimTransformation::operator==(const TextTransformation& other)
+		{
+			return typeid(*this) == typeid(other);
 		}
 	}
 }

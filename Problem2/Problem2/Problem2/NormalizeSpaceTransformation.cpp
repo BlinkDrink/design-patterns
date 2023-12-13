@@ -1,5 +1,7 @@
 #include "NormalizeSpaceTransformation.h"
 
+#include <vcruntime_typeinfo.h>
+
 namespace Problem2
 {
 	namespace TextTransformations
@@ -28,6 +30,11 @@ namespace Problem2
 
 			text.erase(write_pos);
 			return text;
+		}
+
+		bool NormalizeSpaceTransformation::operator==(const TextTransformation& other)
+		{
+			return typeid(*this) == typeid(other);
 		}
 	}
 }

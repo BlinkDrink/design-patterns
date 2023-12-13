@@ -12,14 +12,21 @@ namespace Problem2
 			string to;
 		public:
 			/**
-			 * \brief Replaces (case-sensitive) all occurrences of the string A with the string B, e.g.
-			 *	if A="abc" and B="d", then " abc_abcdef" becomes " d_ddef"
+			 * \brief Replaces (case-sensitive) all occurrences of the string from with the string to, e.g.
+			 *	if from="abc" and to="d", then " abc_abcdef" becomes " d_ddef"
 			 * \param text - string on which replacement will be performed
 			 * \return - the newly transformed string
 			 */
 			string transform(string text) const override;
 
 			ReplaceTransformation(string from, string to);
+
+			/**
+			 * \brief Comparator - uses dynamic_cast
+			 * \param other - the object the comparison is done against
+			 * \return - true if object types, data member from and data member to match, false otherwise
+			 */
+			bool operator==(const TextTransformation& other) override;
 		};
 	}
 }

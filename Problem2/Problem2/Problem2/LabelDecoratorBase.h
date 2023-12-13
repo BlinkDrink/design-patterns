@@ -29,6 +29,7 @@ namespace Problem2
 				m_label = std::move(next);
 			}
 
+			virtual bool operator==(const Label& other) = 0;
 			virtual string getText() const override = 0;
 		};
 	}

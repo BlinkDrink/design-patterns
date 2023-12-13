@@ -16,6 +16,13 @@ namespace Problem2
 			 * \return the newly formed string
 			 */
 			string transform(string text) const override;
+
+			/**
+			 * \brief Comparator - uses typeid
+			 * \param other - the object comparison is done against
+			 * \return - true if types match, false otherwise
+			 */
+			bool operator==(const TextTransformation& other) override;
 		};
 	}
 }

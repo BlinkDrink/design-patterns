@@ -8,15 +8,15 @@
 #include "../Problem2/ReplaceTransformation.h"
 #include "../Problem2/RightTrimTransformation.h"
 #include "../Problem2/SimpleLabel.h"
-#include "../Problem2/RotatingTransformationDecorator.h"
-#include "../Problem2/RotatingTransformationDecorator.cpp"
+#include "../Problem2/RandomTransformationDecorator.h"
+#include "../Problem2/RandomTransformationDecorator.cpp"
 
 namespace TestFramework
 {
 	using std::unique_ptr;
 	using std::vector;
 	using std::make_unique;
-	using Problem2::Decorators::RotatingTransformationDecorator;
+	using Problem2::Decorators::RandomTransformationDecorator;
 	using Problem2::TextTransformations::CapitalizeTransformation;
 	using Problem2::TextTransformations::LeftTrimTransformation;
 	using Problem2::TextTransformations::RightTrimTransformation;
@@ -31,12 +31,14 @@ namespace TestFramework
 
 	namespace DecoratorTests
 	{
-		class RotatingTransformationDecoratorTest : public ::testing::Test {
+		constexpr long long seed = 123;
+		constexpr size_t iterations = 100;
+		const string base_text = "some  text";
+
+		class RandomTransformationDecoratorTest : public ::testing::Test {
 		protected:
 			unique_ptr<Label> label;
 			vector<unique_ptr<TextTransformation>> transformations;
-			vector<string> expectedValues;
-			string base_text = "some  text";
 
 			void SetUp() override {
 				label = make_unique<SimpleLabel>(base_text);
@@ -46,53 +48,49 @@ namespace TestFramework
 				transformations.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
 				transformations.push_back(make_unique<CensorTransformation>("so"));
 				transformations.push_back(make_unique<NormalizeSpaceTransformation>());
-
-				expectedValues.push_back("Some  text");
-				expectedValues.push_back("awesome  text");
-				expectedValues.push_back("-={ some  text }=-");
-				expectedValues.push_back("some  text");
-				expectedValues.push_back("**me  text");
-				expectedValues.push_back("some text");
 			}
 
-			void TearDown() override {
+			void TearDown() override
+			{
 
 			}
 		};
 
-		TEST_F(RotatingTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
-			// Arrange
-			const RotatingTransformationDecorator decorator(label, transformations);
+		//TEST_F(RandomTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
+		//	// Arrange
+		//	const string expected = "Some  text";
+		//	const RandomTransformationDecorator decorator(label, transformations);
 
-			// Act
-			string actual = decorator.getText();
+		//	// Act
+		//	string actual = decorator.getText();
 
-			// Assert
-			EXPECT_EQ(actual, expectedValues[0]);
-		}
+		//	// Assert
+		//	EXPECT_EQ(actual, expected);
+		//}
 
-		TEST_F(RotatingTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_Correctly) {
-			// Arrange
-			const RotatingTransformationDecorator decorator(label, transformations);
+		//TEST_F(RandomTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_Correctly) {
+		//	// Arrange
+		//	const string expected = "awesome  text";
+		//	const RandomTransformationDecorator decorator(label, transformations);
 
-			// Act
-			string actual = decorator.getText();
-			actual = decorator.getText();
+		//	// Act
+		//	string actual = decorator.getText();
+		//	actual = decorator.getText();
 
-			// Assert
-			EXPECT_EQ(actual, expectedValues[1]);
-		}
+		//	// Assert
+		//	EXPECT_EQ(actual, expected);
+		//}
 
-		TEST_F(RotatingTransformationDecoratorTest, Apply_ArbitraryNumberOfTimes_Yields_Correct_Result) {
-			// Arrange
-			const RotatingTransformationDecorator decorator(label, transformations);
+		//TEST_F(RandomTransformationDecoratorTest, Apply_ArbitraryNumberOfTimes_Yields_Correct_Result) {
+		//	// Arrange
+		//	const RandomTransformationDecorator decorator(label, transformations);
 
-			// Assert
-			for (int i = 0; i < transformations.size(); ++i)
-			{
-				const string actual = decorator.getText();
-				EXPECT_EQ(actual, expectedValues[i]);
-			}
-		}
+		//	// Assert
+		//	for (int i = 0; i < transformations.size(); ++i)
+		//	{
+		//		const string actual = decorator.getText();
+		//		EXPECT_EQ(actual, "");
+		//	}
+		//}
 	}
 }

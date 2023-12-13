@@ -18,5 +18,14 @@ namespace Problem2
 		CensorTransformation::CensorTransformation(string to_censor) : to_censor(std::move(to_censor))
 		{
 		}
+
+		bool CensorTransformation::operator==(const TextTransformation& other)
+		{
+			const CensorTransformation* cast = dynamic_cast<const CensorTransformation*>(&other);
+			if (!cast)
+				return false;
+
+			return to_censor == cast->to_censor;
+		}
 	}
 }

@@ -1,6 +1,5 @@
 #include "RandomTransformationDecorator.h"
 
-#include <pplinterface.h>
 
 namespace Problem2
 {
@@ -18,8 +17,7 @@ namespace Problem2
 		{
 			if (!m_transformations.empty())
 			{
-				int index = m_igenerator(m_re);
-				return m_transformations[index]->transform(m_label->getText());
+				return m_transformations[m_igenerator(m_re)]->transform(m_label->getText());
 			}
 
 			return m_label->getText();
