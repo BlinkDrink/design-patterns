@@ -22,9 +22,9 @@ namespace Problem2
 		private:
 			vector<unique_ptr<TextTransformation>> m_transformations;
 		public:
-			bool operator==(const TextTransformation& other) override;
-			void add(unique_ptr<TextTransformation>& transformation);
 			string transform(string text) const override;
+			bool operator==(const TextTransformation& other) override;
+			void add(unique_ptr<TextTransformation>& transformation) override;
 		};
 	}
 }

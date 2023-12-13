@@ -1,5 +1,7 @@
 #include "CensorTransformation.h"
 
+#include <memory>
+
 namespace Problem2
 {
 	namespace TextTransformations
@@ -26,6 +28,11 @@ namespace Problem2
 				return false;
 
 			return to_censor == cast->to_censor;
+		}
+
+		void CensorTransformation::add(std::unique_ptr<TextTransformation>& transformation)
+		{
+			// Does nothing unless it's CompositeTransformation
 		}
 	}
 }

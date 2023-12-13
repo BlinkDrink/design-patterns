@@ -47,17 +47,21 @@ int main()
 #pragma endregion
 
 #pragma region Composite test
+	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> ct1 = std::make_unique<Problem2::Composites::CompositeTransformation>();
 	//Problem2::Composites::CompositeTransformation ct;
-
-	//auto t1 = std::make_unique<Problem2::TextTransformations::CapitalizeTransformation>();
 
 	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt1 = std::make_unique<Problem2::TextTransformations::CapitalizeTransformation>();
 	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt2 = std::make_unique<Problem2::TextTransformations::DecorateTransformation>();
 	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt3 = std::make_unique<Problem2::TextTransformations::ReplaceTransformation>("abc", "def");
+	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt4 = std::make_unique<Problem2::TextTransformations::CensorTransformation>("e");
 
-	//ct.add(tt3);
+	//ct1->add(tt3);
+	//ct1->add(tt4);
+
+	//ct.add(ct1);
 	//ct.add(tt1);
 	//ct.add(tt2);
+
 
 	//cout << ct.transform("abc def");
 #pragma endregion

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <memory>
 
 using std::string;
 
@@ -7,6 +8,7 @@ namespace Problem2
 {
 	namespace TextTransformations
 	{
+		using std::unique_ptr;
 
 		/**
 		 * \brief Base class for the different algorithms we can apply to a label
@@ -15,6 +17,13 @@ namespace Problem2
 		{
 		public:
 			virtual bool operator==(const TextTransformation& other) = 0;
+
+			/**
+			 * \brief Used for adding children to the CompositeTransformation. For every other
+			 * transformation it does nothing
+			 * \param transformation - the transformation that will be added to the composite
+			 */
+			virtual void add(unique_ptr<TextTransformation>& transformation) = 0;
 			virtual string transform(string text) const = 0;
 			virtual ~TextTransformation() = default;
 		};

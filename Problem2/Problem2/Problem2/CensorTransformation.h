@@ -25,6 +25,7 @@ namespace Problem2
 			 * \return - true if object types and data member to_censor match
 			 */
 			bool operator==(const TextTransformation& other) override;
+			void add(std::unique_ptr<TextTransformation>& transformation) override;
 		};
 	}
 }
