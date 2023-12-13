@@ -1,6 +1,8 @@
 #include <iostream>
 
+#include "CapitalizeTransformation.h"
 #include "CensorTransformation.h"
+#include "CompositeTransformation.h"
 #include "DecorateTransformation.h"
 #include "Label.h"
 #include "LabelPrinter.h"
@@ -12,7 +14,8 @@
 
 int main()
 {
-	std::unique_ptr<Problem2::Labels::Label> label = std::make_unique<Problem2::Labels::SimpleLabel>("Hello world!    Hi ");
+#pragma region Decorator test
+	/*			std::unique_ptr<Problem2::Labels::Label> label = std::make_unique<Problem2::Labels::SimpleLabel>("Hello world!    Hi ");
 	std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt = std::make_unique<Problem2::TextTransformations::CensorTransformation>("l");
 	std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt2 = std::make_unique<Problem2::TextTransformations::ReplaceTransformation>("H", "y");
 
@@ -40,7 +43,25 @@ int main()
 
 	label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(Problem2::Decorators::RotatingTransformationDecorator));
 	cout << std::endl;
-	lp.print(*label);
+	lp.print(*label);*/
+#pragma endregion
+
+#pragma region Composite test
+	//Problem2::Composites::CompositeTransformation ct;
+
+	//auto t1 = std::make_unique<Problem2::TextTransformations::CapitalizeTransformation>();
+
+	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt1 = std::make_unique<Problem2::TextTransformations::CapitalizeTransformation>();
+	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt2 = std::make_unique<Problem2::TextTransformations::DecorateTransformation>();
+	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt3 = std::make_unique<Problem2::TextTransformations::ReplaceTransformation>("abc", "def");
+
+	//ct.add(tt3);
+	//ct.add(tt1);
+	//ct.add(tt2);
+
+	//cout << ct.transform("abc def");
+#pragma endregion
+
 
 	return 0;
 }

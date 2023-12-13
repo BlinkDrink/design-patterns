@@ -22,23 +22,9 @@ namespace Problem2
 		protected:
 			unique_ptr<Label> m_label;
 		public:
-			LabelDecoratorBase(unique_ptr<Label>& next)
-			{
-				if (next == nullptr)
-					throw invalid_argument("Reference to decorated object cannot be nullptr");
-				m_label = std::move(next);
-			}
+			LabelDecoratorBase(unique_ptr<Label>& next);
 
-			static unique_ptr<Label> removeDecoratorFrom(unique_ptr<Label>& from, const type_info& decoratorType)
-			{
-				LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(from.get());
-				if (decorator)
-				{
-					return decorator->removeDecorator(decoratorType);
-				}
-
-				return std::move(from);
-			}
+			static unique_ptr<Label> removeDecoratorFrom(unique_ptr<Label>& from, const type_info& decoratorType);
 
 			virtual unique_ptr<Label> removeDecorator(const type_info& decoratorType) = 0;
 

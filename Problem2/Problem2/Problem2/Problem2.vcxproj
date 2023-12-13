@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformation.cpp" />
     <ClCompile Include="CensorTransformation.cpp" />
+    <ClCompile Include="CompositeTransformation.cpp" />
     <ClCompile Include="DecorateTransformation.cpp" />
     <ClCompile Include="LabelDecoratorBase.cpp" />
     <ClCompile Include="LabelPrinter.cpp" />
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="CapitalizeTransformation.h" />
     <ClInclude Include="CensorTransformation.h" />
+    <ClInclude Include="CompositeTransformation.h" />
     <ClInclude Include="DecorateTransformation.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="LabelDecoratorBase.h" />

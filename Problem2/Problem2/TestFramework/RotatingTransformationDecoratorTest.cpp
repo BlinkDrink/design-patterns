@@ -7,8 +7,8 @@
 #include "../Problem2/NormalizeSpaceTransformation.h"
 #include "../Problem2/ReplaceTransformation.h"
 #include "../Problem2/RightTrimTransformation.h"
-#include "../Problem2/SimpleLabel.h"
 #include "../Problem2/RotatingTransformationDecorator.h"
+#include "../Problem2/SimpleLabel.h"
 #include "../Problem2/RotatingTransformationDecorator.cpp"
 
 namespace TestFramework

@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Transformations">
       <UniqueIdentifier>{1045cb25-a9ea-4589-b8e4-84f7d48f7eb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes\Composites">
+      <UniqueIdentifier>{4842d99d-a858-4644-81d2-0399938f066c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Composites">
+      <UniqueIdentifier>{03965eef-926b-4758-ba3b-798d5dcfc010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -82,7 +88,10 @@
       <Filter>Source Files\Labels</Filter>
     </ClCompile>
     <ClCompile Include="LabelDecoratorBase.cpp">
-      <Filter>Header Files\Concretes</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeTransformation.cpp">
+      <Filter>Source Files\Composites</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="SimpleLabel.h">
       <Filter>Header Files\Concretes\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeTransformation.h">
+      <Filter>Header Files\Concretes\Composites</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

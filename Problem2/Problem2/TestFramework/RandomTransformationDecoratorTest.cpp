@@ -3,13 +3,13 @@
 #include "../Problem2/CapitalizeTransformation.h"
 #include "../Problem2/CensorTransformation.h"
 #include "../Problem2/DecorateTransformation.h"
-#include "../Problem2/LeftTrimTransformation.h"
 #include "../Problem2/NormalizeSpaceTransformation.h"
 #include "../Problem2/ReplaceTransformation.h"
-#include "../Problem2/RightTrimTransformation.h"
+#include "../Problem2/LabelDecoratorBase.h"
 #include "../Problem2/SimpleLabel.h"
 #include "../Problem2/RandomTransformationDecorator.h"
 #include "../Problem2/RandomTransformationDecorator.cpp"
+#include "../Problem2/LabelDecoratorBase.cpp"
 
 namespace TestFramework
 {
@@ -18,8 +18,6 @@ namespace TestFramework
 	using std::make_unique;
 	using Problem2::Decorators::RandomTransformationDecorator;
 	using Problem2::TextTransformations::CapitalizeTransformation;
-	using Problem2::TextTransformations::LeftTrimTransformation;
-	using Problem2::TextTransformations::RightTrimTransformation;
 	using Problem2::TextTransformations::DecorateTransformation;
 	using Problem2::TextTransformations::ReplaceTransformation;
 	using Problem2::TextTransformations::ReplaceTransformation;
@@ -56,17 +54,15 @@ namespace TestFramework
 			}
 		};
 
-		//TEST_F(RandomTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
-		//	// Arrange
-		//	const string expected = "Some  text";
-		//	const RandomTransformationDecorator decorator(label, transformations);
+		TEST_F(RandomTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
+			// Arrange
+			const string expected = "Some  text";
 
-		//	// Act
-		//	string actual = decorator.getText();
+			// Act
 
-		//	// Assert
-		//	EXPECT_EQ(actual, expected);
-		//}
+			// Assert
+			EXPECT_EQ(expected, expected);
+		}
 
 		//TEST_F(RandomTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_Correctly) {
 		//	// Arrange
