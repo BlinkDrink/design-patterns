@@ -48,6 +48,17 @@ namespace Problem2
 
 			return *m_label == *(cast->m_label) && m_rotator == cast->m_rotator;
 		}
+
+		unique_ptr<Label> RotatingTransformationDecorator::removeDecoratorFrom(Label& from, Label& toRemove,
+			type_info& decoratorType)
+		{
+			return nullptr;
+		}
+
+		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(Label& toRemove, type_info& decoratorType)
+		{
+			return nullptr;
+		}
 	}
 }
 

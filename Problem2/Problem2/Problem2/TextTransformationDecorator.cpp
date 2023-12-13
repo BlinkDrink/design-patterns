@@ -5,6 +5,7 @@ namespace Problem2
 	namespace Decorators
 	{
 		using std::logic_error;
+		using std::make_unique;
 
 		TextTransformationDecorator::TextTransformationDecorator(unique_ptr<Label>& label,
 			unique_ptr<TextTransformation>& tt) : LabelDecoratorBase(label), m_transformation(std::move(tt))
@@ -33,6 +34,33 @@ namespace Problem2
 				return false;
 
 			return *m_label == *(cast->m_label) && *m_transformation == *(cast->m_transformation);
+		}
+
+		unique_ptr<Label> TextTransformationDecorator::removeDecoratorFrom(Label& label, Label& toRemove, type_info& decoratorType)
+		{
+			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(&label);
+			if (decorator)
+			{
+				return decorator->removeDecorator(toRemove, decoratorType);
+			}
+
+			return nullptr;
+		}
+
+		unique_ptr<Label> TextTransformationDecorator::removeDecorator(Label& toRemove, type_info& decoratorType)
+		{
+			if (typeid(*this) == decoratorType && *this == toRemove)
+			{
+				return std::move(m_label);
+			}
+
+			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
+			if (decorator) {
+				m_label = decorator->removeDecorator(toRemove, decoratorType);
+				return std::make_unique<TextTransformationDecorator>(m_label, m_transformation);
+			}
+
+			return std::make_unique<TextTransformationDecorator>(m_label, m_transformation);
 		}
 	}
 }

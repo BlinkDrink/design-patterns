@@ -20,7 +20,16 @@ namespace Problem2
 			 * \return - the newly transformed string
 			 */
 			string getText() const override;
+
+			/**
+			 * \brief Comparator - uses dynamic_cast
+			 * \param other - the object the comparison is done against
+			 * \return - true if the underlying label and transformation match, false otherwise
+			 */
 			bool operator==(const Label& other) const override;
+
+			unique_ptr<Label> removeDecoratorFrom(Label& label, Label& toRemove, type_info& decoratorType) override;
+			unique_ptr<Label> removeDecorator(Label& toRemove, type_info& decoratorType) override;
 		};
 	}
 }

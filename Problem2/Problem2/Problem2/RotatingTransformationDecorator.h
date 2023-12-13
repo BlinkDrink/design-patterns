@@ -28,6 +28,9 @@ namespace Problem2
 			 */
 			string getText() const override;
 			bool operator==(const Label& other) const override;
+
+			unique_ptr<Label> removeDecoratorFrom(Label& from, Label& toRemove, type_info& decoratorType) override;
+			unique_ptr<Label> removeDecorator(Label& toRemove, type_info& decoratorType) override;
 		};
 	}
 }
