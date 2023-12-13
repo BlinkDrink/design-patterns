@@ -1,5 +1,7 @@
 #include "RotatingTransformationDecorator.h"
 
+#include "TextTransformationDecorator.h"
+
 namespace Problem2
 {
 	namespace Decorators
@@ -49,15 +51,20 @@ namespace Problem2
 			return *m_label == *(cast->m_label) && m_rotator == cast->m_rotator;
 		}
 
-		unique_ptr<Label> RotatingTransformationDecorator::removeDecoratorFrom(Label& from, Label& toRemove,
-			type_info& decoratorType)
+		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const type_info& decoratorType)
 		{
-			return nullptr;
-		}
+			if (typeid(*this) == decoratorType)
+			{
+				return std::move(m_label);
+			}
 
-		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(Label& toRemove, type_info& decoratorType)
-		{
-			return nullptr;
+			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
+			if (decorator) {
+				m_label = decorator->removeDecorator(decoratorType);
+				return std::make_unique<RotatingTransformationDecorator>(m_label, m_transformations);
+			}
+
+			return std::make_unique<RotatingTransformationDecorator>(m_label, m_transformations);
 		}
 	}
 }

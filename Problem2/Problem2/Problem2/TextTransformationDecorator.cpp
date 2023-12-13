@@ -36,27 +36,16 @@ namespace Problem2
 			return *m_label == *(cast->m_label) && *m_transformation == *(cast->m_transformation);
 		}
 
-		unique_ptr<Label> TextTransformationDecorator::removeDecoratorFrom(Label& label, Label& toRemove, type_info& decoratorType)
+		unique_ptr<Label> TextTransformationDecorator::removeDecorator(const type_info& decoratorType)
 		{
-			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(&label);
-			if (decorator)
-			{
-				return decorator->removeDecorator(toRemove, decoratorType);
-			}
-
-			return nullptr;
-		}
-
-		unique_ptr<Label> TextTransformationDecorator::removeDecorator(Label& toRemove, type_info& decoratorType)
-		{
-			if (typeid(*this) == decoratorType && *this == toRemove)
+			if (typeid(*this) == decoratorType)
 			{
 				return std::move(m_label);
 			}
 
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
 			if (decorator) {
-				m_label = decorator->removeDecorator(toRemove, decoratorType);
+				m_label = decorator->removeDecorator(decoratorType);
 				return std::make_unique<TextTransformationDecorator>(m_label, m_transformation);
 			}
 

@@ -41,13 +41,7 @@ namespace Problem2
 			return *m_label == *(cast->m_label) && seed == cast->seed;
 		}
 
-		unique_ptr<Label> RandomTransformationDecorator::removeDecoratorFrom(Label& from, Label& toRemove,
-			type_info& decoratorType)
-		{
-			return nullptr;
-		}
-
-		unique_ptr<Label> RandomTransformationDecorator::removeDecorator(Label& toRemove, type_info& decoratorType)
+		unique_ptr<Label> RandomTransformationDecorator::removeDecorator(const type_info& decoratorType)
 		{
 			return nullptr;
 		}

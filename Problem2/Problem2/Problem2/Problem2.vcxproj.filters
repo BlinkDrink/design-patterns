@@ -81,6 +81,9 @@
     <ClCompile Include="SimpleLabel.cpp">
       <Filter>Source Files\Labels</Filter>
     </ClCompile>
+    <ClCompile Include="LabelDecoratorBase.cpp">
+      <Filter>Header Files\Concretes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">

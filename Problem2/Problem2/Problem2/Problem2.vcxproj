@@ -131,6 +131,7 @@
     <ClCompile Include="CapitalizeTransformation.cpp" />
     <ClCompile Include="CensorTransformation.cpp" />
     <ClCompile Include="DecorateTransformation.cpp" />
+    <ClCompile Include="LabelDecoratorBase.cpp" />
     <ClCompile Include="LabelPrinter.cpp" />
     <ClCompile Include="LeftTrimTransformation.cpp" />
     <ClCompile Include="main.cpp" />
