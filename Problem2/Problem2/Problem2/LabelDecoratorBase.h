@@ -29,16 +29,17 @@ namespace Problem2
 				m_label = std::move(next);
 			}
 
-			static unique_ptr<Label> removeDecoratorFrom(Label& from, const type_info& decoratorType)
+			static unique_ptr<Label> removeDecoratorFrom(unique_ptr<Label>& from, const type_info& decoratorType)
 			{
-				LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(&from);
+				LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(from.get());
 				if (decorator)
 				{
 					return decorator->removeDecorator(decoratorType);
 				}
 
-				return nullptr;
+				return std::move(from);
 			}
+
 			virtual unique_ptr<Label> removeDecorator(const type_info& decoratorType) = 0;
 
 			virtual string getText() const override = 0;

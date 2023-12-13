@@ -29,11 +29,14 @@ namespace Problem2
 
 		bool TextTransformationDecorator::operator==(const Label& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const TextTransformationDecorator* cast = dynamic_cast<const TextTransformationDecorator*>(&other);
 			if (!cast)
 				return false;
 
-			return *m_label == *(cast->m_label) && *m_transformation == *(cast->m_transformation);
+			return (*m_transformation == *(cast->m_transformation));
 		}
 
 		unique_ptr<Label> TextTransformationDecorator::removeDecorator(const type_info& decoratorType)

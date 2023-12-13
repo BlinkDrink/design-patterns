@@ -31,11 +31,15 @@ int main()
 	lp.print(*label);
 	cout << std::endl;
 
-	label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(*label, typeid(Problem2::Decorators::TextTransformationDecorator));
+	label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(Problem2::Decorators::TextTransformationDecorator));
 	lp.print(*label);
 	cout << std::endl;
-	label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(*label, typeid(Problem2::Decorators::TextTransformationDecorator));
-	//label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(*label, typeid(Problem2::Decorators::TextTransformationDecorator));
+	label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(Problem2::Decorators::TextTransformationDecorator));
+	lp.print(*label);
+	lp.print(*label);
+
+	label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(Problem2::Decorators::RotatingTransformationDecorator));
+	cout << std::endl;
 	lp.print(*label);
 
 	return 0;

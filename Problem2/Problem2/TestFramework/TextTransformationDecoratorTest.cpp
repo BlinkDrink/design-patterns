@@ -152,5 +152,36 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(decorator1, decorator2);
 		}
+
+		TEST_F(TextTransformationDecoratorTest, Correct_TransformationApplication_With_ChainedDecorators) {
+			// Arrange
+			const string expected = "Awesome  text";
+			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
+			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
+			label = make_unique<TextTransformationDecorator>(label, tt);
+			label = make_unique<TextTransformationDecorator>(label, transformation1);
+
+			// Act
+			string actual = label->getText();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, Correct_TransformationApplication_AfterRemoval_Of_Decorator) {
+			// Arrange
+			const string expected = "Awesome  text";
+			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
+			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
+			label = make_unique<TextTransformationDecorator>(label, tt);
+			label = make_unique<TextTransformationDecorator>(label, transformation1);
+			//label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(TextTransformationDecorator));
+
+			// Act
+			string actual = label->getText();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
 	}
 }

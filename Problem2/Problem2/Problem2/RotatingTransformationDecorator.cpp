@@ -35,6 +35,9 @@ namespace Problem2
 
 		bool RotatingTransformationDecorator::operator==(const Label& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const RotatingTransformationDecorator* cast = dynamic_cast<const RotatingTransformationDecorator*>(&other);
 			if (!cast)
 				return false;
@@ -48,7 +51,7 @@ namespace Problem2
 					return false;
 			}
 
-			return *m_label == *(cast->m_label) && m_rotator == cast->m_rotator;
+			return  m_rotator == cast->m_rotator;
 		}
 
 		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const type_info& decoratorType)

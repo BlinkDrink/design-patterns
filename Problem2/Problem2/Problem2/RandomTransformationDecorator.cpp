@@ -25,6 +25,9 @@ namespace Problem2
 
 		bool RandomTransformationDecorator::operator==(const Label& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const RandomTransformationDecorator* cast = dynamic_cast<const RandomTransformationDecorator*>(&other);
 			if (!cast)
 				return false;
@@ -38,12 +41,23 @@ namespace Problem2
 					return false;
 			}
 
-			return *m_label == *(cast->m_label) && seed == cast->seed;
+			return seed == cast->seed;
 		}
 
 		unique_ptr<Label> RandomTransformationDecorator::removeDecorator(const type_info& decoratorType)
 		{
-			return nullptr;
+			if (typeid(*this) == decoratorType)
+			{
+				return std::move(m_label);
+			}
+
+			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
+			if (decorator) {
+				m_label = decorator->removeDecorator(decoratorType);
+				return std::make_unique<RandomTransformationDecorator>(m_label, m_transformations, seed);
+			}
+
+			return std::make_unique<RandomTransformationDecorator>(m_label, m_transformations, seed);
 		}
 	}
 }
