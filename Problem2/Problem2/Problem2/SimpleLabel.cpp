@@ -12,5 +12,14 @@ namespace Problem2
 		{
 			return m_value;
 		}
+
+		bool SimpleLabel::operator==(const Label& other)
+		{
+			const SimpleLabel* cast = dynamic_cast<const SimpleLabel*>(&other);
+			if (!cast)
+				return false;
+
+			return m_value == cast->m_value;
+		}
 	}
 }

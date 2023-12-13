@@ -4,6 +4,8 @@ namespace Problem2
 {
 	namespace Decorators
 	{
+		using std::logic_error;
+
 		TextTransformationDecorator::TextTransformationDecorator(unique_ptr<Label>& label,
 			unique_ptr<TextTransformation>& tt) : LabelDecoratorBase(label), m_transformation(std::move(tt))
 		{
@@ -21,7 +23,7 @@ namespace Problem2
 				return m_label->getText();
 			}
 
-			return "";
+			throw logic_error("Reference to decorated object cannot be null when getting text");
 		}
 
 		bool TextTransformationDecorator::operator==(const Label& other)
@@ -30,7 +32,7 @@ namespace Problem2
 			if (!cast)
 				return false;
 
-			return m_transformation == cast->m_transformation;
+			return *m_label == *(cast->m_label) && *m_transformation == *(cast->m_transformation);
 		}
 	}
 }

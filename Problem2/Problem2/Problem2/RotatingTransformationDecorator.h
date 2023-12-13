@@ -27,6 +27,7 @@ namespace Problem2
 			 * \return - newly transformed string
 			 */
 			string getText() const override;
+			bool operator==(const Label& other) override;
 		};
 	}
 }

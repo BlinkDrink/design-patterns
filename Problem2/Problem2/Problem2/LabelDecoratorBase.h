@@ -15,7 +15,7 @@ namespace Problem2
 		using TextTransformations::TextTransformation;
 
 		/**
-		 * \brief Interface for all Decorator objects
+		 * \brief Abstract class for all Decorator objects
 		 */
 		class LabelDecoratorBase : public Label
 		{
@@ -29,8 +29,8 @@ namespace Problem2
 				m_label = std::move(next);
 			}
 
-			virtual bool operator==(const Label& other) = 0;
 			virtual string getText() const override = 0;
+			virtual bool operator==(const Label& other) override = 0;
 		};
 	}
 }

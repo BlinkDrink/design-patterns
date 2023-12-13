@@ -30,6 +30,24 @@ namespace Problem2
 
 			return "";
 		}
+
+		bool RotatingTransformationDecorator::operator==(const Label& other)
+		{
+			const RotatingTransformationDecorator* cast = dynamic_cast<const RotatingTransformationDecorator*>(&other);
+			if (!cast)
+				return false;
+
+			if (m_transformations.size() != cast->m_transformations.size())
+				return false;
+
+			for (size_t i = 0; i < m_transformations.size(); ++i)
+			{
+				if (!(*m_transformations[i] == *(cast->m_transformations[i])))
+					return false;
+			}
+
+			return *m_label == *(cast->m_label) && m_rotator == cast->m_rotator;
+		}
 	}
 }
 

@@ -18,6 +18,7 @@ namespace Problem2
 			RichLabel(const string& value, unsigned short font_size, const string& font_name, const string& text_color);
 
 			string getText() const override;
+			bool operator==(const Label& other) override;
 		};
 	}
 }

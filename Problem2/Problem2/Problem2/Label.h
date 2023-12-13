@@ -11,6 +11,7 @@ namespace Problem2
 		{
 		public:
 			virtual string getText() const = 0;
+			virtual bool operator==(const Label& other) = 0;
 			virtual ~Label() = default;
 		};
 	}

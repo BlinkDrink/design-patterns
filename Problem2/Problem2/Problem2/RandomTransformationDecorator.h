@@ -16,11 +16,12 @@ namespace Problem2
 		class RandomTransformationDecorator : public LabelDecoratorBase
 		{
 		private:
-			vector<unique_ptr<TextTransformation>> m_transformations;
+			long long seed = time(nullptr);
 			mutable default_random_engine m_re;
 			mutable uniform_int_distribution<int> m_igenerator;
+			vector<unique_ptr<TextTransformation>> m_transformations;
 		public:
-			RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed = time(nullptr));
+			RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed);
 
 			/**
 			 * \brief Apply a random transformation from the list of transformation each time
@@ -28,6 +29,7 @@ namespace Problem2
 			 * \return - newly transformed string following these rules
 			 */
 			string getText() const override;
+			bool operator==(const Label& other) override;
 		};
 	}
 }

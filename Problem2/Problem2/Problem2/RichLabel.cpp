@@ -12,5 +12,17 @@ namespace Problem2
 		{
 			return m_value;
 		}
+
+		bool RichLabel::operator==(const Label& other)
+		{
+			const RichLabel* cast = dynamic_cast<const RichLabel*>(&other);
+			if (!cast)
+				return false;
+
+			return m_value == cast->m_value
+				&& m_font_size == cast->m_font_size
+				&& m_font_name == cast->m_font_name
+				&& m_text_color == cast->m_text_color;
+		}
 	}
 }
