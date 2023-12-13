@@ -13,7 +13,7 @@ namespace Problem2
 		public:
 			SimpleLabel(const string& value);
 			string getText() const override;
-			bool operator==(const Label& other) override;
+			bool operator==(const Label& other) const override;
 		};
 	}
 }

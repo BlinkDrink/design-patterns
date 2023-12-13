@@ -13,7 +13,7 @@ namespace Problem2
 			return m_value;
 		}
 
-		bool SimpleLabel::operator==(const Label& other)
+		bool SimpleLabel::operator==(const Label& other) const
 		{
 			const SimpleLabel* cast = dynamic_cast<const SimpleLabel*>(&other);
 			if (!cast)

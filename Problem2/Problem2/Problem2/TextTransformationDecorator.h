@@ -20,7 +20,7 @@ namespace Problem2
 			 * \return - the newly transformed string
 			 */
 			string getText() const override;
-			bool operator==(const Label& other) override;
+			bool operator==(const Label& other) const override;
 		};
 	}
 }

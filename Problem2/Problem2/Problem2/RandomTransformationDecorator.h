@@ -29,7 +29,7 @@ namespace Problem2
 			 * \return - newly transformed string following these rules
 			 */
 			string getText() const override;
-			bool operator==(const Label& other) override;
+			bool operator==(const Label& other) const override;
 		};
 	}
 }

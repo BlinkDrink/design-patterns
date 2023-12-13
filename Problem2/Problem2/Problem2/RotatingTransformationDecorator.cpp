@@ -31,7 +31,7 @@ namespace Problem2
 			return "";
 		}
 
-		bool RotatingTransformationDecorator::operator==(const Label& other)
+		bool RotatingTransformationDecorator::operator==(const Label& other) const
 		{
 			const RotatingTransformationDecorator* cast = dynamic_cast<const RotatingTransformationDecorator*>(&other);
 			if (!cast)

@@ -23,7 +23,7 @@ namespace Problem2
 			return m_label->getText();
 		}
 
-		bool RandomTransformationDecorator::operator==(const Label& other)
+		bool RandomTransformationDecorator::operator==(const Label& other) const
 		{
 			const RandomTransformationDecorator* cast = dynamic_cast<const RandomTransformationDecorator*>(&other);
 			if (!cast)

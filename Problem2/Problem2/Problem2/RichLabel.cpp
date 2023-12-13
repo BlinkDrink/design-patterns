@@ -13,7 +13,7 @@ namespace Problem2
 			return m_value;
 		}
 
-		bool RichLabel::operator==(const Label& other)
+		bool RichLabel::operator==(const Label& other) const
 		{
 			const RichLabel* cast = dynamic_cast<const RichLabel*>(&other);
 			if (!cast)

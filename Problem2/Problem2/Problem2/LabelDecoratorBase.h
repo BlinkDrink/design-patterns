@@ -30,7 +30,7 @@ namespace Problem2
 			}
 
 			virtual string getText() const override = 0;
-			virtual bool operator==(const Label& other) override = 0;
+			virtual bool operator==(const Label& other) const override = 0;
 		};
 	}
 }

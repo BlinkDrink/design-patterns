@@ -26,7 +26,7 @@ namespace Problem2
 			throw logic_error("Reference to decorated object cannot be null when getting text");
 		}
 
-		bool TextTransformationDecorator::operator==(const Label& other)
+		bool TextTransformationDecorator::operator==(const Label& other) const
 		{
 			const TextTransformationDecorator* cast = dynamic_cast<const TextTransformationDecorator*>(&other);
 			if (!cast)
