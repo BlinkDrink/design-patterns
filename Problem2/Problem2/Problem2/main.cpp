@@ -72,6 +72,6 @@ int main()
 	p.getText();
 	p.getText();
 	p.getText();
-
+	cout << p.getText();
 	return 0;
 }

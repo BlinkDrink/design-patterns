@@ -36,6 +36,9 @@
     <ClCompile Include="RandomTransformationDecoratorTest.cpp">
       <Filter>Decorator</Filter>
     </ClCompile>
+    <ClCompile Include="ProxyLabelTest.cpp">
+      <Filter>Label</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
