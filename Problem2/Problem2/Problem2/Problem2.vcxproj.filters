@@ -93,6 +93,9 @@
     <ClCompile Include="CompositeTransformation.cpp">
       <Filter>Source Files\Composites</Filter>
     </ClCompile>
+    <ClCompile Include="ProxyLabel.cpp">
+      <Filter>Source Files\Labels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="CompositeTransformation.h">
       <Filter>Header Files\Concretes\Composites</Filter>
+    </ClInclude>
+    <ClInclude Include="ProxyLabel.h">
+      <Filter>Header Files\Concretes\Labels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
