@@ -25,7 +25,6 @@ namespace Problem2
 			LabelDecoratorBase(unique_ptr<Label>& next);
 
 			static unique_ptr<Label> removeDecoratorFrom(unique_ptr<Label>& from, const type_info& decoratorType);
-
 			virtual unique_ptr<Label> removeDecorator(const type_info& decoratorType) = 0;
 
 			virtual string getText() const override = 0;

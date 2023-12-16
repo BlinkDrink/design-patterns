@@ -67,11 +67,4 @@ int main()
 	//cout << ct.transform("abc def");
 #pragma endregion
 
-
-	Problem2::Labels::ProxyLabel p(3);
-	p.getText();
-	p.getText();
-	p.getText();
-	cout << p.getText();
-	return 0;
 }
