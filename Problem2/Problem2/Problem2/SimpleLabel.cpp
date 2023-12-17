@@ -4,13 +4,13 @@ namespace Problem2
 {
 	namespace Labels
 	{
-		SimpleLabel::SimpleLabel(const string& value) : m_value(value)
+		SimpleLabel::SimpleLabel(const string& value) : m_text(value)
 		{
 		}
 
 		string SimpleLabel::getText() const
 		{
-			return m_value;
+			return m_text;
 		}
 
 		bool SimpleLabel::operator==(const Label& other) const
@@ -19,7 +19,7 @@ namespace Problem2
 			if (!cast)
 				return false;
 
-			return m_value == cast->m_value;
+			return m_text == cast->m_text;
 		}
 	}
 }

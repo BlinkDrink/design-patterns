@@ -10,5 +10,11 @@ namespace Problem2
 		{
 			cout << label.getText();
 		}
+
+		void LabelPrinter::printWithHelpText(const Labels::HelpLabel& label)
+		{
+			print(label);
+			cout << "Some help information about this label: " << label.getHelpText();
+		}
 	}
 }

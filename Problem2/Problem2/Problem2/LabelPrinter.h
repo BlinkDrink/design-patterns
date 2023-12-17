@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+
+#include "HelpLabel.h"
 #include "Label.h"
 
 using std::cout;
@@ -14,7 +16,9 @@ namespace Problem2
 		class LabelPrinter
 		{
 		public:
-			void print(const Label& label);
+			static void print(const Label& label);
+			static void printWithHelpText(const Labels::HelpLabel& label);
+
 		};
 	}
 }

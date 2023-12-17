@@ -10,7 +10,7 @@ namespace Problem2
 		{
 		private:
 			unsigned short m_font_size;
-			string m_value;
+			string m_text;
 			string m_font_name;
 			string m_text_color;
 

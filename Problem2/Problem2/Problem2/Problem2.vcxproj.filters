@@ -96,6 +96,9 @@
     <ClCompile Include="ProxyLabel.cpp">
       <Filter>Source Files\Labels</Filter>
     </ClCompile>
+    <ClCompile Include="HelpLabel.cpp">
+      <Filter>Source Files\Labels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -150,6 +153,9 @@
       <Filter>Header Files\Concretes\Composites</Filter>
     </ClInclude>
     <ClInclude Include="ProxyLabel.h">
+      <Filter>Header Files\Concretes\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpLabel.h">
       <Filter>Header Files\Concretes\Labels</Filter>
     </ClInclude>
   </ItemGroup>

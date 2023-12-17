@@ -5,16 +5,17 @@ namespace Problem2
 {
 	namespace Labels
 	{
-		class SimpleLabel : public Label
+		class HelpLabel : public Label
 		{
 		private:
 			string m_text;
-
+			string m_help_text;
 		public:
-			SimpleLabel(const string& value);
 			string getText() const override;
+			string getHelpText() const;
 			bool operator==(const Label& other) const override;
 		};
 	}
 }
+
 
