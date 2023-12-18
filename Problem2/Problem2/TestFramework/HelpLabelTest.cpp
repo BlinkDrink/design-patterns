@@ -48,15 +48,14 @@ namespace TestFramework
 			// Arrange
 			string expected2 = "***_***_***_***";
 			string expected3 = "-={ def_def_def_def }=-";
+			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>(A, B);
 			unique_ptr<TextTransformation> tt1 = make_unique<CensorTransformation>(B);
 			unique_ptr<TextTransformation> tt2 = make_unique<DecorateTransformation>();
 			vector<unique_ptr<TextTransformation>> vtt;
 			vtt.push_back(std::move(tt1));
 			vtt.push_back(std::move(tt2));
 
-			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>(A, B);
 			unique_ptr<Label> l1 = std::make_unique<SimpleLabel>(input);
-
 			l1 = make_unique<TextTransformationDecorator>(l1, tt);
 			l1 = make_unique<RotatingTransformationDecorator>(l1, vtt);
 

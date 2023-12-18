@@ -1,11 +1,10 @@
 #include "RandomTransformationDecorator.h"
 
-
 namespace Problem2
 {
 	namespace Decorators
 	{
-		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed) : LabelDecoratorBase(next), m_transformations(std::move(tts)), seed(seed), m_re(seed)
+		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed) : LabelDecoratorBase(next), m_re(seed), m_transformations(std::move(tts))
 		{
 			if (!m_transformations.empty())
 			{

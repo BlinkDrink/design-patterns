@@ -13,10 +13,10 @@ namespace Problem2
 		class ProxyLabel : public Label
 		{
 		private:
+			mutable unique_ptr<Label> m_real_label;
 			mutable int m_timeout_threshold;
 			mutable int m_request_count;
 			mutable bool m_prompt_user;
-			mutable unique_ptr<Label> m_real_label;
 
 		public:
 			ProxyLabel(int timeout = 5);

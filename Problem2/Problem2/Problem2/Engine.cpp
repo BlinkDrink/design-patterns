@@ -1,9 +1,13 @@
 #include "Engine.h"
+#include <iostream>
 
 namespace Problem2
 {
 	namespace Engines
 	{
+		using std::cout;
+		using std::endl;
+
 		void Engine::menu() const
 		{
 
