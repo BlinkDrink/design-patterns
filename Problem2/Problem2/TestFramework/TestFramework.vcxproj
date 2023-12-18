@@ -102,12 +102,14 @@
     <ClCompile Include="CapitalizeTransformationTest.cpp" />
     <ClCompile Include="CensorTransformationTest.cpp" />
     <ClCompile Include="DecorateTransformationTest.cpp" />
+    <ClCompile Include="HelpLabelTest.cpp" />
     <ClCompile Include="LeftTrimTransformationTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NormalizeSpaceTransformationTest.cpp" />
     <ClCompile Include="ProxyLabelTest.cpp" />
     <ClCompile Include="RandomTransformationDecoratorTest.cpp" />
     <ClCompile Include="ReplaceTransformationTest.cpp" />
+    <ClCompile Include="RichLabelTest.cpp" />
     <ClCompile Include="RightTrimTransformationTest.cpp" />
     <ClCompile Include="RotatingTransformationDecoratorTest.cpp" />
     <ClCompile Include="SimpleLabelTest.cpp" />

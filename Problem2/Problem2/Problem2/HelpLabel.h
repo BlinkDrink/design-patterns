@@ -15,7 +15,7 @@ namespace Problem2
 			unique_ptr<Label> m_imp;
 			string m_help_text;
 		public:
-			HelpLabel(unique_ptr<Label>& implementation, const string& help_text);
+			HelpLabel(unique_ptr<Label>& implementation, string help_text);
 			string getText() const override;
 			string getHelpText() const;
 			bool operator==(const Label& other) const override;

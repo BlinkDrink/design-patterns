@@ -39,6 +39,12 @@
     <ClCompile Include="ProxyLabelTest.cpp">
       <Filter>Label</Filter>
     </ClCompile>
+    <ClCompile Include="RichLabelTest.cpp">
+      <Filter>Label</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpLabelTest.cpp">
+      <Filter>Label</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
