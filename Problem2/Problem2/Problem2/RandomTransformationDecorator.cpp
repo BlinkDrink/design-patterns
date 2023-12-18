@@ -37,11 +37,11 @@ namespace Problem2
 
 			for (size_t i = 0; i < m_transformations.size(); ++i)
 			{
-				if (!(*m_transformations[i] == *(cast->m_transformations[i])))
+				if (!(*m_transformations[i] == *cast->m_transformations[i]))
 					return false;
 			}
 
-			return seed == cast->seed;
+			return seed == cast->seed && *m_label == *cast->m_label;
 		}
 
 		unique_ptr<Label> RandomTransformationDecorator::removeDecorator(const type_info& decoratorType)

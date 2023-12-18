@@ -9,6 +9,7 @@
 #include "LabelDecoratorBase.h"
 #include "ProxyLabel.h"
 #include "ReplaceTransformation.h"
+#include "RichLabel.h"
 #include "RotatingTransformationDecorator.h"
 #include "SimpleLabel.h"
 #include "TextTransformationDecorator.h"
@@ -66,5 +67,19 @@ int main()
 
 	//cout << ct.transform("abc def");
 #pragma endregion
+
+	//std::unique_ptr<Problem2::Label> p = std::make_unique<Problem2::Labels::SimpleLabel>("Hello");
+
+	//std::unique_ptr<Problem2::TextTransformations::TextTransformation> tt = std::make_unique<Problem2::TextTransformations::DecorateTransformation>();
+
+	//std::unique_ptr<Problem2::Labels::Label> decorator = std::make_unique<Problem2::Decorators::TextTransformationDecorator>(p, tt);
+
+	//Problem2::Labels::SimpleLabel p1("Hello");
+
+	//string help = "I am very helpful";
+	//Problem2::Labels::HelpLabel p2(decorator, help);
+	//Problem2::LabelPrinters::LabelPrinter l;
+
+
 
 }

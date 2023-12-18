@@ -4,9 +4,13 @@ namespace Problem2
 {
 	namespace Labels
 	{
+		HelpLabel::HelpLabel(unique_ptr<Label>& implementation, const string& help_text) : m_imp(std::move(implementation)), m_help_text(help_text)
+		{
+		}
+
 		string HelpLabel::getText() const
 		{
-			return m_text;
+			return m_imp->getText();
 		}
 
 		string HelpLabel::getHelpText() const
@@ -20,7 +24,7 @@ namespace Problem2
 			if (!cast)
 				return false;
 
-			return m_text == cast->m_text && m_help_text == cast->m_help_text;
+			return m_imp == cast->m_imp && m_help_text == cast->m_help_text;
 		}
 	}
 }

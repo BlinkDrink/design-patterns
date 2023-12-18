@@ -18,7 +18,6 @@ namespace Problem2
 		public:
 			static void print(const Label& label);
 			static void printWithHelpText(const Labels::HelpLabel& label);
-
 		};
 	}
 }

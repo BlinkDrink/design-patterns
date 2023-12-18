@@ -47,11 +47,11 @@ namespace Problem2
 
 			for (size_t i = 0; i < m_transformations.size(); ++i)
 			{
-				if (!(*m_transformations[i] == *(cast->m_transformations[i])))
+				if (!(*m_transformations[i] == *cast->m_transformations[i]))
 					return false;
 			}
 
-			return  m_rotator == cast->m_rotator;
+			return  m_rotator == cast->m_rotator && *m_label == *cast->m_label;
 		}
 
 		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const type_info& decoratorType)

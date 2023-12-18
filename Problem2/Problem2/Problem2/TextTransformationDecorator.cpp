@@ -36,7 +36,7 @@ namespace Problem2
 			if (!cast)
 				return false;
 
-			return (*m_transformation == *(cast->m_transformation));
+			return *m_transformation == *cast->m_transformation && *m_label == *cast->m_label;
 		}
 
 		unique_ptr<Label> TextTransformationDecorator::removeDecorator(const type_info& decoratorType)
