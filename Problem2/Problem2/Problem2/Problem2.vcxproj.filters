@@ -99,6 +99,9 @@
     <ClCompile Include="HelpLabel.cpp">
       <Filter>Source Files\Labels</Filter>
     </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="HelpLabel.h">
       <Filter>Header Files\Concretes\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

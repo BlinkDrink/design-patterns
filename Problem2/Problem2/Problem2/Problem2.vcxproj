@@ -132,6 +132,7 @@
     <ClCompile Include="CensorTransformation.cpp" />
     <ClCompile Include="CompositeTransformation.cpp" />
     <ClCompile Include="DecorateTransformation.cpp" />
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="HelpLabel.cpp" />
     <ClCompile Include="LabelDecoratorBase.cpp" />
     <ClCompile Include="LabelPrinter.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="CensorTransformation.h" />
     <ClInclude Include="CompositeTransformation.h" />
     <ClInclude Include="DecorateTransformation.h" />
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="HelpLabel.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="LabelDecoratorBase.h" />

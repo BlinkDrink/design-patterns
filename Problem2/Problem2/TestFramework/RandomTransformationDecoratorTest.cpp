@@ -36,16 +36,24 @@ namespace TestFramework
 		class RandomTransformationDecoratorTest : public ::testing::Test {
 		protected:
 			unique_ptr<Label> label;
-			vector<unique_ptr<TextTransformation>> transformations;
+			vector<unique_ptr<TextTransformation>> transformations1;
+			vector<unique_ptr<TextTransformation>> transformations2;
 
 			void SetUp() override {
 				label = make_unique<SimpleLabel>(base_text);
-				transformations.push_back(make_unique<CapitalizeTransformation>());
-				transformations.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
-				transformations.push_back(make_unique<DecorateTransformation>());
-				transformations.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
-				transformations.push_back(make_unique<CensorTransformation>("so"));
-				transformations.push_back(make_unique<NormalizeSpaceTransformation>());
+				transformations1.push_back(make_unique<CapitalizeTransformation>());
+				transformations1.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
+				transformations1.push_back(make_unique<DecorateTransformation>());
+				transformations1.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
+				transformations1.push_back(make_unique<CensorTransformation>("so"));
+				transformations1.push_back(make_unique<NormalizeSpaceTransformation>());
+
+				transformations2.push_back(make_unique<CapitalizeTransformation>());
+				transformations2.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
+				transformations2.push_back(make_unique<DecorateTransformation>());
+				transformations2.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
+				transformations2.push_back(make_unique<CensorTransformation>("so"));
+				transformations2.push_back(make_unique<NormalizeSpaceTransformation>());
 			}
 
 			void TearDown() override
