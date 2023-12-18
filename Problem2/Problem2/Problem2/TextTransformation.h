@@ -16,11 +16,11 @@ namespace Problem2
 		class TextTransformation
 		{
 		public:
-			virtual bool operator==(const TextTransformation& other) = 0;
+			virtual bool operator==(const TextTransformation& other) const = 0;
 
 			/**
 			 * \brief Used for adding children to the CompositeTransformation. For every other
-			 * transformation it does nothing
+			 * transformation it does nothing. Chose transparency over safety
 			 * \param transformation - the transformation that will be added to the composite
 			 */
 			virtual void add(unique_ptr<TextTransformation>& transformation) = 0;

@@ -16,7 +16,7 @@ namespace Problem2
 			return text;
 		}
 
-		bool CapitalizeTransformation::operator==(const TextTransformation& other)
+		bool CapitalizeTransformation::operator==(const TextTransformation& other) const
 		{
 			return typeid(*this) == typeid(other);
 		}

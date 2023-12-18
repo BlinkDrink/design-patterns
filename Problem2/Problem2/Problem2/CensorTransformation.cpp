@@ -21,7 +21,7 @@ namespace Problem2
 		{
 		}
 
-		bool CensorTransformation::operator==(const TextTransformation& other)
+		bool CensorTransformation::operator==(const TextTransformation& other) const
 		{
 			const CensorTransformation* cast = dynamic_cast<const CensorTransformation*>(&other);
 			if (!cast)

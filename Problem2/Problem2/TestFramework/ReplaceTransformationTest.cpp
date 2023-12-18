@@ -22,7 +22,7 @@ namespace TestFramework
 			EXPECT_EQ(expected, s.transform(input));
 		}
 
-		TEST(ReplaceTransformation, UnalteredString_When_A_Equals_B_Replacement) {
+		TEST(ReplaceTransformation, ReplacementProducesUnalteredString_When_A_Equals_B) {
 			// Arrange
 			ReplaceTransformation s(A, A);
 
@@ -36,6 +36,30 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(expected2, s.transform(input));
+		}
+
+		TEST(ReplaceTransformation, Correct_Comparison_Of_SameReplaceTransformations) {
+			// Arrange
+			ReplaceTransformation s1(A, B);
+			ReplaceTransformation s2(A, B);
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_TRUE(check);
+		}
+
+		TEST(ReplaceTransformation, Correct_Comparison_Of_DifferentReplaceTransformations) {
+			// Arrange
+			ReplaceTransformation s1(A, B);
+			ReplaceTransformation s2(B, A);
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_FALSE(check);
 		}
 	}
 }

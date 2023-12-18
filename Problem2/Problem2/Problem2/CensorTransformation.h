@@ -24,7 +24,7 @@ namespace Problem2
 			 * \param other - the object the comparison is done against
 			 * \return - true if object types and data member to_censor match
 			 */
-			bool operator==(const TextTransformation& other) override;
+			bool operator==(const TextTransformation& other) const override;
 			void add(std::unique_ptr<TextTransformation>& transformation) override;
 		};
 	}

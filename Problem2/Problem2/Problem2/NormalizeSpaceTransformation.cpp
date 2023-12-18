@@ -32,7 +32,7 @@ namespace Problem2
 			return text;
 		}
 
-		bool NormalizeSpaceTransformation::operator==(const TextTransformation& other)
+		bool NormalizeSpaceTransformation::operator==(const TextTransformation& other) const
 		{
 			return typeid(*this) == typeid(other);
 		}

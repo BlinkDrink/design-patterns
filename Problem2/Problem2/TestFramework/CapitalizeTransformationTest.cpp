@@ -1,10 +1,12 @@
 #include "pch.h"
+#include "../Problem2/DecorateTransformation.h"
 #include "../Problem2/CapitalizeTransformation.h"
 #include "../Problem2/CapitalizeTransformation.cpp"
 
 namespace TestFramework
 {
 	using Problem2::TextTransformations::CapitalizeTransformation;
+	using Problem2::TextTransformations::DecorateTransformation;
 
 	namespace TextTransformationTests
 	{
@@ -17,6 +19,30 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
+		}
+
+		TEST(CapitalizeTransformation, Correct_Comparison_Of_SameCapitalizeTransformations) {
+			// Arrange
+			CapitalizeTransformation s1;
+			CapitalizeTransformation s2;
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_TRUE(check);
+		}
+
+		TEST(CapitalizeTransformation, Correct_Comparison_Of_DifferentCapitalizeTransformations) {
+			// Arrange
+			CapitalizeTransformation s1;
+			const DecorateTransformation s2;
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_FALSE(check);
 		}
 	}
 }

@@ -7,8 +7,8 @@ namespace Problem2
 	namespace Composites
 	{
 		using std::invalid_argument;
-
-		bool CompositeTransformation::operator==(const TextTransformation& other)
+		 
+		bool CompositeTransformation::operator==(const TextTransformation& other) const
 		{
 			const CompositeTransformation* cast = dynamic_cast<const CompositeTransformation*>(&other);
 			if (!cast)

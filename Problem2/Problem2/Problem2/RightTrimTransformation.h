@@ -21,7 +21,7 @@ namespace Problem2
 			 * \param other - the object the comparison is done against
 			 * \return - true if types match, false otherwise
 			 */
-			bool operator==(const TextTransformation& other) override;
+			bool operator==(const TextTransformation& other) const override;
 			void add(unique_ptr<TextTransformation>& transformation) override;
 		};
 	}

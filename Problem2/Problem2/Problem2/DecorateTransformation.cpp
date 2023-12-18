@@ -11,7 +11,7 @@ namespace Problem2
 			return "-={ " + text + " }=-";
 		}
 
-		bool DecorateTransformation::operator==(const TextTransformation& other)
+		bool DecorateTransformation::operator==(const TextTransformation& other) const
 		{
 			return typeid(*this) == typeid(other);
 		}

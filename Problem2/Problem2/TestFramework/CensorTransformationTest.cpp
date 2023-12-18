@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "../Problem2/CensorTransformation.h"
 #include "../Problem2/CensorTransformation.cpp"
+#include "../Problem2/DecorateTransformation.h"
 
 namespace TestFramework
 {
 	using Problem2::TextTransformations::CensorTransformation;
+	using Problem2::TextTransformations::DecorateTransformation;
 
 	namespace TextTransformationTests
 	{
@@ -18,6 +20,30 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
+		}
+
+		TEST(CensorTransformation, Correct_Comparison_Of_SameCensorTransformations) {
+			// Arrange
+			CensorTransformation s1(to_censor);
+			CensorTransformation s2(to_censor);
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_TRUE(check);
+		}
+
+		TEST(CensorTransformation, Correct_Comparison_Of_DifferentCensorTransformation) {
+			// Arrange
+			CensorTransformation s1(to_censor);
+			CensorTransformation s2(to_censor + "d");
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_FALSE(check);
 		}
 	}
 }
