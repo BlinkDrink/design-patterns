@@ -60,7 +60,40 @@ namespace TestFramework
 			}
 		};
 
-		TEST_F(RotatingTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
+		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecorators_WithSameTransformations_ReturnsTrue) {
+			// Arrange
+			vector<unique_ptr<TextTransformation>> transformations2;
+			transformations2.push_back(make_unique<CapitalizeTransformation>());
+			transformations2.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
+			transformations2.push_back(make_unique<DecorateTransformation>());
+			transformations2.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
+			transformations2.push_back(make_unique<CensorTransformation>("so"));
+			transformations2.push_back(make_unique<NormalizeSpaceTransformation>());
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
+			const RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), transformations2);
+
+			// Assert
+			EXPECT_EQ(decorator, decorator2);
+		}
+
+		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecorators_WithDifferentTransformations_ReturnsFalse) {
+			// Arrange
+			vector<unique_ptr<TextTransformation>> transformations2;
+			transformations2.push_back(make_unique<CapitalizeTransformation>());
+			transformations2.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
+			transformations2.push_back(make_unique<CensorTransformation>("so"));
+			transformations2.push_back(make_unique<NormalizeSpaceTransformation>());
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
+			const RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), transformations2);
+
+			// Act
+			const bool check = decorator == decorator2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(RotatingTransformationDecoratorTest, Apply_One_Transformation_ReturnsCorrectResult) {
 			// Arrange
 			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 
@@ -71,7 +104,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expectedValues[0]);
 		}
 
-		TEST_F(RotatingTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_Correctly) {
+		TEST_F(RotatingTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_ReturnsCorrectResult) {
 			// Arrange
 			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 

@@ -15,7 +15,7 @@ namespace Problem2
 			unsigned short m_font_size;
 
 		public:
-			RichLabel(const string& value, unsigned short font_size, const string& font_name, const string& text_color);
+			RichLabel(string value, unsigned short font_size, string font_name, string text_color);
 
 			string getText() const override;
 			bool operator==(const Label& other) const override;

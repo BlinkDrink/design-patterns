@@ -154,12 +154,14 @@
     <ClInclude Include="CensorTransformation.h" />
     <ClInclude Include="CompositeTransformation.h" />
     <ClInclude Include="DecorateTransformation.h" />
+    <ClInclude Include="DecoratorType.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="HelpLabel.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="LabelDecoratorBase.h" />
     <ClInclude Include="LabelFactory.h" />
     <ClInclude Include="LabelPrinter.h" />
+    <ClInclude Include="LabelTypes.h" />
     <ClInclude Include="LeftTrimTransformation.h" />
     <ClInclude Include="NormalizeSpaceTransformation.h" />
     <ClInclude Include="ProxyLabel.h" />
