@@ -6,6 +6,8 @@ namespace Problem2
 {
 	namespace Decorators
 	{
+		using std::make_unique;
+
 		RotatingTransformationDecorator::RotatingTransformationDecorator(unique_ptr<Label> next,
 			vector<unique_ptr<TextTransformation>>& transformations)
 			: LabelDecoratorBase(std::move(next)), m_transformations(std::move(transformations)), m_rotator(0)
@@ -54,20 +56,20 @@ namespace Problem2
 			return  m_rotator == cast->m_rotator;
 		}
 
-		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const type_info& decoratorType)
+		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const LabelDecoratorBase& toRemove)
 		{
-			if (typeid(*this) == decoratorType)
+			if (*this == toRemove)
 			{
 				return std::move(m_label);
 			}
 
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
 			if (decorator) {
-				m_label = decorator->removeDecorator(decoratorType);
-				return std::make_unique<RotatingTransformationDecorator>(std::move(m_label), m_transformations);
+				m_label = decorator->removeDecorator(toRemove);
+				return make_unique<RotatingTransformationDecorator>(std::move(m_label), m_transformations);
 			}
 
-			return std::make_unique<RotatingTransformationDecorator>(std::move(m_label), m_transformations);
+			return make_unique<RotatingTransformationDecorator>(std::move(m_label), m_transformations);
 		}
 	}
 }

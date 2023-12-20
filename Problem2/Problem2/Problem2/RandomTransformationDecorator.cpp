@@ -4,6 +4,8 @@ namespace Problem2
 {
 	namespace Decorators
 	{
+		using std::make_unique;
+
 		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label> next, vector<unique_ptr<TextTransformation>>& tts, long long seed) : LabelDecoratorBase(std::move(next)), m_transformations(std::move(tts)), m_re(seed)
 		{
 			if (!m_transformations.empty())
@@ -43,20 +45,20 @@ namespace Problem2
 			return seed == cast->seed;
 		}
 
-		unique_ptr<Label> RandomTransformationDecorator::removeDecorator(const type_info& decoratorType)
+		unique_ptr<Label> RandomTransformationDecorator::removeDecorator(const LabelDecoratorBase& toRemove)
 		{
-			if (typeid(*this) == decoratorType)
+			if (*this == toRemove)
 			{
 				return std::move(m_label);
 			}
 
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
 			if (decorator) {
-				m_label = decorator->removeDecorator(decoratorType);
-				return std::make_unique<RandomTransformationDecorator>(std::move(m_label), m_transformations, seed);
+				m_label = decorator->removeDecorator(toRemove);
+				return make_unique<RandomTransformationDecorator>(std::move(m_label), m_transformations, seed);
 			}
 
-			return std::make_unique<RandomTransformationDecorator>(std::move(m_label), m_transformations, seed);
+			return make_unique<RandomTransformationDecorator>(std::move(m_label), m_transformations, seed);
 		}
 	}
 }

@@ -11,12 +11,11 @@ namespace Problem2
 			m_label = std::move(next);
 		}
 
-		unique_ptr<Label> LabelDecoratorBase::removeDecoratorFrom(unique_ptr<Label> from,
-			const type_info& decoratorType)
+		unique_ptr<Label> LabelDecoratorBase::removeDecoratorFrom(unique_ptr<Label> from, const LabelDecoratorBase& toRemove)
 		{
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(from.get());
 			if (decorator)
-				return decorator->removeDecorator(decoratorType);
+				return decorator->removeDecorator(toRemove);
 
 			return std::move(from);
 		}

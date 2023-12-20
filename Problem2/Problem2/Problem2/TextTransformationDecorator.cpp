@@ -10,6 +10,11 @@ namespace Problem2
 		TextTransformationDecorator::TextTransformationDecorator(unique_ptr<Label> label,
 			unique_ptr<TextTransformation> tt) : LabelDecoratorBase(std::move(label)), m_transformation(std::move(tt))
 		{
+			if (!m_label)
+				throw invalid_argument("Reference to decorated object cannot be null");
+
+			if (!m_transformation)
+				throw invalid_argument("Reference to text transformation object cannot be null when creating TextTransformationDecorator");
 		}
 
 		string TextTransformationDecorator::getText() const
@@ -17,11 +22,6 @@ namespace Problem2
 			if (m_label && m_transformation)
 			{
 				return m_transformation->transform(m_label->getText());
-			}
-
-			if (m_label && !m_transformation)
-			{
-				return m_label->getText();
 			}
 
 			throw logic_error("Reference to decorated object cannot be null when getting text");
@@ -39,20 +39,20 @@ namespace Problem2
 			return *m_transformation == *cast->m_transformation;
 		}
 
-		unique_ptr<Label> TextTransformationDecorator::removeDecorator(const type_info& decoratorType)
+		unique_ptr<Label> TextTransformationDecorator::removeDecorator(const LabelDecoratorBase& toRemove)
 		{
-			if (typeid(*this) == decoratorType)
+			if (*this == toRemove)
 			{
 				return std::move(m_label);
 			}
 
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
 			if (decorator) {
-				m_label = decorator->removeDecorator(decoratorType);
-				return std::make_unique<TextTransformationDecorator>(std::move(m_label), std::move(m_transformation));
+				m_label = decorator->removeDecorator(toRemove);
+				return make_unique<TextTransformationDecorator>(std::move(m_label), std::move(m_transformation));
 			}
 
-			return std::make_unique<TextTransformationDecorator>(std::move(m_label), std::move(m_transformation));
+			return make_unique<TextTransformationDecorator>(std::move(m_label), std::move(m_transformation));
 		}
 	}
 }

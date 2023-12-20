@@ -152,7 +152,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Comparison_Of_SameTextTransformations_ReturnsTrue) {
+		TEST_F(TextTransformationDecoratorTest, Comparison_Of_SameTextTransformationDecorators_ReturnsTrue) {
 			// Arrange
 			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
 			const TextTransformationDecorator decorator2(std::move(label2), std::move(transformation2));
@@ -161,7 +161,7 @@ namespace TestFramework
 			EXPECT_EQ(decorator1, decorator2);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Comparison_Of_TextTransformations_WithDifferentUnderylingLabels_ReturnsTrue) {
+		TEST_F(TextTransformationDecoratorTest, Comparison_Of_TextTransformationDecorators_WithDifferentUnderylingLabels_ReturnsTrue) {
 			// Arrange
 			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
 			const TextTransformationDecorator decorator2(std::move(label3), std::move(transformation2));
@@ -170,7 +170,7 @@ namespace TestFramework
 			EXPECT_EQ(decorator1, decorator2);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Comparison_Of_TextTransformations_WithDifferentTransformations_ReturnsFalse) {
+		TEST_F(TextTransformationDecoratorTest, Comparison_Of_TextTransformationDectorators_WithDifferentTransformations_ReturnsFalse) {
 			// Arrange
 			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
 			const TextTransformationDecorator decorator2(std::move(label3), std::move(transformation3));
@@ -197,20 +197,45 @@ namespace TestFramework
 			EXPECT_EQ(expected, actual);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, TransformationApplication_AfterRemoval_Of_Decorator_ReturnsCorrectResult) {
+		TEST_F(TextTransformationDecoratorTest, TransformationApplication_AfterRemovalOfDecorator_ReturnsCorrectResult) {
 			// Arrange
-			const string expected = "Awesome  text";
+			const string expected = "Somk  tkxt";
 			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
 			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
+			unique_ptr<TextTransformation> tt2 = make_unique<ReplaceTransformation>("e", "k");
 			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(tt));
 			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(transformation1));
-			//label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(TextTransformationDecorator));
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(tt2));
+			const TextTransformationDecorator toRemove(make_unique<SimpleLabel>("something"), make_unique<ReplaceTransformation>("so", "aweso"));
+			label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(label), toRemove);
 
 			// Act
 			string actual = label->getText();
 
 			// Assert
 			EXPECT_EQ(expected, actual);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, TransformationApplication_AfterRemovalOfAllDecorators_ReturnsCorrectResult) {
+			// Arrange
+			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
+			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
+			unique_ptr<TextTransformation> tt2 = make_unique<ReplaceTransformation>("e", "k");
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(tt));
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(transformation1));
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(tt2));
+			const TextTransformationDecorator toRemove(make_unique<SimpleLabel>("something"), make_unique<ReplaceTransformation>("so", "aweso"));
+			const TextTransformationDecorator toRemove2(make_unique<SimpleLabel>("something"), make_unique<CapitalizeTransformation>());
+			const TextTransformationDecorator toRemove3(make_unique<SimpleLabel>("something"), make_unique<ReplaceTransformation>("e", "k"));
+			label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(label), toRemove);
+			label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(label), toRemove2);
+			label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(label), toRemove3);
+
+			// Act
+			string actual = label->getText();
+
+			// Assert
+			EXPECT_EQ(base_text, actual);
 		}
 	}
 }
