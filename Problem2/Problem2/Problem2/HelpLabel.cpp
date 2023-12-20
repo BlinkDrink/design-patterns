@@ -1,19 +1,24 @@
 #include "HelpLabel.h"
 
+#include <stdexcept>
+
 namespace Problem2
 {
 	namespace Labels
 	{
-		HelpLabel::HelpLabel(unique_ptr<Label> implementation, string help_text) : m_imp(std::move(implementation)), m_help_text(std::move(help_text))
+		using std::invalid_argument;
+
+		HelpLabel::HelpLabel(unique_ptr<Label> implementation, string help_text) : m_help_text(std::move(help_text))
 		{
+			if (!implementation)
+				throw invalid_argument("Reference to underlying label cannot be null");
+
+			m_imp = std::move(implementation);
 		}
 
 		string HelpLabel::getText() const
 		{
-			if (m_imp)
-				return m_imp->getText();
-
-			return "";
+			return m_imp->getText();
 		}
 
 		string HelpLabel::getHelpText() const

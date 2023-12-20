@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Composites">
       <UniqueIdentifier>{03965eef-926b-4758-ba3b-798d5dcfc010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Factories">
+      <UniqueIdentifier>{b3c7b20a-4080-4edb-87ae-32ac073633f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Factories">
+      <UniqueIdentifier>{2292a81f-54d8-4bab-b011-39880f2c4b59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -101,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LabelFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelFactory.h">
+      <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

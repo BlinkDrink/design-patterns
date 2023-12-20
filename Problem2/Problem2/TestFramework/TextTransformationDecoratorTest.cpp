@@ -6,6 +6,7 @@
 #include "../Problem2/LeftTrimTransformation.h"
 #include "../Problem2/NormalizeSpaceTransformation.h"
 #include "../Problem2/ReplaceTransformation.h"
+#include "../Problem2/RichLabel.h"
 #include "../Problem2/RightTrimTransformation.h"
 #include "../Problem2/SimpleLabel.h"
 #include "../Problem2/TextTransformationDecorator.h"
@@ -35,15 +36,22 @@ namespace TestFramework
 		protected:
 			unique_ptr<Label> label1;
 			unique_ptr<Label> label2;
+			unique_ptr<Label> label3;
 			unique_ptr<TextTransformation> transformation1;
 			unique_ptr<TextTransformation> transformation2;
+			unique_ptr<TextTransformation> transformation3;
 			string base_text = "some  text";
+			string A = "abc";
+			string B = "def";
+
 
 			void SetUp() override {
 				label1 = make_unique<SimpleLabel>(base_text);
 				label2 = make_unique<SimpleLabel>(base_text);
+				label3 = make_unique<SimpleLabel>(base_text + "abc");
 				transformation1 = make_unique<CapitalizeTransformation>();
 				transformation2 = make_unique<CapitalizeTransformation>();
+				transformation3 = make_unique<ReplaceTransformation>(A, B);
 			}
 
 			void TearDown() override {
@@ -51,7 +59,7 @@ namespace TestFramework
 			}
 		};
 
-		TEST_F(TextTransformationDecoratorTest, Apply_CapitalizeTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_CapitalizeTransformation_ReturnsCorrectResult) {
 			// Arrange
 			const string expected = "Some  text";
 			TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
@@ -63,7 +71,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Apply_CensorTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_CensorTransformation_ReturnsCorrectResult) {
 			// Arrange
 			const string expected = "**me  text";
 			unique_ptr<TextTransformation> tt = make_unique<CensorTransformation>("so");
@@ -76,7 +84,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Apply_ReplaceTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_ReplaceTransformation_ReturnsCorrectResult) {
 			// Arrange
 			const string expected = "awesome  text";
 			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
@@ -89,7 +97,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Apply_NormalizeSpaceTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_NormalizeSpaceTransformation_ReturnsCorrectResult) {
 			// Arrange
 			const string expected = "some text";
 			unique_ptr<TextTransformation> tt = make_unique<NormalizeSpaceTransformation>();
@@ -102,7 +110,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Apply_LeftTrimTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_LeftTrimTransformation_ReturnsCorrectResult) {
 			// Arrange
 			unique_ptr<TextTransformation> ltt = make_unique<LeftTrimTransformation>();
 			unique_ptr<Label> l = make_unique<SimpleLabel>(" " + base_text);
@@ -116,7 +124,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Apply_RightTrimTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_RightTrimTransformation_ReturnsCorrectResult) {
 			// Arrange
 			unique_ptr<Label> l = make_unique<SimpleLabel>(base_text + " ");
 			unique_ptr<TextTransformation> ltt = make_unique<RightTrimTransformation>();
@@ -130,7 +138,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Apply_DecorateTransformation) {
+		TEST_F(TextTransformationDecoratorTest, Apply_DecorateTransformation_ReturnsCorrectResult) {
 			// Arrange
 			unique_ptr<TextTransformation> ltt = make_unique<DecorateTransformation>();
 			unique_ptr<Label> l = make_unique<SimpleLabel>(base_text);
@@ -144,7 +152,7 @@ namespace TestFramework
 			EXPECT_EQ(actual, expected);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Correct_Comparison_Of_TextTransformations) {
+		TEST_F(TextTransformationDecoratorTest, Comparison_Of_SameTextTransformations_ReturnsTrue) {
 			// Arrange
 			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
 			const TextTransformationDecorator decorator2(std::move(label2), std::move(transformation2));
@@ -153,7 +161,28 @@ namespace TestFramework
 			EXPECT_EQ(decorator1, decorator2);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Correct_TransformationApplication_With_ChainedDecorators) {
+		TEST_F(TextTransformationDecoratorTest, Comparison_Of_TextTransformations_WithDifferentUnderylingLabels_ReturnsTrue) {
+			// Arrange
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
+			const TextTransformationDecorator decorator2(std::move(label3), std::move(transformation2));
+
+			// Assert
+			EXPECT_EQ(decorator1, decorator2);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, Comparison_Of_TextTransformations_WithDifferentTransformations_ReturnsFalse) {
+			// Arrange
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
+			const TextTransformationDecorator decorator2(std::move(label3), std::move(transformation3));
+
+			// Act
+			const bool check = decorator1 == decorator2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, TransformationApplication_With_ChainedTextTransformationDecorators_ReturnsCorrectResult) {
 			// Arrange
 			const string expected = "Awesome  text";
 			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
@@ -168,7 +197,7 @@ namespace TestFramework
 			EXPECT_EQ(expected, actual);
 		}
 
-		TEST_F(TextTransformationDecoratorTest, Correct_TransformationApplication_AfterRemoval_Of_Decorator) {
+		TEST_F(TextTransformationDecoratorTest, TransformationApplication_AfterRemoval_Of_Decorator_ReturnsCorrectResult) {
 			// Arrange
 			const string expected = "Awesome  text";
 			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
