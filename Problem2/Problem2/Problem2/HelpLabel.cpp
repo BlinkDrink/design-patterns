@@ -4,7 +4,7 @@ namespace Problem2
 {
 	namespace Labels
 	{
-		HelpLabel::HelpLabel(unique_ptr<Label>& implementation, string help_text) : m_imp(std::move(implementation)), m_help_text(std::move(help_text))
+		HelpLabel::HelpLabel(unique_ptr<Label> implementation, string help_text) : m_imp(std::move(implementation)), m_help_text(std::move(help_text))
 		{
 		}
 

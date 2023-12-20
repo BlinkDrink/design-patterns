@@ -62,7 +62,7 @@ namespace TestFramework
 
 		TEST_F(RotatingTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
 			// Arrange
-			const RotatingTransformationDecorator decorator(label, transformations);
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 
 			// Act
 			string actual = decorator.getText();
@@ -73,7 +73,7 @@ namespace TestFramework
 
 		TEST_F(RotatingTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_Correctly) {
 			// Arrange
-			const RotatingTransformationDecorator decorator(label, transformations);
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 
 			// Act
 			string actual = decorator.getText();
@@ -85,7 +85,7 @@ namespace TestFramework
 
 		TEST_F(RotatingTransformationDecoratorTest, Apply_ArbitraryNumberOfTimes_Yields_Correct_Result) {
 			// Arrange
-			const RotatingTransformationDecorator decorator(label, transformations);
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 
 			// Assert
 			for (int i = 0; i < transformations.size(); ++i)

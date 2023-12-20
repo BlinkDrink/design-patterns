@@ -13,7 +13,7 @@ namespace Problem2
 		private:
 			unique_ptr<TextTransformation> m_transformation;
 		public:
-			TextTransformationDecorator(unique_ptr<Label>& label, unique_ptr<TextTransformation>& tt);
+			TextTransformationDecorator(unique_ptr<Label> label, unique_ptr<TextTransformation> tt);
 
 			/**
 			 * \brief Applies the given transformation on the underlying label after it performs its getText operation

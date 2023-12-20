@@ -6,14 +6,14 @@ namespace Problem2
 {
 	namespace Decorators
 	{
-		RotatingTransformationDecorator::RotatingTransformationDecorator(unique_ptr<Label>& next,
+		RotatingTransformationDecorator::RotatingTransformationDecorator(unique_ptr<Label> next,
 			vector<unique_ptr<TextTransformation>>& transformations)
-			: LabelDecoratorBase(next), m_rotator(0)
+			: LabelDecoratorBase(std::move(next)), m_transformations(std::move(transformations)), m_rotator(0)
 		{
-			for (unique_ptr<TextTransformation>& transformation : transformations)
-			{
-				m_transformations.push_back(std::move(transformation));
-			}
+			//for (unique_ptr<TextTransformation>& transformation : transformations)
+			//{
+			//	m_transformations.push_back(std::move(transformation));
+			//}
 		}
 
 		string RotatingTransformationDecorator::getText() const
@@ -51,7 +51,7 @@ namespace Problem2
 					return false;
 			}
 
-			return  m_rotator == cast->m_rotator && *m_label == *cast->m_label;
+			return  m_rotator == cast->m_rotator;
 		}
 
 		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const type_info& decoratorType)
@@ -64,10 +64,10 @@ namespace Problem2
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
 			if (decorator) {
 				m_label = decorator->removeDecorator(decoratorType);
-				return std::make_unique<RotatingTransformationDecorator>(m_label, m_transformations);
+				return std::make_unique<RotatingTransformationDecorator>(std::move(m_label), m_transformations);
 			}
 
-			return std::make_unique<RotatingTransformationDecorator>(m_label, m_transformations);
+			return std::make_unique<RotatingTransformationDecorator>(std::move(m_label), m_transformations);
 		}
 	}
 }

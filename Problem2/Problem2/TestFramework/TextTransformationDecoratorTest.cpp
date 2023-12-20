@@ -54,7 +54,7 @@ namespace TestFramework
 		TEST_F(TextTransformationDecoratorTest, Apply_CapitalizeTransformation) {
 			// Arrange
 			const string expected = "Some  text";
-			const TextTransformationDecorator decorator1(label1, transformation1);
+			TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
 
 			// Act
 			string actual = decorator1.getText();
@@ -67,7 +67,7 @@ namespace TestFramework
 			// Arrange
 			const string expected = "**me  text";
 			unique_ptr<TextTransformation> tt = make_unique<CensorTransformation>("so");
-			const TextTransformationDecorator decorator1(label1, tt);
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(tt));
 
 			// Act
 			string actual = decorator1.getText();
@@ -80,7 +80,7 @@ namespace TestFramework
 			// Arrange
 			const string expected = "awesome  text";
 			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
-			const TextTransformationDecorator decorator1(label1, tt);
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(tt));
 
 			// Act
 			string actual = decorator1.getText();
@@ -93,7 +93,7 @@ namespace TestFramework
 			// Arrange
 			const string expected = "some text";
 			unique_ptr<TextTransformation> tt = make_unique<NormalizeSpaceTransformation>();
-			const TextTransformationDecorator decorator1(label1, tt);
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(tt));
 
 			// Act
 			string actual = decorator1.getText();
@@ -106,7 +106,7 @@ namespace TestFramework
 			// Arrange
 			unique_ptr<TextTransformation> ltt = make_unique<LeftTrimTransformation>();
 			unique_ptr<Label> l = make_unique<SimpleLabel>(" " + base_text);
-			const TextTransformationDecorator decorator(l, ltt);
+			const TextTransformationDecorator decorator(std::move(l), std::move(ltt));
 			const string expected = "some  text";
 
 			// Act
@@ -118,9 +118,9 @@ namespace TestFramework
 
 		TEST_F(TextTransformationDecoratorTest, Apply_RightTrimTransformation) {
 			// Arrange
-			unique_ptr<TextTransformation> ltt = make_unique<RightTrimTransformation>();
 			unique_ptr<Label> l = make_unique<SimpleLabel>(base_text + " ");
-			const TextTransformationDecorator decorator(l, ltt);
+			unique_ptr<TextTransformation> ltt = make_unique<RightTrimTransformation>();
+			const TextTransformationDecorator decorator(std::move(l), std::move(ltt));
 			const string expected = "some  text";
 
 			// Act
@@ -134,7 +134,7 @@ namespace TestFramework
 			// Arrange
 			unique_ptr<TextTransformation> ltt = make_unique<DecorateTransformation>();
 			unique_ptr<Label> l = make_unique<SimpleLabel>(base_text);
-			const TextTransformationDecorator decorator(l, ltt);
+			TextTransformationDecorator decorator(std::move(l), std::move(ltt));
 			const string expected = "-={ some  text }=-";
 
 			// Act
@@ -146,8 +146,8 @@ namespace TestFramework
 
 		TEST_F(TextTransformationDecoratorTest, Correct_Comparison_Of_TextTransformations) {
 			// Arrange
-			const TextTransformationDecorator decorator1(label1, transformation1);
-			const TextTransformationDecorator decorator2(label2, transformation2);
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
+			const TextTransformationDecorator decorator2(std::move(label2), std::move(transformation2));
 
 			// Assert
 			EXPECT_EQ(decorator1, decorator2);
@@ -158,8 +158,8 @@ namespace TestFramework
 			const string expected = "Awesome  text";
 			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
 			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
-			label = make_unique<TextTransformationDecorator>(label, tt);
-			label = make_unique<TextTransformationDecorator>(label, transformation1);
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(tt));
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(transformation1));
 
 			// Act
 			string actual = label->getText();
@@ -173,8 +173,8 @@ namespace TestFramework
 			const string expected = "Awesome  text";
 			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
 			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>("so", "aweso");
-			label = make_unique<TextTransformationDecorator>(label, tt);
-			label = make_unique<TextTransformationDecorator>(label, transformation1);
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(tt));
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(transformation1));
 			//label = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(label, typeid(TextTransformationDecorator));
 
 			// Act

@@ -77,7 +77,7 @@ namespace Problem2
 			return m_timeout_threshold == cast->m_timeout_threshold &&
 				m_prompt_user == cast->m_prompt_user &&
 				m_request_count == cast->m_request_count &&
-				m_real_label->getText() == cast->getText();
+				*m_real_label == *(cast->m_real_label);
 		}
 	}
 }

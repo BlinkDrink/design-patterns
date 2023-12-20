@@ -37,7 +37,7 @@ namespace TestFramework
 		TEST(HelpLabel, Correct_Return_Of_Values) {
 			// Arrange
 			unique_ptr<Label> l = std::make_unique<SimpleLabel>(expected);
-			const HelpLabel s(l, expected_help_message);
+			const HelpLabel s(std::move(l), expected_help_message);
 
 			// Assert
 			EXPECT_EQ(expected, s.getText());
@@ -56,10 +56,10 @@ namespace TestFramework
 			vtt.push_back(std::move(tt2));
 
 			unique_ptr<Label> l1 = std::make_unique<SimpleLabel>(input);
-			l1 = make_unique<TextTransformationDecorator>(l1, tt);
-			l1 = make_unique<RotatingTransformationDecorator>(l1, vtt);
+			l1 = make_unique<TextTransformationDecorator>(std::move(l1), std::move(tt));
+			l1 = make_unique<RotatingTransformationDecorator>(std::move(l1), vtt);
 
-			const HelpLabel s(l1, expected_help_message);
+			const HelpLabel s(std::move(l1), expected_help_message);
 
 			// Assert
 			EXPECT_EQ(expected2, s.getText());
@@ -70,9 +70,9 @@ namespace TestFramework
 		TEST(HelpLabel, Correct_Comparison_SameHelpLabels) {
 			// Arrange
 			unique_ptr<Label> l1 = std::make_unique<SimpleLabel>(expected);
-			const HelpLabel s1(l1, expected_help_message);
+			const HelpLabel s1(std::move(l1), expected_help_message);
 			l1 = std::make_unique<SimpleLabel>(expected);
-			const HelpLabel s2(l1, expected_help_message);
+			const HelpLabel s2(std::move(l1), expected_help_message);
 
 			// Assert
 			EXPECT_EQ(s1, s2);
@@ -81,9 +81,9 @@ namespace TestFramework
 		TEST(HelpLabel, Correct_Comparison_DifferentHelpLabels) {
 			// Arrange
 			unique_ptr<Label> l1 = std::make_unique<SimpleLabel>(expected + "a");
-			const HelpLabel s1(l1, expected_help_message);
+			const HelpLabel s1(std::move(l1), expected_help_message);
 			l1 = std::make_unique<SimpleLabel>(expected);
-			const HelpLabel s2(l1, expected_help_message);
+			const HelpLabel s2(std::move(l1), expected_help_message);
 
 			// Act
 			const bool check = s1 == s2;

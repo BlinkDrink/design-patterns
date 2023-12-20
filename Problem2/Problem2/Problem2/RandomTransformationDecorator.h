@@ -21,7 +21,7 @@ namespace Problem2
 			mutable default_random_engine m_re;
 			long long seed = time(nullptr);
 		public:
-			RandomTransformationDecorator(unique_ptr<Label>& next, vector<unique_ptr<TextTransformation>>& tts, long long seed);
+			RandomTransformationDecorator(unique_ptr<Label> next, vector<unique_ptr<TextTransformation>>& tts, long long seed);
 
 			/**
 			 * \brief Apply a random transformation from the list of transformation each time
