@@ -16,7 +16,7 @@ namespace Problem2
 			return typeid(*this) == typeid(other);
 		}
 
-		void DecorateTransformation::add(unique_ptr<TextTransformation>& transformation)
+		void DecorateTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			// Does nothing unless it's CompositeTransformation
 		}

@@ -8,7 +8,7 @@ namespace Problem2
 		using std::make_unique;
 
 		TextTransformationDecorator::TextTransformationDecorator(unique_ptr<Label> label,
-			unique_ptr<TextTransformation> tt) : LabelDecoratorBase(std::move(label)), m_transformation(std::move(tt))
+			shared_ptr<TextTransformation> tt) : LabelDecoratorBase(std::move(label)), m_transformation(tt)
 		{
 			if (!m_label)
 				throw invalid_argument("Reference to decorated object cannot be null");

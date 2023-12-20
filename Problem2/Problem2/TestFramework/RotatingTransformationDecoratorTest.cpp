@@ -28,24 +28,26 @@ namespace TestFramework
 	using Problem2::TextTransformations::TextTransformation;
 	using Problem2::Labels::Label;
 	using Problem2::Labels::SimpleLabel;
+	using std::shared_ptr;
+	using std::make_shared;
 
 	namespace DecoratorTests
 	{
 		class RotatingTransformationDecoratorTest : public ::testing::Test {
 		protected:
 			unique_ptr<Label> label;
-			vector<unique_ptr<TextTransformation>> transformations;
+			vector<shared_ptr<TextTransformation>> transformations;
 			vector<string> expectedValues;
 			string base_text = "some  text";
 
 			void SetUp() override {
 				label = make_unique<SimpleLabel>(base_text);
-				transformations.push_back(make_unique<CapitalizeTransformation>());
-				transformations.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
-				transformations.push_back(make_unique<DecorateTransformation>());
-				transformations.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
-				transformations.push_back(make_unique<CensorTransformation>("so"));
-				transformations.push_back(make_unique<NormalizeSpaceTransformation>());
+				transformations.push_back(make_shared<CapitalizeTransformation>());
+				transformations.push_back(make_shared<ReplaceTransformation>("so", "aweso"));
+				transformations.push_back(make_shared<DecorateTransformation>());
+				transformations.push_back(make_shared<ReplaceTransformation>("aweso", "so"));
+				transformations.push_back(make_shared<CensorTransformation>("so"));
+				transformations.push_back(make_shared<NormalizeSpaceTransformation>());
 
 				expectedValues.push_back("Some  text");
 				expectedValues.push_back("awesome  text");
@@ -60,17 +62,19 @@ namespace TestFramework
 			}
 		};
 
-		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecorators_WithSameTransformations_ReturnsTrue) {
+		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetweenRotatingTransformationDecorators_WithSameTransformations_ReturnsTrue) {
 			// Arrange
-			vector<unique_ptr<TextTransformation>> transformations2;
-			transformations2.push_back(make_unique<CapitalizeTransformation>());
-			transformations2.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
-			transformations2.push_back(make_unique<DecorateTransformation>());
-			transformations2.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
-			transformations2.push_back(make_unique<CensorTransformation>("so"));
-			transformations2.push_back(make_unique<NormalizeSpaceTransformation>());
-			const RotatingTransformationDecorator decorator(std::move(label), transformations);
-			const RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), transformations2);
+			vector<shared_ptr<TextTransformation>> transformations2;
+			transformations2.push_back(make_shared<CapitalizeTransformation>());
+			transformations2.push_back(make_shared<ReplaceTransformation>("so", "aweso"));
+			transformations2.push_back(make_shared<DecorateTransformation>());
+			transformations2.push_back(make_shared<ReplaceTransformation>("aweso", "so"));
+			transformations2.push_back(make_shared<CensorTransformation>("so"));
+			transformations2.push_back(make_shared<NormalizeSpaceTransformation>());
+			RotatingTransformationDecorator decorator(std::move(label), transformations);
+			RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), transformations2);
+
+			const bool check = decorator == decorator2;
 
 			// Assert
 			EXPECT_EQ(decorator, decorator2);
@@ -78,11 +82,11 @@ namespace TestFramework
 
 		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecorators_WithDifferentTransformations_ReturnsFalse) {
 			// Arrange
-			vector<unique_ptr<TextTransformation>> transformations2;
-			transformations2.push_back(make_unique<CapitalizeTransformation>());
-			transformations2.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
-			transformations2.push_back(make_unique<CensorTransformation>("so"));
-			transformations2.push_back(make_unique<NormalizeSpaceTransformation>());
+			vector<shared_ptr<TextTransformation>> transformations2;
+			transformations2.push_back(make_shared<CapitalizeTransformation>());
+			transformations2.push_back(make_shared<ReplaceTransformation>("so", "aweso"));
+			transformations2.push_back(make_shared<CensorTransformation>("so"));
+			transformations2.push_back(make_shared<NormalizeSpaceTransformation>());
 			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 			const RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), transformations2);
 

@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformation.cpp" />
     <ClCompile Include="CensorTransformation.cpp" />
+    <ClCompile Include="CensorTransformationFactory.cpp" />
     <ClCompile Include="CompositeTransformation.cpp" />
     <ClCompile Include="DecorateTransformation.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="CapitalizeTransformation.h" />
     <ClInclude Include="CensorTransformation.h" />
+    <ClInclude Include="CensorTransformationFactory.h" />
     <ClInclude Include="CompositeTransformation.h" />
     <ClInclude Include="DecorateTransformation.h" />
     <ClInclude Include="DecoratorType.h" />

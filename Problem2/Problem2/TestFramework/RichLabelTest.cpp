@@ -16,7 +16,7 @@ namespace TestFramework
 
 		TEST(RichLabel, Correct_Return_Of_Value) {
 			// Arrange
-			const RichLabel s(expected, font_size, font_name, text_color);
+			const RichLabel s(expected, font_name, text_color, font_size);
 
 			// Assert
 			EXPECT_EQ(expected, s.getText());
@@ -24,8 +24,8 @@ namespace TestFramework
 
 		TEST(RichLabel, Correct_Comparison_SameRichLabels) {
 			// Arrange
-			const RichLabel s1(expected, font_size, font_name, text_color);
-			const RichLabel s2(expected, font_size, font_name, text_color);
+			const RichLabel s1(expected, font_name, text_color, font_size);
+			const RichLabel s2(expected, font_name, text_color, font_size);
 
 			// Assert
 			EXPECT_EQ(s1, s2);
@@ -33,8 +33,8 @@ namespace TestFramework
 
 		TEST(RichLabel, Correct_Comparison_DifferentRichLabels) {
 			// Arrange
-			const RichLabel s1(expected, font_size, font_name, text_color);
-			const RichLabel s2(expected + "a", font_size, font_name, text_color);
+			const RichLabel s1(expected, font_name, text_color, font_size);
+			const RichLabel s2(expected + "a", font_name, text_color, font_size);
 
 			// Act
 			const bool check = s1 == s2;

@@ -30,7 +30,7 @@ namespace Problem2
 			return to_censor == cast->to_censor;
 		}
 
-		void CensorTransformation::add(std::unique_ptr<TextTransformation>& transformation)
+		void CensorTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			// Does nothing unless it's CompositeTransformation
 		}

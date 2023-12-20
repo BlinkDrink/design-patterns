@@ -7,7 +7,7 @@ namespace Problem2
 	namespace Composites
 	{
 		using std::invalid_argument;
-		 
+
 		bool CompositeTransformation::operator==(const TextTransformation& other) const
 		{
 			const CompositeTransformation* cast = dynamic_cast<const CompositeTransformation*>(&other);
@@ -17,7 +17,7 @@ namespace Problem2
 			return m_transformations == cast->m_transformations;
 		}
 
-		void CompositeTransformation::add(unique_ptr<TextTransformation>& transformation)
+		void CompositeTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			if (!transformation)
 				throw invalid_argument("Reference to added transformation cannot be null");
@@ -27,7 +27,7 @@ namespace Problem2
 
 		string CompositeTransformation::transform(string text) const
 		{
-			for (const unique_ptr<TextTransformation>& transformation : m_transformations)
+			for (const shared_ptr<TextTransformation>& transformation : m_transformations)
 			{
 				text = transformation->transform(text);
 			}

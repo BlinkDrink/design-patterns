@@ -27,7 +27,7 @@ namespace Problem2
 			 * \return - true if object types, data member from and data member to match, false otherwise
 			 */
 			bool operator==(const TextTransformation& other) const override;
-			void add(unique_ptr<TextTransformation>& transformation) override;
+			void add(shared_ptr<TextTransformation> transformation) override;
 		};
 	}
 }

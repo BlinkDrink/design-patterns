@@ -29,6 +29,8 @@ namespace TestFramework
 	using Problem2::TextTransformations::DecorateTransformation;
 	using Problem2::Labels::Label;
 	using Problem2::Labels::SimpleLabel;
+	using std::shared_ptr;
+	using std::make_shared;
 
 	namespace DecoratorTests
 	{
@@ -37,9 +39,9 @@ namespace TestFramework
 			unique_ptr<Label> label1;
 			unique_ptr<Label> label2;
 			unique_ptr<Label> label3;
-			unique_ptr<TextTransformation> transformation1;
-			unique_ptr<TextTransformation> transformation2;
-			unique_ptr<TextTransformation> transformation3;
+			shared_ptr<TextTransformation> transformation1;
+			shared_ptr<TextTransformation> transformation2;
+			shared_ptr<TextTransformation> transformation3;
 			string base_text = "some  text";
 			string A = "abc";
 			string B = "def";
@@ -49,9 +51,9 @@ namespace TestFramework
 				label1 = make_unique<SimpleLabel>(base_text);
 				label2 = make_unique<SimpleLabel>(base_text);
 				label3 = make_unique<SimpleLabel>(base_text + "abc");
-				transformation1 = make_unique<CapitalizeTransformation>();
-				transformation2 = make_unique<CapitalizeTransformation>();
-				transformation3 = make_unique<ReplaceTransformation>(A, B);
+				transformation1 = make_shared<CapitalizeTransformation>();
+				transformation2 = make_shared<CapitalizeTransformation>();
+				transformation3 = make_shared<ReplaceTransformation>(A, B);
 			}
 
 			void TearDown() override {

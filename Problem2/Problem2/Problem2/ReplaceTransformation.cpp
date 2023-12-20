@@ -28,7 +28,7 @@ namespace Problem2
 			return from == cast->from && to == cast->to;
 		}
 
-		void ReplaceTransformation::add(std::unique_ptr<TextTransformation>& transformation)
+		void ReplaceTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			// Does nothing unless it's CompositeTransformation
 		}

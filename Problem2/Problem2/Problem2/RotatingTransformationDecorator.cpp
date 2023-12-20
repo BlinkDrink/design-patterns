@@ -7,15 +7,16 @@ namespace Problem2
 	namespace Decorators
 	{
 		using std::make_unique;
+		using std::logic_error;
 
 		RotatingTransformationDecorator::RotatingTransformationDecorator(unique_ptr<Label> next,
-			vector<unique_ptr<TextTransformation>>& transformations)
-			: LabelDecoratorBase(std::move(next)), m_transformations(std::move(transformations)), m_rotator(0)
+			vector<shared_ptr<TextTransformation>>& transformations)
+			: LabelDecoratorBase(std::move(next)), m_rotator(0)
 		{
-			//for (unique_ptr<TextTransformation>& transformation : transformations)
-			//{
-			//	m_transformations.push_back(std::move(transformation));
-			//}
+			for (shared_ptr<TextTransformation>& transformation : transformations)
+			{
+				m_transformations.push_back(transformation);
+			}
 		}
 
 		string RotatingTransformationDecorator::getText() const
@@ -28,11 +29,7 @@ namespace Problem2
 				return res;
 			}
 
-			if (m_label) {
-				return m_label->getText();
-			}
-
-			return "";
+			throw logic_error("Reference to underlying label cannot be null");
 		}
 
 		bool RotatingTransformationDecorator::operator==(const Label& other) const
@@ -53,7 +50,7 @@ namespace Problem2
 					return false;
 			}
 
-			return  m_rotator == cast->m_rotator;
+			return m_rotator == cast->m_rotator;
 		}
 
 		unique_ptr<Label> RotatingTransformationDecorator::removeDecorator(const LabelDecoratorBase& toRemove)

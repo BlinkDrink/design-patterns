@@ -12,6 +12,7 @@ namespace Problem2
 		using std::vector;
 		using Labels::Label;
 		using std::unique_ptr;
+		using std::shared_ptr;
 		using TextTransformations::TextTransformation;
 
 		/**
@@ -20,11 +21,11 @@ namespace Problem2
 		class CompositeTransformation : public TextTransformation
 		{
 		private:
-			vector<unique_ptr<TextTransformation>> m_transformations;
+			vector<shared_ptr<TextTransformation>> m_transformations;
 		public:
 			string transform(string text) const override;
 			bool operator==(const TextTransformation& other) const override;
-			void add(unique_ptr<TextTransformation>& transformation) override;
+			void add(shared_ptr<TextTransformation> transformation) override;
 		};
 	}
 }

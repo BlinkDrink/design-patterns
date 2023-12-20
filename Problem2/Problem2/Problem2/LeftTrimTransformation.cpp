@@ -15,12 +15,12 @@ namespace Problem2
 			return text;
 		}
 
-		bool LeftTrimTransformation::operator==(const TextTransformation& other) const 
+		bool LeftTrimTransformation::operator==(const TextTransformation& other) const
 		{
 			return typeid(*this) == typeid(other);
 		}
 
-		void LeftTrimTransformation::add(unique_ptr<TextTransformation>& transformation)
+		void LeftTrimTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			// Does nothing unless it's CompositeTransformation
 		}

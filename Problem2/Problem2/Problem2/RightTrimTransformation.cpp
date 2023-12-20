@@ -21,7 +21,7 @@ namespace Problem2
 			return typeid(*this) == typeid(other);
 		}
 
-		void RightTrimTransformation::add(unique_ptr<TextTransformation>& transformation)
+		void RightTrimTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			// Does nothing unless it's CompositeTransformation
 		}

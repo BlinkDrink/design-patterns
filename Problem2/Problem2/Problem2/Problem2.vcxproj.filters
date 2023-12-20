@@ -111,6 +111,9 @@
     <ClCompile Include="LabelFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
+    <ClCompile Include="CensorTransformationFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="DecoratorType.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CensorTransformationFactory.h">
+      <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

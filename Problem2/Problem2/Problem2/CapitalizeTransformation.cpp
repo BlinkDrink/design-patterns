@@ -21,7 +21,7 @@ namespace Problem2
 			return typeid(*this) == typeid(other);
 		}
 
-		void CapitalizeTransformation::add(unique_ptr<TextTransformation>& transformation)
+		void CapitalizeTransformation::add(shared_ptr<TextTransformation> transformation)
 		{
 			// Does nothing unless it's CompositeTransformation
 		}

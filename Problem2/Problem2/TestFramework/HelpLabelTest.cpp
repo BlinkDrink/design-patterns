@@ -23,6 +23,8 @@ namespace TestFramework
 	using Problem2::TextTransformations::DecorateTransformation;
 
 	using std::unique_ptr;
+	using std::shared_ptr;
+	using std::make_shared;
 	using std::make_unique;
 	using std::vector;
 
@@ -48,10 +50,10 @@ namespace TestFramework
 			// Arrange
 			string expected2 = "***_***_***_***";
 			string expected3 = "-={ def_def_def_def }=-";
-			unique_ptr<TextTransformation> tt = make_unique<ReplaceTransformation>(A, B);
-			unique_ptr<TextTransformation> tt1 = make_unique<CensorTransformation>(B);
-			unique_ptr<TextTransformation> tt2 = make_unique<DecorateTransformation>();
-			vector<unique_ptr<TextTransformation>> vtt;
+			shared_ptr<TextTransformation> tt = make_shared<ReplaceTransformation>(A, B);
+			shared_ptr<TextTransformation> tt1 = make_shared<CensorTransformation>(B);
+			shared_ptr<TextTransformation> tt2 = make_shared<DecorateTransformation>();
+			vector<shared_ptr<TextTransformation>> vtt;
 			vtt.push_back(std::move(tt1));
 			vtt.push_back(std::move(tt2));
 
