@@ -15,7 +15,7 @@ namespace Problem2
 		using TextTransformations::TextTransformation;
 
 		/**
-		 * \brief Abstract class for all Decorator objects
+		 * \brief Abstract class for all Decorator objects. It is also a Label to allow for Decorator functionality
 		 */
 		class LabelDecoratorBase : public Label
 		{

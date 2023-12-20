@@ -19,22 +19,14 @@ namespace Problem2
 			unordered_map<string, shared_ptr<CensorTransformation>> m_censor_flyweights;
 
 		public:
-			shared_ptr<CensorTransformation> createCensorTransformation(const std::string& word)
-			{
-				if (word.length() <= 4)
-				{
-					if (m_censor_flyweights.find(word) != m_censor_flyweights.end())
-					{
-						return m_censor_flyweights[word];
-					}
-
-					shared_ptr<CensorTransformation> censorTransformation = make_shared<CensorTransformation>(word);
-					m_censor_flyweights[word] = censorTransformation;
-					return censorTransformation;
-				}
-
-				return make_shared<CensorTransformation>(word);
-			}
+			/**
+			 * \brief Creates a CensorTransformation object with the given word to censor.
+			 * If the word's length is <= 4 then a flyweight object is stored inside m_censor_flyweights and reused each time
+			 * it is requested again
+			 * \param to_censor - the word that will be censored
+			 * \return - shared_ptr to the CensorTransformation object that will be shared
+			 */
+			shared_ptr<CensorTransformation> createCensorTransformation(const string& to_censor);
 		};
 	}
 }

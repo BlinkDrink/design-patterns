@@ -27,7 +27,21 @@ namespace Problem2
 			 * \return - newly transformed string
 			 */
 			string getText() const override;
+
+			/**
+			 * \brief Equality operator - uses dynamic_cast. Checks only if m_transformations and m_rotator
+			 * match other's m_transformation and m_rotator
+			 * \param other - the object the comparison is done against
+			 * \return - true if the other object is of type RotatingTransformationDecorator and their m_transformations
+			 * and m_rotator match the current m_transformations and m_rotator
+			 */
 			bool operator==(const Label& other) const override;
+
+			/**
+			 * \brief Check if the chain of decorators contains toRemove and remove it
+			 * \param toRemove - the decorator that will be removed (if found)
+			 * \return - the decorator chain after the removal of toRemove
+			 */
 			unique_ptr<Label> removeDecorator(const LabelDecoratorBase& toRemove) override;
 		};
 	}

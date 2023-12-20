@@ -5,7 +5,6 @@
 #include "HelpLabel.h"
 #include "Label.h"
 #include "LabelDecoratorBase.h"
-#include "LabelTypes.h"
 
 namespace Problem2
 {
@@ -16,7 +15,6 @@ namespace Problem2
 		using std::vector;
 		using Labels::Label;
 		using Labels::HelpLabel;
-		using Labels::LabelType;
 		using Decorators::LabelDecoratorBase;
 		using TextTransformations::TextTransformation;
 

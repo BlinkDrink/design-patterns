@@ -24,12 +24,18 @@ namespace Problem2
 			string getText() const override;
 
 			/**
-			 * \brief Comparator - uses dynamic_cast
+			 * \brief Equality operator - uses dynamic_cast
 			 * \param other - the object the comparison is done against
-			 * \return - true if the underlying label and transformation match, false otherwise
+			 * \return - true if the other object is of type TextTransformationDecorator and their m_transformation
+			 * and matches the current m_transformation
 			 */
 			bool operator==(const Label& other) const override;
 
+			/**
+			 * \brief Check if the chain of decorators contains toRemove and remove it
+			 * \param toRemove - the decorator that will be removed (if found)
+			 * \return - the decorator chain after the removal of toRemove
+			 */
 			unique_ptr<Label> removeDecorator(const LabelDecoratorBase& toRemove) override;
 		};
 	}

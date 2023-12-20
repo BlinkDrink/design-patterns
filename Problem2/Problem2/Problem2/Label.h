@@ -7,6 +7,10 @@ namespace Problem2
 {
 	namespace Labels
 	{
+
+		/**
+		 * \brief Base class for all Label objects
+		 */
 		class Label
 		{
 		public:

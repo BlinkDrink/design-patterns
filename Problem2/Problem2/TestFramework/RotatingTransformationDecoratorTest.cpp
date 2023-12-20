@@ -18,8 +18,6 @@ namespace TestFramework
 	using std::make_unique;
 	using Problem2::Decorators::RotatingTransformationDecorator;
 	using Problem2::TextTransformations::CapitalizeTransformation;
-	using Problem2::TextTransformations::LeftTrimTransformation;
-	using Problem2::TextTransformations::RightTrimTransformation;
 	using Problem2::TextTransformations::DecorateTransformation;
 	using Problem2::TextTransformations::ReplaceTransformation;
 	using Problem2::TextTransformations::ReplaceTransformation;
@@ -73,8 +71,6 @@ namespace TestFramework
 			transformations2.push_back(make_shared<NormalizeSpaceTransformation>());
 			RotatingTransformationDecorator decorator(std::move(label), transformations);
 			RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), transformations2);
-
-			const bool check = decorator == decorator2;
 
 			// Assert
 			EXPECT_EQ(decorator, decorator2);

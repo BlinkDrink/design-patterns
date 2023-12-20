@@ -12,7 +12,7 @@ namespace Problem2
 		using std::shared_ptr;
 
 		/**
-		 * \brief Base class for the different algorithms we can apply to a label
+		 * \brief Base class for the different algorithms we can apply to a Label
 		 */
 		class TextTransformation
 		{
@@ -23,6 +23,7 @@ namespace Problem2
 			 * \param transformation - the transformation that will be added to the composite
 			 */
 			virtual void add(shared_ptr<TextTransformation> transformation) = 0;
+
 			virtual string transform(string text) const = 0;
 			virtual ~TextTransformation() = default;
 			virtual bool operator==(const TextTransformation& other) const = 0;
