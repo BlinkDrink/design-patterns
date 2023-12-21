@@ -4,7 +4,7 @@
 
 namespace Problem2
 {
-	namespace Composites
+	namespace TextTransformations
 	{
 		using std::invalid_argument;
 

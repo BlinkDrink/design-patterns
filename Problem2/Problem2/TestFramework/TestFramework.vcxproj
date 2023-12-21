@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformationTest.cpp" />
     <ClCompile Include="CensorTransformationTest.cpp" />
+    <ClCompile Include="CompositeTransformationTest.cpp" />
     <ClCompile Include="DecorateTransformationTest.cpp" />
     <ClCompile Include="HelpLabelTest.cpp" />
     <ClCompile Include="LeftTrimTransformationTest.cpp" />

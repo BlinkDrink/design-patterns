@@ -37,9 +37,6 @@
     <Filter Include="Source Files\Transformations">
       <UniqueIdentifier>{1045cb25-a9ea-4589-b8e4-84f7d48f7eb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Concretes\Composites">
-      <UniqueIdentifier>{4842d99d-a858-4644-81d2-0399938f066c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Composites">
       <UniqueIdentifier>{03965eef-926b-4758-ba3b-798d5dcfc010}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="Source Files\Factories">
       <UniqueIdentifier>{2292a81f-54d8-4bab-b011-39880f2c4b59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Concretes\TextTransformations\Composites">
+      <UniqueIdentifier>{4842d99d-a858-4644-81d2-0399938f066c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +165,7 @@
       <Filter>Header Files\Concretes\Labels</Filter>
     </ClInclude>
     <ClInclude Include="CompositeTransformation.h">
-      <Filter>Header Files\Concretes\Composites</Filter>
+      <Filter>Header Files\Concretes\TextTransformations\Composites</Filter>
     </ClInclude>
     <ClInclude Include="ProxyLabel.h">
       <Filter>Header Files\Concretes\Labels</Filter>

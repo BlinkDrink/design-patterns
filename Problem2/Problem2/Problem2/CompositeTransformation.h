@@ -7,7 +7,7 @@
 
 namespace Problem2
 {
-	namespace Composites
+	namespace TextTransformations
 	{
 		using std::vector;
 		using Labels::Label;

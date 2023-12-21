@@ -71,9 +71,9 @@ namespace TestFramework
 
 		TEST(HelpLabel, Correct_Comparison_SameHelpLabels) {
 			// Arrange
-			unique_ptr<Label> l1 = std::make_unique<SimpleLabel>(expected);
+			unique_ptr<Label> l1 = make_unique<SimpleLabel>(expected);
 			const HelpLabel s1(std::move(l1), expected_help_message);
-			l1 = std::make_unique<SimpleLabel>(expected);
+			l1 = make_unique<SimpleLabel>(expected);
 			const HelpLabel s2(std::move(l1), expected_help_message);
 
 			// Assert
@@ -82,9 +82,9 @@ namespace TestFramework
 
 		TEST(HelpLabel, Correct_Comparison_DifferentHelpLabels) {
 			// Arrange
-			unique_ptr<Label> l1 = std::make_unique<SimpleLabel>(expected + "a");
+			unique_ptr<Label> l1 = make_unique<SimpleLabel>(expected + "a");
 			const HelpLabel s1(std::move(l1), expected_help_message);
-			l1 = std::make_unique<SimpleLabel>(expected);
+			l1 = make_unique<SimpleLabel>(expected);
 			const HelpLabel s2(std::move(l1), expected_help_message);
 
 			// Act

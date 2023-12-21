@@ -18,7 +18,6 @@ namespace Problem2
 		using Decorators::LabelDecoratorBase;
 		using TextTransformations::TextTransformation;
 
-
 		class LabelFactory
 		{
 		public:
