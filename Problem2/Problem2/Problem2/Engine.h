@@ -9,11 +9,6 @@ namespace Problem2
 		private:
 			Engine() = default;
 
-			/**
-			 * \brief Prints the user interface for working with this program
-			 */
-			void menu() const;
-
 		public:
 			static Engine& getInstance();
 
