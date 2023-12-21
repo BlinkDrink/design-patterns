@@ -20,9 +20,16 @@ namespace Problem2
 			vector<shared_ptr<TextTransformation>> m_transformations;
 			mutable uniform_int_distribution<int> m_igenerator;
 			mutable default_random_engine m_re;
-			long long seed = time(nullptr);
+			long long seed;
 		public:
-			RandomTransformationDecorator(unique_ptr<Label> next, vector<shared_ptr<TextTransformation>>& transformations, long long seed);
+
+			/**
+			 * \brief
+			 * \param next Constructor. Throws if transformations vector is empty
+			 * \param transformations - vector containing the transformations that will be applied on the text
+			 * \param seed - the default_random_engine seed value
+			 */
+			RandomTransformationDecorator(unique_ptr<Label> next, vector<shared_ptr<TextTransformation>>& transformations, long long seed = time(nullptr));
 
 			/**
 			 * \brief Apply a random transformation from the list of transformation each time

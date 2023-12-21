@@ -15,7 +15,11 @@ namespace TestFramework
 {
 	using std::unique_ptr;
 	using std::vector;
+	using std::shared_ptr;
 	using std::make_unique;
+	using std::make_shared;
+	using Problem2::Labels::Label;
+	using Problem2::Labels::SimpleLabel;
 	using Problem2::Decorators::RandomTransformationDecorator;
 	using Problem2::TextTransformations::CapitalizeTransformation;
 	using Problem2::TextTransformations::DecorateTransformation;
@@ -24,36 +28,39 @@ namespace TestFramework
 	using Problem2::TextTransformations::NormalizeSpaceTransformation;
 	using Problem2::TextTransformations::CensorTransformation;
 	using Problem2::TextTransformations::TextTransformation;
-	using Problem2::Labels::Label;
-	using Problem2::Labels::SimpleLabel;
 
 	namespace DecoratorTests
 	{
 		constexpr long long seed = 123;
-		constexpr size_t iterations = 100;
+		constexpr size_t iterations = 50;
 		const string base_text = "some  text";
 
-		class RandomTransformationDecoratorTest : public ::testing::Test {
+		class RandomTransformationDecoratorTest : public ::testing::Test
+		{
 		protected:
-			unique_ptr<Label> label;
-			vector<unique_ptr<TextTransformation>> transformations1;
-			vector<unique_ptr<TextTransformation>> transformations2;
+			unique_ptr<Label> label1;
+			unique_ptr<Label> label2;
+			vector<shared_ptr<TextTransformation>> transformations1;
+			vector<string> expectedValues;
+			vector<shared_ptr<TextTransformation>> emptyVector;
 
-			void SetUp() override {
-				label = make_unique<SimpleLabel>(base_text);
-				transformations1.push_back(make_unique<CapitalizeTransformation>());
-				transformations1.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
-				transformations1.push_back(make_unique<DecorateTransformation>());
-				transformations1.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
-				transformations1.push_back(make_unique<CensorTransformation>("so"));
-				transformations1.push_back(make_unique<NormalizeSpaceTransformation>());
+			void SetUp() override
+			{
+				label1 = make_unique<SimpleLabel>(base_text);
+				label2 = make_unique<SimpleLabel>(base_text);
+				transformations1.push_back(make_shared<CapitalizeTransformation>());
+				transformations1.push_back(make_shared<ReplaceTransformation>("so", "aweso"));
+				transformations1.push_back(make_shared<DecorateTransformation>());
+				transformations1.push_back(make_shared<ReplaceTransformation>("aweso", "so"));
+				transformations1.push_back(make_shared<CensorTransformation>("so"));
+				transformations1.push_back(make_shared<NormalizeSpaceTransformation>());
 
-				transformations2.push_back(make_unique<CapitalizeTransformation>());
-				transformations2.push_back(make_unique<ReplaceTransformation>("so", "aweso"));
-				transformations2.push_back(make_unique<DecorateTransformation>());
-				transformations2.push_back(make_unique<ReplaceTransformation>("aweso", "so"));
-				transformations2.push_back(make_unique<CensorTransformation>("so"));
-				transformations2.push_back(make_unique<NormalizeSpaceTransformation>());
+				expectedValues.push_back("Some  text");
+				expectedValues.push_back("awesome  text");
+				expectedValues.push_back("-={ some  text }=-");
+				expectedValues.push_back("some  text");
+				expectedValues.push_back("**me  text");
+				expectedValues.push_back("some text");
 			}
 
 			void TearDown() override
@@ -62,39 +69,39 @@ namespace TestFramework
 			}
 		};
 
-		TEST_F(RandomTransformationDecoratorTest, Apply_One_Transformation_Correctly) {
+		TEST_F(RandomTransformationDecoratorTest, GenerateSameSequence_With_SameSeed)
+		{
 			// Arrange
-			const string expected = "Some  text";
-
-			// Act
+			const RandomTransformationDecorator decorator1(std::move(label1), transformations1, seed);
+			const RandomTransformationDecorator decorator2(std::move(label2), transformations1, seed);
 
 			// Assert
-			EXPECT_EQ(expected, expected);
+			for (size_t i = 0; i < iterations; ++i)
+			{
+				EXPECT_EQ(decorator1.getText(), decorator2.getText());
+			}
 		}
 
-		//TEST_F(RandomTransformationDecoratorTest, Apply_Two_Consecutive_Transformations_Correctly) {
-		//	// Arrange
-		//	const string expected = "awesome  text";
-		//	const RandomTransformationDecorator decorator(label, transformations);
+		TEST_F(RandomTransformationDecoratorTest, AppliedTransformations_Are_InGivenBoundsOfExpectedValues)
+		{
+			// Arrange
+			const RandomTransformationDecorator decorator1(std::move(label1), transformations1, seed);
 
-		//	// Act
-		//	string actual = decorator.getText();
-		//	actual = decorator.getText();
+			// Assert
+			for (size_t i = 0; i < iterations; ++i)
+			{
+				const string text = decorator1.getText();
+				const bool check = text == expectedValues[0] || text == expectedValues[1] ||
+					text == expectedValues[2] || text == expectedValues[3] || text == expectedValues[4] ||
+					text == expectedValues[5];
+				EXPECT_TRUE(check);
+			}
+		}
 
-		//	// Assert
-		//	EXPECT_EQ(actual, expected);
-		//}
-
-		//TEST_F(RandomTransformationDecoratorTest, Apply_ArbitraryNumberOfTimes_Yields_Correct_Result) {
-		//	// Arrange
-		//	const RandomTransformationDecorator decorator(label, transformations);
-
-		//	// Assert
-		//	for (int i = 0; i < transformations.size(); ++i)
-		//	{
-		//		const string actual = decorator.getText();
-		//		EXPECT_EQ(actual, "");
-		//	}
-		//}
+		TEST_F(RandomTransformationDecoratorTest, ConstructorThrows_InvalidArgumentException__With_EmptyTransformationsList)
+		{
+			// Act
+			EXPECT_THROW(RandomTransformationDecorator decorator1(std::move(label1), emptyVector, seed), std::invalid_argument);
+		}
 	}
 }

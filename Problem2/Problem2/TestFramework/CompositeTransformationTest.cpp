@@ -100,18 +100,5 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
-
-		//TEST_F(CompositeTransformationTest, Correct_Comparison_Of_DifferentCompositeTransformations)
-		//{
-		//	// Arrange
-		//	CompositeTransformation s1;
-		//	const DecorateTransformation s2;
-
-		//	// Act
-		//	const bool check = s1 == s2;
-
-		//	// Assert
-		//	EXPECT_FALSE(check);
-		//}
 	}
 }
