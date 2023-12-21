@@ -15,7 +15,7 @@ namespace Problem2
 		private:
 			shared_ptr<TextTransformation> m_transformation;
 		public:
-			TextTransformationDecorator(unique_ptr<Label> label, shared_ptr<TextTransformation> tt);
+			TextTransformationDecorator(unique_ptr<Label> label, const shared_ptr<TextTransformation>& tt);
 
 			/**
 			 * \brief Applies the given transformation on the underlying label after it performs its getText operation

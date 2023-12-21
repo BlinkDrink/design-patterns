@@ -16,7 +16,7 @@ namespace TestFramework
 
 		TEST(RightTrimTransformation, Correct_Deletion_Of_Trailing_Whitespace) {
 			// Arrange
-			RightTrimTransformation s;
+			const RightTrimTransformation s;
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
@@ -24,7 +24,7 @@ namespace TestFramework
 
 		TEST(RightTrimTransformation, RightTrim_KeepsStringSame_WithNoTrailingSpaces) {
 			// Arrange
-			RightTrimTransformation s;
+			const RightTrimTransformation s;
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(expected));
@@ -32,19 +32,16 @@ namespace TestFramework
 
 		TEST(RightTrimTransformation, Correct_Comparison_Of_SameRightTrimTransformations) {
 			// Arrange
-			RightTrimTransformation s1;
-			RightTrimTransformation s2;
-
-			// Act
-			const bool check = s1 == s2;
+			const RightTrimTransformation s1;
+			const RightTrimTransformation s2;
 
 			// Assert
-			EXPECT_TRUE(check);
+			EXPECT_EQ(s1, s2);
 		}
 
 		TEST(RightTrimTransformation, Correct_Comparison_Of_DifferentRightTrimTransformations) {
 			// Arrange
-			RightTrimTransformation s1;
+			const RightTrimTransformation s1;
 			const LeftTrimTransformation s2;
 
 			// Act

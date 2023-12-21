@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CapitalizeTransformationTest.cpp" />
+    <ClCompile Include="CensorTransformationFactoryTest.cpp" />
     <ClCompile Include="CensorTransformationTest.cpp" />
     <ClCompile Include="CompositeTransformationTest.cpp" />
     <ClCompile Include="DecorateTransformationTest.cpp" />

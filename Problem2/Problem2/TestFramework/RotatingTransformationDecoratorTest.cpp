@@ -35,8 +35,10 @@ namespace TestFramework
 		protected:
 			unique_ptr<Label> label;
 			vector<shared_ptr<TextTransformation>> transformations;
+			vector<shared_ptr<TextTransformation>> emptyTransformations;
 			vector<string> expectedValues;
 			string base_text = "some  text";
+			const int iterations = 100;
 
 			void SetUp() override {
 				label = make_unique<SimpleLabel>(base_text);
@@ -59,6 +61,11 @@ namespace TestFramework
 
 			}
 		};
+
+		TEST_F(RotatingTransformationDecoratorTest, Constructor_ThrowsInvalidArgumentException_WithEmptyListOfTransformations) {
+			// Assert
+			EXPECT_THROW(RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("something"), emptyTransformations), std::invalid_argument);
+		}
 
 		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetweenRotatingTransformationDecorators_WithSameTransformations_ReturnsTrue) {
 			// Arrange
@@ -121,10 +128,10 @@ namespace TestFramework
 			const RotatingTransformationDecorator decorator(std::move(label), transformations);
 
 			// Assert
-			for (int i = 0; i < transformations.size(); ++i)
+			for (int i = 0; i < iterations; ++i)
 			{
 				const string actual = decorator.getText();
-				EXPECT_EQ(actual, expectedValues[i]);
+				EXPECT_EQ(actual, expectedValues[i % transformations.size()]);
 			}
 		}
 	}

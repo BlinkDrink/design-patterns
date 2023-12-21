@@ -10,7 +10,7 @@ namespace TestFramework
 	{
 		const string expected = "value";
 
-		TEST(SimpleLabel, Correct_Return_Of_Value) {
+		TEST(SimpleLabel, GetText_ReturnsCorrectResult) {
 			// Arrange
 			const SimpleLabel s(expected);
 

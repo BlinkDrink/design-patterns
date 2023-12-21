@@ -13,6 +13,9 @@ namespace Problem2
 			vector<shared_ptr<TextTransformation>>& transformations)
 			: LabelDecoratorBase(std::move(next)), m_rotator(0)
 		{
+			if (transformations.empty())
+				throw invalid_argument("List of transformations cannot be empty");
+
 			for (shared_ptr<TextTransformation>& transformation : transformations)
 			{
 				m_transformations.push_back(transformation);

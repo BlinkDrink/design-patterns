@@ -16,7 +16,7 @@ namespace TestFramework
 
 		TEST(ReplaceTransformation, Correct_Replacement_Of_A_to_B) {
 			// Arrange
-			ReplaceTransformation s(A, B);
+			const ReplaceTransformation s(A, B);
 
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
@@ -24,7 +24,7 @@ namespace TestFramework
 
 		TEST(ReplaceTransformation, ReplacementProducesUnalteredString_When_A_Equals_B) {
 			// Arrange
-			ReplaceTransformation s(A, A);
+			const ReplaceTransformation s(A, A);
 
 			// Assert
 			EXPECT_EQ(input, s.transform(input));
@@ -32,7 +32,7 @@ namespace TestFramework
 
 		TEST(ReplaceTransformation, Correct_Replacement_With_Empty_Space) {
 			// Arrange
-			ReplaceTransformation s(A, "");
+			const ReplaceTransformation s(A, "");
 
 			// Assert
 			EXPECT_EQ(expected2, s.transform(input));
@@ -40,8 +40,8 @@ namespace TestFramework
 
 		TEST(ReplaceTransformation, Correct_Comparison_Of_SameReplaceTransformations) {
 			// Arrange
-			ReplaceTransformation s1(A, B);
-			ReplaceTransformation s2(A, B);
+			const ReplaceTransformation s1(A, B);
+			const ReplaceTransformation s2(A, B);
 
 			// Act
 			const bool check = s1 == s2;
@@ -52,8 +52,8 @@ namespace TestFramework
 
 		TEST(ReplaceTransformation, Correct_Comparison_Of_DifferentReplaceTransformations) {
 			// Arrange
-			ReplaceTransformation s1(A, B);
-			ReplaceTransformation s2(B, A);
+			const ReplaceTransformation s1(A, B);
+			const ReplaceTransformation s2(B, A);
 
 			// Act
 			const bool check = s1 == s2;

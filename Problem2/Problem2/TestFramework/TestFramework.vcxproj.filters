@@ -48,6 +48,9 @@
     <ClCompile Include="CompositeTransformationTest.cpp">
       <Filter>TextTransformation\Composites</Filter>
     </ClCompile>
+    <ClCompile Include="CensorTransformationFactoryTest.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -64,6 +67,9 @@
     </Filter>
     <Filter Include="TextTransformation\Composites">
       <UniqueIdentifier>{700872b4-4d11-43b2-bf3c-227fad33b658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{463a9e15-7832-4d7f-9189-18006c7228e6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

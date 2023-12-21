@@ -14,6 +14,12 @@ namespace TestFramework
 		using std::cin;
 
 		constexpr int timeout = 5;
+		constexpr int invalid_timeout = -5;
+
+		TEST(ProxyLabel, Constructor_ThrowsInvalidArgumentException_With_NonPositiveTimeoutValue) {
+			// Assert
+			EXPECT_THROW(ProxyLabel p(invalid_timeout), std::invalid_argument);
+		}
 
 		TEST(ProxyLabel, Correct_FirstCall_Of_getText_SetsInnerLabelText_Correctly) {
 			// Arrange

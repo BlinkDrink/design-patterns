@@ -36,7 +36,12 @@ namespace TestFramework
 		const string A = "abc";
 		const string B = "def";
 
-		TEST(HelpLabel, Correct_Return_Of_Values) {
+		TEST(HelpLabel, Constructor_ThrowsInvalidArgumentException_WithNullptr_ToLabel) {
+			// Assert
+			EXPECT_THROW(HelpLabel s(nullptr, expected_help_message), std::invalid_argument);
+		}
+
+		TEST(HelpLabel, GetTextAndGetHelpText_ReturnsCorrectResult) {
 			// Arrange
 			unique_ptr<Label> l = std::make_unique<SimpleLabel>(expected);
 			const HelpLabel s(std::move(l), expected_help_message);
@@ -46,7 +51,7 @@ namespace TestFramework
 			EXPECT_EQ(expected_help_message, s.getHelpText());
 		}
 
-		TEST(HelpLabel, Correct_ReturnOfValues_WithDecorators) {
+		TEST(HelpLabel, GetTextAndGetHelpText_WithDecorators_ReturnsCorrectResult) {
 			// Arrange
 			string expected2 = "***_***_***_***";
 			string expected3 = "-={ def_def_def_def }=-";
@@ -69,7 +74,7 @@ namespace TestFramework
 			EXPECT_EQ(expected_help_message, s.getHelpText());
 		}
 
-		TEST(HelpLabel, Correct_Comparison_SameHelpLabels) {
+		TEST(HelpLabel, ComparisonBetween_SameHelpLabels_ReturnsTrue) {
 			// Arrange
 			unique_ptr<Label> l1 = make_unique<SimpleLabel>(expected);
 			const HelpLabel s1(std::move(l1), expected_help_message);

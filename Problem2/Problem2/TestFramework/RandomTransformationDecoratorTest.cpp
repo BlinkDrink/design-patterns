@@ -10,6 +10,8 @@
 #include "../Problem2/RandomTransformationDecorator.h"
 #include "../Problem2/RandomTransformationDecorator.cpp"
 #include "../Problem2/LabelDecoratorBase.cpp"
+#include "../Problem2/RotatingTransformationDecorator.h"
+#include "../Problem2/TextTransformationDecorator.h"
 
 namespace TestFramework
 {
@@ -28,6 +30,8 @@ namespace TestFramework
 	using Problem2::TextTransformations::NormalizeSpaceTransformation;
 	using Problem2::TextTransformations::CensorTransformation;
 	using Problem2::TextTransformations::TextTransformation;
+	using Problem2::Decorators::TextTransformationDecorator;
+	using Problem2::Decorators::RotatingTransformationDecorator;
 
 	namespace DecoratorTests
 	{
@@ -41,6 +45,7 @@ namespace TestFramework
 			unique_ptr<Label> label1;
 			unique_ptr<Label> label2;
 			vector<shared_ptr<TextTransformation>> transformations1;
+			vector<shared_ptr<TextTransformation>> transformations2;
 			vector<string> expectedValues;
 			vector<shared_ptr<TextTransformation>> emptyVector;
 
@@ -54,6 +59,9 @@ namespace TestFramework
 				transformations1.push_back(make_shared<ReplaceTransformation>("aweso", "so"));
 				transformations1.push_back(make_shared<CensorTransformation>("so"));
 				transformations1.push_back(make_shared<NormalizeSpaceTransformation>());
+
+				transformations2.push_back(make_shared<DecorateTransformation>());
+				transformations2.push_back(make_shared<NormalizeSpaceTransformation>());
 
 				expectedValues.push_back("Some  text");
 				expectedValues.push_back("awesome  text");
@@ -91,9 +99,40 @@ namespace TestFramework
 			for (size_t i = 0; i < iterations; ++i)
 			{
 				const string text = decorator1.getText();
-				const bool check = text == expectedValues[0] || text == expectedValues[1] ||
-					text == expectedValues[2] || text == expectedValues[3] || text == expectedValues[4] ||
-					text == expectedValues[5];
+				bool check = false;
+
+				for (size_t j = 0; j < expectedValues.size(); ++j)
+				{
+					check = check || text == expectedValues[j];
+					if (check)
+						break;
+				}
+
+				EXPECT_TRUE(check);
+			}
+		}
+
+		TEST_F(RandomTransformationDecoratorTest, AppliedTransformation_AfterRemovalOfChainedDecorator_IsInGivenBoundsOfExpectedValues)
+		{
+			// Arrange
+			unique_ptr<Label> decorator1 = make_unique<RandomTransformationDecorator>(std::move(label1), transformations1, seed);
+			const TextTransformationDecorator toRemove(std::move(label2), transformations1[2]);
+			decorator1 = make_unique<TextTransformationDecorator>(std::move(decorator1), transformations1[2]);
+			decorator1 = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(decorator1), toRemove);
+
+			// Assert
+			for (size_t i = 0; i < iterations; ++i)
+			{
+				const string text = decorator1->getText();
+				bool check = false;
+
+				for (size_t j = 0; j < expectedValues.size(); ++j)
+				{
+					check = check || text == expectedValues[j];
+					if (check)
+						break;
+				}
+
 				EXPECT_TRUE(check);
 			}
 		}
