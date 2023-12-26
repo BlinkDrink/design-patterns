@@ -21,7 +21,7 @@ namespace TestFramework
 			EXPECT_THROW(ProxyLabel p(invalid_timeout), std::invalid_argument);
 		}
 
-		TEST(ProxyLabel, Correct_FirstCall_Of_getText_SetsInnerLabelText_Correctly) {
+		TEST(ProxyLabel, FirstCallOfgetText_SetsInnerLabelText_Correctly) {
 			// Arrange
 			const string expected = "some text";
 			const ProxyLabel pl1(timeout);
@@ -67,6 +67,28 @@ namespace TestFramework
 			}
 
 			input_stream = istringstream("y new text");
+			cin.rdbuf(input_stream.rdbuf());
+			actual = pl1.getText();
+
+			// Assert
+			EXPECT_EQ(expected, actual);
+		}
+
+		TEST(ProxyLabel, AfterTimeout_GivingInputNo_LeavesTheLabelUnchanged) {
+			// Arrange
+			const string expected = "some text";
+			const ProxyLabel pl1(timeout);
+			istringstream input_stream("some text");
+			cin.rdbuf(input_stream.rdbuf());
+
+			// Act
+			string actual = pl1.getText();
+			for (int i = 0; i < timeout - 2; ++i)
+			{
+				actual = pl1.getText();
+			}
+
+			input_stream = istringstream("n");
 			cin.rdbuf(input_stream.rdbuf());
 			actual = pl1.getText();
 
