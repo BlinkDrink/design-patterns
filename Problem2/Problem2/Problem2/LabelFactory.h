@@ -22,18 +22,18 @@ namespace Problem2
 		class LabelFactory
 		{
 		private:
-			CensorTransformationFactory m_ctf;
+			CensorTransformationFactory m_censor_transformation_factory;
 
 		public:
-			unique_ptr<HelpLabel> addHelpText(unique_ptr<Label>& label, const string& help_message) const;
+			unique_ptr<HelpLabel> addHelpTextTo(unique_ptr<Label> label, const string& help_message) const;
 
 			unique_ptr<Label> createSimpleLabel(const string& text) const;
 			unique_ptr<Label> createRichLabel(const string& text, const string& font_name, const string& font_color, const unsigned short font_size) const;
 			unique_ptr<Label> createProxyLabel(int timeout) const;
 
-			unique_ptr<Label> addTextDecoratorTo(unique_ptr<Label>& label, shared_ptr<TextTransformation> transformation) const;
-			unique_ptr<Label> addRotatingDecoratorTo(unique_ptr<Label>& label, vector<shared_ptr<TextTransformation>>& transformations) const;
-			unique_ptr<Label> addRandomDecoratorTo(unique_ptr<Label>& label, vector<shared_ptr<TextTransformation>>& transformations, long long seed) const;
+			unique_ptr<Label> addTextDecoratorTo(unique_ptr<Label> label, shared_ptr<TextTransformation> transformation) const;
+			unique_ptr<Label> addRotatingDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations) const;
+			unique_ptr<Label> addRandomDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations, long long seed) const;
 
 			shared_ptr<TextTransformation> createReplaceTransformation(const string& from, const string& to) const;
 			shared_ptr<TextTransformation> createCensorTransformation(const string& to_censor);

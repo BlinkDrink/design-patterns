@@ -12,20 +12,11 @@
 
 namespace TestFramework
 {
-	using Problem2::Labels::Label;
 	using Problem2::Factories::CensorTransformationFactory;
-	using Problem2::Labels::SimpleLabel;
-	using Problem2::TextTransformations::TextTransformation;
-	using Problem2::TextTransformations::ReplaceTransformation;
-	using Problem2::Decorators::TextTransformationDecorator;
-	using Problem2::Decorators::RotatingTransformationDecorator;
 	using Problem2::TextTransformations::CensorTransformation;
-	using Problem2::TextTransformations::DecorateTransformation;
 
 	using std::unique_ptr;
 	using std::shared_ptr;
-	using std::make_shared;
-	using std::make_unique;
 	using std::vector;
 
 	namespace LabelTests

@@ -2,12 +2,10 @@
 #include <iostream>
 #include<vector>
 
-#include "CensorTransformation.h"
 #include "CensorTransformationFactory.h"
 #include "LabelFactory.h"
+#include "LabelPrinter.h"
 #include "RandomTransformationDecorator.h"
-#include "SimpleLabel.h"
-#include "TextTransformationDecorator.h"
 
 namespace Problem2
 {
@@ -22,6 +20,8 @@ namespace Problem2
 
 		using Labels::Label;
 		using Factories::LabelFactory;
+		using LabelPrinters::LabelPrinter;
+		using Labels::HelpLabel;
 		using TextTransformations::TextTransformation;
 
 		Engine& Engine::getInstance()
@@ -32,20 +32,21 @@ namespace Problem2
 
 		void Engine::exe()
 		{
-			LabelFactory lf;
+			LabelFactory label_factory;
+			LabelPrinter label_printer;
 
-			vector<shared_ptr<TextTransformation>> tt{ lf.createCensorTransformation("o"), lf.createDecorateTransformation() };
+			vector<shared_ptr<TextTransformation>> tt{ label_factory.createCensorTransformation("o"), label_factory.createDecorateTransformation() };
 
-			unique_ptr<Label> label = lf.createSimpleLabel("hello");
-			label = lf.addTextDecoratorTo(label, lf.createCensorTransformation("l"));
-			label = lf.addTextDecoratorTo(label, lf.createCapitalizeTransformation());
-			label = lf.addRotatingDecoratorTo(label, tt);
-			label = lf.addRandomDecoratorTo(label, tt, time(nullptr));
+			unique_ptr<Label> label = label_factory.createRichLabel("hello", "font_name", "font_color", 15);
+			label = label_factory.addTextDecoratorTo(std::move(label), label_factory.createCensorTransformation("l"));
+			label = label_factory.addTextDecoratorTo(std::move(label), label_factory.createCapitalizeTransformation());
+			label = label_factory.addRotatingDecoratorTo(std::move(label), tt);
+			label = label_factory.addRandomDecoratorTo(std::move(label), tt, time(nullptr));
 
-			unique_ptr<Labels::HelpLabel> hl = lf.addHelpText(label, "I am helpful");
+			unique_ptr<HelpLabel> help_label = label_factory.addHelpTextTo(std::move(label), "I am helpful");
 			for (int i = 0; i < 10; ++i)
 			{
-				cout << hl->getHelpText() << " and also I have text: " << hl->getText() << endl;
+				label_printer.printWithHelpText(*help_label);
 			}
 		}
 	}

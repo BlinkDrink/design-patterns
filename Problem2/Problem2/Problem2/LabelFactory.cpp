@@ -34,7 +34,7 @@ namespace Problem2
 		using TextTransformations::CensorTransformation;
 		using TextTransformations::DecorateTransformation;
 
-		unique_ptr<HelpLabel> LabelFactory::addHelpText(unique_ptr<Label>& label, const string& help_message) const
+		unique_ptr<HelpLabel> LabelFactory::addHelpTextTo(unique_ptr<Label> label, const string& help_message) const
 		{
 			return make_unique<HelpLabel>(std::move(label), help_message);
 		}
@@ -54,19 +54,19 @@ namespace Problem2
 			return make_unique<ProxyLabel>(timeout);
 		}
 
-		unique_ptr<Label> LabelFactory::addTextDecoratorTo(unique_ptr<Label>& label,
+		unique_ptr<Label> LabelFactory::addTextDecoratorTo(unique_ptr<Label> label,
 			shared_ptr<TextTransformation> transformation) const
 		{
 			return make_unique<TextTransformationDecorator>(std::move(label), std::move(transformation));
 		}
 
-		unique_ptr<Label> LabelFactory::addRotatingDecoratorTo(unique_ptr<Label>& label,
+		unique_ptr<Label> LabelFactory::addRotatingDecoratorTo(unique_ptr<Label> label,
 			vector<shared_ptr<TextTransformation>>& transformations) const
 		{
 			return make_unique<RotatingTransformationDecorator>(std::move(label), transformations);
 		}
 
-		unique_ptr<Label> LabelFactory::addRandomDecoratorTo(unique_ptr<Label>& label,
+		unique_ptr<Label> LabelFactory::addRandomDecoratorTo(unique_ptr<Label> label,
 			vector<shared_ptr<TextTransformation>>& transformations, long long seed) const
 		{
 			return make_unique<RandomTransformationDecorator>(std::move(label), transformations, seed);
@@ -80,7 +80,7 @@ namespace Problem2
 
 		shared_ptr<TextTransformation> LabelFactory::createCensorTransformation(const string& to_censor)
 		{
-			return m_ctf.createCensorTransformation(to_censor);
+			return m_censor_transformation_factory.createCensorTransformation(to_censor);
 		}
 
 		shared_ptr<TextTransformation> LabelFactory::createNormalizeSpaceTransformation() const

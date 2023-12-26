@@ -53,8 +53,8 @@ namespace TestFramework
 
 		TEST(HelpLabel, GetTextAndGetHelpText_WithDecorators_ReturnsCorrectResult) {
 			// Arrange
-			string expected2 = "***_***_***_***";
-			string expected3 = "-={ def_def_def_def }=-";
+			const string expected2 = "***_***_***_***";
+			const string expected3 = "-={ def_def_def_def }=-";
 			shared_ptr<TextTransformation> tt = make_shared<ReplaceTransformation>(A, B);
 			shared_ptr<TextTransformation> tt1 = make_shared<CensorTransformation>(B);
 			shared_ptr<TextTransformation> tt2 = make_shared<DecorateTransformation>();
