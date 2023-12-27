@@ -51,6 +51,9 @@
     <ClCompile Include="CensorTransformationFactoryTest.cpp">
       <Filter>Factory</Filter>
     </ClCompile>
+    <ClCompile Include="TextTransformationFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

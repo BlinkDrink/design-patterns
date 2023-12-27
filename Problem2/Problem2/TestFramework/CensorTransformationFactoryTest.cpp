@@ -15,11 +15,10 @@ namespace TestFramework
 	using Problem2::Factories::CensorTransformationFactory;
 	using Problem2::TextTransformations::CensorTransformation;
 
-	using std::unique_ptr;
 	using std::shared_ptr;
 	using std::vector;
 
-	namespace LabelTests
+	namespace Factories
 	{
 		vector<string> getAllPermutations(const string& str)
 		{

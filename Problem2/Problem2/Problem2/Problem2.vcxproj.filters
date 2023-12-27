@@ -114,6 +114,9 @@
     <ClCompile Include="CensorTransformationFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
+    <ClCompile Include="TextTransformationFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Label.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
     <ClInclude Include="CensorTransformationFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTransformationFactory.h">
       <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>

@@ -122,6 +122,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextTransformationDecoratorTest.cpp" />
+    <ClCompile Include="TextTransformationFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Problem2\Problem2.vcxproj">

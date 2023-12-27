@@ -115,8 +115,8 @@ namespace TestFramework
 		TEST_F(RandomTransformationDecoratorTest, AppliedTransformation_AfterRemovalOfChainedDecorator_IsInGivenBoundsOfExpectedValues)
 		{
 			// Arrange
-			unique_ptr<Label> decorator1 = make_unique<RandomTransformationDecorator>(std::move(label1), transformations1, seed);
 			const TextTransformationDecorator toRemove(std::move(label2), transformations1[2]);
+			unique_ptr<Label> decorator1 = make_unique<RandomTransformationDecorator>(std::move(label1), transformations1, seed);
 			decorator1 = make_unique<TextTransformationDecorator>(std::move(decorator1), transformations1[2]);
 			decorator1 = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(decorator1), toRemove);
 

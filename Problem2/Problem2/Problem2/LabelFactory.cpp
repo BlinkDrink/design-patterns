@@ -26,13 +26,6 @@ namespace Problem2
 		using Decorators::TextTransformationDecorator;
 		using Decorators::RotatingTransformationDecorator;
 		using Decorators::RandomTransformationDecorator;
-		using TextTransformations::ReplaceTransformation;
-		using TextTransformations::NormalizeSpaceTransformation;
-		using TextTransformations::CapitalizeTransformation;
-		using TextTransformations::LeftTrimTransformation;
-		using TextTransformations::RightTrimTransformation;
-		using TextTransformations::CensorTransformation;
-		using TextTransformations::DecorateTransformation;
 
 		unique_ptr<HelpLabel> LabelFactory::addHelpTextTo(unique_ptr<Label> label, const string& help_message) const
 		{
@@ -70,42 +63,6 @@ namespace Problem2
 			vector<shared_ptr<TextTransformation>>& transformations, long long seed) const
 		{
 			return make_unique<RandomTransformationDecorator>(std::move(label), transformations, seed);
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createReplaceTransformation(const string& from,
-			const string& to) const
-		{
-			return make_shared<ReplaceTransformation>(from, to);
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createCensorTransformation(const string& to_censor)
-		{
-			return m_censor_transformation_factory.createCensorTransformation(to_censor);
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createNormalizeSpaceTransformation() const
-		{
-			return make_shared<NormalizeSpaceTransformation>();
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createLeftTrimTransformation() const
-		{
-			return make_shared<LeftTrimTransformation>();
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createRightTrimTransformation() const
-		{
-			return make_shared<RightTrimTransformation>();
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createDecorateTransformation() const
-		{
-			return make_shared<DecorateTransformation>();
-		}
-
-		shared_ptr<TextTransformation> LabelFactory::createCapitalizeTransformation() const
-		{
-			return make_shared<CapitalizeTransformation>();
 		}
 	}
 }

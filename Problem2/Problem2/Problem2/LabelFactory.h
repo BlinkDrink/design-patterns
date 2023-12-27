@@ -6,6 +6,7 @@
 #include "Label.h"
 #include "LabelDecoratorBase.h"
 #include "CensorTransformationFactory.h"
+#include "TextTransformationFactory.h"
 
 namespace Problem2
 {
@@ -21,9 +22,6 @@ namespace Problem2
 
 		class LabelFactory
 		{
-		private:
-			CensorTransformationFactory m_censor_transformation_factory;
-
 		public:
 			unique_ptr<HelpLabel> addHelpTextTo(unique_ptr<Label> label, const string& help_message) const;
 
@@ -34,14 +32,6 @@ namespace Problem2
 			unique_ptr<Label> addTextDecoratorTo(unique_ptr<Label> label, shared_ptr<TextTransformation> transformation) const;
 			unique_ptr<Label> addRotatingDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations) const;
 			unique_ptr<Label> addRandomDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations, long long seed) const;
-
-			shared_ptr<TextTransformation> createReplaceTransformation(const string& from, const string& to) const;
-			shared_ptr<TextTransformation> createCensorTransformation(const string& to_censor);
-			shared_ptr<TextTransformation> createNormalizeSpaceTransformation() const;
-			shared_ptr<TextTransformation> createLeftTrimTransformation() const;
-			shared_ptr<TextTransformation> createRightTrimTransformation() const;
-			shared_ptr<TextTransformation> createDecorateTransformation() const;
-			shared_ptr<TextTransformation> createCapitalizeTransformation() const;
 		};
 	}
 }

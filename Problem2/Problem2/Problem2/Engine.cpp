@@ -11,11 +11,8 @@ namespace Problem2
 {
 	namespace Engines
 	{
-		using std::cout;
-		using std::endl;
 		using std::vector;
 		using std::unique_ptr;
-		using std::make_shared;
 		using std::shared_ptr;
 
 		using Labels::Label;
@@ -23,6 +20,7 @@ namespace Problem2
 		using LabelPrinters::LabelPrinter;
 		using Labels::HelpLabel;
 		using TextTransformations::TextTransformation;
+		using Factories::TextTransformationFactory;
 
 		Engine& Engine::getInstance()
 		{
@@ -33,13 +31,14 @@ namespace Problem2
 		void Engine::exe()
 		{
 			LabelFactory label_factory;
+			TextTransformationFactory ttf;
 			LabelPrinter label_printer;
 
-			vector<shared_ptr<TextTransformation>> tt{ label_factory.createCensorTransformation("o"), label_factory.createDecorateTransformation() };
+			vector<shared_ptr<TextTransformation>> tt{ ttf.create_transformation("censor o"), ttf.create_transformation("decorate") };
 
 			unique_ptr<Label> label = label_factory.createRichLabel("hello", "font_name", "font_color", 15);
-			label = label_factory.addTextDecoratorTo(std::move(label), label_factory.createCensorTransformation("l"));
-			label = label_factory.addTextDecoratorTo(std::move(label), label_factory.createCapitalizeTransformation());
+			label = label_factory.addTextDecoratorTo(std::move(label), ttf.create_transformation("censor l"));
+			label = label_factory.addTextDecoratorTo(std::move(label), ttf.create_transformation("capitalize"));
 			label = label_factory.addRotatingDecoratorTo(std::move(label), tt);
 			label = label_factory.addRandomDecoratorTo(std::move(label), tt, time(nullptr));
 

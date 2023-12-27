@@ -149,6 +149,7 @@
     <ClCompile Include="RotatingTransformationDecorator.cpp" />
     <ClCompile Include="SimpleLabel.cpp" />
     <ClCompile Include="TextTransformationDecorator.cpp" />
+    <ClCompile Include="TextTransformationFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapitalizeTransformation.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="SimpleLabel.h" />
     <ClInclude Include="TextTransformation.h" />
     <ClInclude Include="TextTransformationDecorator.h" />
+    <ClInclude Include="TextTransformationFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
