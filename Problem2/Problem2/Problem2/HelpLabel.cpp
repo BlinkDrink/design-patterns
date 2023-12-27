@@ -34,6 +34,11 @@ namespace Problem2
 
 			return m_help_text == cast->m_help_text && *m_imp == *cast->m_imp;
 		}
+
+		void HelpLabel::setHelpText(string help_text)
+		{
+			m_help_text = std::move(help_text);
+		}
 	}
 }
 

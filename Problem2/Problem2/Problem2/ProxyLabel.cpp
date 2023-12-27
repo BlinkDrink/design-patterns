@@ -14,7 +14,7 @@ namespace Problem2
 		using std::make_unique;
 		using std::invalid_argument;
 
-		ProxyLabel::ProxyLabel(int timeout) : m_timeout_threshold(timeout), m_request_count(0), m_prompt_user(false)
+		ProxyLabel::ProxyLabel(int timeout) : m_real_label(nullptr), m_timeout_threshold(timeout), m_request_count(0), m_prompt_user(false)
 		{
 			if (timeout <= 0)
 				throw invalid_argument("Timeout must be a positive integer");

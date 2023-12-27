@@ -60,6 +60,9 @@ namespace TestFramework
 			s.add(transformations1[1]);
 			s.add(transformations1[2]);
 
+			// act
+			string test = s.transform(input);
+
 			// Assert
 			EXPECT_EQ(expected, s.transform(input));
 		}

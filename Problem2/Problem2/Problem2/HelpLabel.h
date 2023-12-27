@@ -40,7 +40,12 @@ namespace Problem2
 			 * the current m_imp and m_help_text
 			 */
 			bool operator==(const Label& other) const override;
-			// TODO: setter
+
+			/**
+			 * \brief Setter
+			 * \param help_text - the new value for the m_help_text field
+			 */
+			void setHelpText(string help_text);
 		};
 	}
 }
