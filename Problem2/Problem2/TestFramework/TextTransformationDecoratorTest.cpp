@@ -267,5 +267,23 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(base_text, actual);
 		}
+
+		TEST_F(TextTransformationDecoratorTest, Calling_RemoveDecorator_OnTextTransformationDecorator_RemovesDecoratorCorrectly) {
+			// Arrange
+			unique_ptr<Label> label = make_unique<SimpleLabel>(base_text);
+			shared_ptr<TextTransformation> tt = make_shared<ReplaceTransformation>("so", "aweso");
+			shared_ptr<TextTransformation> tt2 = make_shared<ReplaceTransformation>("e", "k");
+			label = make_unique<TextTransformationDecorator>(std::move(label), tt);
+			label = make_unique<TextTransformationDecorator>(std::move(label), tt2);
+			const TextTransformationDecorator toRemove(make_unique<SimpleLabel>("something"), tt2);
+			const TextTransformationDecorator toCompare(make_unique<SimpleLabel>("some text"), tt);
+
+			// Act
+			TextTransformationDecorator* cast = dynamic_cast<TextTransformationDecorator*>(label.get());
+			label = cast->removeDecorator(toRemove);
+
+			// Assert
+			EXPECT_EQ(toCompare, *label);
+		}
 	}
 }

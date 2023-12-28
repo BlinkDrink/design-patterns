@@ -133,5 +133,38 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecorator_WithItself_ReturnsTrue) {
+			// Arrange
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
+
+			// Assert
+			EXPECT_EQ(decorator, decorator);
+		}
+
+		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecoratorAndDecoratorOfDifferentType_ReturnsFalse) {
+			// Arrange
+			const RotatingTransformationDecorator decorator(std::move(label), transformations);
+			const TextTransformationDecorator decorator2(make_unique<SimpleLabel>("some text"), make_shared<CapitalizeTransformation>());
+
+			// Act
+			const bool check = decorator == decorator2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(RotatingTransformationDecoratorTest, ComparisonBetween_RotatingTransformationDecorator_WithDifferentRotators_ReturnsFalse) {
+			// Arrange
+			const RotatingTransformationDecorator decorator1(std::move(label), transformations);
+			const RotatingTransformationDecorator decorator2(make_unique<SimpleLabel>("some text"), transformations);
+			string res = decorator1.getText();
+
+			// Act
+			const bool check = decorator1 == decorator2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
 	}
 }
