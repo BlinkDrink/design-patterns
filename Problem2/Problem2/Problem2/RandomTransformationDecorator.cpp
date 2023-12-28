@@ -6,13 +6,8 @@ namespace Problem2
 	{
 		using std::make_unique;
 
-		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label> next, vector<shared_ptr<TextTransformation>>& transformations, long long seed) : LabelDecoratorBase(std::move(next)), m_re(seed), seed(seed)
+		RandomTransformationDecorator::RandomTransformationDecorator(unique_ptr<Label> next, const vector<shared_ptr<TextTransformation>>& transformations, long long seed) : LabelDecoratorBase(std::move(next)), m_transformations(transformations), m_re(seed), seed(seed)
 		{
-			for (shared_ptr<TextTransformation>& transformation : transformations)
-			{
-				m_transformations.push_back(transformation);
-			}
-
 			if (!m_transformations.empty())
 			{
 				m_igenerator = uniform_int_distribution<int>(0, m_transformations.size() - 1);

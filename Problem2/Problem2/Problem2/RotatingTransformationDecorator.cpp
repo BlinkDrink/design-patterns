@@ -10,16 +10,11 @@ namespace Problem2
 		using std::logic_error;
 
 		RotatingTransformationDecorator::RotatingTransformationDecorator(unique_ptr<Label> next,
-			vector<shared_ptr<TextTransformation>>& transformations)
-			: LabelDecoratorBase(std::move(next)), m_rotator(0)
+			const vector<shared_ptr<TextTransformation>>& transformations)
+			: LabelDecoratorBase(std::move(next)), m_transformations(transformations), m_rotator(0)
 		{
 			if (transformations.empty())
 				throw invalid_argument("List of transformations cannot be empty");
-
-			for (shared_ptr<TextTransformation>& transformation : transformations)
-			{
-				m_transformations.push_back(transformation);
-			}
 		}
 
 		string RotatingTransformationDecorator::getText() const

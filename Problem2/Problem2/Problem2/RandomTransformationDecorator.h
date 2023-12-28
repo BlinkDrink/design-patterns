@@ -29,7 +29,7 @@ namespace Problem2
 			 * \param transformations - vector containing the transformations that will be applied on the text
 			 * \param seed - the default_random_engine seed value
 			 */
-			RandomTransformationDecorator(unique_ptr<Label> next, vector<shared_ptr<TextTransformation>>& transformations, long long seed = time(nullptr));
+			RandomTransformationDecorator(unique_ptr<Label> next, const vector<shared_ptr<TextTransformation>>& transformations, long long seed = time(nullptr));
 
 			/**
 			 * \brief Apply a random transformation from the list of transformation each time

@@ -19,7 +19,7 @@ namespace Problem2
 			vector<shared_ptr<TextTransformation>> m_transformations;
 			mutable size_t m_rotator;
 		public:
-			RotatingTransformationDecorator(unique_ptr<Label> next, vector<shared_ptr<TextTransformation>>& transformations);
+			RotatingTransformationDecorator(unique_ptr<Label> next, const vector<shared_ptr<TextTransformation>>& transformations);
 
 			/**
 			 * \brief On the first call, applies the first transformation in the list m_transformations, on the second
