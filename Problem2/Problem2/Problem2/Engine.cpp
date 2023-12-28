@@ -30,22 +30,19 @@ namespace Problem2
 
 		void Engine::exe()
 		{
-			LabelFactory label_factory;
 			TextTransformationFactory ttf;
-			LabelPrinter label_printer;
-
 			vector<shared_ptr<TextTransformation>> tt{ ttf.create_transformation("censor o"), ttf.create_transformation("decorate") };
 
-			unique_ptr<Label> label = label_factory.createRichLabel("hello", "font_name", "font_color", 15);
-			label = label_factory.addTextDecoratorTo(std::move(label), ttf.create_transformation("censor l"));
-			label = label_factory.addTextDecoratorTo(std::move(label), ttf.create_transformation("capitalize"));
-			label = label_factory.addRotatingDecoratorTo(std::move(label), tt);
-			label = label_factory.addRandomDecoratorTo(std::move(label), tt, time(nullptr));
+			unique_ptr<Label> label = LabelFactory::getInstance().create_label("rich hello font_name font_color 15");
+			label = LabelFactory::getInstance().add_text_decorator_to(std::move(label), ttf.create_transformation("censor l"));
+			label = LabelFactory::getInstance().add_text_decorator_to(std::move(label), ttf.create_transformation("capitalize"));
+			label = LabelFactory::getInstance().add_rotating_decorator_to(std::move(label), tt);
+			label = LabelFactory::getInstance().add_random_decorator_to(std::move(label), tt, time(nullptr));
 
-			unique_ptr<HelpLabel> help_label = label_factory.add_help_text_to(std::move(label), "I am helpful");
+			const unique_ptr<HelpLabel> help_label = LabelFactory::getInstance().add_help_text_to(std::move(label), "I am helpful");
 			for (int i = 0; i < 10; ++i)
 			{
-				label_printer.printWithHelpText(*help_label);
+				LabelPrinter::printWithHelpText(*help_label);
 			}
 		}
 	}

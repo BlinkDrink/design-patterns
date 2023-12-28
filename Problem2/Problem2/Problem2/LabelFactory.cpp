@@ -14,7 +14,6 @@ namespace Problem2
 	namespace Factories
 	{
 		using std::make_unique;
-		using std::make_shared;
 		using std::istringstream;
 		using Labels::SimpleLabel;
 		using Labels::RichLabel;
@@ -63,22 +62,28 @@ namespace Problem2
 			throw std::invalid_argument("Invalid label type");
 		}
 
-		unique_ptr<Label> LabelFactory::addTextDecoratorTo(unique_ptr<Label> label,
+		unique_ptr<Label> LabelFactory::add_text_decorator_to(unique_ptr<Label> label,
 			shared_ptr<TextTransformation> transformation) const
 		{
 			return make_unique<TextTransformationDecorator>(std::move(label), std::move(transformation));
 		}
 
-		unique_ptr<Label> LabelFactory::addRotatingDecoratorTo(unique_ptr<Label> label,
+		unique_ptr<Label> LabelFactory::add_rotating_decorator_to(unique_ptr<Label> label,
 			vector<shared_ptr<TextTransformation>>& transformations) const
 		{
 			return make_unique<RotatingTransformationDecorator>(std::move(label), transformations);
 		}
 
-		unique_ptr<Label> LabelFactory::addRandomDecoratorTo(unique_ptr<Label> label,
+		unique_ptr<Label> LabelFactory::add_random_decorator_to(unique_ptr<Label> label,
 			vector<shared_ptr<TextTransformation>>& transformations, long long seed) const
 		{
 			return make_unique<RandomTransformationDecorator>(std::move(label), transformations, seed);
+		}
+
+		LabelFactory& LabelFactory::getInstance()
+		{
+			static LabelFactory inst;
+			return inst;
 		}
 	}
 }

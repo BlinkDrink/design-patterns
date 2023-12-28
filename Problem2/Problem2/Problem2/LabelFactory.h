@@ -5,7 +5,6 @@
 #include "HelpLabel.h"
 #include "Label.h"
 #include "LabelDecoratorBase.h"
-#include "CensorTransformationFactory.h"
 #include "TextTransformationFactory.h"
 
 namespace Problem2
@@ -20,8 +19,13 @@ namespace Problem2
 		using Decorators::LabelDecoratorBase;
 		using TextTransformations::TextTransformation;
 
+		/**
+		 * \brief Singleton
+		 */
 		class LabelFactory
 		{
+		private:
+			LabelFactory() = default;
 		public:
 			/**
 			 * \brief Adds help text to a given label
@@ -44,7 +48,7 @@ namespace Problem2
 			 * \param transformation - the transformation that the TextTransformationDecorator will use
 			 * \return - a label that has a TextTransformationDecorator attached to it
 			 */
-			unique_ptr<Label> addTextDecoratorTo(unique_ptr<Label> label, shared_ptr<TextTransformation> transformation) const;
+			unique_ptr<Label> add_text_decorator_to(unique_ptr<Label> label, shared_ptr<TextTransformation> transformation) const;
 
 			/**
 			 * \brief Adds a RotatingTextDecorator to a given label
@@ -52,7 +56,7 @@ namespace Problem2
 			 * \param transformations - the transformations that the TextTransformationDecorator will use
 			 * \return - a label that has a RotatingTransformationDecorator attached to it
 			 */
-			unique_ptr<Label> addRotatingDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations) const;
+			unique_ptr<Label> add_rotating_decorator_to(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations) const;
 
 			/**
 			 * \brief Adds a RandomTextDecorator to a given label
@@ -61,7 +65,14 @@ namespace Problem2
 			 * \param seed - the seed of the random generator that lies inside the RandomTransformationDecorator
 			 * \return - a label that has a RandomTransformationDecorator attached to it
 			 */
-			unique_ptr<Label> addRandomDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations, long long seed) const;
+			unique_ptr<Label> add_random_decorator_to(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations, long long seed) const;
+
+			static LabelFactory& getInstance();
+
+			LabelFactory(const LabelFactory& other) = delete;
+			LabelFactory& operator=(const LabelFactory& other) = delete;
+			LabelFactory(LabelFactory&& other) = delete;
+			LabelFactory& operator=(LabelFactory&& other) = delete;
 		};
 	}
 }

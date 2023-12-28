@@ -31,9 +31,9 @@ namespace Problem2
 			m_basic_transformations["right_trim"] = make_shared<RightTrimTransformation>();
 		}
 
-		shared_ptr<TextTransformation> TextTransformationFactory::create_transformation(const string& input_type)
+		shared_ptr<TextTransformation> TextTransformationFactory::create_transformation(const string& input)
 		{
-			istringstream iss(input_type);
+			istringstream iss(input);
 			string type;
 			iss >> type;
 
