@@ -70,6 +70,9 @@ namespace Problem2
 
 		bool ProxyLabel::operator==(const Label& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const ProxyLabel* cast = dynamic_cast<const ProxyLabel*>(&other);
 			if (!cast)
 				return false;

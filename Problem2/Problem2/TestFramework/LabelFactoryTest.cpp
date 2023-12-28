@@ -1,14 +1,10 @@
 #include "pch.h"
 
 #include "../Problem2/CensorTransformation.h"
-#include "../Problem2/DecorateTransformation.h"
+#include "../Problem2/ReplaceTransformation.h"
+#include "../Problem2/TextTransformation.h"
 #include "../Problem2/LabelFactory.h"
 #include "../Problem2/LabelFactory.cpp"
-#include "../Problem2/ReplaceTransformation.h"
-#include "../Problem2/RotatingTransformationDecorator.h"
-#include "../Problem2/SimpleLabel.h"
-#include "../Problem2/TextTransformation.h"
-#include "../Problem2/TextTransformationDecorator.h"
 
 namespace TestFramework
 {
@@ -27,7 +23,7 @@ namespace TestFramework
 		TEST(LabelFactory, CreateLabel_WithInvalidLabelTypeInput_ThrowsInvalidArgumentException)
 		{
 			// Assert
-			EXPECT_THROW(LabelFactory::getInstance().create_label("none");, std::invalid_argument);
+			EXPECT_THROW(LabelFactory::getInstance().create_label("none"); , std::invalid_argument);
 		}
 
 		TEST(LabelFactory, CreateLabel_WithSimpleLabelInput_CreatesSimpleLabelCorrectly)
@@ -45,7 +41,7 @@ namespace TestFramework
 		TEST(LabelFactory, CreateLabel_WithInvalidArgumentInput_ThrowsInvalidArgumentException)
 		{
 			// Assert
-			EXPECT_THROW(LabelFactory::getInstance().create_label("simple"); , std::invalid_argument);
+			EXPECT_THROW(LabelFactory::getInstance().create_label("simple");, std::invalid_argument);
 		}
 
 		TEST(LabelFactory, CreateLabel_WithRichLabelInput_CreatesRichLabelCorrectly)

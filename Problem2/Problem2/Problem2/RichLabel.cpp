@@ -15,6 +15,9 @@ namespace Problem2
 
 		bool RichLabel::operator==(const Label& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const RichLabel* cast = dynamic_cast<const RichLabel*>(&other);
 			if (!cast)
 				return false;

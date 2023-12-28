@@ -28,6 +28,9 @@ namespace Problem2
 
 		bool HelpLabel::operator==(const Label& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const HelpLabel* cast = dynamic_cast<const HelpLabel*>(&other);
 			if (!cast)
 				return false;
