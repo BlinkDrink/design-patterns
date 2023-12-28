@@ -22,6 +22,7 @@ namespace TestFramework
 	using std::make_shared;
 	using Problem2::Labels::Label;
 	using Problem2::Labels::SimpleLabel;
+	using Problem2::Decorators::LabelDecoratorBase;
 	using Problem2::Decorators::RandomTransformationDecorator;
 	using Problem2::TextTransformations::CapitalizeTransformation;
 	using Problem2::TextTransformations::DecorateTransformation;
@@ -118,7 +119,7 @@ namespace TestFramework
 			const TextTransformationDecorator toRemove(std::move(label2), transformations1[2]);
 			unique_ptr<Label> decorator1 = make_unique<RandomTransformationDecorator>(std::move(label1), transformations1, seed);
 			decorator1 = make_unique<TextTransformationDecorator>(std::move(decorator1), transformations1[2]);
-			decorator1 = Problem2::Decorators::LabelDecoratorBase::removeDecoratorFrom(std::move(decorator1), toRemove);
+			decorator1 = LabelDecoratorBase::removeDecoratorFrom(std::move(decorator1), toRemove);
 
 			// Assert
 			for (size_t i = 0; i < iterations; ++i)
@@ -141,6 +142,80 @@ namespace TestFramework
 		{
 			// Act
 			EXPECT_THROW(RandomTransformationDecorator decorator1(std::move(label1), emptyVector, seed), std::invalid_argument);
+		}
+
+		TEST_F(RandomTransformationDecoratorTest, Comparison_OfSameRandomTransformationDecorators_ReturnsTrue)
+		{
+			// Arrange
+			const RandomTransformationDecorator decorator1(std::move(label1), transformations1, seed);
+			const RandomTransformationDecorator decorator2(std::move(label2), transformations1, seed);
+
+			// Assert
+			EXPECT_EQ(decorator1, decorator2);
+		}
+
+		TEST_F(RandomTransformationDecoratorTest, Comparison_OfRandomTransformationDecorators_WithDifferentSeeds_ReturnsFalse)
+		{
+			// Arrange
+			const RandomTransformationDecorator decorator1(std::move(label1), transformations1, seed);
+			const RandomTransformationDecorator decorator2(std::move(label2), transformations1, seed + 1);
+
+			// Act
+			const bool check = decorator1 == decorator2;
+
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(RandomTransformationDecoratorTest, Comparison_OfRandomTransformationDecorators_WithDifferentTransformations_ReturnsFalse)
+		{
+			// Arrange
+			const RandomTransformationDecorator decorator1(std::move(label1), transformations1, seed);
+			const RandomTransformationDecorator decorator2(std::move(label2), transformations2, seed);
+
+			// Act
+			const bool check = decorator1 == decorator2;
+
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(RandomTransformationDecoratorTest, Comparison_OfRandomTransformationDecorator_WithDifferentTransformationDecorator_ReturnsFalse)
+		{
+			// Arrange
+			const RandomTransformationDecorator decorator1(std::move(label1), transformations1, seed);
+			const TextTransformationDecorator decorator2(std::move(label2), transformations2[0]);
+
+			// Act
+			const bool check = decorator1 == decorator2;
+
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(RandomTransformationDecoratorTest, removeDecorator_ProperlyRemovesTheGivenDecorator)
+		{
+			// Arrange
+			unique_ptr<Label> label = make_unique<RandomTransformationDecorator>(std::move(label1), transformations1, seed);
+			label = make_unique<TextTransformationDecorator>(std::move(label), std::move(transformations2[0]));
+			TextTransformationDecorator toRemove(std::move(label2), transformations2[0]);
+
+			// Act
+			TextTransformationDecorator* cast = dynamic_cast<TextTransformationDecorator*>(label.get());
+			label = cast->removeDecorator(toRemove);
+
+			// Assert
+			for (size_t i = 0; i < iterations; ++i)
+			{
+				const string text = label->getText();
+				bool check = false;
+
+				for (size_t j = 0; j < expectedValues.size(); ++j)
+				{
+					check = check || text == expectedValues[j];
+					if (check)
+						break;
+				}
+
+				EXPECT_TRUE(check);
+			}
 		}
 	}
 }

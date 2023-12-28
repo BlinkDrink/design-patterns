@@ -8,6 +8,7 @@
 #include "../Problem2/ReplaceTransformation.h"
 #include "../Problem2/RichLabel.h"
 #include "../Problem2/RightTrimTransformation.h"
+#include "../Problem2/RotatingTransformationDecorator.h"
 #include "../Problem2/SimpleLabel.h"
 #include "../Problem2/TextTransformationDecorator.h"
 #include "../Problem2/TextTransformationDecorator.cpp"
@@ -17,6 +18,7 @@ namespace TestFramework
 	using std::unique_ptr;
 	using std::vector;
 	using std::make_unique;
+	using Problem2::Decorators::RotatingTransformationDecorator;
 	using Problem2::Decorators::TextTransformationDecorator;
 	using Problem2::TextTransformations::CapitalizeTransformation;
 	using Problem2::TextTransformations::LeftTrimTransformation;
@@ -152,6 +154,32 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(actual, expected);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, Constructor_WithNullptrToTextTransformation_ThrowsInvalidArgumentException) {
+			// Assert
+			EXPECT_THROW(TextTransformationDecorator(std::move(label1), nullptr), std::invalid_argument);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, Comparison_WithItself_ReturnsTrue) {
+			// Arrange
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
+
+			// Assert
+			EXPECT_EQ(decorator1, decorator1);
+		}
+
+		TEST_F(TextTransformationDecoratorTest, Comparison_WithDifferentTypeOfDecorator_ReturnsFalse) {
+			// Arrange
+			vector<shared_ptr<TextTransformation>> transformations{ make_shared<CapitalizeTransformation>(), make_shared<NormalizeSpaceTransformation>() };
+			const TextTransformationDecorator decorator1(std::move(label1), std::move(transformation1));
+			const RotatingTransformationDecorator decorator2(std::move(label2), transformations);
+
+			// Act
+			const bool check = decorator1 == decorator2;
+
+			// Assert
+			EXPECT_FALSE(check);
 		}
 
 		TEST_F(TextTransformationDecoratorTest, Comparison_Of_SameTextTransformationDecorators_ReturnsTrue) {

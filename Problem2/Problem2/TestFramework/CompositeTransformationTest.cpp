@@ -103,5 +103,32 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST_F(CompositeTransformationTest, Comparison_Of_DifferentTransformationWithCompositeTransformation_ReturnFalse)
+		{
+			// Arrange
+			CompositeTransformation s1;
+			const DecorateTransformation s2;
+			s1.add(transformations1[0]);
+			tt->add(transformations1[1]);
+			tt->add(transformations1[3]);
+			s1.add(tt);
+			s1.add(transformations1[2]);
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST_F(CompositeTransformationTest, Adding_NullReferenceToCompositeTransformation_ThrowsInvalidArgumentException)
+		{
+			// Arrange
+			CompositeTransformation s1;
+
+			// Assert
+			EXPECT_THROW(s1.add(nullptr), std::invalid_argument);
+		}
 	}
 }
