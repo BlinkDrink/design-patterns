@@ -95,5 +95,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(expected, actual);
 		}
+
+		TEST(ProxyLabel, Comparison_OfProxyLabel_WithItself_ReturnsTrue) {
+			// Arrange
+			const ProxyLabel s(timeout);
+
+			// Assert
+			EXPECT_EQ(s, s);
+		}
 	}
 }

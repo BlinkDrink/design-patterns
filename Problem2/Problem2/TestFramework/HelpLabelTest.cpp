@@ -124,5 +124,14 @@ namespace TestFramework
 			// Assert
 			EXPECT_EQ(help_label.getHelpText(), expected);
 		}
+
+		TEST(HelpLabel, Comparison_OfHelpLabel_WithItself_ReturnsTrue) {
+			// Arrange
+			unique_ptr<Label> label = make_unique<SimpleLabel>(expected);
+			const HelpLabel s(std::move(label), expected_help_message);
+
+			// Assert
+			EXPECT_EQ(s, s);
+		}
 	}
 }

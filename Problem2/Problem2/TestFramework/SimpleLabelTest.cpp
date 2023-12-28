@@ -41,6 +41,14 @@ namespace TestFramework
 			EXPECT_FALSE(check);
 		}
 
+		TEST(SimpleLabel, Comparison_OfSimpleLabel_WithItself_ReturnsTrue) {
+			// Arrange
+			const SimpleLabel s(expected);
+
+			// Assert
+			EXPECT_EQ(s, s);
+		}
+
 		TEST(SimpleLabel, ComparisonBetween_SimpleLabel_AndLabelOfDifferentType_ReturnsFalse) {
 			// Arrange
 			const Problem2::Labels::RichLabel s1(expected, "font_name", "font_color", 10);

@@ -54,5 +54,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(RichLabel, Comparison_OfRichLabel_WithItself_ReturnsTrue) {
+			// Arrange
+			const RichLabel s(expected, font_name, text_color, font_size);
+
+			// Assert
+			EXPECT_EQ(s, s);
+		}
 	}
 }
