@@ -27,7 +27,7 @@ namespace TestFramework
 		TEST(LabelFactory, CreateLabel_WithInvalidLabelTypeInput_ThrowsInvalidArgumentException)
 		{
 			// Assert
-			EXPECT_THROW(LabelFactory::getInstance().create_label("none"); , std::invalid_argument);
+			EXPECT_THROW(LabelFactory::getInstance().create_label("none");, std::invalid_argument);
 		}
 
 		TEST(LabelFactory, CreateLabel_WithSimpleLabelInput_CreatesSimpleLabelCorrectly)
@@ -45,7 +45,7 @@ namespace TestFramework
 		TEST(LabelFactory, CreateLabel_WithInvalidArgumentInput_ThrowsInvalidArgumentException)
 		{
 			// Assert
-			EXPECT_THROW(LabelFactory::getInstance().create_label("simple");, std::invalid_argument);
+			EXPECT_THROW(LabelFactory::getInstance().create_label("simple"); , std::invalid_argument);
 		}
 
 		TEST(LabelFactory, CreateLabel_WithRichLabelInput_CreatesRichLabelCorrectly)
@@ -79,6 +79,43 @@ namespace TestFramework
 
 			// Assert
 			EXPECT_EQ(hl->getHelpText(), help_message);
+		}
+
+		TEST(LabelFactory, AddTextTransformationDecorator_ToAnyLabel_CorrectlyAttachesIt)
+		{
+			// Arrange
+			const string expected_with_decorator = "Somecooltext";
+			unique_ptr<Label> l = LabelFactory::getInstance().create_label("simple " + expected);
+			l = LabelFactory::getInstance().add_text_decorator_to(std::move(l), std::make_unique<Problem2::TextTransformations::CapitalizeTransformation>());
+
+			// Assert
+			EXPECT_EQ(l->getText(), expected_with_decorator);
+		}
+
+		TEST(LabelFactory, AddRandomTransformationDecorator_ToAnyLabel_CorrectlyAttachesIt)
+		{
+			// Arrange
+			const string expected_with_decorator = "s*mec**ltext";
+			unique_ptr<Label> l = LabelFactory::getInstance().create_label("simple " + expected);
+			vector<shared_ptr<Problem2::TextTransformations::TextTransformation>> tt{ std::make_unique<CensorTransformation>("o") };
+			l = LabelFactory::getInstance().add_random_decorator_to(std::move(l), tt, 123);
+
+			// Assert
+			EXPECT_EQ(l->getText(), expected_with_decorator);
+		}
+
+		TEST(LabelFactory, AddRotatingTransformationDecorator_ToAnyLabel_CorrectlyAttachesIt)
+		{
+			// Arrange
+			const string expected_with_decorator1 = "s*mec**ltext";
+			const string expected_with_decorator2 = "somecooltext";
+			unique_ptr<Label> l = LabelFactory::getInstance().create_label("simple " + expected);
+			vector<shared_ptr<Problem2::TextTransformations::TextTransformation>> tt{ std::make_unique<CensorTransformation>("o"), std::make_unique<Problem2::TextTransformations::ReplaceTransformation>("*","o") };
+			l = LabelFactory::getInstance().add_rotating_decorator_to(std::move(l), tt);
+
+			// Assert
+			EXPECT_EQ(l->getText(), expected_with_decorator1);
+			EXPECT_EQ(l->getText(), expected_with_decorator2);
 		}
 	}
 }
