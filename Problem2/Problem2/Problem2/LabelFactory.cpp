@@ -1,18 +1,13 @@
-#include "LabelFactory.h"
+#include<sstream>
 
-#include "CapitalizeTransformation.h"
-#include "CensorTransformation.h"
-#include "DecorateTransformation.h"
-#include "LeftTrimTransformation.h"
+#include "LabelFactory.h"
 #include "ProxyLabel.h"
-#include "RandomTransformationDecorator.h"
-#include "ReplaceTransformation.h"
-#include "NormalizeSpaceTransformation.h"
 #include "RichLabel.h"
-#include "RightTrimTransformation.h"
-#include "RotatingTransformationDecorator.h"
 #include "SimpleLabel.h"
+#include "CapitalizeTransformation.h"
 #include "TextTransformationDecorator.h"
+#include "RandomTransformationDecorator.h"
+#include "RotatingTransformationDecorator.h"
 
 namespace Problem2
 {
@@ -20,6 +15,7 @@ namespace Problem2
 	{
 		using std::make_unique;
 		using std::make_shared;
+		using std::istringstream;
 		using Labels::SimpleLabel;
 		using Labels::RichLabel;
 		using Labels::ProxyLabel;
@@ -27,24 +23,44 @@ namespace Problem2
 		using Decorators::RotatingTransformationDecorator;
 		using Decorators::RandomTransformationDecorator;
 
-		unique_ptr<HelpLabel> LabelFactory::addHelpTextTo(unique_ptr<Label> label, const string& help_message) const
+		unique_ptr<HelpLabel> LabelFactory::add_help_text_to(unique_ptr<Label> label, const string& help_message) const
 		{
 			return make_unique<HelpLabel>(std::move(label), help_message);
 		}
 
-		unique_ptr<Label> LabelFactory::createSimpleLabel(const string& text) const
+		unique_ptr<Label> LabelFactory::create_label(const string& input) const
 		{
-			return make_unique<SimpleLabel>(text);
-		}
+			istringstream iss(input);
+			string type;
+			iss >> type;
 
-		unique_ptr<Label> LabelFactory::createRichLabel(const string& text, const string& font_name, const string& font_color, const unsigned short font_size) const
-		{
-			return make_unique<RichLabel>(text, font_name, font_color, font_size);
-		}
+			if (type == "simple")
+			{
+				string text;
+				if (!(iss >> text))
+					throw std::invalid_argument("Arguments for SimpleLabel were insufficient or of invalid type");
 
-		unique_ptr<Label> LabelFactory::createProxyLabel(int timeout) const
-		{
-			return make_unique<ProxyLabel>(timeout);
+				return make_unique<SimpleLabel>(text);
+			}
+			if (type == "rich")
+			{
+				string text, font_name, text_color;
+				unsigned short font_size;
+				if (!(iss >> text >> font_name >> text_color >> font_size))
+					throw std::invalid_argument("Arguments for RichLabel were insufficient or of invalid type");
+
+				return make_unique<RichLabel>(text, font_name, text_color, font_size);
+			}
+			if (type == "proxy")
+			{
+				int timeout;
+				if (!(iss >> timeout))
+					throw std::invalid_argument("Arguments for ProxyLabel were insufficient or of invalid type");
+
+				return make_unique<ProxyLabel>(timeout);
+			}
+
+			throw std::invalid_argument("Invalid label type");
 		}
 
 		unique_ptr<Label> LabelFactory::addTextDecoratorTo(unique_ptr<Label> label,

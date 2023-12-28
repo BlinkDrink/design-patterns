@@ -21,6 +21,12 @@ namespace Problem2
 		public:
 			TextTransformationFactory();
 
+
+			/**
+			 * \brief
+			 * \param input_type
+			 * \return
+			 */
 			shared_ptr<TextTransformation> create_transformation(const string& input_type);
 		};
 	}

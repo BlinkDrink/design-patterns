@@ -23,14 +23,44 @@ namespace Problem2
 		class LabelFactory
 		{
 		public:
-			unique_ptr<HelpLabel> addHelpTextTo(unique_ptr<Label> label, const string& help_message) const;
+			/**
+			 * \brief Adds help text to a given label
+			 * \param label - the label on which help text will be added
+			 * \param help_message - the contents of the help text
+			 * \return - a label with help text added to it
+			 */
+			unique_ptr<HelpLabel> add_help_text_to(unique_ptr<Label> label, const string& help_message) const;
 
-			unique_ptr<Label> createSimpleLabel(const string& text) const;
-			unique_ptr<Label> createRichLabel(const string& text, const string& font_name, const string& font_color, const unsigned short font_size) const;
-			unique_ptr<Label> createProxyLabel(int timeout) const;
+			/**
+			 * \brief Creates a label based on some text input
+			 * \param input - The type of label to create (e.g. simple this_is_my_simple_text, proxy 4, rich my_text my_font_name my_font_color my_font_size)
+			 * \return - newly created label of the given type
+			 */
+			unique_ptr<Label> create_label(const string& input) const;
 
+			/**
+			 * \brief Adds a simple text decorator to a given label
+			 * \param label - the label that the decorator will be attached to
+			 * \param transformation - the transformation that the TextTransformationDecorator will use
+			 * \return - a label that has a TextTransformationDecorator attached to it
+			 */
 			unique_ptr<Label> addTextDecoratorTo(unique_ptr<Label> label, shared_ptr<TextTransformation> transformation) const;
+
+			/**
+			 * \brief Adds a RotatingTextDecorator to a given label
+			 * \param label - the label that the decorator will be attached to
+			 * \param transformations - the transformations that the TextTransformationDecorator will use
+			 * \return - a label that has a RotatingTransformationDecorator attached to it
+			 */
 			unique_ptr<Label> addRotatingDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations) const;
+
+			/**
+			 * \brief Adds a RandomTextDecorator to a given label
+			 * \param label - the label that the decorator will be attached to
+			 * \param transformations - the transformations that the TextTransformationDecorator will use
+			 * \param seed - the seed of the random generator that lies inside the RandomTransformationDecorator
+			 * \return - a label that has a RandomTransformationDecorator attached to it
+			 */
 			unique_ptr<Label> addRandomDecoratorTo(unique_ptr<Label> label, vector<shared_ptr<TextTransformation>>& transformations, long long seed) const;
 		};
 	}

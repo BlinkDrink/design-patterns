@@ -42,7 +42,7 @@ namespace Problem2
 			label = label_factory.addRotatingDecoratorTo(std::move(label), tt);
 			label = label_factory.addRandomDecoratorTo(std::move(label), tt, time(nullptr));
 
-			unique_ptr<HelpLabel> help_label = label_factory.addHelpTextTo(std::move(label), "I am helpful");
+			unique_ptr<HelpLabel> help_label = label_factory.add_help_text_to(std::move(label), "I am helpful");
 			for (int i = 0; i < 10; ++i)
 			{
 				label_printer.printWithHelpText(*help_label);
