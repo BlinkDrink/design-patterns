@@ -17,6 +17,9 @@ namespace Problem2
 
 		bool LeftTrimTransformation::operator==(const TextTransformation& other) const
 		{
+			if (this == &other)
+				return true;
+
 			return typeid(*this) == typeid(other);
 		}
 

@@ -1,4 +1,6 @@
 #include "pch.h"
+
+#include "../Problem2/RichLabel.h"
 #include "../Problem2/SimpleLabel.h"
 #include "../Problem2/SimpleLabel.cpp"
 
@@ -34,6 +36,18 @@ namespace TestFramework
 
 			// Act
 			const bool check = s == s1;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST(SimpleLabel, ComparisonBetween_SimpleLabel_AndLabelOfDifferentType_ReturnsFalse) {
+			// Arrange
+			const Problem2::Labels::RichLabel s1(expected, "font_name", "font_color", 10);
+			const SimpleLabel s2("new text");
+
+			// Act
+			const bool check = s1 == s2;
 
 			// Assert
 			EXPECT_FALSE(check);

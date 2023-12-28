@@ -54,5 +54,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(NormalizeSpaceTransformation, ComparisonOf_NormalizeSpaceTransformation_WithItself_ReturnsTrue) {
+			// Arrange
+			const NormalizeSpaceTransformation s1;
+
+			// Assert
+			EXPECT_EQ(s1, s1);
+		}
 	}
 }

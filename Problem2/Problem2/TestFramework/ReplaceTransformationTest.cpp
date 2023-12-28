@@ -61,5 +61,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(ReplaceTransformation, ComparisonOf_ReplaceTransformation_WithItself_ReturnsTrue) {
+			// Arrange
+			const ReplaceTransformation s1(A, B);
+
+			// Assert
+			EXPECT_EQ(s1, s1);
+		}
 	}
 }

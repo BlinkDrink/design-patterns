@@ -54,6 +54,9 @@
     <ClCompile Include="TextTransformationFactory.cpp">
       <Filter>Factory</Filter>
     </ClCompile>
+    <ClCompile Include="LabelFactoryTest.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

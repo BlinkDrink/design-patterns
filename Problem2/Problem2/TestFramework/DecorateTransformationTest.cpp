@@ -45,5 +45,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(DecorateTransformation, ComparisonOf_DecorateTransformation_WithItself_ReturnsTrue) {
+			// Arrange
+			const DecorateTransformation s1;
+
+			// Assert
+			EXPECT_EQ(s1, s1);
+		}
 	}
 }

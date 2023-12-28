@@ -98,5 +98,31 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(HelpLabel, ComparisonBetween_HelpLabel_AndDifferentTypeLabel_ReturnsFalse) {
+			// Arrange
+			unique_ptr<Label> l1 = make_unique<SimpleLabel>(expected);
+			const HelpLabel help_label(std::move(l1), expected_help_message);
+			const SimpleLabel label("some text");
+
+			// Act
+			const bool check = label == help_label;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST(HelpLabel, SetHelpMessage_CorrectlyChangesHelpMessage) {
+			// Arrange
+			unique_ptr<Label> l1 = make_unique<SimpleLabel>(expected);
+			HelpLabel help_label(std::move(l1), expected_help_message);
+			string expected = "new help text";
+
+			// Act
+			help_label.setHelpText(expected);
+
+			// Assert
+			EXPECT_EQ(help_label.getHelpText(), expected);
+		}
 	}
 }

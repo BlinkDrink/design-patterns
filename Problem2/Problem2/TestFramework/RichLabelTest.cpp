@@ -42,5 +42,17 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(RichLabel, ComparisonBetween_RichLabel_AndLabelOfDifferentType_ReturnsFalse) {
+			// Arrange
+			const RichLabel s1(expected, font_name, text_color, font_size);
+			const Problem2::Labels::SimpleLabel s2("new text");
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
 	}
 }

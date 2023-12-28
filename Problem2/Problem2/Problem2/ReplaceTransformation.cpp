@@ -21,6 +21,9 @@ namespace Problem2
 
 		bool ReplaceTransformation::operator==(const TextTransformation& other) const
 		{
+			if (this == &other)
+				return true;
+
 			const ReplaceTransformation* cast = dynamic_cast<const ReplaceTransformation*>(&other);
 			if (!cast)
 				return false;

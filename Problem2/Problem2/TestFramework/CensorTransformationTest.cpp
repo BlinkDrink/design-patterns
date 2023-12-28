@@ -45,5 +45,25 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(CensorTransformation, ComparisonOf_CensorTransformation_WithTransformationOfDifferentType_ReturnsFalse) {
+			// Arrange
+			CensorTransformation s1(to_censor);
+			DecorateTransformation s2;
+
+			// Act
+			const bool check = s1 == s2;
+
+			// Assert
+			EXPECT_FALSE(check);
+		}
+
+		TEST(CensorTransformation, ComparisonOf_CensorTransformation_WithItself_ReturnsTrue) {
+			// Arrange
+			const CensorTransformation s1(to_censor);
+
+			// Assert
+			EXPECT_EQ(s1, s1);
+		}
 	}
 }

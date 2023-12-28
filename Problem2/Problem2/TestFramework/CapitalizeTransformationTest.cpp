@@ -44,5 +44,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(CapitalizeTransformation, ComparisonOf_CapitalizeTransformation_WithItself_ReturnsTrue) {
+			// Arrange
+			const CapitalizeTransformation s1;
+
+			// Assert
+			EXPECT_EQ(s1, s1);
+		}
 	}
 }

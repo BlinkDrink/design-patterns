@@ -53,5 +53,13 @@ namespace TestFramework
 			// Assert
 			EXPECT_FALSE(check);
 		}
+
+		TEST(LeftTrimTransformation, ComparisonOf_LeftTrimTransformation_WithItself_ReturnsTrue) {
+			// Arrange
+			const LeftTrimTransformation s1;
+
+			// Assert
+			EXPECT_EQ(s1, s1);
+		}
 	}
 }
