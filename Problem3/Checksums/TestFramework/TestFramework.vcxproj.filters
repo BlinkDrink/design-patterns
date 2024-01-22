@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="MD5ChecksumCalculationTest.cpp">
+      <Filter>ChecksumCalculations</Filter>
+    </ClCompile>
+    <ClCompile Include="SHA256ChecksumCalculationTest.cpp">
+      <Filter>ChecksumCalculations</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ChecksumCalculations">
+      <UniqueIdentifier>{e5477aea-838a-4ea4-8586-d1ab4dd6c9ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

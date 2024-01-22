@@ -30,7 +30,7 @@
     <ClCompile Include="MD5ChecksumCalculation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SHA2ChecksumCalculation.cpp">
+    <ClCompile Include="SHA256ChecksumCalculation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="MD5ChecksumCalculation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
-    <ClInclude Include="SHA2ChecksumCalculation.h">
+    <ClInclude Include="SHA256ChecksumCalculation.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>

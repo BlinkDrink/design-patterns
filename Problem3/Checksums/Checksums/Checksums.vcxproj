@@ -133,12 +133,12 @@
     <ClCompile Include="HashCalculationBase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MD5ChecksumCalculation.cpp" />
-    <ClCompile Include="SHA2ChecksumCalculation.cpp" />
+    <ClCompile Include="SHA256ChecksumCalculation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChecksumCalculationBase.h" />
     <ClInclude Include="MD5ChecksumCalculation.h" />
-    <ClInclude Include="SHA2ChecksumCalculation.h" />
+    <ClInclude Include="SHA256ChecksumCalculation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
