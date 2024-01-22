@@ -1,1 +1,9 @@
-#include "HashCalculationBase.h"
+#include "ChecksumCalculationBase.h"
+
+namespace Checksums
+{
+	namespace ChecksumCalculations
+	{
+
+	}
+}

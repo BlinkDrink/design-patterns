@@ -16,6 +16,9 @@
     <Filter Include="Header Files\Interfaces">
       <UniqueIdentifier>{bfff05ca-7bd0-4f2a-b463-2cd6abb7d525}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes">
+      <UniqueIdentifier>{5f0c767c-23c6-431a-9008-ac2abdcc1952}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,10 +27,16 @@
     <ClCompile Include="HashCalculationBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MD5ChecksumCalculation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HashCalculationBase.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ChecksumCalculationBase.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MD5ChecksumCalculation.h">
+      <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
