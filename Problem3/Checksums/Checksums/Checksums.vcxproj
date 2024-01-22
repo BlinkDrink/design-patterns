@@ -130,14 +130,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="FileTreeElement.cpp" />
     <ClCompile Include="HashCalculationBase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MD5ChecksumCalculation.cpp" />
+    <ClCompile Include="RegularFile.cpp" />
     <ClCompile Include="SHA256ChecksumCalculation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChecksumCalculationBase.h" />
+    <ClInclude Include="Directory.h" />
+    <ClInclude Include="FileTreeElement.h" />
     <ClInclude Include="MD5ChecksumCalculation.h" />
+    <ClInclude Include="RegularFile.h" />
     <ClInclude Include="SHA256ChecksumCalculation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

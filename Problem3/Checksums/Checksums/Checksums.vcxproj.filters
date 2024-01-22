@@ -33,6 +33,15 @@
     <ClCompile Include="SHA256ChecksumCalculation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileTreeElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegularFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Directory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChecksumCalculationBase.h">
@@ -43,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="SHA256ChecksumCalculation.h">
       <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="FileTreeElement.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="RegularFile.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="Directory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
