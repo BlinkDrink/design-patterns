@@ -19,28 +19,34 @@
     <Filter Include="Header Files\Concretes">
       <UniqueIdentifier>{5f0c767c-23c6-431a-9008-ac2abdcc1952}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FileTreeElements">
+      <UniqueIdentifier>{79e49c1c-5c69-4cfd-83d0-8c88a3fbebcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ChecksumCalculations">
+      <UniqueIdentifier>{dcd64ecf-6868-4ead-a3a8-973f653153f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Builders">
+      <UniqueIdentifier>{ec0b4ef7-dca5-4616-ad75-2f4d440fdef4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HashCalculationBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MD5ChecksumCalculation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SHA256ChecksumCalculation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileTreeElement.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Directory.cpp">
+      <Filter>Source Files\FileTreeElements</Filter>
     </ClCompile>
     <ClCompile Include="RegularFile.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\FileTreeElements</Filter>
     </ClCompile>
-    <ClCompile Include="Directory.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FileTreeElement.cpp">
+      <Filter>Source Files\FileTreeElements</Filter>
+    </ClCompile>
+    <ClCompile Include="MD5ChecksumCalculation.cpp">
+      <Filter>Source Files\ChecksumCalculations</Filter>
+    </ClCompile>
+    <ClCompile Include="SHA256ChecksumCalculation.cpp">
+      <Filter>Source Files\ChecksumCalculations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Directory.h">
       <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="BuilderBase.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

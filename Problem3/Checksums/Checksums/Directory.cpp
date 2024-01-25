@@ -4,7 +4,9 @@ namespace Checksums
 {
 	namespace TreeElements
 	{
-		Directory::Directory(string path) : FileTreeElement(std::move(path))
+		using std::to_string;
+
+		Directory::Directory(string path) : FileTreeElement(std::move(path)), m_size(0)
 		{
 		}
 
@@ -25,6 +27,11 @@ namespace Checksums
 				totalSize += child->getSize();
 
 			return totalSize;
+		}
+
+		string Directory::toString() const
+		{
+			return getPath() + " " + std::to_string(getSize());
 		}
 	}
 }

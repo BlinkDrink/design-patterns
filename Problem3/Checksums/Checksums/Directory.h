@@ -19,6 +19,7 @@ namespace Checksums
 			void add(unique_ptr<FileTreeElement> child) override;
 			string getPath() const override;
 			size_t getSize() const override;
+			string toString() const override;
 		};
 	}
 }
