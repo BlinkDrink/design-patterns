@@ -20,7 +20,7 @@ namespace Checksums
 			return m_path;
 		}
 
-		size_t Directory::getSize() const
+		uintmax_t Directory::getSize() const
 		{
 			size_t totalSize = 0;
 			for (const unique_ptr<FileTreeElement>& child : m_children)
@@ -31,7 +31,12 @@ namespace Checksums
 
 		string Directory::toString() const
 		{
-			return getPath() + " " + std::to_string(getSize());
+			string res;
+			res += getPath() + " " + std::to_string(getSize()) + (m_children.empty() ? "" : "\n");
+			for (const unique_ptr<FileTreeElement>& child : m_children)
+				res += child->toString() + "\n";
+
+			return res;
 		}
 	}
 }

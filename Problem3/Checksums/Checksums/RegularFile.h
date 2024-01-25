@@ -8,13 +8,13 @@ namespace Checksums
 		class RegularFile : public FileTreeElement
 		{
 		private:
-			size_t m_file_size; // represents the file size in bytes
+			uintmax_t m_file_size; // represents the file size in bytes
 
 		public:
 			RegularFile(string path, size_t size);
 			void add(unique_ptr<FileTreeElement> child) override;
 			string getPath() const override;
-			size_t getSize() const override;
+			uintmax_t getSize() const override;
 			string toString() const override;
 		};
 

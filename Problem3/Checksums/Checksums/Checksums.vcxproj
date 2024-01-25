@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\openssl\openssl-1.1.0f-vs2017\include64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +137,8 @@
     <ClCompile Include="MD5ChecksumCalculation.cpp" />
     <ClCompile Include="RegularFile.cpp" />
     <ClCompile Include="SHA256ChecksumCalculation.cpp" />
+    <ClCompile Include="FollowLinksBuilder.cpp" />
+    <ClCompile Include="NoFollowLinksBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuilderBase.h" />
@@ -145,6 +148,8 @@
     <ClInclude Include="MD5ChecksumCalculation.h" />
     <ClInclude Include="RegularFile.h" />
     <ClInclude Include="SHA256ChecksumCalculation.h" />
+    <ClInclude Include="FollowLinksBuilder.h" />
+    <ClInclude Include="NoFollowLinksBuilder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

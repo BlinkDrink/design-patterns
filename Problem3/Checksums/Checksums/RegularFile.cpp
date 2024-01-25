@@ -7,7 +7,7 @@ namespace Checksums
 	{
 		using std::to_string;
 
-		RegularFile::RegularFile(string path, size_t size) : FileTreeElement(std::move(path)), m_file_size(size)
+		RegularFile::RegularFile(string path, uintmax_t size) : FileTreeElement(std::move(path)), m_file_size(size)
 		{
 		}
 
@@ -21,7 +21,7 @@ namespace Checksums
 			return m_path;
 		}
 
-		size_t RegularFile::getSize() const
+		uintmax_t RegularFile::getSize() const
 		{
 			return m_file_size;
 		}
