@@ -21,6 +21,20 @@ namespace TestFramework
 			EXPECT_EQ(expected, s.calculate(ss));
 		}
 
+		TEST(SHA256ChecksumCalculation, CalculatingChecksumOfString_OnSameStringTwice_ReturnsTheSameResult) {
+			// Arrange
+			SHA256ChecksumCalculation s;
+			stringstream ss("c++ programming");
+			stringstream ss1("c++ programming");
+
+			// Act
+			const string s1 = s.calculate(ss);
+			const string s2 = s.calculate(ss1);
+
+			// Assert
+			EXPECT_EQ(s1, s2);
+		}
+
 		TEST(SHA256ChecksumCalculation, CalculatingChecksumOfString_OnNonEmptyString_CalculatesChecksumCorrectly) {
 			// Arrange
 			const string expected = "5d9380f3a8a183dd3f7fc94ed3f2075122ad85e644e784e8d563a8570c1ea822";

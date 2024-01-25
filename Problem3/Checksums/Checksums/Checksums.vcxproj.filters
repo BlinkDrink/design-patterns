@@ -60,7 +60,7 @@
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
     <ClInclude Include="Directory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -21,6 +21,20 @@ namespace TestFramework
 			EXPECT_EQ(expected, s.calculate(ss));
 		}
 
+		TEST(MD5ChecksumCalculation, CalculatingChecksumOfString_OnSameStringTwice_ReturnsTheSameResult) {
+			// Arrange
+			MD5ChecksumCalculation s;
+			stringstream ss("c++ programming");
+			stringstream ss1("c++ programming");
+
+			// Act
+			const string s1 = s.calculate(ss);
+			const string s2 = s.calculate(ss1);
+
+			// Assert
+			EXPECT_EQ(s1, s2);
+		}
+
 		TEST(MD5ChecksumCalculation, CalculatingChecksumOfString_OnNonEmptyString_CalculatesChecksumCorrectly) {
 			// Arrange
 			const string expected = "91f5d98025013de2905089e11e1e6217";
