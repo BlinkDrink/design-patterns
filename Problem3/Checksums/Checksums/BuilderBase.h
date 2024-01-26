@@ -2,17 +2,17 @@
 #include <memory>
 #include <string>
 
+#include "Directory.h"
 #include "FileTreeElement.h"
 
 namespace Checksums
 {
-	using std::string;
-	using std::unique_ptr;
-	using TreeElements::Directory;
-	using TreeElements::FileTreeElement;
-
 	namespace Builders
 	{
+		using std::string;
+		using std::unique_ptr;
+		using TreeElements::Directory;
+		using TreeElements::FileTreeElement;
 
 		/**
 		 * \brief Base class for the builders that will construct the in memory file tree representation

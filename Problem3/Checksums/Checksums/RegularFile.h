@@ -17,6 +17,5 @@ namespace Checksums
 			uintmax_t getSize() const override;
 			string toString() const override;
 		};
-
 	}
 }

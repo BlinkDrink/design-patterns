@@ -10,7 +10,7 @@ namespace Checksums
 		public:
 
 			void build(const string& path, TreeElements::Directory* parent = nullptr) override;
-			unique_ptr<TreeElements::FileTreeElement> getResult() override;
+			unique_ptr<FileTreeElement> getResult() override;
 		};
 	}
 }

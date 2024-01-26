@@ -1,8 +1,8 @@
 #include "MD5ChecksumCalculation.h"
 
 #include <iomanip>
-#include <openssl/md5.h>
 #include <sstream>
+#include <openssl/md5.h>
 
 namespace Checksums
 {

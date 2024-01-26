@@ -32,9 +32,9 @@ namespace Checksums
 		string Directory::toString() const
 		{
 			string res;
-			res += getPath() + " " + std::to_string(getSize()) + (m_children.empty() ? "" : "\n");
+			res += getPath() + " " + std::to_string(getSize());
 			for (const unique_ptr<FileTreeElement>& child : m_children)
-				res += child->toString() + "\n";
+				res += "\n" + child->toString();
 
 			return res;
 		}

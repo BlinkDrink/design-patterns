@@ -32,6 +32,7 @@ namespace Checksums
 			else if (std::filesystem::is_directory(path))
 			{
 				unique_ptr<Directory> dir = make_unique<Directory>(path);
+				Directory* current = dir.get();
 
 				if (m_root == nullptr)
 				{
@@ -39,11 +40,12 @@ namespace Checksums
 				}
 				else
 				{
-					for (const fs::directory_entry& entry : fs::directory_iterator(path))
-					{
-						build(entry.path().string(), dir.get());
-					}
-					m_root->add(std::move(dir));
+					parent->add(std::move(dir));
+				}
+
+				for (const fs::directory_entry& entry : fs::directory_iterator(path))
+				{
+					build(entry.path().string(), current);
 				}
 			}
 		}

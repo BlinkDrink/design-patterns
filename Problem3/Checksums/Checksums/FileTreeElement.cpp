@@ -1,4 +1,3 @@
-#pragma once
 #include "FileTreeElement.h"
 
 namespace Checksums

@@ -14,6 +14,7 @@ namespace Checksums
 		private:
 			vector<unique_ptr<FileTreeElement>> m_children;
 			uintmax_t m_size;
+
 		public:
 			Directory(string path);
 			void add(unique_ptr<FileTreeElement> child) override;

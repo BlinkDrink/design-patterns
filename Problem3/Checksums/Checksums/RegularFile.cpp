@@ -1,4 +1,3 @@
-#pragma once
 #include "RegularFile.h"
 
 namespace Checksums
