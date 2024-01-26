@@ -1,4 +1,5 @@
 #include "Directory.h"
+#include "VisitorBase.h"
 
 namespace Checksums
 {

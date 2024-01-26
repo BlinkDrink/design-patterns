@@ -2,6 +2,11 @@
 
 namespace Checksums
 {
+	namespace TreeElements
+	{
+		class RegularFile;
+	}
+
 	namespace Visitors
 	{
 		HashStreamWriterVisitor::HashStreamWriterVisitor(ostream& os, unique_ptr<ChecksumCalculationBase> calculator) : m_outputStream(os), m_calculator(std::move(calculator))

@@ -13,16 +13,22 @@ namespace Checksums
 		using std::setw;
 		using std::setfill;
 
-		string SHA256ChecksumCalculation::calculate(istream& input) const
+		string SHA256ChecksumCalculation::calculate(const string& path) const
 		{
+			std::ifstream file(path, std::ios::binary);
+			if (!file.is_open())
+			{
+				throw std::invalid_argument("Error opening file " + path + " for reading");
+			}
+
 			SHA256_CTX sha256Context;
 			SHA256_Init(&sha256Context);
 
-			char buffer[1024];
-			while (input.good())
+			while (file.good())
 			{
-				input.read(buffer, sizeof(buffer));
-				SHA256_Update(&sha256Context, buffer, input.gcount());
+				char buffer[1024];
+				file.read(buffer, sizeof(buffer));
+				SHA256_Update(&sha256Context, buffer, file.gcount());
 			}
 
 			unsigned char result[SHA256_DIGEST_LENGTH];

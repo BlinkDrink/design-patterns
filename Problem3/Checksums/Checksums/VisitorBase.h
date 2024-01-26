@@ -1,9 +1,13 @@
 #pragma once
-#include "Directory.h"
-#include "RegularFile.h"
 
 namespace Checksums
 {
+	namespace TreeElements
+	{
+		class RegularFile;
+		class Directory;
+	}
+
 	namespace Visitors
 	{
 		using TreeElements::Directory;

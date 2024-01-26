@@ -1,4 +1,5 @@
 #include "RegularFile.h"
+#include "VisitorBase.h"
 
 namespace Checksums
 {

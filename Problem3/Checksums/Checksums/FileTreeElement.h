@@ -2,10 +2,13 @@
 #include <memory>
 #include <string>
 
-#include "VisitorBase.h"
-
 namespace Checksums
 {
+	namespace Visitors
+	{
+		class VisitorBase;
+	}
+
 	namespace TreeElements
 	{
 		using std::string;

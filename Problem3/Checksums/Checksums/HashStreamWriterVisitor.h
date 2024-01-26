@@ -1,14 +1,25 @@
 #pragma once
-#include "ChecksumCalculationBase.h"
 #include "VisitorBase.h"
+#include "RegularFile.h"
+#include "Directory.h"
+#include "ChecksumCalculationBase.h"
+
 
 namespace Checksums
 {
+	namespace TreeElements
+	{
+		class RegularFile;
+		class Directory;
+	}
+
 	namespace Visitors
 	{
 		using std::ostream;
 		using std::unique_ptr;
 		using ChecksumCalculations::ChecksumCalculationBase;
+		using TreeElements::RegularFile;
+		using TreeElements::Directory;
 
 
 		class HashStreamWriterVisitor : public VisitorBase

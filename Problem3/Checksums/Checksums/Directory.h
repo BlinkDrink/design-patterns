@@ -1,7 +1,6 @@
 #pragma once
-#include <vector>
-
 #include "FileTreeElement.h"
+#include <vector>
 
 namespace Checksums
 {
