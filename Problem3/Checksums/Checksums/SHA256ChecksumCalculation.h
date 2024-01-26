@@ -8,7 +8,7 @@ namespace Checksums
 		class SHA256ChecksumCalculation : public ChecksumCalculationBase
 		{
 		public:
-			string calculate(istream& input) const override;
+			string calculate(const string& path) const override;
 		};
 	}
 }

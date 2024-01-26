@@ -12,7 +12,7 @@ namespace Checksums
 		class ChecksumCalculationBase
 		{
 		public:
-			virtual string calculate(istream& input) const = 0;
+			virtual string calculate(const string& path) const = 0;
 			virtual ~ChecksumCalculationBase() = default;
 		};
 	}

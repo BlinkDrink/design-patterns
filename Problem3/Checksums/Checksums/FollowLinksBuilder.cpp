@@ -8,7 +8,6 @@
 #pragma comment(lib, "shell32.lib")
 
 #include "FollowLinksBuilder.h"
-#include "RegularFile.h"
 
 
 namespace Checksums

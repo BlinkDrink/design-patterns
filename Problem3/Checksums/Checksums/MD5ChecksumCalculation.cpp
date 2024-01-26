@@ -13,16 +13,22 @@ namespace Checksums
 		using std::setw;
 		using std::setfill;
 
-		string MD5ChecksumCalculation::calculate(istream& input) const
+		string MD5ChecksumCalculation::calculate(const string& path) const
 		{
+			std::ifstream file(path, std::ios::binary);
+			if (!file.is_open())
+			{
+				throw std::invalid_argument("Error opening file " + path + " for reading.");
+			}
+
 			MD5_CTX md5Context;
 			MD5_Init(&md5Context);
 
-			char buffer[1024];
-			while (input.good())
+			while (file.good())
 			{
-				input.read(buffer, sizeof(buffer));
-				MD5_Update(&md5Context, buffer, input.gcount());
+				char buffer[1024];
+				file.read(buffer, sizeof(buffer));
+				MD5_Update(&md5Context, buffer, file.gcount());
 			}
 
 			unsigned char result[MD5_DIGEST_LENGTH];

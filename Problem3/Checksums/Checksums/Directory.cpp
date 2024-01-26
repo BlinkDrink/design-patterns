@@ -38,5 +38,14 @@ namespace Checksums
 
 			return res;
 		}
+
+		void Directory::accept(VisitorBase& visitor)
+		{
+			visitor.visit(*this);
+			for (unique_ptr<FileTreeElement>& child : m_children)
+			{
+				child->accept(visitor);
+			}
+		}
 	}
 }

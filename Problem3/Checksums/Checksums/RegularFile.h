@@ -16,6 +16,7 @@ namespace Checksums
 			string getPath() const override;
 			uintmax_t getSize() const override;
 			string toString() const override;
+			void accept(VisitorBase& visitor) override;
 		};
 	}
 }

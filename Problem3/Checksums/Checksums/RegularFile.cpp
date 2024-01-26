@@ -29,5 +29,10 @@ namespace Checksums
 		{
 			return getPath() + " " + to_string(getSize());
 		}
+
+		void RegularFile::accept(VisitorBase& visitor)
+		{
+			visitor.visit(*this);
+		}
 	}
 }

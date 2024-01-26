@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Builders">
       <UniqueIdentifier>{ec0b4ef7-dca5-4616-ad75-2f4d440fdef4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Visitors">
+      <UniqueIdentifier>{73f9a6a6-3287-429e-b19a-5edefa5783d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +56,9 @@
     </ClCompile>
     <ClCompile Include="FollowLinksBuilder.cpp">
       <Filter>Source Files\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="HashStreamWriterVisitor.cpp">
+      <Filter>Source Files\Visitors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +87,12 @@
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
     <ClInclude Include="FollowLinksBuilder.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="VisitorBase.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="HashStreamWriterVisitor.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>

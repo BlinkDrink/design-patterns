@@ -18,8 +18,8 @@ int main()
 	Checksums::Builders::FollowLinksBuilder f;
 	const fs::path currentPath = fs::current_path();
 	const fs::path fullPath = currentPath / "mock_directory1" / "mock_directory2";
-	f.build(fullPath.string());
-	auto res = f.getResult();
+	nf.build(fullPath.string());
+	auto res = nf.getResult();
 	std::cout << res->toString();
 	return 0;
 }

@@ -18,7 +18,7 @@ namespace Checksums
 
 			static bool isSymbolicLink(const string& path);
 			static bool isShortcut(const string& path);
-			string getTargetPath(const string& path);
+			static string getTargetPath(const string& path);
 		public:
 			void build(const string& path, Directory* parent = nullptr) override;
 			unique_ptr<FileTreeElement> getResult() override;

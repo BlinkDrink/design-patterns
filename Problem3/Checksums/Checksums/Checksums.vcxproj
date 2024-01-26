@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Directory.cpp" />
     <ClCompile Include="FileTreeElement.cpp" />
+    <ClCompile Include="HashStreamWriterVisitor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MD5ChecksumCalculation.cpp" />
     <ClCompile Include="RegularFile.cpp" />
@@ -145,11 +146,13 @@
     <ClInclude Include="ChecksumCalculationBase.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="FileTreeElement.h" />
+    <ClInclude Include="HashStreamWriterVisitor.h" />
     <ClInclude Include="MD5ChecksumCalculation.h" />
     <ClInclude Include="RegularFile.h" />
     <ClInclude Include="SHA256ChecksumCalculation.h" />
     <ClInclude Include="FollowLinksBuilder.h" />
     <ClInclude Include="NoFollowLinksBuilder.h" />
+    <ClInclude Include="VisitorBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
