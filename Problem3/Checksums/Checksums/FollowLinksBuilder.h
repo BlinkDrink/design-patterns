@@ -16,12 +16,11 @@ namespace Checksums
 		private:
 			vector<string> m_visited;
 
-			bool isVisited(const string& path) const;
 			static bool isSymbolicLink(const string& path);
 			static bool isShortcut(const string& path);
 			string getTargetPath(const string& path);
 		public:
-			void build(const string& path, TreeElements::Directory* parent = nullptr) override;
+			void build(const string& path, Directory* parent = nullptr) override;
 			unique_ptr<FileTreeElement> getResult() override;
 		};
 	}
