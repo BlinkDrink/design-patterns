@@ -1,4 +1,4 @@
-#include "ReportWriterVisitor.h"
+#include "ReportWriter.h"
 
 #include "RegularFile.h"
 

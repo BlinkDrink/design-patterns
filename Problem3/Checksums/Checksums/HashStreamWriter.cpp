@@ -7,17 +7,17 @@ namespace Checksums
 		class RegularFile;
 	}
 
-
 	namespace Visitors
 	{
 		using std::endl;
 
-		HashStreamWriter::HashStreamWriter(ostream& os, unique_ptr<ChecksumCalculationBase> calculator) : m_outputStream(os), m_calculator(std::move(calculator))
+		HashStreamWriter::HashStreamWriter(ostream& output_stream, unique_ptr<ChecksumCalculationBase> calculator) : m_outputStream(output_stream), m_calculator(std::move(calculator))
 		{
 		}
 
 		void HashStreamWriter::visit(RegularFile& file)
 		{
+			notifyObservers(file.getPath());
 			m_outputStream << m_calculator->calculate(file.getPath()) << endl;
 		}
 

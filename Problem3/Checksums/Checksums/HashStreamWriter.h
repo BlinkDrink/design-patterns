@@ -31,7 +31,7 @@ namespace Checksums
 			unique_ptr<ChecksumCalculationBase> m_calculator;
 
 		public:
-			HashStreamWriter(ostream& m_output_stream, unique_ptr<ChecksumCalculationBase> calculator);
+			HashStreamWriter(ostream& output_stream, unique_ptr<ChecksumCalculationBase> calculator);
 			void visit(RegularFile& file) override;
 			void visit(Directory& directory) override;
 		};
