@@ -13,6 +13,9 @@ namespace Checksums
 		using TreeElements::Directory;
 		using TreeElements::RegularFile;
 
+		/**
+		 * \brief Base class for all visitors that will traverse the file tree
+		 */
 		class VisitorBase
 		{
 		public:

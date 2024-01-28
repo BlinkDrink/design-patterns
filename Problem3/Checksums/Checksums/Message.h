@@ -7,6 +7,9 @@ namespace Checksums
 	{
 		using std::string;
 
+		/**
+		 * \brief Base class for the types of messages observables can send
+		 */
 		class Message
 		{
 		public:

@@ -10,6 +10,10 @@ namespace Checksums
 		using std::vector;
 		using std::ostream;
 
+		/**
+		 * \brief Visitor used to traverse the target file tree and output all files in the tree and their sizes
+		 * before the actual scan has begun
+		 */
 		class ReportWriter : public VisitorBase
 		{
 		private:

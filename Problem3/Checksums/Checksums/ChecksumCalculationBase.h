@@ -12,6 +12,9 @@ namespace Checksums
 		using std::istream;
 		using Observers::ObservableBase;
 
+		/**
+		 * \brief Base class for all Checksum calculation algorithms
+		 */
 		class ChecksumCalculationBase : public ObservableBase
 		{
 		public:

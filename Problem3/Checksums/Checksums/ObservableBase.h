@@ -13,6 +13,9 @@ namespace Checksums
 		using std::unique_ptr;
 		using std::shared_ptr;
 
+		/**
+		 * \brief Base class for all observables that can notify their observers
+		 */
 		class ObservableBase
 		{
 		private:

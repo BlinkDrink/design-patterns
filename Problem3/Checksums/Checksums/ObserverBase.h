@@ -11,6 +11,10 @@ namespace Checksums
 		using std::unique_ptr;
 		using Messages::Message;
 
+		/**
+		 * \brief Base class for all observers that can update their state
+		 * based on some notification data
+		 */
 		class ObserverBase
 		{
 		public:
