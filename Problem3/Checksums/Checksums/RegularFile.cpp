@@ -26,11 +26,6 @@ namespace Checksums
 			return m_file_size;
 		}
 
-		string RegularFile::toString() const
-		{
-			return getPath() + " " + to_string(getSize());
-		}
-
 		void RegularFile::accept(VisitorBase& visitor)
 		{
 			visitor.visit(*this);

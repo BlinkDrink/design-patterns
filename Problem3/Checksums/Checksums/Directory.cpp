@@ -31,16 +31,6 @@ namespace Checksums
 			return m_size;
 		}
 
-		string Directory::toString() const
-		{
-			string res;
-			res += getPath() + " " + std::to_string(getSize());
-			for (const unique_ptr<FileTreeElement>& child : m_children)
-				res += "\n" + child->toString();
-
-			return res;
-		}
-
 		void Directory::accept(VisitorBase& visitor)
 		{
 			visitor.visit(*this);

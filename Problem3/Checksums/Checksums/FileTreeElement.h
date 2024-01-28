@@ -27,7 +27,6 @@ namespace Checksums
 			virtual void add(unique_ptr<FileTreeElement> child) = 0;
 			virtual string getPath() const = 0;
 			virtual size_t getSize() const = 0;
-			virtual string toString() const = 0;
 			virtual void accept(VisitorBase& visitor) = 0;
 			virtual ~FileTreeElement() = default;
 		};

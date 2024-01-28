@@ -5,6 +5,10 @@ namespace Checksums
 {
 	namespace Messages
 	{
+
+		/**
+		 * \brief Represents a simple message that carries information about what file is being processed currently
+		 */
 		class FileMessage : public Message
 		{
 		private:
