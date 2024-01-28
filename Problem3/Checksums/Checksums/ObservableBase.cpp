@@ -4,16 +4,16 @@ namespace Checksums
 {
 	namespace Observers
 	{
-		void ObservableBase::addObserver(shared_ptr<ObserverBase> observer)
+		void ObservableBase::addObserver(shared_ptr<ObserverBase>& observer)
 		{
 			m_observers.push_back(observer);
 		}
 
-		void ObservableBase::notifyObservers(const string& fileName) const
+		void ObservableBase::notifyObservers(unique_ptr<Message> msg) const
 		{
 			for (const shared_ptr<ObserverBase>& observer : m_observers)
 			{
-				observer->update(fileName);
+				observer->update(std::move(msg));
 			}
 		}
 	}

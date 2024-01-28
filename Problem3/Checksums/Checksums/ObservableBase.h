@@ -10,6 +10,7 @@ namespace Checksums
 	namespace Observers
 	{
 		using std::vector;
+		using std::unique_ptr;
 		using std::shared_ptr;
 
 		class ObservableBase
@@ -18,8 +19,9 @@ namespace Checksums
 			vector<shared_ptr<ObserverBase>> m_observers;
 
 		public:
-			void addObserver(shared_ptr<ObserverBase> observer);
-			void notifyObservers(const string& fileName) const;
+			virtual void addObserver(shared_ptr<ObserverBase>& observer);
+			void notifyObservers(unique_ptr<Message> msg) const;
+			virtual ~ObservableBase() = default;
 		};
 	}
 }

@@ -4,14 +4,18 @@
 #include <openssl/sha.h>
 #include <sstream>
 
+#include "BytesMessage.h"
+
 namespace Checksums
 {
 	namespace ChecksumCalculations
 	{
-		using std::stringstream;
 		using std::hex;
 		using std::setw;
 		using std::setfill;
+		using std::make_unique;
+		using std::stringstream;
+		using Messages::BytesMessage;
 
 		string SHA256ChecksumCalculation::calculate(const string& path) const
 		{
@@ -28,7 +32,9 @@ namespace Checksums
 			{
 				char buffer[1024];
 				file.read(buffer, sizeof(buffer));
-				SHA256_Update(&sha256Context, buffer, file.gcount());
+				size_t bytesRead = static_cast<size_t>(file.gcount());
+				SHA256_Update(&sha256Context, buffer, bytesRead);
+				notifyObservers(make_unique<BytesMessage>(bytesRead));
 			}
 
 			unsigned char result[SHA256_DIGEST_LENGTH];

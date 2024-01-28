@@ -131,7 +131,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BytesMessage.cpp" />
     <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="FileMessage.cpp" />
     <ClCompile Include="FileTreeElement.cpp" />
     <ClCompile Include="HashStreamWriter.cpp" />
     <ClCompile Include="main.cpp" />
@@ -146,11 +148,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuilderBase.h" />
+    <ClInclude Include="BytesMessage.h" />
     <ClInclude Include="ChecksumCalculationBase.h" />
     <ClInclude Include="Directory.h" />
+    <ClInclude Include="FileMessage.h" />
     <ClInclude Include="FileTreeElement.h" />
     <ClInclude Include="HashStreamWriter.h" />
     <ClInclude Include="MD5ChecksumCalculation.h" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="ObservableBase.h" />
     <ClInclude Include="ObserverBase.h" />
     <ClInclude Include="ProgressReporter.h" />

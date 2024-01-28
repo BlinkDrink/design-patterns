@@ -4,14 +4,18 @@
 #include <sstream>
 #include <openssl/md5.h>
 
+#include "BytesMessage.h"
+
 namespace Checksums
 {
 	namespace ChecksumCalculations
 	{
-		using std::stringstream;
 		using std::hex;
 		using std::setw;
 		using std::setfill;
+		using std::make_unique;
+		using std::stringstream;
+		using Messages::BytesMessage;
 
 		string MD5ChecksumCalculation::calculate(const string& path) const
 		{
@@ -28,7 +32,9 @@ namespace Checksums
 			{
 				char buffer[1024];
 				file.read(buffer, sizeof(buffer));
-				MD5_Update(&md5Context, buffer, file.gcount());
+				const int bytesRead = static_cast<size_t>(file.gcount());
+				MD5_Update(&md5Context, buffer, bytesRead);
+				notifyObservers(make_unique<BytesMessage>(bytesRead));
 			}
 
 			unsigned char result[MD5_DIGEST_LENGTH];

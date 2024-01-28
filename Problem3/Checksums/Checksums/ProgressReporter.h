@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+
 #include "ObserverBase.h"
 
 namespace Checksums
@@ -7,8 +9,13 @@ namespace Checksums
 	{
 		class ProgressReporter : public ObserverBase
 		{
+		private:
+			string m_currentFile;
+			size_t m_bytesRead = 0;
+			bool m_hasWrittenYet = false;
 		public:
-			void update(const string& fileName) override;
+			void update(unique_ptr<Message> msg) override;
+			void display() const;
 		};
 	}
 }

@@ -18,8 +18,10 @@ namespace Checksums
 	{
 		using std::ostream;
 		using std::unique_ptr;
+		using std::shared_ptr;
 		using ChecksumCalculations::ChecksumCalculationBase;
 		using Observers::ObservableBase;
+		using Observers::ObserverBase;
 		using TreeElements::RegularFile;
 		using TreeElements::Directory;
 
@@ -32,6 +34,7 @@ namespace Checksums
 
 		public:
 			HashStreamWriter(ostream& output_stream, unique_ptr<ChecksumCalculationBase> calculator);
+			void addObserver(shared_ptr<ObserverBase>& observer) override;
 			void visit(RegularFile& file) override;
 			void visit(Directory& directory) override;
 		};

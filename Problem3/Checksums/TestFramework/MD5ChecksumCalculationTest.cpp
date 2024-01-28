@@ -2,6 +2,7 @@
 
 #include "../Checksums/MD5ChecksumCalculation.h"
 #include "../Checksums/MD5ChecksumCalculation.cpp"
+#include "../Checksums/ObservableBase.cpp"
 
 namespace TestFramework
 {
