@@ -1,4 +1,7 @@
 #include "Directory.h"
+
+#include <iostream>
+
 #include "VisitorBase.h"
 
 namespace Checksums
@@ -6,6 +9,7 @@ namespace Checksums
 	namespace TreeElements
 	{
 		using std::to_string;
+		using std::endl;
 
 		Directory::Directory(string path) : FileTreeElement(std::move(path)), m_size(0)
 		{
@@ -43,7 +47,7 @@ namespace Checksums
 		void Directory::accept(VisitorBase& visitor)
 		{
 			visitor.visit(*this);
-			for (unique_ptr<FileTreeElement>& child : m_children)
+			for (const unique_ptr<FileTreeElement>& child : m_children)
 			{
 				child->accept(visitor);
 			}

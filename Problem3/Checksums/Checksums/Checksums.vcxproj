@@ -133,10 +133,13 @@
   <ItemGroup>
     <ClCompile Include="Directory.cpp" />
     <ClCompile Include="FileTreeElement.cpp" />
-    <ClCompile Include="HashStreamWriterVisitor.cpp" />
+    <ClCompile Include="HashStreamWriter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MD5ChecksumCalculation.cpp" />
+    <ClCompile Include="ObservableBase.cpp" />
+    <ClCompile Include="ProgressReporter.cpp" />
     <ClCompile Include="RegularFile.cpp" />
+    <ClCompile Include="ReportWriter.cpp" />
     <ClCompile Include="SHA256ChecksumCalculation.cpp" />
     <ClCompile Include="FollowLinksBuilder.cpp" />
     <ClCompile Include="NoFollowLinksBuilder.cpp" />
@@ -146,9 +149,13 @@
     <ClInclude Include="ChecksumCalculationBase.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="FileTreeElement.h" />
-    <ClInclude Include="HashStreamWriterVisitor.h" />
+    <ClInclude Include="HashStreamWriter.h" />
     <ClInclude Include="MD5ChecksumCalculation.h" />
+    <ClInclude Include="ObservableBase.h" />
+    <ClInclude Include="ObserverBase.h" />
+    <ClInclude Include="ProgressReporter.h" />
     <ClInclude Include="RegularFile.h" />
+    <ClInclude Include="ReportWriter.h" />
     <ClInclude Include="SHA256ChecksumCalculation.h" />
     <ClInclude Include="FollowLinksBuilder.h" />
     <ClInclude Include="NoFollowLinksBuilder.h" />

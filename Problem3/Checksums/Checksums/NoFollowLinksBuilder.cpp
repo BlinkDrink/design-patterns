@@ -18,7 +18,7 @@ namespace Checksums
 		{
 			if (fs::is_regular_file(path))
 			{
-				unique_ptr<RegularFile> file = std::make_unique<RegularFile>(path, fs::file_size(path));
+				unique_ptr<RegularFile> file = std::make_unique<RegularFile>(fs::relative(fs::absolute(path)).string(), fs::file_size(path));
 
 				if (m_root == nullptr)
 				{
@@ -29,9 +29,9 @@ namespace Checksums
 					parent->add(std::move(file));
 				}
 			}
-			else if (std::filesystem::is_directory(path))
+			else if (fs::is_directory(path))
 			{
-				unique_ptr<Directory> dir = make_unique<Directory>(path);
+				unique_ptr<Directory> dir = make_unique<Directory>(fs::relative(fs::absolute(path)).string());
 				Directory* current = dir.get();
 
 				if (m_root == nullptr)

@@ -3,6 +3,7 @@
 #include "RegularFile.h"
 #include "Directory.h"
 #include "ChecksumCalculationBase.h"
+#include "ObservableBase.h"
 
 
 namespace Checksums
@@ -18,18 +19,19 @@ namespace Checksums
 		using std::ostream;
 		using std::unique_ptr;
 		using ChecksumCalculations::ChecksumCalculationBase;
+		using Observers::ObservableBase;
 		using TreeElements::RegularFile;
 		using TreeElements::Directory;
 
 
-		class HashStreamWriterVisitor : public VisitorBase
+		class HashStreamWriter : public VisitorBase, public ObservableBase
 		{
 		private:
 			ostream& m_outputStream;
 			unique_ptr<ChecksumCalculationBase> m_calculator;
 
 		public:
-			HashStreamWriterVisitor(ostream& m_output_stream, unique_ptr<ChecksumCalculationBase> calculator);
+			HashStreamWriter(ostream& m_output_stream, unique_ptr<ChecksumCalculationBase> calculator);
 			void visit(RegularFile& file) override;
 			void visit(Directory& directory) override;
 		};

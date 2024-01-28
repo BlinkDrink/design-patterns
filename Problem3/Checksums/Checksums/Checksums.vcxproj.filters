@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Visitors">
       <UniqueIdentifier>{73f9a6a6-3287-429e-b19a-5edefa5783d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Observers">
+      <UniqueIdentifier>{2a36c886-2640-4270-830b-fb7c30de9fbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -57,8 +60,17 @@
     <ClCompile Include="FollowLinksBuilder.cpp">
       <Filter>Source Files\Builders</Filter>
     </ClCompile>
-    <ClCompile Include="HashStreamWriterVisitor.cpp">
+    <ClCompile Include="HashStreamWriter.cpp">
       <Filter>Source Files\Visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportWriter.cpp">
+      <Filter>Source Files\Visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="ObservableBase.cpp">
+      <Filter>Source Files\Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressReporter.cpp">
+      <Filter>Source Files\Observers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,7 +104,19 @@
     <ClInclude Include="VisitorBase.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="HashStreamWriterVisitor.h">
+    <ClInclude Include="HashStreamWriter.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="ObserverBase.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ObservableBase.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressReporter.h">
+      <Filter>Header Files\Concretes</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportWriter.h">
       <Filter>Header Files\Concretes</Filter>
     </ClInclude>
   </ItemGroup>
