@@ -1,16 +1,12 @@
 #include <filesystem>
-#include<iostream>
 #include <memory>
-#include<sstream>
 
 #include "FollowLinksBuilder.h"
 #include "NoFollowLinksBuilder.h"
 #include "ReportWriter.h"
-#include "Directory.h"
 #include "HashStreamWriter.h"
 #include "MD5ChecksumCalculation.h"
 #include "ProgressReporter.h"
-#include "SHA256ChecksumCalculation.h"
 
 namespace fs = std::filesystem;
 
@@ -24,15 +20,13 @@ int main()
 	const fs::path pathToPrint = currentPath / "checksums.txt";
 	const fs::path fullPath = currentPath / "mock_directory1" /*/ "mock_directory2"*/;
 
-
-
 	std::ofstream file(pathToPrint.string());
 	auto relativePath = fs::relative(fs::absolute(fullPath));
 	auto absPath = fs::absolute(relativePath);
-	f.build(fullPath.string());
-	std::unique_ptr<Checksums::TreeElements::FileTreeElement> res = f.getResult();
+	nf.build(fullPath.string());
+	std::unique_ptr<Checksums::TreeElements::FileTreeElement> res = nf.getResult();
 	Checksums::Visitors::HashStreamWriter rwv(file, std::move(md5));
-	std::shared_ptr<Checksums::Observers::ObserverBase> pr = std::make_shared<Checksums::Observers::ProgressReporter>();
+	std::shared_ptr<Checksums::Observers::ObserverBase> pr = std::make_shared<Checksums::Observers::ProgressReporter>(res->getSize());
 	rwv.addObserver(pr);
 	res->accept(rwv);
 

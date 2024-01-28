@@ -16,6 +16,7 @@ namespace Checksums
 	{
 		using std::endl;
 		using std::make_unique;
+		using Messages::FileMessage;
 
 		HashStreamWriter::HashStreamWriter(ostream& output_stream, unique_ptr<ChecksumCalculationBase> calculator) : m_outputStream(output_stream), m_calculator(std::move(calculator))
 		{
@@ -23,7 +24,7 @@ namespace Checksums
 
 		void HashStreamWriter::visit(RegularFile& file)
 		{
-			notifyObservers(make_unique<Messages::FileMessage>(file.getPath()));
+			notifyObservers(make_unique<FileMessage>(file.getPath()));
 			m_outputStream << m_calculator->calculate(file.getPath()) << endl;
 		}
 

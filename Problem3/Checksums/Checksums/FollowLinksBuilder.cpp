@@ -119,15 +119,18 @@ namespace Checksums
 				{
 					m_root = std::move(dir);
 				}
-				else
+				/*else
 				{
 					parent->add(std::move(dir));
-				}
+				}*/
 
 				for (const fs::directory_entry& entry : fs::directory_iterator(path))
 				{
 					build(entry.path().string(), current);
 				}
+
+				if (m_root && dir)
+					parent->add(std::move(dir));
 			}
 		}
 

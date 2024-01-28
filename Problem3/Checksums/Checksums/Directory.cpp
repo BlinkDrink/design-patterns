@@ -17,6 +17,7 @@ namespace Checksums
 
 		void Directory::add(unique_ptr<FileTreeElement> child)
 		{
+			m_size += child->getSize();
 			m_children.push_back(std::move(child));
 		}
 
@@ -27,11 +28,7 @@ namespace Checksums
 
 		uintmax_t Directory::getSize() const
 		{
-			size_t totalSize = 0;
-			for (const unique_ptr<FileTreeElement>& child : m_children)
-				totalSize += child->getSize();
-
-			return totalSize;
+			return m_size;
 		}
 
 		string Directory::toString() const
