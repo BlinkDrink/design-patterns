@@ -20,7 +20,7 @@ namespace Checksums
 		using std::chrono::time_point;
 		using std::chrono::duration_cast;
 
-		ProgressReporter::ProgressReporter(size_t totalBytes) : m_bytesRead(0), m_totalBytes(0), m_totalBytesToBeRead(totalBytes), m_hasWrittenYet(false)
+		ProgressReporter::ProgressReporter(size_t totalBytes) : m_bytesRead(0), m_totalBytes(0), m_totalBytesToBeRead(totalBytes)
 		{
 			m_startTime = steady_clock::now();
 		}

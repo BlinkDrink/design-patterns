@@ -55,6 +55,9 @@
     <Filter Include="Header Files\Concretes\ChecksumCalculations">
       <UniqueIdentifier>{0f86d9a5-c4be-4ad1-a8df-db41e132d2a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes\Mementos">
+      <UniqueIdentifier>{5ec790b7-01a3-439a-bf60-fc0d1aa6fe21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="BytesMessage.cpp">
       <Filter>Source Files\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="HashStreamWriterMemento.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,15 @@
     </ClInclude>
     <ClInclude Include="ReportWriter.h">
       <Filter>Header Files\Concretes\Visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanner.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="HashStreamWriterMemento.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

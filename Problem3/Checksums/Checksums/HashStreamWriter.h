@@ -3,6 +3,7 @@
 #include "RegularFile.h"
 #include "Directory.h"
 #include "ChecksumCalculationBase.h"
+#include "Memento.h"
 #include "ObservableBase.h"
 
 
@@ -19,11 +20,12 @@ namespace Checksums
 		using std::ostream;
 		using std::unique_ptr;
 		using std::shared_ptr;
-		using ChecksumCalculations::ChecksumCalculationBase;
-		using Observers::ObservableBase;
+		using Mementos::Memento;
 		using Observers::ObserverBase;
-		using TreeElements::RegularFile;
 		using TreeElements::Directory;
+		using TreeElements::RegularFile;
+		using Observers::ObservableBase;
+		using ChecksumCalculations::ChecksumCalculationBase;
 
 
 		/**
@@ -62,6 +64,9 @@ namespace Checksums
 			 * \brief Method for handling the checksum calculation and writing to outputstream on a Directory.
 			 */
 			void visit(Directory& directory) override;
+
+			void saveState() override;
+			void restoreState() override;
 		};
 	}
 }

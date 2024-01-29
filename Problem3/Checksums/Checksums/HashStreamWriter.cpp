@@ -38,5 +38,15 @@ namespace Checksums
 		{
 			// Does nothing to directories, because only the regular files inside them have checksum
 		}
+
+		void HashStreamWriter::saveState()
+		{
+
+		}
+
+		void HashStreamWriter::restoreState()
+		{
+
+		}
 	}
 }

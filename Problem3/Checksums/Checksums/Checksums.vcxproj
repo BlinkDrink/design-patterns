@@ -136,6 +136,7 @@
     <ClCompile Include="FileMessage.cpp" />
     <ClCompile Include="FileTreeElement.cpp" />
     <ClCompile Include="HashStreamWriter.cpp" />
+    <ClCompile Include="HashStreamWriterMemento.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MD5ChecksumCalculation.cpp" />
     <ClCompile Include="ObservableBase.cpp" />
@@ -154,13 +155,16 @@
     <ClInclude Include="FileMessage.h" />
     <ClInclude Include="FileTreeElement.h" />
     <ClInclude Include="HashStreamWriter.h" />
+    <ClInclude Include="HashStreamWriterMemento.h" />
     <ClInclude Include="MD5ChecksumCalculation.h" />
+    <ClInclude Include="Memento.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="ObservableBase.h" />
     <ClInclude Include="ObserverBase.h" />
     <ClInclude Include="ProgressReporter.h" />
     <ClInclude Include="RegularFile.h" />
     <ClInclude Include="ReportWriter.h" />
+    <ClInclude Include="Scanner.h" />
     <ClInclude Include="SHA256ChecksumCalculation.h" />
     <ClInclude Include="FollowLinksBuilder.h" />
     <ClInclude Include="NoFollowLinksBuilder.h" />
