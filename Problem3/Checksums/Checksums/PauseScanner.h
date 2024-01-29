@@ -1,15 +1,27 @@
 #pragma once
-#include "ObservableBase.h"
+#include <mutex>
 
+#include "ChecksumCalculationBase.h"
+#include "FileTreeElement.h"
+#include "ObservableBase.h"
 
 namespace Checksums
 {
 	namespace Scanners
 	{
+		using std::mutex;
+		using std::unique_ptr;
+		using std::condition_variable;
+
 		class PauseScanner : public Observers::ObservableBase
 		{
 		private:
+			mutex m_mutex;
+			condition_variable m_condition;
+			unique_ptr<ChecksumCalculations::ChecksumCalculationBase> m_calculator;
+			unique_ptr<TreeElements::FileTreeElement> m_fileTree;
 			bool m_isPaused;
+
 		public:
 			PauseScanner();
 
