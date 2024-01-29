@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="BytesMessage.cpp" />
     <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FileMessage.cpp" />
     <ClCompile Include="FileTreeElement.cpp" />
     <ClCompile Include="HashStreamWriter.cpp" />
@@ -149,14 +150,14 @@
     <ClCompile Include="SHA256ChecksumCalculation.cpp" />
     <ClCompile Include="FollowLinksBuilder.cpp" />
     <ClCompile Include="NoFollowLinksBuilder.cpp" />
-    <ClCompile Include="StreamChecksumCalculationFactory.cpp" />
+    <ClCompile Include="ChecksumCalculationFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuilderBase.h" />
     <ClInclude Include="BytesMessage.h" />
     <ClInclude Include="ChecksumCalculationBase.h" />
-    <ClInclude Include="ChecksumCalculationFactory.h" />
     <ClInclude Include="Directory.h" />
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="FileMessage.h" />
     <ClInclude Include="FileTreeElement.h" />
     <ClInclude Include="HashStreamWriter.h" />
@@ -174,7 +175,7 @@
     <ClInclude Include="SHA256ChecksumCalculation.h" />
     <ClInclude Include="FollowLinksBuilder.h" />
     <ClInclude Include="NoFollowLinksBuilder.h" />
-    <ClInclude Include="StreamChecksumCalculationFactory.h" />
+    <ClInclude Include="ChecksumCalculationFactory.h" />
     <ClInclude Include="VisitorBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

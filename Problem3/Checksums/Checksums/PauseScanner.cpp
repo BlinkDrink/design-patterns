@@ -29,5 +29,16 @@ namespace Checksums
 		void PauseScanner::stop()
 		{
 		}
+
+		//void PauseScanner::setFileTree(unique_ptr<TreeElements::FileTreeElement> tree)
+		//{
+		//	m_fileTree = std::move(tree);
+		//}
+
+		//void PauseScanner::setVisitor(unique_ptr<Visitors::VisitorBase> visitor)
+		//{
+		//	m_visitor = std::move(visitor);
+		//	ObservableBase::addObserver(visitor);
+		//}
 	}
 }

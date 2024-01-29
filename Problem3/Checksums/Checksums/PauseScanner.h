@@ -18,7 +18,7 @@ namespace Checksums
 		private:
 			mutex m_mutex;
 			condition_variable m_condition;
-			unique_ptr<ChecksumCalculations::ChecksumCalculationBase> m_calculator;
+			unique_ptr<Visitors::VisitorBase> m_visitor;
 			unique_ptr<TreeElements::FileTreeElement> m_fileTree;
 			bool m_isPaused;
 
@@ -29,6 +29,8 @@ namespace Checksums
 			void pause();
 			void resume();
 			void stop();
+
+
 		};
 	}
 }

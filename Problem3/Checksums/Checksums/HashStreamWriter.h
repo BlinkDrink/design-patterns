@@ -1,10 +1,8 @@
 #pragma once
-#include "VisitorBase.h"
-#include "RegularFile.h"
-#include "Directory.h"
 #include "ChecksumCalculationBase.h"
 #include "HashStreamWriterMemento.h"
 #include "ObservableBase.h"
+#include "VisitorBase.h"
 
 namespace Checksums::Observers
 {

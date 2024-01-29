@@ -7,7 +7,7 @@
 #include "HashStreamWriterMemento.h"
 #include "PauseScanner.h"
 #include "ProgressReporter.h"
-#include "ScannerMessage.h"
+#include "RegularFile.h"
 
 namespace Checksums
 {

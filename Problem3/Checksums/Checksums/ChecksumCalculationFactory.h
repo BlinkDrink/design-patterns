@@ -1,20 +1,24 @@
 #pragma once
-#include <memory>
-
 #include "ChecksumCalculationBase.h"
 
 namespace Checksums
 {
 	namespace Factories
 	{
-		using std::unique_ptr;
-		using ChecksumCalculations::ChecksumCalculationBase;
+		using std::ifstream;
+		using std::istream;
 
 		class ChecksumCalculationFactory
 		{
+		private:
+			ifstream m_file;
+			istream& m_stream;
 		public:
-			virtual unique_ptr<ChecksumCalculationBase> create_calculator() = 0;
-			virtual ~ChecksumCalculationFactory() = default;
+			ChecksumCalculationFactory(istream& stream);
+			ChecksumCalculationFactory(ifstream&& fileStream);
+			std::unique_ptr<ChecksumCalculations::ChecksumCalculationBase> create_calculator();
 		};
 	}
 }
+
+

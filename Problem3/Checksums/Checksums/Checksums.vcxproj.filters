@@ -73,6 +73,9 @@
     <Filter Include="Source Files\Factories">
       <UniqueIdentifier>{24b69ef6-5fcb-42cb-9b8d-95b9ab6f65f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Concretes\Engines">
+      <UniqueIdentifier>{f1fd8d3e-73f6-4183-8aab-43a09b0bae38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,8 +132,11 @@
     <ClCompile Include="ScannerMessage.cpp">
       <Filter>Source Files\Messages</Filter>
     </ClCompile>
-    <ClCompile Include="StreamChecksumCalculationFactory.cpp">
+    <ClCompile Include="ChecksumCalculationFactory.cpp">
       <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,10 +207,10 @@
       <Filter>Header Files\Concretes\Messages</Filter>
     </ClInclude>
     <ClInclude Include="ChecksumCalculationFactory.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="StreamChecksumCalculationFactory.h">
       <Filter>Header Files\Concretes\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files\Concretes\Engines</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

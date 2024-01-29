@@ -1,7 +1,8 @@
-#include "StreamChecksumCalculationFactory.h"
+#include "ChecksumCalculationFactory.h"
 
 #include "MD5ChecksumCalculation.h"
 #include "SHA256ChecksumCalculation.h"
+#include "ChecksumCalculationFactory.h"
 
 namespace Checksums
 {
@@ -11,15 +12,15 @@ namespace Checksums
 		using ChecksumCalculations::SHA256ChecksumCalculation;
 		using ChecksumCalculations::MD5ChecksumCalculation;
 
-		StreamChecksumCalculationFactory::StreamChecksumCalculationFactory(istream& stream) : m_stream(stream)
+		ChecksumCalculationFactory::ChecksumCalculationFactory(istream& stream) : m_stream(stream)
 		{
 		}
 
-		StreamChecksumCalculationFactory::StreamChecksumCalculationFactory(ifstream&& fileStream) : m_file(std::move(fileStream)), m_stream(m_file)
+		ChecksumCalculationFactory::ChecksumCalculationFactory(ifstream&& fileStream) : m_file(std::move(fileStream)), m_stream(m_file)
 		{
 		}
 
-		unique_ptr<ChecksumCalculationBase> StreamChecksumCalculationFactory::create_calculator()
+		std::unique_ptr<ChecksumCalculations::ChecksumCalculationBase> ChecksumCalculationFactory::create_calculator()
 		{
 			string algorithmType;
 			if (!(m_stream >> algorithmType))
