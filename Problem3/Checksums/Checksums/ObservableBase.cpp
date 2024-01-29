@@ -13,7 +13,7 @@ namespace Checksums
 		{
 			for (const shared_ptr<ObserverBase>& observer : m_observers)
 			{
-				observer->update(std::move(msg));
+				observer->update(*this, std::move(msg));
 			}
 		}
 	}

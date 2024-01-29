@@ -3,6 +3,8 @@
 #include "../Checksums/MD5ChecksumCalculation.h"
 #include "../Checksums/MD5ChecksumCalculation.cpp"
 #include "../Checksums/ObservableBase.cpp"
+#include "../Checksums/BytesMessage.cpp"
+
 
 namespace TestFramework
 {

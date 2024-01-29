@@ -1,10 +1,15 @@
 #pragma once
+#include <openssl/md5.h>
+#include <openssl/evp.h>
+
 #include "ChecksumCalculationBase.h"
 
 namespace Checksums
 {
 	namespace ChecksumCalculations
 	{
+		using std::istream;
+		using std::streampos;
 		using Observers::ObserverBase;
 
 		/**
@@ -15,10 +20,10 @@ namespace Checksums
 		public:
 			/**
 			 * \brief Calculates the checksum of the given file by using the MD5 algorithm
-			 * \param path - file's path
+			 * \param input_stream - the stream from which information will be read
 			 * \return - checksum of file
 			 */
-			string calculate(const string& path) const override;
+			string calculate(istream& inputStream) const override;
 		};
 	}
 }

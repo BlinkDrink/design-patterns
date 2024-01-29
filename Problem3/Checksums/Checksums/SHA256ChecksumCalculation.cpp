@@ -17,22 +17,16 @@ namespace Checksums
 		using std::stringstream;
 		using Messages::BytesMessage;
 
-		string SHA256ChecksumCalculation::calculate(const string& path) const
+		string SHA256ChecksumCalculation::calculate(istream& input_stream) const
 		{
-			std::ifstream file(path, std::ios::binary);
-			if (!file.is_open())
-			{
-				throw std::invalid_argument("Error opening file " + path + " for reading");
-			}
-
 			SHA256_CTX sha256Context;
 			SHA256_Init(&sha256Context);
 
-			while (file.good())
+			while (input_stream.good())
 			{
 				char buffer[1024];
-				file.read(buffer, sizeof(buffer));
-				size_t bytesRead = static_cast<size_t>(file.gcount());
+				input_stream.read(buffer, sizeof(buffer));
+				size_t bytesRead = static_cast<size_t>(input_stream.gcount());
 				SHA256_Update(&sha256Context, buffer, bytesRead);
 				notifyObservers(make_unique<BytesMessage>(bytesRead));
 			}

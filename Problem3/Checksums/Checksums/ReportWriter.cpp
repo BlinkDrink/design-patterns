@@ -14,7 +14,7 @@ namespace Checksums
 
 		void ReportWriter::visit(RegularFile& file)
 		{
-			m_outputStream << file.getPath() << " - " << file.getSize() << " byte(s)" << endl;
+			m_outputStream << file.getPath() << " - " << file.getSize() << " byte(s)" << "\n";
 		}
 
 		void ReportWriter::visit(Directory& directory)

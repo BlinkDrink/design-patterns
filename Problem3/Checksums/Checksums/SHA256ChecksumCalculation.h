@@ -16,7 +16,7 @@ namespace Checksums
 			 * \param path - file's path
 			 * \return - checksum of file
 			 */
-			string calculate(const string& path) const override;
+			string calculate(istream& input_stream) const override;
 		};
 	}
 }

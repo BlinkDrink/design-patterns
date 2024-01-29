@@ -1,7 +1,7 @@
 #include "pch.h"
-
 #include "../Checksums/SHA256ChecksumCalculation.h"
 #include "../Checksums/SHA256ChecksumCalculation.cpp"
+
 
 namespace TestFramework
 {

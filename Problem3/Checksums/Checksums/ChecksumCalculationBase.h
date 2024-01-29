@@ -18,7 +18,7 @@ namespace Checksums
 		class ChecksumCalculationBase : public ObservableBase
 		{
 		public:
-			virtual string calculate(const string& path) const = 0;
+			virtual string calculate(istream& inputStream) const = 0;
 			virtual ~ChecksumCalculationBase() = default;
 		};
 	}

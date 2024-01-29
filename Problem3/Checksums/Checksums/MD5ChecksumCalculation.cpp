@@ -1,10 +1,9 @@
-#include "MD5ChecksumCalculation.h"
-
 #include <iomanip>
 #include <sstream>
 #include <openssl/md5.h>
 
 #include "BytesMessage.h"
+#include "MD5ChecksumCalculation.h"
 
 namespace Checksums
 {
@@ -17,22 +16,16 @@ namespace Checksums
 		using std::stringstream;
 		using Messages::BytesMessage;
 
-		string MD5ChecksumCalculation::calculate(const string& path) const
+		string MD5ChecksumCalculation::calculate(istream& inputStream) const
 		{
-			std::ifstream file(path, std::ios::binary);
-			if (!file.is_open())
-			{
-				throw std::invalid_argument("Error opening file " + path + " for reading.");
-			}
-
 			MD5_CTX md5Context;
 			MD5_Init(&md5Context);
 
-			while (file.good())
+			while (inputStream.good())
 			{
 				char buffer[1024];
-				file.read(buffer, sizeof(buffer));
-				const int bytesRead = static_cast<size_t>(file.gcount());
+				inputStream.read(buffer, sizeof(buffer));
+				const int bytesRead = static_cast<size_t>(inputStream.gcount());
 				MD5_Update(&md5Context, buffer, bytesRead);
 				notifyObservers(make_unique<BytesMessage>(bytesRead));
 			}

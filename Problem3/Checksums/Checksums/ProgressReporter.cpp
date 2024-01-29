@@ -13,6 +13,7 @@ namespace Checksums
 		using std::cout;
 		using std::endl;
 		using std::to_string;
+		using std::make_unique;
 		using std::stringstream;
 		using std::chrono::seconds;
 		using Messages::FileMessage;
@@ -25,7 +26,7 @@ namespace Checksums
 			m_startTime = steady_clock::now();
 		}
 
-		void ProgressReporter::update(unique_ptr<Message> msg)
+		void ProgressReporter::update(const ObservableBase& sender, unique_ptr<Message> msg)
 		{
 			if (dynamic_cast<const BytesMessage*>(msg.get()))
 			{
@@ -68,6 +69,21 @@ namespace Checksums
 			cout << newMessage;
 			cout << std::flush;
 			m_previousMessage = newMessage;
+		}
+
+		unique_ptr<Mementos::ProgressReporterMemento> ProgressReporter::createMemento() const
+		{
+			return make_unique<Mementos::ProgressReporterMemento>(m_bytesRead, m_totalBytes, m_currentFile, m_totalBytesToBeRead, m_previousMessage, m_startTime);
+		}
+
+		void ProgressReporter::restoreFromMemento(unique_ptr<Mementos::ProgressReporterMemento>& memento)
+		{
+			m_bytesRead = memento->m_bytesRead;
+			m_totalBytes = memento->m_totalBytes;
+			m_currentFile = memento->m_currentFile;
+			m_totalBytesToBeRead = memento->m_totalBytesToBeRead;
+			m_previousMessage = memento->m_previousMessage;
+			m_startTime = memento->m_startTime;
 		}
 	}
 }

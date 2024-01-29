@@ -3,6 +3,11 @@
 
 #include "Message.h"
 
+namespace Checksums::Observers
+{
+	class ObservableBase;
+}
+
 namespace Checksums
 {
 	namespace Observers
@@ -18,7 +23,7 @@ namespace Checksums
 		class ObserverBase
 		{
 		public:
-			virtual void update(unique_ptr<Message> msg) = 0;
+			virtual void update(const ObservableBase& sender, unique_ptr<Message> msg) = 0;
 			virtual ~ObserverBase() = default;
 		};
 	}

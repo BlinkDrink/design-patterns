@@ -58,6 +58,15 @@
     <Filter Include="Header Files\Concretes\Mementos">
       <UniqueIdentifier>{5ec790b7-01a3-439a-bf60-fc0d1aa6fe21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Mementos">
+      <UniqueIdentifier>{9df7799b-13af-4922-82eb-6b1ded3c6f2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Concretes\Scanners">
+      <UniqueIdentifier>{ad44da70-c9c2-439f-b4c3-abdf22b0ca21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scanners">
+      <UniqueIdentifier>{f6c7fda3-5214-4acf-b130-1b362a3cf4c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -103,7 +112,16 @@
       <Filter>Source Files\Messages</Filter>
     </ClCompile>
     <ClCompile Include="HashStreamWriterMemento.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Mementos</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressReporterMemento.cpp">
+      <Filter>Source Files\Mementos</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScanner.cpp">
+      <Filter>Source Files\Scanners</Filter>
+    </ClCompile>
+    <ClCompile Include="ScannerMessage.cpp">
+      <Filter>Source Files\Messages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,14 +179,17 @@
     <ClInclude Include="ReportWriter.h">
       <Filter>Header Files\Concretes\Visitors</Filter>
     </ClInclude>
-    <ClInclude Include="Scanner.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Memento.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="HashStreamWriterMemento.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Concretes\Mementos</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressReporterMemento.h">
+      <Filter>Header Files\Concretes\Mementos</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScanner.h">
+      <Filter>Header Files\Concretes\Scanners</Filter>
+    </ClInclude>
+    <ClInclude Include="ScannerMessage.h">
+      <Filter>Header Files\Concretes\Messages</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
