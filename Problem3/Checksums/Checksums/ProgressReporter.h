@@ -30,6 +30,7 @@ namespace Checksums
 			size_t m_totalBytesToBeRead; // The total size of the file tree in bytes
 			mutable string m_previousMessage; // the previously printed progress output by the progress bar
 			steady_clock::time_point m_startTime; // the time of initialization of the progress bar
+			unique_ptr<Mementos::ProgressReporterMemento> m_state;
 		public:
 			ProgressReporter(size_t totalBytes);
 

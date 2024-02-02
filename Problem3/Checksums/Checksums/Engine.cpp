@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <iostream>
 #include <memory>
+#include <memory>
 #include <ostream>
 
 #include "BuilderBase.h"
@@ -12,6 +13,8 @@
 #include "PauseScanner.h"
 #include "ReportWriter.h"
 #include "ChecksumCalculationFactory.h"
+#include "CommandType.h"
+#include "ProgressReporter.h"
 
 namespace fs = std::filesystem;
 
@@ -57,7 +60,7 @@ namespace Checksums
 			return std::move(builder);
 		}
 
-		std::shared_ptr<Observers::ObserverBase> Engine::initializeHashStreamWriter() const
+		shared_ptr<ObserverBase> Engine::initializeHashStreamWriter() const
 		{
 			string checksumPath, alg;
 			unique_ptr<ChecksumCalculations::ChecksumCalculationBase> hashAlg;
@@ -79,18 +82,9 @@ namespace Checksums
 			}
 		}
 
-		Engine& Engine::getInstance()
+		string Engine::pathToFileInput() const
 		{
-			static Engine instance;
-			return instance;
-		}
-
-		void Engine::exe()
-		{
-			Scanners::PauseScanner ps;
 			string path, finalPath;
-			size_t cmd;
-
 			while (true)
 			{
 				cout << "Enter path to file/directory:";
@@ -113,52 +107,98 @@ namespace Checksums
 				cout << "Invalid path to file\n";
 			}
 
+			return finalPath;
+		}
+
+		Engine& Engine::getInstance()
+		{
+			static Engine instance;
+			return instance;
+		}
+
+		void Engine::exe()
+		{
+			string pathToFile = pathToFileInput();
+
+
 			unique_ptr<BuilderBase> builder = createBuilder();
 
-			builder->build(finalPath);
+			builder->build(pathToFile);
 			unique_ptr<TreeElements::FileTreeElement> tree = builder->getResult();
 
 			while (true)
 			{
 				menu();
+				size_t cmd;
 				cout << "Enter command:";
 				cin >> cmd;
 
-				if (cmd == 1)
+				switch (static_cast<CommandType::CommandType>(cmd))
+				{
+				case CommandType::CommandType::REPORT:
 				{
 					Visitors::ReportWriter rw(cout);
 					tree->accept(rw);
+					break;
 				}
-				else if (cmd == 2)
+				case CommandType::CommandType::SCAN:
 				{
-					std::shared_ptr<Observers::ObserverBase> writer = initializeHashStreamWriter();
+					shared_ptr<ObserverBase> writer = initializeHashStreamWriter();
+					shared_ptr<ObserverBase> progressReporter = make_unique<ProgressReporter>(tree->getSize());
+					Scanners::PauseScanner ps(writer, tree);
 					ps.addObserver(writer);
+					ps.addObserver(progressReporter);
 					ps.start();
+					while (true)
+					{
+						cout << "Enter command while scanning:";
+						cin >> cmd;
+						switch (static_cast<CommandType::CommandType>(cmd))
+						{
+						case CommandType::CommandType::REPORT:
+						{
+							cout << "Scanning.. Please wait";
+							break;
+						}
+						case CommandType::CommandType::SCAN:
+							cout << "Already scanning\n";
+							break;
+						case CommandType::CommandType::PAUSE:
+							try
+							{
+								ps.pause();
+							}
+							catch (std::exception& ex)
+							{
+								cout << ex.what() << endl;
+							}
+							break;
+						case CommandType::CommandType::RESUME:
+							try
+							{
+								ps.resume();
+							}
+							catch (std::exception& ex)
+							{
+								cout << ex.what() << endl;
+							}
+							break;
+						case CommandType::CommandType::EXIT:
+							return;
+						}
+					}
 				}
-				else if (cmd == 3)
+				case CommandType::CommandType::PAUSE:
 				{
-					try
-					{
-						ps.pause();
-					}
-					catch (std::exception& e)
-					{
-						cout << e.what();
-					}
+					cout << "You must begin a scan in order to pause\n";
+					break;
 				}
-				else if (cmd == 4)
+				case CommandType::CommandType::RESUME:
 				{
-					try
-					{
-						ps.resume();
-					}
-					catch (std::exception e)
-					{
-						cout << e.what();
-					}
+					cout << "You must begin a scan in order to resume";
+					break;
 				}
-				else if (cmd == 5)
-				{
+				case CommandType::CommandType::EXIT:
 					return;
 				}
 			}

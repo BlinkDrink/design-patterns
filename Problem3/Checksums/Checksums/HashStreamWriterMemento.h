@@ -17,12 +17,13 @@ namespace Checksums
 	{
 		using std::ostream;
 		using std::streampos;
+		using ChecksumCalculations::ChecksumCalculationBase;
 
 		class HashStreamWriterMemento
 		{
 		private:
 			streampos m_streamPosition;
-			std::unique_ptr<ChecksumCalculations::ChecksumCalculationBase> m_calculator;
+			std::unique_ptr<ChecksumCalculationBase> m_calculator;
 			friend Visitors::HashStreamWriter;
 		public:
 			HashStreamWriterMemento(streampos streamPosition, std::unique_ptr<ChecksumCalculations::ChecksumCalculationBase> calculator);

@@ -5,6 +5,7 @@
 
 #include "BytesMessage.h"
 #include "FileMessage.h"
+#include "PauseScanner.h"
 
 namespace Checksums
 {
@@ -41,6 +42,10 @@ namespace Checksums
 			{
 				m_currentFile = msg->what();
 				m_bytesRead = 0;
+			}
+
+			if (dynamic_cast<const Scanners::PauseScanner*>(msg.get()))
+			{
 			}
 
 			display();

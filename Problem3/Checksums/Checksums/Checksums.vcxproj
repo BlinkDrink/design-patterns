@@ -156,6 +156,7 @@
     <ClInclude Include="BuilderBase.h" />
     <ClInclude Include="BytesMessage.h" />
     <ClInclude Include="ChecksumCalculationBase.h" />
+    <ClInclude Include="CommandType.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="FileMessage.h" />

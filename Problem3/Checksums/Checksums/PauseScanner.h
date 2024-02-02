@@ -1,7 +1,7 @@
 #pragma once
 #include <mutex>
+#include <thread>
 
-#include "ChecksumCalculationBase.h"
 #include "FileTreeElement.h"
 #include "ObservableBase.h"
 
@@ -10,27 +10,34 @@ namespace Checksums
 	namespace Scanners
 	{
 		using std::mutex;
+		using std::thread;
 		using std::unique_ptr;
+		using std::shared_ptr;
 		using std::condition_variable;
 
-		class PauseScanner : public Observers::ObservableBase
+		using Visitors::VisitorBase;
+		using Observers::ObservableBase;
+		using TreeElements::FileTreeElement;
+
+		class PauseScanner : public ObservableBase
 		{
 		private:
 			mutex m_mutex;
+			unique_ptr<thread> m_thread;
 			condition_variable m_condition;
-			unique_ptr<Visitors::VisitorBase> m_visitor;
-			unique_ptr<TreeElements::FileTreeElement> m_fileTree;
+			shared_ptr<VisitorBase> m_visitor;
+			shared_ptr<FileTreeElement> m_fileTree;
 			bool m_isPaused;
+			bool m_isScanning;
 
 		public:
-			PauseScanner();
+			PauseScanner(shared_ptr<VisitorBase> visitor, shared_ptr<FileTreeElement> tree);
 
 			void start();
 			void pause();
 			void resume();
-			void stop();
 
-
+			bool isScanning() const;
 		};
 	}
 }
