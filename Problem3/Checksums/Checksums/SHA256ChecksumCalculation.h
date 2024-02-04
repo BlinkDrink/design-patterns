@@ -13,7 +13,7 @@ namespace Checksums
 		public:
 			/**
 			 * \brief Calculates the checksum of the given file by using the SHA256 algorithm
-			 * \param path - file's path
+			 * \param input_stream - stream from which reading will be done
 			 * \return - checksum of file
 			 */
 			string calculate(istream& input_stream) const override;

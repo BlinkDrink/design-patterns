@@ -11,7 +11,6 @@ namespace TestFramework
 		using std::stringstream;
 		using std::string;
 
-		// TODO: Fix tests to work on files
 		TEST(SHA256ChecksumCalculation, CalculatingChecksumOfString_OnEmptyStream_CalculatesTheChecksumCorrectly) {
 			// Arrange
 			const string expected = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"; // this is the correct checksum of the empty string
@@ -19,7 +18,7 @@ namespace TestFramework
 			stringstream ss("");
 
 			// Assert
-			EXPECT_EQ(expected, expected);
+			EXPECT_EQ(expected, s.calculate(ss));
 		}
 
 		TEST(SHA256ChecksumCalculation, CalculatingChecksumOfString_OnSameStringTwice_ReturnsTheSameResult) {
@@ -28,12 +27,11 @@ namespace TestFramework
 			stringstream ss("c++ programming");
 			stringstream ss1("c++ programming");
 
-			// Act
-			//const string s1 = s.calculate(ss);
-			//const string s2 = s.calculate(ss1);
+			const string s1 = s.calculate(ss);
+			const string s2 = s.calculate(ss1);
 
 			// Assert
-			EXPECT_EQ("", "");
+			EXPECT_EQ(s1, s2);
 		}
 
 		TEST(SHA256ChecksumCalculation, CalculatingChecksumOfString_OnNonEmptyString_CalculatesChecksumCorrectly) {
@@ -43,7 +41,7 @@ namespace TestFramework
 			stringstream ss("c++ programming");
 
 			// Assert
-			EXPECT_EQ(expected, expected);
+			EXPECT_EQ(expected, s.calculate(ss));
 		}
 	}
 }

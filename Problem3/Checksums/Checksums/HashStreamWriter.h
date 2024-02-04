@@ -1,4 +1,7 @@
 #pragma once
+
+#include<mutex>
+
 #include "ChecksumCalculationBase.h"
 #include "HashStreamWriterMemento.h"
 #include "ObservableBase.h"
@@ -35,10 +38,12 @@ namespace Checksums
 
 	namespace Visitors
 	{
+		using std::mutex;
 		using std::ostream;
 		using std::ofstream;
 		using std::unique_ptr;
 		using std::shared_ptr;
+		using std::condition_variable;
 
 		/**
 		 * \brief Concrete visitor used to traverse a given file tree and calculate the
@@ -52,6 +57,12 @@ namespace Checksums
 			ofstream m_fileStream;
 			unique_ptr<ChecksumCalculations::ChecksumCalculationBase> m_calculator;
 			unique_ptr<Mementos::HashStreamWriterMemento> m_state;
+
+			mutex m_pauseMutex;
+			condition_variable m_pauseCondition;
+			bool m_isPaused = false;
+
+			void checkForPause();
 		public:
 
 			/**

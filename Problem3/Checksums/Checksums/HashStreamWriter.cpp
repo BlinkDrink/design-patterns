@@ -17,18 +17,25 @@ namespace Checksums
 		using std::make_unique;
 		using std::invalid_argument;
 
+		void HashStreamWriter::checkForPause()
+		{
+			std::unique_lock<mutex> lock(m_pauseMutex);
+			m_pauseCondition.wait(lock, [this] { return !m_isPaused; });
+		}
+
 		HashStreamWriter::HashStreamWriter(ostream& output_stream, unique_ptr<ChecksumCalculations::ChecksumCalculationBase> calculator) : m_outputStream(output_stream), m_calculator(std::move(calculator))
 		{
 		}
 
 		HashStreamWriter::HashStreamWriter(ofstream&& output_stream, unique_ptr<ChecksumCalculations::ChecksumCalculationBase> calculator)
-			: m_fileStream(std::move(output_stream)), m_outputStream(m_fileStream), m_calculator(std::move(calculator))
+			: m_outputStream(m_fileStream), m_fileStream(std::move(output_stream)), m_calculator(std::move(calculator))
 		{
 
 		}
 
 		void HashStreamWriter::visit(RegularFile& file)
 		{
+			checkForPause();
 			notifyObservers(make_unique<Messages::FileMessage>(file.getPath()));
 			ifstream inputStream(file.getPath());
 			if (!inputStream.is_open())
@@ -45,7 +52,7 @@ namespace Checksums
 
 		void HashStreamWriter::visit(Directory& directory)
 		{
-			// Does nothing to directories, because only the regular files inside them have checksum
+
 		}
 
 		unique_ptr<Mementos::HashStreamWriterMemento> HashStreamWriter::createMemento()
@@ -65,10 +72,15 @@ namespace Checksums
 			{
 				if (msg->what() == "pause")
 				{
+					std::unique_lock<std::mutex> lock(m_pauseMutex);
+					m_isPaused = true;
 					m_state = createMemento();
 				}
 				else if (msg->what() == "resume")
 				{
+					std::unique_lock<std::mutex> lock(m_pauseMutex);
+					m_isPaused = false;
+					m_pauseCondition.notify_one();
 					restoreFromMemento(m_state);
 				}
 			}

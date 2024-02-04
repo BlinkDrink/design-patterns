@@ -1,11 +1,10 @@
-#include "Engine.h"
-
 #include <filesystem>
 #include <iostream>
 #include <memory>
 #include <memory>
 #include <ostream>
 
+#include "Engine.h"
 #include "BuilderBase.h"
 #include "FollowLinksBuilder.h"
 #include "MD5ChecksumCalculation.h"
@@ -28,6 +27,7 @@ namespace Checksums
 		using std::string;
 		using std::ofstream;
 		using std::unique_ptr;
+		using std::make_shared;
 		using std::make_unique;
 		using Visitors::HashStreamWriter;
 		using Factories::ChecksumCalculationFactory;
@@ -77,7 +77,7 @@ namespace Checksums
 				{
 					cout << "Enter algorithm for checksums (md5/sha256):";
 					ChecksumCalculationFactory calcFactory(cin);
-					return std::make_shared<HashStreamWriter>(std::move(output), calcFactory.create_calculator());
+					return make_shared<HashStreamWriter>(std::move(output), calcFactory.create_calculator());
 				}
 			}
 		}
@@ -135,8 +135,8 @@ namespace Checksums
 		void Engine::exe()
 		{
 			menu();
-			string pathToFile = "D:\\Learning\\DesignPatterns\\design-patterns\\Problem3\\Checksums\\Checksums\\mock_directory1";//pathToFileInput();
-			unique_ptr<BuilderBase> builder = make_unique<Checksums::Builders::NoFollowLinksBuilder>();//createBuilder();
+			string pathToFile = pathToFileInput();
+			unique_ptr<BuilderBase> builder = createBuilder();
 			builder->build(pathToFile);
 			unique_ptr<TreeElements::FileTreeElement> tree = builder->getResult();
 

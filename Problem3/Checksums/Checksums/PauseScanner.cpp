@@ -46,36 +46,12 @@ namespace Checksums
 			m_isScanning = true;
 			m_thread = std::thread([this]
 				{
-					while (isScanning())
-					{
-						{
-							std::unique_lock<std::mutex> lock(m_mutex);
-							m_condition.wait(lock, [this] { return !isPaused(); });
-						}
-
-						if (!isScanning())
-							break;
-
-						m_fileTree->accept(*m_visitor);
-
-						if (isPaused())
-						{
-							std::unique_lock<std::mutex> lock(m_mutex);
-							m_condition.wait(lock, [this] { return !m_isPaused; });
-						}
-					}
+					m_fileTree->accept(*m_visitor);
 				});
 		}
 
 		void PauseScanner::pause()
 		{
-			/*std::unique_lock lock(m_mutex);
-			if (isPaused()) {
-				m_condition.notify_one();
-				return;
-			}
-			m_isPaused = true;
-			m_condition.notify_one();*/
 			std::unique_lock<std::mutex> lock(m_mutex);
 			m_isPaused = true;
 			notifyObservers(std::make_unique<Messages::FileMessage>("pause"));
@@ -83,17 +59,11 @@ namespace Checksums
 
 		void PauseScanner::resume()
 		{
-			//std::unique_lock lock(m_mutex);
-			//m_isPaused = false;
-			//if (isScanning())
-			//{
-			//	m_condition.notify_one();
-			//}
 			{
 				std::unique_lock<std::mutex> lock(m_mutex);
 				m_isPaused = false;
 			}
-			m_condition.notify_one(); // Notify the scanning thread to resume
+			m_condition.notify_one();
 
 			notifyObservers(std::make_unique<Messages::FileMessage>("resume"));
 		}

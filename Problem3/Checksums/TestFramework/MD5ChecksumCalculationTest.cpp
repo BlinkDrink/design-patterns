@@ -32,11 +32,11 @@ namespace TestFramework
 			stringstream ss1("c++ programming");
 
 			// Act
-			//const string s1 = s.calculate(ss);
-			//const string s2 = s.calculate(ss1);
+			const string s1 = s.calculate(ss);
+			const string s2 = s.calculate(ss1);
 
 			// Assert
-			EXPECT_EQ("", "");
+			EXPECT_EQ(s1, s2);
 		}
 
 		TEST(MD5ChecksumCalculation, CalculatingChecksumOfString_OnNonEmptyString_CalculatesChecksumCorrectly) {
