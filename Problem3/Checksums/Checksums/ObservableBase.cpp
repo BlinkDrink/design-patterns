@@ -9,11 +9,11 @@ namespace Checksums
 			m_observers.push_back(observer);
 		}
 
-		void ObservableBase::notifyObservers(unique_ptr<Message> msg) const
+		void ObservableBase::notifyObservers(shared_ptr<Message> msg) const
 		{
 			for (const shared_ptr<ObserverBase>& observer : m_observers)
 			{
-				observer->update(*this, std::move(msg));
+				observer->update(*this, msg);
 			}
 		}
 	}

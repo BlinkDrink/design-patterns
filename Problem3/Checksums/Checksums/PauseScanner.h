@@ -23,21 +23,28 @@ namespace Checksums
 		{
 		private:
 			mutex m_mutex;
-			unique_ptr<thread> m_thread;
+			thread m_thread;
 			condition_variable m_condition;
 			shared_ptr<VisitorBase> m_visitor;
 			shared_ptr<FileTreeElement> m_fileTree;
-			bool m_isPaused;
-			bool m_isScanning;
+			std::atomic<bool> m_isPaused;
+			std::atomic<bool> m_isScanning;
 
 		public:
 			PauseScanner(shared_ptr<VisitorBase> visitor, shared_ptr<FileTreeElement> tree);
 
+			PauseScanner(const PauseScanner& other) = delete;
+			PauseScanner& operator=(const PauseScanner& other) = delete;
+
+			PauseScanner(PauseScanner&& other) noexcept;
+			PauseScanner& operator=(PauseScanner&& other) noexcept;
+
 			void start();
 			void pause();
 			void resume();
-
 			bool isScanning() const;
+			bool isPaused() const;
+			~PauseScanner();
 		};
 	}
 }

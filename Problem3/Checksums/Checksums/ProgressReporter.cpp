@@ -27,7 +27,7 @@ namespace Checksums
 			m_startTime = steady_clock::now();
 		}
 
-		void ProgressReporter::update(const ObservableBase& sender, unique_ptr<Message> msg)
+		void ProgressReporter::update(const ObservableBase& sender, shared_ptr<Message> msg)
 		{
 			if (dynamic_cast<const BytesMessage*>(msg.get()))
 			{

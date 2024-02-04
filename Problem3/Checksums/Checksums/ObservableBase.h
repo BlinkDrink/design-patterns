@@ -23,7 +23,7 @@ namespace Checksums
 
 		public:
 			virtual void addObserver(shared_ptr<ObserverBase>& observer);
-			void notifyObservers(unique_ptr<Message> msg) const;
+			void notifyObservers(shared_ptr<Message> msg) const;
 			virtual ~ObservableBase() = default;
 		};
 	}

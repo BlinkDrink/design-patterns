@@ -41,7 +41,7 @@ namespace Checksums
 			 * accordingly
 			 * \param msg - message object that carries information about the file's path or the bytes read.
 			 */
-			void update(const ObservableBase& sender, unique_ptr<Message> msg) override;
+			void update(const ObservableBase& sender, std::shared_ptr<Message> msg) override;
 
 			void display() const;
 

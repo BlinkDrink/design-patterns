@@ -77,7 +77,7 @@ namespace Checksums
 				{
 					cout << "Enter algorithm for checksums (md5/sha256):";
 					ChecksumCalculationFactory calcFactory(cin);
-					return std::make_shared<HashStreamWriter>(output, calcFactory.create_calculator());
+					return std::make_shared<HashStreamWriter>(std::move(output), calcFactory.create_calculator());
 				}
 			}
 		}
@@ -110,6 +110,22 @@ namespace Checksums
 			return finalPath;
 		}
 
+		Engine::Engine() : m_pauseScanner(nullptr), m_visitor(nullptr), m_tree(nullptr)
+		{
+		}
+
+		void Engine::initializePauseScanner(unique_ptr<TreeElements::FileTreeElement> tree)
+		{
+			m_writer = initializeHashStreamWriter();
+			m_tree = std::move(tree);
+			m_progressReporter = make_unique<ProgressReporter>(m_tree->getSize());
+			VisitorBase* cast = dynamic_cast<VisitorBase*>(m_writer.get());
+			shared_ptr<VisitorBase> castVisitor = shared_ptr<VisitorBase>(cast);
+			m_pauseScanner = make_unique<Scanners::PauseScanner>(castVisitor, m_tree);
+			m_pauseScanner->addObserver(m_writer);
+			m_pauseScanner->addObserver(m_progressReporter);
+		}
+
 		Engine& Engine::getInstance()
 		{
 			static Engine instance;
@@ -118,90 +134,87 @@ namespace Checksums
 
 		void Engine::exe()
 		{
-			string pathToFile = pathToFileInput();
-
-
-			unique_ptr<BuilderBase> builder = createBuilder();
-
+			menu();
+			string pathToFile = "D:\\Learning\\DesignPatterns\\design-patterns\\Problem3\\Checksums\\Checksums\\mock_directory1";//pathToFileInput();
+			unique_ptr<BuilderBase> builder = make_unique<Checksums::Builders::NoFollowLinksBuilder>();//createBuilder();
 			builder->build(pathToFile);
 			unique_ptr<TreeElements::FileTreeElement> tree = builder->getResult();
 
-			while (true)
-			{
-				menu();
-				size_t cmd;
-				cout << "Enter command:";
-				cin >> cmd;
+			std::thread inputThread([&]() {
+				while (true)
+				{
+					size_t cmd;
+					cout << "Enter command:";
+					cin >> cmd;
 
-				switch (static_cast<CommandType::CommandType>(cmd))
-				{
-				case CommandType::CommandType::REPORT:
-				{
-					Visitors::ReportWriter rw(cout);
-					tree->accept(rw);
-					break;
-				}
-				case CommandType::CommandType::SCAN:
-				{
-					shared_ptr<ObserverBase> writer = initializeHashStreamWriter();
-					shared_ptr<ObserverBase> progressReporter = make_unique<ProgressReporter>(tree->getSize());
-					Scanners::PauseScanner ps(writer, tree);
-					ps.addObserver(writer);
-					ps.addObserver(progressReporter);
-					ps.start();
-					while (true)
+					switch (static_cast<CommandType::CommandType>(cmd))
 					{
-						cout << "Enter command while scanning:";
-						cin >> cmd;
-						switch (static_cast<CommandType::CommandType>(cmd))
+					case CommandType::CommandType::REPORT:
+					{
+						Visitors::ReportWriter rw(cout);
+						tree->accept(rw);
+						break;
+					}
+					case CommandType::CommandType::SCAN:
+					{
+						initializePauseScanner(std::move(tree));
+						m_pauseScanner->start();
+						while (true)
 						{
-						case CommandType::CommandType::REPORT:
-						{
-							cout << "Scanning.. Please wait";
-							break;
-						}
-						case CommandType::CommandType::SCAN:
-							cout << "Already scanning\n";
-							break;
-						case CommandType::CommandType::PAUSE:
-							try
+							cout << "Enter command while scanning:";
+							cin >> cmd;
+							switch (static_cast<CommandType::CommandType>(cmd))
 							{
-								ps.pause();
-							}
-							catch (std::exception& ex)
+							case CommandType::CommandType::REPORT:
 							{
-								cout << ex.what() << endl;
+								cout << "Scanning.. Please wait";
+								break;
 							}
-							break;
-						case CommandType::CommandType::RESUME:
-							try
-							{
-								ps.resume();
+							case CommandType::CommandType::SCAN:
+								cout << "Already scanning\n";
+								break;
+							case CommandType::CommandType::PAUSE:
+								try
+								{
+									m_pauseScanner->pause();
+								}
+								catch (std::exception& ex)
+								{
+									cout << ex.what() << endl;
+								}
+								break;
+							case CommandType::CommandType::RESUME:
+								try
+								{
+									m_pauseScanner->resume();
+								}
+								catch (std::exception& ex)
+								{
+									cout << ex.what() << endl;
+								}
+								break;
+							case CommandType::CommandType::EXIT:
+								return;
 							}
-							catch (std::exception& ex)
-							{
-								cout << ex.what() << endl;
-							}
-							break;
-						case CommandType::CommandType::EXIT:
-							return;
 						}
 					}
+					case CommandType::CommandType::PAUSE:
+					{
+						cout << "You must begin a scan in order to pause\n";
+						break;
+					}
+					case CommandType::CommandType::RESUME:
+					{
+						cout << "You must begin a scan in order to resume";
+						break;
+					}
+					case CommandType::CommandType::EXIT:
+						return;
+					}
 				}
-				case CommandType::CommandType::PAUSE:
-				{
-					cout << "You must begin a scan in order to pause\n";
-					break;
-				}
-				case CommandType::CommandType::RESUME:
-				{
-					cout << "You must begin a scan in order to resume";
-					break;
-				}
-				case CommandType::CommandType::EXIT:
-					return;
-				}
-			}
+				});
+
+			inputThread.join();
 		}
 	}
 }

@@ -21,6 +21,12 @@ namespace Checksums
 		{
 		}
 
+		HashStreamWriter::HashStreamWriter(ofstream&& output_stream, unique_ptr<ChecksumCalculations::ChecksumCalculationBase> calculator)
+			: m_fileStream(std::move(output_stream)), m_outputStream(m_fileStream), m_calculator(std::move(calculator))
+		{
+
+		}
+
 		void HashStreamWriter::visit(RegularFile& file)
 		{
 			notifyObservers(make_unique<Messages::FileMessage>(file.getPath()));
@@ -53,7 +59,7 @@ namespace Checksums
 			m_calculator = std::move(memento->m_calculator);
 		}
 
-		void HashStreamWriter::update(const ObservableBase& sender, unique_ptr<Messages::Message> msg)
+		void HashStreamWriter::update(const ObservableBase& sender, shared_ptr<Messages::Message> msg)
 		{
 			if (dynamic_cast<const Scanners::PauseScanner*>(&sender))
 			{

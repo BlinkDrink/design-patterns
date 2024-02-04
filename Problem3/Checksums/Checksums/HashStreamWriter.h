@@ -36,6 +36,7 @@ namespace Checksums
 	namespace Visitors
 	{
 		using std::ostream;
+		using std::ofstream;
 		using std::unique_ptr;
 		using std::shared_ptr;
 
@@ -48,6 +49,7 @@ namespace Checksums
 		{
 		private:
 			ostream& m_outputStream;
+			ofstream m_fileStream;
 			unique_ptr<ChecksumCalculations::ChecksumCalculationBase> m_calculator;
 			unique_ptr<Mementos::HashStreamWriterMemento> m_state;
 		public:
@@ -59,6 +61,8 @@ namespace Checksums
 			 * \param calculator - the algorithm that will be used to calculate the checksums
 			 */
 			HashStreamWriter(ostream& output_stream, unique_ptr<ChecksumCalculations::ChecksumCalculationBase> calculator);
+
+			HashStreamWriter(ofstream&& output_stream, unique_ptr<ChecksumCalculations::ChecksumCalculationBase> calculator);
 
 			/**
 			 * \brief Adds the given observer to the list of observers that will be notified
@@ -78,7 +82,7 @@ namespace Checksums
 
 			unique_ptr<Mementos::HashStreamWriterMemento> createMemento();
 			void restoreFromMemento(unique_ptr<Mementos::HashStreamWriterMemento>& memento);
-			void update(const ObservableBase& sender, unique_ptr<Messages::Message> msg) override;
+			void update(const ObservableBase& sender, shared_ptr<Messages::Message> msg) override;
 		};
 	}
 }

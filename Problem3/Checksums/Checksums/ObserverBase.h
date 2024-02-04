@@ -23,7 +23,7 @@ namespace Checksums
 		class ObserverBase
 		{
 		public:
-			virtual void update(const ObservableBase& sender, unique_ptr<Message> msg) = 0;
+			virtual void update(const ObservableBase& sender, std::shared_ptr<Message> msg) = 0;
 			virtual ~ObserverBase() = default;
 		};
 	}
