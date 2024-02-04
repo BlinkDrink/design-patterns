@@ -9,3 +9,4 @@ To setup this application you need to access both Projects' properties and do th
 	- libcryptoMT.lib
 
 This procedure should be done for both the Checksums project and it's TestingFramework project
+If these instructions didn't suffice then use this stack overflow thread (https://stackoverflow.com/questions/11383942/how-to-use-openssl-with-visual-studio)
