@@ -2,13 +2,12 @@
 #include <memory>
 #include "Figure.h"
 
-using Problem1::Figures::Figure;
-using std::unique_ptr;
-
 namespace Problem1
 {
 	namespace Factories
 	{
+		using Figures::Figure;
+		using std::unique_ptr;
 		/**
 		 * \brief Abstract Factory for creating different types of figures depending on their input
 		 */

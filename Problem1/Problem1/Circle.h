@@ -2,12 +2,12 @@
 #include <memory>
 #include "Figure.h"
 
-using std::unique_ptr;
 
 namespace Problem1
 {
 	namespace Figures
 	{
+		using std::unique_ptr;
 
 		class Circle : public Figure
 		{

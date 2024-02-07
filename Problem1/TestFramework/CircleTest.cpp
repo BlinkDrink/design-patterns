@@ -1,18 +1,22 @@
 #include "pch.h"
 #include <corecrt_math_defines.h>
 
-#include "Rectangle.h"
+#include "../Problem1/Rectangle.h"
+#include "../Problem1/FigureType.h"
 #include "../Problem1/Circle.h"
 #include "../Problem1/Circle.cpp"
 
-using Problem1::Figures::Circle;
-using Problem1::Figures::Figure;
-using Problem1::Figures::Rectangle;
 
 namespace TestFramework
 {
 	namespace CircleTests
 	{
+		using Problem1::Figures::Circle;
+		using Problem1::Figures::Figure;
+		using Problem1::Figures::Figure;
+		using Problem1::Figures::Rectangle;
+		using Problem1::Figures::FigureType;
+
 		TEST(Circle, Correct_Perimeter_Calculation)
 		{
 			// Arrange

@@ -1,7 +1,14 @@
 #pragma once
-enum class FigureType
+
+namespace Problem1
 {
-	TriangleType = 0,
-	RectangleType,
-	CircleType
-};
+	namespace Figures
+	{
+		enum class FigureType
+		{
+			TriangleType = 0,
+			RectangleType,
+			CircleType
+		};
+	}
+}

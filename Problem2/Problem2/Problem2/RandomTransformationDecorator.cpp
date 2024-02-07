@@ -57,7 +57,8 @@ namespace Problem2
 			}
 
 			LabelDecoratorBase* decorator = dynamic_cast<LabelDecoratorBase*>(m_label.get());
-			if (decorator) {
+			if (decorator)
+			{
 				m_label = decorator->removeDecorator(toRemove);
 				return make_unique<RandomTransformationDecorator>(std::move(m_label), m_transformations, seed);
 			}

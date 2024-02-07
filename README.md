@@ -30,3 +30,14 @@ Design patterns used:
 - Proxy
 - Strategy
 - Template Method
+
+### Problem 3
+
+Design patterns used:
+
+- Composite
+- Observer
+- Strategy
+- Builder
+- Visitor
+- Memento

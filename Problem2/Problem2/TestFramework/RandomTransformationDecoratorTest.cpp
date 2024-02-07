@@ -28,11 +28,11 @@ namespace TestFramework
 	using Problem2::TextTransformations::DecorateTransformation;
 	using Problem2::TextTransformations::ReplaceTransformation;
 	using Problem2::TextTransformations::ReplaceTransformation;
-	using Problem2::TextTransformations::NormalizeSpaceTransformation;
 	using Problem2::TextTransformations::CensorTransformation;
 	using Problem2::TextTransformations::TextTransformation;
 	using Problem2::Decorators::TextTransformationDecorator;
 	using Problem2::Decorators::RotatingTransformationDecorator;
+	using Problem2::TextTransformations::NormalizeSpaceTransformation;
 
 	namespace DecoratorTests
 	{

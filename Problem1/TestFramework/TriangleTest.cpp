@@ -1,19 +1,20 @@
 #include "pch.h"
 
-#include "Circle.h"
-#include "Rectangle.h"
+#include "../Problem1/Circle.h"
+#include "../Problem1/Rectangle.h"
 #include "../Problem1/Triangle.h"
-#include "../Problem1/Triangle.cpp"
 #include "../Problem1/Utils.cpp"
-
-using Problem1::Figures::Triangle;
-using Problem1::Figures::Figure;
-using Problem1::Figures::Circle;
+#include "../Problem1/Triangle.cpp"
 
 namespace TestFramework
 {
 	namespace TriangleTests
 	{
+		using Problem1::Figures::Triangle;
+		using Problem1::Figures::Figure;
+		using Problem1::Figures::Circle;
+		using Problem1::Figures::FigureType;
+
 		TEST(Triangle, Constructor_NoThrow_Correct_Triangle_Rule_Arguments)
 		{
 			// Assert

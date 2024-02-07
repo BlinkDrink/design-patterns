@@ -1,17 +1,18 @@
 #include "pch.h"
 
-#include "Circle.h"
+#include "../Problem1/Circle.h"
 #include "../problem1/Rectangle.h"
 #include "../problem1/Rectangle.cpp"
 
-using Problem1::Figures::Rectangle;
-using Problem1::Figures::Figure;
-using Problem1::Figures::Circle;
 
 namespace TestFramework
 {
 	namespace RectangleTests
 	{
+		using Problem1::Figures::FigureType;
+		using Problem1::Figures::Figure;
+		using Problem1::Figures::Circle;
+		using Problem1::Figures::Rectangle;
 
 		TEST(Rectangle, Constructor_Throw_Non_Positive_Arguments)
 		{

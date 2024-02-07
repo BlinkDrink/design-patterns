@@ -1,19 +1,21 @@
 #pragma once
+#include "FigureType.h"
 #include <string>
 
-#include "FigureType.h"
 using std::string;
 using std::unique_ptr;
 
 namespace Problem1
 {
+	using Figures::FigureType;
+
 	namespace Figures
 	{
 		class Figure
 		{
 		protected:
 			string m_string_format;
-			double m_perimeter;
+			double m_perimeter = 0;
 		public:
 			virtual double perimeter() const = 0;
 			virtual string toString() const = 0;

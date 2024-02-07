@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "../problem1/StreamFigureFactory.h"
-#include "../problem1/StreamFigureFactory.cpp"
+#include "../Problem1/StreamFigureFactory.h"
+#include "../Problem1/StreamFigureFactory.cpp"
 
 using Problem1::Factories::StreamFigureFactory;
 using std::stringstream;
@@ -9,6 +9,8 @@ namespace TestFramework
 {
 	namespace StreamFigureFactoryTests
 	{
+		using Problem1::Figures::Figure;
+
 		TEST(StreamFigureFactory, Correct_Rectangle_Reading_From_Stream)
 		{
 			// Arrange

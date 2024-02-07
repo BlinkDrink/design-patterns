@@ -3,24 +3,25 @@
 #include <corecrt_math_defines.h>
 #include <random>
 
-#include "Circle.h"
-#include "RandomFigureFactory.h"
-#include "RandomFigureFactory.cpp"
-#include "Rectangle.h"
-#include "Triangle.h"
+#include "../Problem1/Circle.h"
+#include "../Problem1/RandomFigureFactory.h"
+#include "../Problem1/RandomFigureFactory.cpp"
+#include "../Problem1/Rectangle.h"
+#include "../Problem1/Triangle.h"
 
-using std::stringstream;
 
 namespace TestFramework
 {
-	using std::uniform_real_distribution;
-	using std::default_random_engine;
-	using Problem1::Factories::RandomFigureFactory;
-	using Problem1::Figures::Rectangle;
-	using Problem1::Figures::Circle;
-	using Problem1::Figures::Triangle;
 	using std::make_unique;
+	using std::stringstream;
 	using std::invalid_argument;
+	using Problem1::Figures::Circle;
+	using Problem1::Figures::Figure;
+	using std::default_random_engine;
+	using Problem1::Figures::Triangle;
+	using Problem1::Figures::Rectangle;
+	using std::uniform_real_distribution;
+	using Problem1::Factories::RandomFigureFactory;
 
 	namespace RandomFigureFactoryTests
 	{
@@ -79,7 +80,7 @@ namespace TestFramework
 
 		TEST(RandomFigureFactory, Constructor_Throws_Incorrect_Input_Arguments)
 		{
-			// Assertx
+			// Assert
 			EXPECT_THROW(RandomFigureFactory(incorrect_case, upper_bound, seed), invalid_argument);
 			EXPECT_THROW(RandomFigureFactory(-lower_bound, incorrect_case, seed), invalid_argument);
 			EXPECT_THROW(RandomFigureFactory(upper_bound, lower_bound, seed), invalid_argument);
